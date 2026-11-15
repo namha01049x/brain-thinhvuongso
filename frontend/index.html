@@ -12,6 +12,8 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Marked Markdown Parser -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- 3D Force Graph for Neural Network -->
+  <script src="https://unpkg.com/3d-force-graph@1.80.2/dist/3d-force-graph.min.js"></script>
 
   <script>
     tailwind.config = {
@@ -4512,26 +4514,51 @@
       }
     }
 
-    function handleCockpitSubmit(e) {
-      e.preventDefault();
+    async function handleCockpitSubmit(e) {
+      if (e) e.preventDefault();
       const input = document.getElementById('cockpitChatInput');
-      const text = input.value.trim();
-      if (!text || !ws || ws.readyState !== WebSocket.OPEN) return;
+      const text = input ? input.value.trim() : '';
+      if (!text) return;
 
       const container = document.getElementById('cockpitChatMessages');
-      const userDiv = document.createElement('div');
-      userDiv.className = 'p-2.5 bg-orange-600 text-white rounded-xl ml-6 text-right leading-relaxed shadow-sm font-medium';
-      userDiv.innerText = text;
-      container.appendChild(userDiv);
-      container.scrollTop = container.scrollHeight;
+      if (container) {
+        const userDiv = document.createElement('div');
+        userDiv.className = 'p-2.5 bg-orange-600 text-white rounded-xl ml-6 text-right leading-relaxed shadow-sm font-medium';
+        userDiv.innerText = text;
+        container.appendChild(userDiv);
+        container.scrollTop = container.scrollHeight;
+      }
+      if (input) input.value = '';
 
-      ws.send(JSON.stringify({
-        session_id: currentSessionId,
-        prompt: text,
-        provider: "claude-code"
-      }));
+      // Trường hợp 1: WebSocket đang mở
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({
+          session_id: currentSessionId,
+          prompt: text,
+          provider: "claude-code"
+        }));
+        return;
+      }
 
-      input.value = '';
+      // Trường hợp 2: WebSocket chưa mở -> Tự động fallback qua HTTP REST endpoint /api/chat/send
+      try {
+        const res = await fetch('/api/chat/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            session_id: currentSessionId,
+            prompt: text,
+            provider: "claude-code"
+          })
+        });
+        const data = await res.json();
+        if (data.chunks && data.chunks.length > 0) {
+          data.chunks.forEach(chunk => handleStreamEvent(chunk));
+        }
+      } catch (err) {
+        console.error("HTTP chat error", err);
+        showToast("Lỗi kết nối máy chủ chat, đang thử lại...");
+      }
     }
 
     function handleDedicatedChatSubmit(e) {
@@ -4575,7 +4602,11 @@
       `;
     }
 
-    // 3D GRAPH
+    // =========================================================================
+    // 3D NEURAL NETWORK GRAPH ENGINE (BỘ NÃO SỐ 2 - SECOND BRAIN GRAPH)
+    // =========================================================================
+    let canvasAnimationId = null;
+
     async function load3DGraph() {
       try {
         const res = await fetch('/api/vault/graph');
@@ -4583,7 +4614,8 @@
         const elem = document.getElementById('cockpit-3d-graph');
         if (!elem) return;
 
-        if (!graphInstance && window.ForceGraph3D) {
+        // Ưu tiên 1: Nếu thư viện ForceGraph3D đã sẵn sàng và WebGL hoạt động tốt
+        if (window.ForceGraph3D && !graphInstance) {
           try {
             graphInstance = ForceGraph3D()(elem)
               .backgroundColor(isDarkMode ? '#111218' : '#fcfbf9')
@@ -4597,39 +4629,261 @@
                 if (node.cluster.includes('IDENTITY')) return '#06b6d4';
                 return '#f59e0b';
               })
-              .linkColor(() => (isDarkMode ? '#334155' : '#cbd5e1'))
-              .linkOpacity(0.5);
+              .linkColor(() => (isDarkMode ? '#475569' : '#cbd5e1'))
+              .linkOpacity(0.6)
+              .onNodeClick(node => {
+                if (node.path) {
+                  navigateTo('brain-files');
+                  openNoteInEditor(node.path);
+                } else {
+                  sendQuickPrompt('Tóm tắt note ' + node.name);
+                }
+              });
             graphInstance.graphData(data);
+            return;
           } catch (webglErr) {
-            console.warn("WebGL fallback 2D", webglErr);
-            render2DGraphFallback(elem, data);
+            console.warn("ForceGraph3D WebGL unsupported, falling back to Canvas 3D Neural Engine", webglErr);
           }
         } else if (graphInstance) {
           graphInstance.graphData(data);
+          return;
         }
+
+        // Ưu tiên 2: Tự động chạy Canvas 3D Neural Engine siêu mượt, độc lập, không phụ thuộc WebGL
+        renderCanvas3DNeuralEngine(elem, data);
+
       } catch (e) {
-        console.error("Error loading graph", e);
+        console.error("Error loading graph data", e);
       }
     }
 
-    function render2DGraphFallback(elem, data) {
-      elem.innerHTML = `
-        <div class="w-full h-full flex items-center justify-center p-8">
-          <div class="relative w-80 h-80 rounded-full border border-orange-500/20 flex items-center justify-center animate-pulse">
-            <div class="w-52 h-52 rounded-full border border-indigo-500/30 flex items-center justify-center">
-              <div class="w-24 h-24 rounded-full bg-orange-600/20 border border-orange-500/60 flex items-center justify-center text-center p-2">
-                <span class="text-[11px] font-bold text-orange-500">Second Brain</span>
-              </div>
-            </div>
-            ${data.nodes.map((n, i) => {
-              const angle = (i / data.nodes.length) * 2 * Math.PI;
-              const x = 140 + 110 * Math.cos(angle);
-              const y = 140 + 110 * Math.sin(angle);
-              return `<div class="absolute cursor-pointer px-2 py-0.5 rounded-full text-[10px] font-mono shadow-md" style="left: ${x}px; top: ${y}px; background: #ea580c; color: white;" onclick="sendQuickPrompt('Tóm tắt note ${n.name}')">${n.name}</div>`;
-            }).join('')}
-          </div>
-        </div>
-      `;
+    // CANVAS 3D NEURAL NETWORK ENGINE (Tự động xoay 3D, hạt phát sáng & xung nơ-ron)
+    function renderCanvas3DNeuralEngine(container, data) {
+      if (canvasAnimationId) {
+        cancelAnimationFrame(canvasAnimationId);
+      }
+
+      container.innerHTML = '';
+      const canvas = document.createElement('canvas');
+      canvas.className = 'w-full h-full block cursor-grab active:cursor-grabbing';
+      container.appendChild(canvas);
+
+      const ctx = canvas.getContext('2d');
+      let width = container.clientWidth || 600;
+      let height = container.clientHeight || 500;
+      canvas.width = width * window.devicePixelRatio;
+      canvas.height = height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+      window.addEventListener('resize', () => {
+        width = container.clientWidth || 600;
+        height = container.clientHeight || 500;
+        canvas.width = width * window.devicePixelRatio;
+        canvas.height = height * window.devicePixelRatio;
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      });
+
+      // Tạo cấu trúc 3D cho các nodes theo mô hình quả cầu phân tán
+      const nodes = (data.nodes || []).map((n, i) => {
+        const phi = Math.acos(-1 + (2 * i) / Math.max(data.nodes.length, 1));
+        const theta = Math.sqrt(data.nodes.length * Math.PI) * phi;
+        const radius = 170 + (i % 3) * 25;
+
+        let color = '#ea580c';
+        const c = (n.cluster || '').toUpperCase();
+        if (c.includes('MARKETING')) color = '#ef4444';
+        else if (c.includes('PROJECTS') || c.includes('WORK')) color = '#10b981';
+        else if (c.includes('DIGITAL')) color = '#a855f7';
+        else if (c.includes('WIKI')) color = '#6366f1';
+        else if (c.includes('IDENTITY')) color = '#06b6d4';
+        else if (c.includes('SOURCES') || c.includes('KNOWLEDGE')) color = '#f59e0b';
+
+        return {
+          id: n.id,
+          name: n.name,
+          path: n.path,
+          color: color,
+          val: n.val || 8,
+          x3: radius * Math.cos(theta) * Math.sin(phi),
+          y3: radius * Math.sin(theta) * Math.sin(phi),
+          z3: radius * Math.cos(phi),
+          pulseOffset: Math.random() * Math.PI * 2
+        };
+      });
+
+      // Khởi tạo các liên kết
+      const links = (data.links || []).map(l => {
+        const sourceNode = nodes.find(n => n.id === l.source || n.path === l.source || n.name === l.source);
+        const targetNode = nodes.find(n => n.id === l.target || n.path === l.target || n.name === l.target);
+        return {
+          source: sourceNode || nodes[0],
+          target: targetNode || nodes[Math.min(1, nodes.length - 1)],
+          particlePos: Math.random()
+        };
+      });
+
+      let rotX = 0.2;
+      let rotY = 0;
+      let isDragging = false;
+      let lastMouseX = 0;
+      let lastMouseY = 0;
+      let hoveredNode = null;
+
+      canvas.addEventListener('mousedown', e => {
+        isDragging = true;
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+      });
+
+      window.addEventListener('mouseup', () => { isDragging = false; });
+
+      canvas.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+
+        if (isDragging) {
+          const dx = e.clientX - lastMouseX;
+          const dy = e.clientY - lastMouseY;
+          rotY += dx * 0.008;
+          rotX += dy * 0.008;
+          lastMouseX = e.clientX;
+          lastMouseY = e.clientY;
+        } else {
+          // Check hover
+          hoveredNode = null;
+          for (const node of nodes) {
+            if (node.screenX && node.screenY) {
+              const dist = Math.hypot(mx - node.screenX, my - node.screenY);
+              if (dist < (node.screenR || 10) + 6) {
+                hoveredNode = node;
+                break;
+              }
+            }
+          }
+          canvas.style.cursor = hoveredNode ? 'pointer' : (isDragging ? 'grabbing' : 'grab');
+        }
+      });
+
+      canvas.addEventListener('click', () => {
+        if (hoveredNode) {
+          if (hoveredNode.path) {
+            navigateTo('brain-files');
+            openNoteInEditor(hoveredNode.path);
+          } else {
+            sendQuickPrompt('Tóm tắt ghi chú ' + hoveredNode.name);
+          }
+        }
+      });
+
+      let timeTick = 0;
+      function animate() {
+        timeTick += 0.016;
+        if (!isDragging) {
+          rotY += 0.004; // Tự động xoay quanh trục Y
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        const cosY = Math.cos(rotY);
+        const sinY = Math.sin(rotY);
+        const cosX = Math.cos(rotX);
+        const sinX = Math.sin(rotX);
+        const fov = 400;
+        const centerX = width / 2;
+        const centerY = height / 2;
+
+        // Tính toán tọa độ chiếu 2D của từng Node
+        nodes.forEach(node => {
+          // Xoay trục Y
+          const x1 = node.x3 * cosY - node.z3 * sinY;
+          const z1 = node.z3 * cosY + node.x3 * sinY;
+          // Xoay trục X
+          const y2 = node.y3 * cosX - z1 * sinX;
+          const z2 = z1 * cosX + node.y3 * sinX;
+
+          const scale = fov / (fov + z2 + 250);
+          node.screenX = centerX + x1 * scale;
+          node.screenY = centerY + y2 * scale;
+          node.screenScale = scale;
+          node.depthZ = z2;
+          node.screenR = Math.max(3.5, (node.val * 0.65) * scale);
+        });
+
+        // Vẽ các đường liên kết (Links & Axons)
+        links.forEach(l => {
+          if (!l.source || !l.target) return;
+          const sx = l.source.screenX;
+          const sy = l.source.screenY;
+          const tx = l.target.screenX;
+          const ty = l.target.screenY;
+          const avgScale = (l.source.screenScale + l.target.screenScale) / 2;
+
+          ctx.beginPath();
+          ctx.moveTo(sx, sy);
+          ctx.lineTo(tx, ty);
+          ctx.strokeStyle = isDarkMode ? `rgba(148, 163, 184, ${0.15 * avgScale})` : `rgba(100, 116, 139, ${0.22 * avgScale})`;
+          ctx.lineWidth = Math.max(0.6, 1.2 * avgScale);
+          ctx.stroke();
+
+          // Hạt năng lượng truyền tin dọc đường liên kết
+          l.particlePos = (l.particlePos + 0.008) % 1;
+          const px = sx + (tx - sx) * l.particlePos;
+          const py = sy + (ty - sy) * l.particlePos;
+          ctx.beginPath();
+          ctx.arc(px, py, 1.6 * avgScale, 0, Math.PI * 2);
+          ctx.fillStyle = l.source.color;
+          ctx.fill();
+        });
+
+        // Sắp xếp vẽ theo chiều sâu Z (từ sau ra trước)
+        const sortedNodes = [...nodes].sort((a, b) => a.depthZ - b.depthZ);
+
+        sortedNodes.forEach(node => {
+          const isHov = (hoveredNode && hoveredNode.id === node.id);
+          const r = isHov ? node.screenR * 1.4 : node.screenR;
+          const pulse = Math.sin(timeTick * 2.5 + node.pulseOffset) * 0.2 + 1;
+
+          // Halo hào quang phát sáng
+          const grad = ctx.createRadialGradient(node.screenX, node.screenY, r * 0.4, node.screenX, node.screenY, r * 2.6 * pulse);
+          grad.addColorStop(0, node.color);
+          grad.addColorStop(1, 'transparent');
+          ctx.beginPath();
+          ctx.arc(node.screenX, node.screenY, r * 2.6 * pulse, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+
+          // Lõi Node
+          ctx.beginPath();
+          ctx.arc(node.screenX, node.screenY, r, 0, Math.PI * 2);
+          ctx.fillStyle = isHov ? '#ffffff' : node.color;
+          ctx.shadowColor = node.color;
+          ctx.shadowBlur = isHov ? 14 : 6;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          // Nhãn tên Node
+          if (node.screenScale > 0.72 || isHov) {
+            ctx.font = `${isHov ? 'bold 11px' : '9px'} -apple-system, BlinkMacSystemFont, sans-serif`;
+            ctx.fillStyle = isDarkMode ? '#f1f5f9' : '#1e293b';
+            ctx.textAlign = 'center';
+            ctx.fillText(node.name, node.screenX, node.screenY + r + 11);
+          }
+        });
+
+        // Trung tâm lõi Second Brain
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
+        ctx.fillStyle = '#ea580c';
+        ctx.shadowColor = '#ea580c';
+        ctx.shadowBlur = 18;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        canvasAnimationId = requestAnimationFrame(animate);
+      }
+
+      animate();
     }
 
     // VAULT NOTES LIST
@@ -4663,7 +4917,7 @@
         allNotes.forEach(n => {
           const fileRow = document.createElement('div');
           fileRow.className = 'flex items-center gap-1.5 py-1 px-3 text-orange-600 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-zinc-800 rounded cursor-pointer';
-          fileRow.onclick = () => openNoteInEditor(n.path);
+          fileRow.onclick = () => { navigateTo('brain-files'); openNoteInEditor(n.path); };
           fileRow.innerHTML = `
             <i data-lucide="file-text" class="w-3.5 h-3.5 text-orange-500"></i>
             <span class="truncate">${n.title}</span>
