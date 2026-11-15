@@ -149,6 +149,12 @@
         <span data-i18n="top_skills">Kỹ năng</span>
       </button>
 
+      <button onclick="switchSpace('partners')" id="space-partners" class="space-btn px-3 py-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5 font-bold">
+        <i data-lucide="users" class="w-3.5 h-3.5 text-orange-500"></i>
+        <span>Cộng sự</span>
+        <span class="text-[9px] bg-orange-100 text-orange-600 dark:bg-orange-950 dark:text-orange-400 px-1.5 py-0.2 rounded-full font-mono font-bold">ROSTERS</span>
+      </button>
+
       <button onclick="switchSpace('enterprise')" id="space-enterprise" class="space-btn active px-3 py-1 rounded-full bg-white dark:bg-orange-600 text-orange-600 dark:text-white shadow-sm transition flex items-center gap-1.5 font-bold">
         <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
         <span>Doanh nghiệp</span>
@@ -252,9 +258,12 @@
             </div>
             
             <div id="sub-capabilities" class="pl-6 pr-1 py-0.5 space-y-0.5">
-              <button onclick="navigateTo('cap-partners')" id="nav-cap-partners" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
-                <i data-lucide="users" class="w-3.5 h-3.5"></i>
-                <span data-i18n="menu_partners">Partners</span>
+              <button onclick="navigateTo('cap-partners')" id="nav-cap-partners" class="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
+                <span class="flex items-center gap-2">
+                  <i data-lucide="users-round" class="w-3.5 h-3.5 text-orange-600"></i>
+                  <span class="font-bold text-zinc-900 dark:text-zinc-100">Rosters (Cộng sự)</span>
+                </span>
+                <span class="px-1.5 py-0.2 rounded-full bg-orange-100 dark:bg-orange-950 text-orange-600 dark:text-orange-400 text-[9px] font-mono font-bold">9</span>
               </button>
               <button onclick="navigateTo('teamwork')" id="nav-teamwork" class="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
                 <span class="flex items-center gap-2">
@@ -276,6 +285,17 @@
                 <span data-i18n="menu_plugins">Plugins</span>
               </button>
             </div>
+          </div>
+
+          <!-- TEAMS (Phòng Tác Chiến - Trưởng Nhóm Điều Phối - Chuẩn 100% Ảnh) -->
+          <div>
+            <button onclick="navigateTo('teamwork')" id="nav-teamwork-direct" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 transition group">
+              <span class="flex items-center gap-2.5">
+                <i data-lucide="users-2" class="w-4 h-4 text-orange-600 group-hover:scale-110 transition-transform"></i>
+                <span class="font-bold text-zinc-800 dark:text-white">Teams</span>
+              </span>
+              <span class="px-1.5 py-0.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white text-[9px] font-bold shadow-xs">Trưởng nhóm</span>
+            </button>
           </div>
 
           <!-- 5. WORK (v Work: Tasks, Webhooks) (Ảnh 3, 4) -->
@@ -1488,15 +1508,440 @@
       <section id="view-teamwork" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
         <div class="max-w-6xl w-full mx-auto space-y-8">
           
-          <!-- Header Banner (Chuẩn ảnh: — ĐIỀU LÀM NÊN MỘT ĐỘI NGŨ) -->
-          <div class="space-y-2">
+          <!-- ================================================================= -->
+          <!-- HERO SHOWCASE: CHO HỌ VÀO CHUNG MỘT PHÒNG. TRƯỞNG NHÓM ĐIỀU PHỐI.  -->
+          <!-- ================================================================= -->
+          <div class="text-center space-y-4 max-w-3xl mx-auto pt-4">
+            <!-- Top Tag Pill (- TEAM -) -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-100/70 dark:bg-orange-950/60 border border-orange-200/80 dark:border-orange-800/50 text-orange-600 dark:text-orange-400 text-[11px] font-bold tracking-widest uppercase">
+              <span class="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse"></span>
+              <span>— TEAM —</span>
+            </div>
+
+            <!-- Main Title with Gradient Effect -->
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-900 dark:text-white tracking-tight leading-[1.18]">
+              Cho họ vào chung một phòng.<br>
+              <span class="bg-gradient-to-r from-orange-600 via-amber-500 to-rose-600 bg-clip-text text-transparent">Trưởng nhóm điều phối.</span>
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-xs sm:text-sm md:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal max-w-2xl mx-auto">
+              Gom cộng sự thành một team có trưởng nhóm: chia brief, giao từng phần cho đúng người và nghiệm thu kết quả. Bạn nói chuyện với cả phòng như nói với người thật.
+            </p>
+
+            <!-- Quick Action Badges -->
+            <div class="flex flex-wrap items-center justify-center gap-2.5 pt-2">
+              <button onclick="openNewTeamModal()" class="px-4 py-2 bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white rounded-xl text-xs font-bold shadow-md shadow-orange-600/20 transition flex items-center gap-2 hover:scale-[1.02]">
+                <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                <span>Tạo Team Mới (+ New Team)</span>
+              </button>
+              <button onclick="openExportTeamModal()" class="px-4 py-2 bg-white dark:bg-[#1a1c27] hover:bg-zinc-50 dark:hover:bg-[#222533] border border-bordercol dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-xl text-xs font-semibold shadow-xs transition flex items-center gap-2">
+                <i data-lucide="archive" class="w-4 h-4 text-orange-600"></i>
+                <span>Xuất Team (.team.javis.zip)</span>
+              </button>
+              <button onclick="simulateBriefFlow('welcome')" class="px-4 py-2 bg-orange-50 dark:bg-orange-950/40 hover:bg-orange-100 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-800/60 rounded-xl text-xs font-semibold transition flex items-center gap-2">
+                <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                <span>Chạy Thử Brief Điều Phối</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ================================================================= -->
+          <!-- MACOS DESKTOP APPLICATION MOCKUP (CHUẨN 100% ẢNH THẬT)             -->
+          <!-- ================================================================= -->
+          <div class="bg-white dark:bg-[#161722] border border-bordercol dark:border-[#2f3248] rounded-2xl shadow-2xl shadow-zinc-300/30 dark:shadow-black/70 overflow-hidden transition-all">
+            
+            <!-- macOS Window Title Bar -->
+            <div class="h-10 px-4 bg-[#f6f4ee] dark:bg-[#13141c] border-b border-bordercol dark:border-[#26283b] flex items-center justify-between select-none">
+              <!-- Window Traffic Lights -->
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-[#ff5f56] inline-block shadow-xs cursor-pointer"></span>
+                <span class="w-3 h-3 rounded-full bg-[#ffbd2e] inline-block shadow-xs cursor-pointer"></span>
+                <span class="w-3 h-3 rounded-full bg-[#27c93f] inline-block shadow-xs cursor-pointer"></span>
+              </div>
+
+              <!-- Center Address Bar -->
+              <div class="flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/80 dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700/60 text-[11px] font-mono text-zinc-600 dark:text-zinc-300 shadow-xs">
+                <i data-lucide="lock" class="w-3 h-3 text-emerald-500"></i>
+                <span>localhost:7777 / Teams</span>
+              </div>
+
+              <!-- Right Window Utilities -->
+              <div class="flex items-center gap-2 text-zinc-500 text-xs">
+                <button onclick="openNotificationModal()" class="flex items-center gap-1 px-2 py-0.5 rounded bg-orange-100/60 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 text-[10px] font-bold">
+                  <i data-lucide="bell" class="w-3 h-3"></i>
+                  <span>Notifications (1)</span>
+                </button>
+                <i data-lucide="search" class="w-3.5 h-3.5 cursor-pointer hover:text-zinc-800 dark:hover:text-white"></i>
+                <i data-lucide="maximize-2" class="w-3.5 h-3.5 cursor-pointer hover:text-zinc-800 dark:hover:text-white"></i>
+              </div>
+            </div>
+
+            <!-- Window Interior (2-Column Layout: Teams List + Live Chat Stream) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[580px]">
+              
+              <!-- Sub-Sidebar: Teams Navigation (3 Cols) -->
+              <div class="lg:col-span-4 bg-[#faf8f4] dark:bg-[#13141c] border-r border-bordercol dark:border-[#26283b] p-3.5 flex flex-col justify-between space-y-4">
+                <div class="space-y-3">
+                  <!-- Actions Header -->
+                  <div class="flex items-center gap-2">
+                    <button onclick="openNewTeamModal()" class="flex-1 py-1.5 px-2.5 rounded-lg bg-white dark:bg-[#1a1c27] hover:bg-orange-50 border border-bordercol dark:border-zinc-700 text-xs font-semibold text-zinc-800 dark:text-zinc-200 flex items-center justify-center gap-1.5 shadow-xs transition">
+                      <i data-lucide="plus" class="w-3.5 h-3.5 text-orange-600"></i>
+                      <span>New Team</span>
+                    </button>
+                    <button onclick="openExportTeamModal()" class="flex-1 py-1.5 px-2.5 rounded-lg bg-white dark:bg-[#1a1c27] hover:bg-orange-50 border border-bordercol dark:border-zinc-700 text-xs font-semibold text-zinc-800 dark:text-zinc-200 flex items-center justify-center gap-1.5 shadow-xs transition">
+                      <i data-lucide="share-2" class="w-3.5 h-3.5 text-orange-600"></i>
+                      <span>Share / Export</span>
+                    </button>
+                  </div>
+
+                  <!-- Rooms List -->
+                  <div class="space-y-1 text-xs">
+                    <div class="text-[10px] font-mono uppercase tracking-wider text-zinc-400 px-2 py-1">Phòng Tác Chiến Hiện Có</div>
+                    
+                    <!-- Room 1: Marketing Room (Inactive) -->
+                    <div onclick="switchTeamRoom('marketing_empty')" id="team-room-marketing_empty" class="p-2.5 rounded-xl hover:bg-white dark:hover:bg-[#1a1c27] border border-transparent hover:border-bordercol dark:hover:border-zinc-700 cursor-pointer transition">
+                      <div class="flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 flex items-center justify-center text-xs">📊</span>
+                        <div class="font-bold text-zinc-800 dark:text-zinc-200">Marketing Room</div>
+                      </div>
+                      <div class="text-[10px] text-zinc-400 pl-8 font-mono">No messages yet</div>
+                    </div>
+
+                    <!-- Room 2: Javis Growth - Marketing (ACTIVE - CHUẨN ẢNH) -->
+                    <div onclick="switchTeamRoom('growth_active')" id="team-room-growth_active" class="p-2.5 rounded-xl bg-white dark:bg-[#1a1c27] border-2 border-orange-500 shadow-sm cursor-pointer transition">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                          <span class="w-6 h-6 rounded-lg bg-orange-100 dark:bg-orange-950 text-orange-600 flex items-center justify-center text-xs font-bold">🚀</span>
+                          <div class="font-extrabold text-orange-700 dark:text-orange-400">Javis Growth - M...</div>
+                        </div>
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                      </div>
+                      <div class="text-[10px] text-zinc-500 dark:text-zinc-400 pl-8 truncate mt-0.5 font-medium">
+                        Hai - Email & Nurture; Mai - Brand Voice; An - Lead
+                      </div>
+                    </div>
+
+                    <!-- Room 3: Product & Engineering -->
+                    <div onclick="switchTeamRoom('tech_dev')" id="team-room-tech_dev" class="p-2.5 rounded-xl hover:bg-white dark:hover:bg-[#1a1c27] border border-transparent hover:border-bordercol dark:hover:border-zinc-700 cursor-pointer transition">
+                      <div class="flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center text-xs">⚡</span>
+                        <div class="font-bold text-zinc-800 dark:text-zinc-200">Product & Engineering</div>
+                      </div>
+                      <div class="text-[10px] text-zinc-400 pl-8 truncate font-mono">Tech Lead · Git PR · Code QA</div>
+                    </div>
+
+                    <!-- Room 4: Strategy & Financial -->
+                    <div onclick="switchTeamRoom('executive')" id="team-room-executive" class="p-2.5 rounded-xl hover:bg-white dark:hover:bg-[#1a1c27] border border-transparent hover:border-bordercol dark:hover:border-zinc-700 cursor-pointer transition">
+                      <div class="flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-600 flex items-center justify-center text-xs">💼</span>
+                        <div class="font-bold text-zinc-800 dark:text-zinc-200">Executive & CFO Room</div>
+                      </div>
+                      <div class="text-[10px] text-zinc-400 pl-8 truncate font-mono">Báo cáo PnL · Đối soát đa nguồn</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Portable Team File Info Badge (Chuẩn ảnh: .team.javis.zip) -->
+                <div class="p-3 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700 rounded-xl space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-mono text-zinc-400 uppercase font-bold">Gói Team Di Động</span>
+                    <span class="text-[9px] bg-orange-100 dark:bg-orange-950 text-orange-600 px-1.5 py-0.2 rounded font-bold">1-Click</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-xs font-mono font-bold text-zinc-800 dark:text-zinc-200">
+                    <i data-lucide="file-archive" class="w-4 h-4 text-orange-600"></i>
+                    <span>growth.team.javis.zip</span>
+                  </div>
+                  <div class="text-[10px] text-zinc-500 leading-snug">
+                    Bao gồm công cụ, prompt mẫu, kỹ năng đã ghim. Không mang theo khóa API bí mật hay lịch sử riêng.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Main Chat Area: Multi-Agent Room Dialogue (8 Cols) -->
+              <div class="lg:col-span-8 flex flex-col justify-between bg-white dark:bg-[#161722] p-4 sm:p-6 space-y-4">
+                
+                <!-- Room Header -->
+                <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-bordercol dark:border-[#26283b]">
+                  <div class="flex items-center gap-3">
+                    <div class="flex -space-x-2">
+                      <span class="w-7 h-7 rounded-full bg-gradient-to-tr from-orange-500 to-amber-500 text-white flex items-center justify-center text-[10px] font-bold border-2 border-white dark:border-[#161722]" title="Trưởng nhóm">👑</span>
+                      <span class="w-7 h-7 rounded-full bg-gradient-to-tr from-rose-500 to-pink-500 text-white flex items-center justify-center text-[10px] font-bold border-2 border-white dark:border-[#161722]" title="Mai Brand">🎨</span>
+                      <span class="w-7 h-7 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 text-white flex items-center justify-center text-[10px] font-bold border-2 border-white dark:border-[#161722]" title="An Email">✉️</span>
+                    </div>
+                    <div>
+                      <h2 id="currentRoomTitle" class="text-sm font-extrabold text-zinc-900 dark:text-white flex items-center gap-2">
+                        <span>Javis Growth - Marketing</span>
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                      </h2>
+                      <div class="text-[11px] text-zinc-400 font-mono">
+                        Trưởng nhóm điều phối · 3 chuyên gia trực chiến
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Share Badge (Chuẩn ảnh: @share team here and only a few of you see) -->
+                  <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#f4f2ea] dark:bg-[#202230] text-zinc-600 dark:text-zinc-300 text-[10px] font-medium border border-bordercol dark:border-zinc-700">
+                    <i data-lucide="eye" class="w-3 h-3 text-zinc-400"></i>
+                    <span>@share team here and only a few of you see</span>
+                  </div>
+                </div>
+
+                <!-- Conversation Stream (Container) -->
+                <div id="teamChatStream" class="flex-1 space-y-4 overflow-y-auto max-h-[420px] pr-1 custom-scrollbar text-xs">
+                  
+                  <!-- MESSAGE 1: TRƯỞNG NHÓM ĐIỀU PHỐI (CHUẨN TỪNG CHỮ TRONG ẢNH) -->
+                  <div class="bg-[#faf8f4] dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-4 space-y-2 shadow-xs transition hover:border-orange-500/40">
+                    <div class="flex items-center justify-between pb-1.5 border-b border-bordercol/60 dark:border-zinc-800">
+                      <div class="flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center text-xs font-bold shadow-xs">👑</span>
+                        <span class="font-extrabold text-zinc-900 dark:text-white">Trưởng nhóm (Team Lead)</span>
+                        <span class="text-[10px] text-zinc-400 font-mono">Điều phối toàn diện</span>
+                      </div>
+                      <span class="text-[9px] bg-orange-100 dark:bg-orange-950 text-orange-600 px-2 py-0.5 rounded font-bold">Chỉ đạo mục tiêu</span>
+                    </div>
+                    <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
+                      purchase, activation and return. One goal and one CTA per email, matched to each segment (leads, Zoom course buyers, JAVISER members), with exit rules so buyers never get another sales email.
+                    </p>
+                    <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
+                      Give me a concrete brief, say a welcome series for new leads, and I'll map the order of emails and draft them right away.
+                    </p>
+                    <div class="pt-1 flex items-center gap-2 text-[10px] font-mono text-zinc-400">
+                      <span class="text-orange-600 font-bold">🎯 Nhiệm vụ đã chia:</span>
+                      <span class="px-1.5 py-0.2 rounded bg-zinc-100 dark:bg-zinc-800">Mai: Định vị brand voice</span>
+                      <span class="px-1.5 py-0.2 rounded bg-zinc-100 dark:bg-zinc-800">An: Chuỗi email 3 nhịp</span>
+                    </div>
+                  </div>
+
+                  <!-- MESSAGE 2: MAI - BRAND CONTEXT (CHUẨN TỪNG CHỮ TRONG ẢNH & NHÃN C-DCK) -->
+                  <div class="bg-white dark:bg-[#1c1e2b] border border-bordercol dark:border-[#2f3248] rounded-2xl p-4 space-y-2 shadow-xs transition hover:border-rose-500/40">
+                    <div class="flex items-center justify-between pb-1.5 border-b border-bordercol/60 dark:border-zinc-800">
+                      <div class="flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-md bg-gradient-to-tr from-rose-500 to-pink-500 text-white flex items-center justify-center text-xs font-bold shadow-xs">🎨</span>
+                        <span class="font-extrabold text-zinc-900 dark:text-white">Mai - Brand Context</span>
+                        <span class="text-[9px] bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-400 px-1.5 py-0.2 rounded font-bold">Owner</span>
+                      </div>
+                      <span class="text-[9px] text-zinc-400 font-mono">@share team here and only a few of you see</span>
+                    </div>
+                    <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
+                      I'm Mai, on Javis brand content: long blog posts in Minh Quy's voice, social posts, short video scripts, use case stories and image briefs. Hand me the insight, offer and CTA and I can write right away. Wherever your real experience is needed, I mark it <span class="px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-mono font-bold text-[10px] border border-amber-300 dark:border-amber-700">"C-DCK"</span> instead of making it up.
+                    </p>
+                    <div class="pt-1 flex items-center gap-1.5 text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">
+                      <i data-lucide="shield-check" class="w-3 h-3"></i>
+                      <span>Cam kết không bịa đặt: Đánh dấu C-DCK để hỏi thêm trải nghiệm thật từ người dùng</span>
+                    </div>
+                  </div>
+
+                  <!-- MESSAGE 3: AN - EMAIL & NURTURE (CHUẨN TỪNG CHỮ TRONG ẢNH) -->
+                  <div class="bg-white dark:bg-[#1c1e2b] border border-bordercol dark:border-[#2f3248] rounded-2xl p-4 space-y-2 shadow-xs transition hover:border-emerald-500/40">
+                    <div class="flex items-center justify-between pb-1.5 border-b border-bordercol/60 dark:border-zinc-800">
+                      <div class="flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-md bg-gradient-to-tr from-emerald-500 to-teal-500 text-white flex items-center justify-center text-xs font-bold shadow-xs">✉️</span>
+                        <span class="font-extrabold text-zinc-900 dark:text-white">An - Email & Nurture</span>
+                        <span class="text-[9px] bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 px-1.5 py-0.2 rounded font-bold">Marketing Lead</span>
+                      </div>
+                      <span class="text-[9px] text-zinc-400 font-mono">msg #10571</span>
+                    </div>
+                    <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
+                      I introduced myself in message #10571, so no repeat. To start right away I need three decisions: the first audience (new leads, Zoom course buyers or JAVISER members), the main offer and CTA, and the list's email consent. Until then I'll use <code class="px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-orange-600 font-mono rounded text-[10px]">[PLACEHOLDER]</code> and draft the welcome series for new leads.
+                    </p>
+                    <div class="pt-1 flex items-center gap-2 text-[10px] font-mono text-zinc-400">
+                      <span class="text-emerald-600 font-bold">⚡ Trạng thái:</span>
+                      <span>Sẵn sàng sinh chuỗi 3 email theo khung nhận thức (Cognitive Framework)</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Interactive Quick Briefs Bar & Message Input -->
+                <div class="pt-2 space-y-2 border-t border-bordercol dark:border-[#26283b]">
+                  <!-- Quick Brief Suggestion Chips -->
+                  <div class="flex flex-wrap items-center gap-1.5 text-[11px]">
+                    <span class="text-zinc-400 text-[10px] font-mono">Gợi ý brief mẫu:</span>
+                    <button onclick="simulateBriefFlow('welcome')" class="px-2.5 py-1 rounded-lg bg-orange-50 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-800/60 hover:bg-orange-100 transition text-[11px] font-medium">
+                      🎯 Welcome Series 3 email cho khách mới
+                    </button>
+                    <button onclick="simulateBriefFlow('brand')" class="px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60 hover:bg-rose-100 transition text-[11px] font-medium">
+                      🎨 Mai viết bài Brand Voice
+                    </button>
+                    <button onclick="simulateBriefFlow('review')" class="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 hover:bg-emerald-100 transition text-[11px] font-medium">
+                      👑 Trưởng nhóm nghiệm thu & bàn giao
+                    </button>
+                  </div>
+
+                  <!-- Input Box with Send Button -->
+                  <div class="relative flex items-center">
+                    <input type="text" id="teamBriefInput" onkeydown="if(event.key==='Enter') sendTeamBrief()" placeholder="Giao brief mới cho cả phòng... (Trưởng nhóm sẽ tự bóc tách và phân công)" class="w-full bg-[#fbfaf8] dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700 rounded-xl pl-3.5 pr-24 py-2.5 text-xs text-zinc-900 dark:text-white outline-none focus:border-orange-500 shadow-inner">
+                    <div class="absolute right-1.5 flex items-center gap-1">
+                      <button onclick="sendTeamBrief()" class="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs shadow-xs transition flex items-center gap-1">
+                        <span>Gửi Brief</span>
+                        <i data-lucide="send" class="w-3 h-3"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- ================================================================= -->
+          <!-- 3 BENTO CARDS: GIÁ TRỊ CỐT LÕI CỦA ĐỘI NGŨ (CHUẨN ẢNH)           -->
+          <!-- ================================================================= -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+            
+            <!-- THẺ 1: Trưởng nhóm biết giao việc -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/5 transition duration-300 flex flex-col justify-between space-y-4 group">
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <span class="w-8 h-8 rounded-full bg-orange-50 dark:bg-orange-950 border border-orange-300 dark:border-orange-800 text-orange-600 dark:text-orange-400 flex items-center justify-center font-bold text-sm shadow-xs group-hover:scale-110 transition-transform">
+                    1
+                  </span>
+                  <h3 class="font-extrabold text-base text-zinc-900 dark:text-white group-hover:text-orange-600 transition-colors">
+                    Trưởng nhóm biết giao việc
+                  </h3>
+                </div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                  Trưởng nhóm đọc brief, chỉ gọi những người cần thiết, nối nhận hoặc trả lời bắt làm lại của họ.
+                </p>
+              </div>
+
+              <!-- Interactive Workflow Flowchart Preview -->
+              <div class="bg-[#faf8f4] dark:bg-[#13141c] border border-bordercol dark:border-zinc-800 rounded-xl p-3.5 space-y-2 font-mono text-[11px]">
+                <div class="flex items-center justify-between text-zinc-500 text-[10px]">
+                  <span>LUỒNG PHÂN CÔNG TỰ ĐỘNG</span>
+                  <span class="text-emerald-600 font-bold flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span> Real-time
+                  </span>
+                </div>
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-2 p-1.5 rounded-lg bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700/60">
+                    <span class="text-xs">📋</span>
+                    <span class="text-zinc-800 dark:text-zinc-200">1 Brief tổng</span>
+                    <i data-lucide="arrow-right" class="w-3 h-3 text-zinc-400 ml-auto"></i>
+                    <span class="text-orange-600 font-bold">Trưởng nhóm</span>
+                  </div>
+                  <div class="flex items-center gap-2 p-1.5 rounded-lg bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700/60">
+                    <span class="text-xs">⚡</span>
+                    <span class="text-zinc-800 dark:text-zinc-200">Phân việc đúng người:</span>
+                    <span class="text-[10px] bg-orange-100 dark:bg-orange-950 text-orange-600 px-1 rounded ml-auto">Mai + An</span>
+                  </div>
+                  <div class="flex items-center gap-2 p-1.5 rounded-lg bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-400">
+                    <span class="text-xs">✓</span>
+                    <span>Nghiệm thu: Đạt chuẩn mới bàn giao</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-1 flex items-center justify-between text-[11px]">
+                <span class="text-zinc-400">Tự động hoá phân rã Task</span>
+                <span class="text-orange-600 font-bold flex items-center gap-1">
+                  Đã cấu hình <i data-lucide="check" class="w-3 h-3"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- THẺ 2: Chung phòng, chung lịch sử -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/5 transition duration-300 flex flex-col justify-between space-y-4 group">
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <span class="w-8 h-8 rounded-full bg-amber-50 dark:bg-amber-950 border border-amber-300 dark:border-amber-800 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm shadow-xs group-hover:scale-110 transition-transform">
+                    2
+                  </span>
+                  <h3 class="font-extrabold text-base text-zinc-900 dark:text-white group-hover:text-amber-600 transition-colors">
+                    Chung phòng, chung lịch sử
+                  </h3>
+                </div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                  Ai cũng thấy cùng một mạch chat, trích lời nhau và làm tiếp từ câu trả lời trước thay vì bắt đầu lại.
+                </p>
+              </div>
+
+              <!-- Visual Context Stream -->
+              <div class="bg-[#faf8f4] dark:bg-[#13141c] border border-bordercol dark:border-zinc-800 rounded-xl p-3.5 space-y-2 text-[11px]">
+                <div class="p-2 rounded-lg bg-white dark:bg-[#1a1c27] border-l-2 border-orange-500 shadow-xs">
+                  <div class="text-[10px] text-zinc-400 flex items-center gap-1">
+                    <i data-lucide="quote" class="w-2.5 h-2.5"></i> Trích dẫn #10571 · Mai Brand
+                  </div>
+                  <div class="text-zinc-700 dark:text-zinc-300 text-[11px] truncate mt-0.5">
+                    "Long blog posts in Minh Quy's voice..."
+                  </div>
+                </div>
+                <div class="p-2 rounded-lg bg-orange-50/60 dark:bg-orange-950/30 border border-orange-200/60 dark:border-orange-800/40 text-orange-800 dark:text-orange-300">
+                  <div class="text-[10px] font-bold text-orange-600 flex items-center gap-1">
+                    <span>⚡ An - Email</span>
+                    <span class="font-normal text-zinc-400">kế thừa mạch tư duy</span>
+                  </div>
+                  <div class="text-[11px] mt-0.5">
+                    "Kế thừa tệp audience của Mai, viết tiếp Welcome 3 emails..."
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-1 flex items-center justify-between text-[11px]">
+                <span class="text-zinc-400">Không đứt gãy ngữ cảnh</span>
+                <span class="text-amber-600 font-bold flex items-center gap-1">
+                  Đồng bộ bộ nhớ <i data-lucide="git-commit" class="w-3 h-3"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- THẺ 3: Chia sẻ team bằng một file -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/5 transition duration-300 flex flex-col justify-between space-y-4 group">
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <span class="w-8 h-8 rounded-full bg-emerald-50 dark:bg-emerald-950 border border-emerald-300 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm shadow-xs group-hover:scale-110 transition-transform">
+                    3
+                  </span>
+                  <h3 class="font-extrabold text-base text-zinc-900 dark:text-white group-hover:text-emerald-600 transition-colors">
+                    Chia sẻ team bằng một file
+                  </h3>
+                </div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                  Xuất team thành file <span class="font-mono text-orange-600 font-bold">.team.javis.zip</span> gồm công cụ, kỹ năng và hướng dẫn đã ghim. Khoá bí mật và lịch sử chat không đi theo.
+                </p>
+              </div>
+
+              <!-- Interactive Zip Package Visual -->
+              <div class="bg-[#faf8f4] dark:bg-[#13141c] border border-bordercol dark:border-zinc-800 rounded-xl p-3.5 space-y-2">
+                <div class="flex items-center justify-between bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700 p-2.5 rounded-lg shadow-xs">
+                  <div class="flex items-center gap-2 font-mono text-[11px]">
+                    <i data-lucide="file-archive" class="w-4 h-4 text-orange-600"></i>
+                    <span class="font-bold text-zinc-800 dark:text-zinc-200">growth.team.javis.zip</span>
+                  </div>
+                  <span class="text-[9px] bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 px-1.5 py-0.5 rounded font-bold">34 KB</span>
+                </div>
+                <div class="flex items-center justify-between text-[10px] text-zinc-400 font-mono">
+                  <span class="flex items-center gap-1 text-emerald-600">
+                    <i data-lucide="shield-check" class="w-3 h-3"></i> Zero-Secret Leakage
+                  </span>
+                  <span>Portable 100%</span>
+                </div>
+              </div>
+
+              <div class="pt-1">
+                <button onclick="downloadTeamZipFile()" class="w-full py-2 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5">
+                  <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                  <span>Tải Demo .team.javis.zip</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ================================================================= -->
+          <!-- PHẦN BỔ SUNG: — ĐIỀU LÀM NÊN MỘT ĐỘI NGŨ (LÀM VIỆC KHÔNG NGỪNG 24/7) -->
+          <!-- ================================================================= -->
+          <div class="pt-8 border-t border-bordercol dark:border-[#26283b] space-y-2">
             <div class="text-xs font-bold text-orange-600 tracking-wider uppercase flex items-center gap-1.5">
               <span class="w-3.5 h-0.5 bg-orange-600"></span> ĐIỀU LÀM NÊN MỘT ĐỘI NGŨ
             </div>
-            <h1 class="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
+            <h2 class="text-2xl md:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
               Không chỉ là khung chat.<br>
               Một nơi làm việc không ngừng.
-            </h1>
+            </h2>
             <p class="text-xs text-zinc-500 max-w-2xl leading-relaxed">
               Các chuyên gia AI có vai trò rõ ràng, tự động hoá mục tiêu phức tạp, làm việc cả khi bạn ngủ, kết nối Git Repo và luôn tuân thủ giới hạn phân quyền do bạn đặt ra.
             </p>
@@ -2174,6 +2619,199 @@
 
   </div>
 
+  <!-- ========================================================================= -->
+  <!-- MODAL: ASSISTANT DOCUMENTS VIEWER (SECOND BRAIN LINKED VAULT)             -->
+  <!-- ========================================================================= -->
+  <div id="assistantDocsModal" class="fixed inset-0 bg-black/60 z-50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#181926] border border-bordercol dark:border-[#2f3248] rounded-2xl max-w-2xl w-full flex flex-col max-h-[85vh] shadow-2xl overflow-hidden">
+      <div class="p-4 border-b border-bordercol dark:border-[#26283b] flex items-center justify-between bg-[#faf9f5] dark:bg-[#13141f]">
+        <div class="flex items-center gap-2">
+          <i data-lucide="folder-git-2" class="w-5 h-5 text-orange-600"></i>
+          <div>
+            <h3 class="font-bold text-sm text-zinc-900 dark:text-white">Tài Liệu Huấn Luyện & Quy Chuẩn (Assistant Documents)</h3>
+            <p class="text-[11px] text-zinc-500">Được liên kết trực tiếp từ Second Brain Vault để cộng sự tự động học và tuân thủ.</p>
+          </div>
+        </div>
+        <button onclick="closeAssistantDocsModal()" class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4 text-xs">
+        <div id="assistantDocsList" class="space-y-2">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div class="p-3 bg-zinc-50 dark:bg-[#1f2130] rounded-xl border border-zinc-200 dark:border-zinc-800 space-y-1 text-zinc-600 dark:text-zinc-400">
+          <div class="font-bold text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-500"></i>
+            <span>Đồng bộ 2 chiều với Obsidian & Second Brain</span>
+          </div>
+          <p class="text-[11px] leading-relaxed">
+            Mọi ghi chú trong thư mục <code>00 - System/</code>, <code>01 - Projects/</code> và <code>07 - Wiki/</code> đều có thể được gán làm bộ nhớ dài hạn cho cộng sự. Bạn chỉ cần sửa file trong Obsidian, cộng sự sẽ tự động cập nhật kiến thức.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-3 border-t border-bordercol dark:border-[#26283b] bg-[#faf9f5] dark:bg-[#13141f] flex justify-end gap-2">
+        <button onclick="closeAssistantDocsModal()" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">
+          Đóng
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: UPLOAD AGENT (FILE MARKDOWN NHÂN SỰ)                               -->
+  <!-- ========================================================================= -->
+  <div id="uploadAgentModal" class="fixed inset-0 bg-black/60 z-50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#181926] border border-bordercol dark:border-[#2f3248] rounded-2xl max-w-lg w-full flex flex-col shadow-2xl overflow-hidden">
+      <div class="p-4 border-b border-bordercol dark:border-[#26283b] flex items-center justify-between bg-[#faf9f5] dark:bg-[#13141f]">
+        <div class="flex items-center gap-2">
+          <i data-lucide="upload-cloud" class="w-5 h-5 text-blue-500"></i>
+          <div>
+            <h3 class="font-bold text-sm text-zinc-900 dark:text-white">Upload Agent (Nhập Cộng Sự từ Markdown)</h3>
+            <p class="text-[11px] text-zinc-500">Mô tả công việc bằng file text thường, đọc được và chia sẻ được.</p>
+          </div>
+        </div>
+        <button onclick="closeUploadAgentModal()" class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="p-5 space-y-3 text-xs">
+        <div>
+          <label class="block font-bold text-zinc-700 dark:text-zinc-300 mb-1">Dán nội dung File Markdown mô tả Agent (.md)</label>
+          <textarea id="uploadAgentMarkdownInput" rows="7" placeholder="# Tên Cộng Sự&#10;Vai trò: Chuyên viên...&#10;&#10;System Prompt:&#10;Bạn là chuyên gia phụ trách..." class="w-full bg-[#fbfaf8] dark:bg-[#1e202f] border border-bordercol dark:border-[#2f3248] rounded-xl p-3 text-xs font-mono outline-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100"></textarea>
+        </div>
+        <div class="p-2.5 rounded-lg bg-orange-50 dark:bg-orange-950/40 border border-orange-200 dark:border-orange-900/40 text-[11px] text-orange-800 dark:text-orange-300">
+          💡 Bạn có thể copy bất kỳ prompt nhân sự nào từ Obsidian, Claude Projects hoặc GitHub để nhập về ngay lập tức.
+        </div>
+      </div>
+
+      <div class="p-3 border-t border-bordercol dark:border-[#26283b] bg-[#faf9f5] dark:bg-[#13141f] flex justify-end gap-2">
+        <button onclick="closeUploadAgentModal()" class="px-3 py-1.5 rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs">Hủy</button>
+        <button onclick="submitUploadAgent()" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">
+          Nhập Cộng Sự Vào Roster
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: JAVIS STORE (KHO CỘNG SỰ & TEMPLATES ĐÓNG GÓI SẴN)                 -->
+  <!-- ========================================================================= -->
+  <div id="javisStoreModal" class="fixed inset-0 bg-black/60 z-50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#181926] border border-bordercol dark:border-[#2f3248] rounded-2xl max-w-3xl w-full flex flex-col max-h-[85vh] shadow-2xl overflow-hidden">
+      <div class="p-4 border-b border-bordercol dark:border-[#26283b] flex items-center justify-between bg-[#faf9f5] dark:bg-[#13141f]">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-xl bg-orange-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+            <i data-lucide="store" class="w-4 h-4"></i>
+          </span>
+          <div>
+            <h3 class="font-bold text-sm text-zinc-900 dark:text-white flex items-center gap-2">
+              Javis Store · Tuyển Dụng Cộng Sự AI Chuyên Môn
+              <span class="px-2 py-0.2 rounded-full bg-orange-100 dark:bg-orange-950 text-orange-600 text-[10px] font-bold">100% Sẵn Sàng</span>
+            </h3>
+            <p class="text-[11px] text-zinc-500">Chọn cộng sự được huấn luyện chuyên sâu theo từng vị trí, bấm "Nhận việc" là chạy ngay.</p>
+          </div>
+        </div>
+        <button onclick="closeJavisStoreModal()" class="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <!-- Store Item 1 -->
+          <div class="bg-zinc-50 dark:bg-[#1e202f] border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 space-y-2 hover:border-orange-500 transition">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="text-2xl">🎯</span>
+                <div>
+                  <h4 class="font-bold text-xs text-zinc-900 dark:text-white">Chi - TikTok Viral Scriptwriter</h4>
+                  <div class="text-[10px] text-orange-600 font-mono">Claude 3.5 Sonnet · Marketing</div>
+                </div>
+              </div>
+              <button onclick="recruitStoreAgent('chi-tiktok')" class="px-2.5 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-bold text-[10px] shadow-sm">
+                Tuyển Dụng
+              </button>
+            </div>
+            <p class="text-[11px] text-zinc-500 leading-relaxed">
+              Viết kịch bản video ngắn 30-60 giây bám sát hook 3 giây đầu, phân cảnh góc máy và CTA giữ chân người xem.
+            </p>
+          </div>
+
+          <!-- Store Item 2 -->
+          <div class="bg-zinc-50 dark:bg-[#1e202f] border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 space-y-2 hover:border-orange-500 transition">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="text-2xl">💰</span>
+                <div>
+                  <h4 class="font-bold text-xs text-zinc-900 dark:text-white">Thịnh - High-Ticket Closer Zalo</h4>
+                  <div class="text-[10px] text-emerald-600 font-mono">GPT-4o mini · Auto Mode 24/7</div>
+                </div>
+              </div>
+              <button onclick="recruitStoreAgent('thinh-closer')" class="px-2.5 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-bold text-[10px] shadow-sm">
+                Tuyển Dụng
+              </button>
+            </div>
+            <p class="text-[11px] text-zinc-500 leading-relaxed">
+              Kịch bản chốt đơn tư vấn 1:1 qua tin nhắn Zalo, xử lý từ chối giá và nhắc hẹn tự động theo khung giờ vàng.
+            </p>
+          </div>
+
+          <!-- Store Item 3 -->
+          <div class="bg-zinc-50 dark:bg-[#1e202f] border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 space-y-2 hover:border-orange-500 transition">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="text-2xl">📊</span>
+                <div>
+                  <h4 class="font-bold text-xs text-zinc-900 dark:text-white">Lâm - Financial & PnL Auditor</h4>
+                  <div class="text-[10px] text-blue-500 font-mono">DeepSeek-V3 · Finance</div>
+                </div>
+              </div>
+              <button onclick="recruitStoreAgent('lam-finance')" class="px-2.5 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-bold text-[10px] shadow-sm">
+                Tuyển Dụng
+              </button>
+            </div>
+            <p class="text-[11px] text-zinc-500 leading-relaxed">
+              Đối soát doanh thu, chi phí ads, dòng tiền và tự động lập báo cáo PnL hàng tuần gửi vào nhóm điều hành.
+            </p>
+          </div>
+
+          <!-- Store Item 4 -->
+          <div class="bg-zinc-50 dark:bg-[#1e202f] border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 space-y-2 hover:border-orange-500 transition">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="text-2xl">🔍</span>
+                <div>
+                  <h4 class="font-bold text-xs text-zinc-900 dark:text-white">Phong - SEO Semantic Architect</h4>
+                  <div class="text-[10px] text-amber-500 font-mono">Gemini 1.5 Flash · SEO</div>
+                </div>
+              </div>
+              <button onclick="recruitStoreAgent('phong-seo')" class="px-2.5 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-bold text-[10px] shadow-sm">
+                Tuyển Dụng
+              </button>
+            </div>
+            <p class="text-[11px] text-zinc-500 leading-relaxed">
+              Nghiên cứu chùm từ khóa (Topic Cluster), xây dựng dàn ý bài viết chuẩn E-E-A-T và chèn entity chuẩn SEO.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="p-3 border-t border-bordercol dark:border-[#26283b] bg-[#faf9f5] dark:bg-[#13141f] flex justify-end gap-2">
+        <button onclick="closeJavisStoreModal()" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">
+          Đóng Cửa Hàng
+        </button>
+      </div>
+    </div>
+  </div>
+
+
   <!-- MODAL: ADD CUSTOM SKILL -->
   <div id="addSkillModal" class="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
@@ -2421,6 +3059,148 @@
     </div>
   </div>
 
+  <!-- ========================================================================= -->
+  <!-- MODAL: TẠO PHÒNG TÁC CHIẾN MỚI (+ NEW TEAM)                               -->
+  <!-- ========================================================================= -->
+  <div id="newTeamModal" class="fixed inset-0 bg-black/60 z-50 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl space-y-5 relative">
+      <div class="flex items-center justify-between pb-3 border-b border-bordercol dark:border-zinc-800">
+        <div class="flex items-center gap-2.5">
+          <span class="w-8 h-8 rounded-xl bg-orange-100 dark:bg-orange-950 text-orange-600 flex items-center justify-center font-bold text-sm">
+            👥
+          </span>
+          <div>
+            <h3 class="font-extrabold text-sm text-zinc-900 dark:text-white">Tạo Phòng Tác Chiến Mới</h3>
+            <p class="text-[11px] text-zinc-400">Gom cộng sự thành một team có trưởng nhóm điều phối</p>
+          </div>
+        </div>
+        <button onclick="closeNewTeamModal()" class="text-zinc-400 hover:text-zinc-600 dark:hover:text-white p-1 rounded-lg">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3.5 text-xs">
+        <div>
+          <label class="block font-bold text-zinc-700 dark:text-zinc-300 mb-1">Tên Phòng Tác Chiến</label>
+          <input type="text" id="newTeamRoomName" placeholder="Ví dụ: Chiến Dịch Ra Mắt Q4 · Content Growth" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-xl px-3.5 py-2 text-xs text-zinc-900 dark:text-white outline-none focus:border-orange-500">
+        </div>
+
+        <div>
+          <label class="block font-bold text-zinc-700 dark:text-zinc-300 mb-1">Chọn Trưởng Nhóm Điều Phối (Team Lead)</label>
+          <select id="newTeamLeadRole" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-xl px-3.5 py-2 text-xs text-zinc-900 dark:text-white outline-none">
+            <option value="growth">👑 Trưởng Nhóm Tăng Trưởng (Growth & Strategy Lead)</option>
+            <option value="tech">⚡ Tech Lead & Kỹ Sư Trưởng Hệ Thống</option>
+            <option value="creative">🎨 Creative & Brand Voice Director</option>
+            <option value="cfo">💼 CFO & Giám Đốc Phân Tích Dữ Liệu</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-bold text-zinc-700 dark:text-zinc-300 mb-1.5">Chọn Các Cộng Sự Chuyên Môn Tham Gia</label>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="flex items-center gap-2 p-2 rounded-lg border border-bordercol dark:border-zinc-700/80 bg-zinc-50 dark:bg-[#202230] cursor-pointer">
+              <input type="checkbox" checked class="accent-orange-600">
+              <span class="text-[11px] font-medium text-zinc-800 dark:text-zinc-200">🎨 Mai (Brand Context)</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg border border-bordercol dark:border-zinc-700/80 bg-zinc-50 dark:bg-[#202230] cursor-pointer">
+              <input type="checkbox" checked class="accent-orange-600">
+              <span class="text-[11px] font-medium text-zinc-800 dark:text-zinc-200">✉️ An (Email Nurture)</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg border border-bordercol dark:border-zinc-700/80 bg-zinc-50 dark:bg-[#202230] cursor-pointer">
+              <input type="checkbox" checked class="accent-orange-600">
+              <span class="text-[11px] font-medium text-zinc-800 dark:text-zinc-200">📖 Tough Reader (Sách & Data)</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 rounded-lg border border-bordercol dark:border-zinc-700/80 bg-zinc-50 dark:bg-[#202230] cursor-pointer">
+              <input type="checkbox" class="accent-orange-600">
+              <span class="text-[11px] font-medium text-zinc-800 dark:text-zinc-200">💻 Dev Assistant (Code & PR)</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-zinc-700 dark:text-zinc-300 mb-1">Mục Tiêu / Brief Khởi Đầu</label>
+          <textarea id="newTeamInitialBrief" rows="2" placeholder="Nhập mục tiêu lớn ban đầu để Trưởng nhóm bóc tách khi phòng mở ra..." class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-xl p-2.5 text-xs text-zinc-900 dark:text-white outline-none focus:border-orange-500"></textarea>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2 border-t border-bordercol dark:border-zinc-800">
+        <button onclick="closeNewTeamModal()" class="px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-semibold">
+          Hủy Bỏ
+        </button>
+        <button onclick="createNewTeamRoom()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-bold text-xs shadow-md shadow-orange-600/20 transition flex items-center gap-1.5">
+          <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          <span>Kích Hoạt Phòng Tác Chiến</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: XUẤT ĐỘI NGŨ DI ĐỘNG (.TEAM.JAVIS.ZIP)                               -->
+  <!-- ========================================================================= -->
+  <div id="exportTeamModal" class="fixed inset-0 bg-black/60 z-50 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl space-y-5 relative">
+      <div class="flex items-center justify-between pb-3 border-b border-bordercol dark:border-zinc-800">
+        <div class="flex items-center gap-2.5">
+          <span class="w-8 h-8 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center font-bold text-sm">
+            📦
+          </span>
+          <div>
+            <h3 class="font-extrabold text-sm text-zinc-900 dark:text-white">Xuất Team Bằng Một File</h3>
+            <p class="text-[11px] font-mono text-orange-600">.team.javis.zip · Portable Team</p>
+          </div>
+        </div>
+        <button onclick="closeExportTeamModal()" class="text-zinc-400 hover:text-zinc-600 dark:hover:text-white p-1 rounded-lg">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <p class="text-zinc-600 dark:text-zinc-400 text-xs leading-relaxed">
+          Xuất toàn bộ cấu trúc team gồm công cụ, kỹ năng và hướng dẫn đã ghim để chuyển giao cho cộng sự, khách hàng hoặc máy chủ khác.
+        </p>
+
+        <!-- Package Blueprint -->
+        <div class="p-3 bg-[#faf8f4] dark:bg-[#13141c] border border-bordercol dark:border-zinc-800 rounded-xl space-y-2 font-mono text-[11px]">
+          <div class="font-bold text-zinc-700 dark:text-zinc-300 text-[10px] uppercase">Thành phần trong gói .zip:</div>
+          <div class="space-y-1 text-zinc-600 dark:text-zinc-400">
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-500">✓</span>
+              <span>manifest.json (Cấu hình quyền & vai trò)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-500">✓</span>
+              <span>agents/ (Hồ sơ Mai, An, Trưởng nhóm)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-500">✓</span>
+              <span>skills/ (Bộ kỹ năng & prompt mẫu)</span>
+            </div>
+            <div class="flex items-center gap-2 text-rose-600 dark:text-rose-400 font-bold">
+              <span>✕</span>
+              <span>KHÔNG bao gồm: API Key, Token & Chat riêng</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-300 text-[11px] flex items-center gap-2">
+          <i data-lucide="shield-check" class="w-4 h-4 shrink-0 text-emerald-600"></i>
+          <span>Bảo mật Zero-Secret Leakage đảm bảo tính an toàn 100%.</span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2 border-t border-bordercol dark:border-zinc-800">
+        <button onclick="closeExportTeamModal()" class="px-4 py-2 rounded-xl text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-semibold">
+          Đóng
+        </button>
+        <button onclick="downloadTeamZipFile()" class="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md shadow-emerald-600/20 transition flex items-center gap-1.5">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          <span>Tải File .team.javis.zip</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- JAVASCRIPT TOÀN BỘ LOGIC HỆ THỐNG JAVIS OS -->
   <script>
     // NON-BLOCKING TOAST NOTIFICATION (Thay thế hoàn toàn window.alert native gây treo trình duyệt)
@@ -2558,7 +3338,8 @@
       const spaceSkills = document.getElementById('space-skills');
       const spaceEnterprise = document.getElementById('space-enterprise');
 
-      [spaceTasks, spaceBrain, spaceSkills, spaceEnterprise].forEach(btn => {
+      const spacePartners = document.getElementById('space-partners');
+      [spaceTasks, spaceBrain, spaceSkills, spacePartners, spaceEnterprise].forEach(btn => {
         if (btn) {
           btn.classList.remove('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
           btn.classList.add('text-zinc-600', 'dark:text-zinc-400');
@@ -2574,6 +3355,11 @@
         if (spaceBrain) {
           spaceBrain.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
           spaceBrain.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+        }
+      } else if (targetView === 'cap-partners') {
+        if (spacePartners) {
+          spacePartners.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          spacePartners.classList.remove('text-zinc-600', 'dark:text-zinc-400');
         }
       } else if (targetView === 'cap-skills') {
         if (spaceSkills) {
@@ -2601,6 +3387,11 @@
         loadPartners();
       } else if (targetView === 'cap-chatbot') {
         loadChatbotConfig();
+      } else if (targetView === 'cap-partners') {
+        if (spacePartners) {
+          spacePartners.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          spacePartners.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+        }
       } else if (targetView === 'cap-skills') {
         loadSkills();
       } else if (targetView === 'cap-plugins') {
@@ -2685,6 +3476,8 @@
         navigateTo('brain-neural');
       } else if (spaceKey === 'skills') {
         navigateTo('cap-skills');
+      } else if (spaceKey === 'partners' || spaceKey === 'rosters') {
+        navigateTo('cap-partners');
       } else if (spaceKey === 'enterprise') {
         navigateTo('enterprise');
       }
@@ -3135,51 +3928,625 @@
     }
 
     // CAPABILITIES: PARTNERS
+    // =========================================================================
+    // JAVIS OS · ROSTERS STUDIO COCKPIT (CHÍNH XÁC THEO THIẾT KẾ MẪU 100%)
+    // =========================================================================
+    let allRosterPartners = [];
+    let activePartnerId = 'an-marketing';
+    let currentRosterFilter = '';
+    let currentRosterTab = 'agents';
+    let currentInspectorTab = 'settings';
+
     async function loadPartners() {
       try {
         const res = await fetch('/api/studio/partners');
         const data = await res.json();
-        const grid = document.getElementById('partnersGrid');
-        if (!grid) return;
-        grid.innerHTML = '';
+        allRosterPartners = data.partners || [];
+        
+        // Cập nhật tổng số lượng
+        const countEl = document.getElementById('rosterTotalCount');
+        if (countEl) countEl.innerText = allRosterPartners.length;
 
-        data.partners.forEach(p => {
-          const card = document.createElement('div');
-          card.className = 'bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 shadow-sm space-y-3';
-          card.innerHTML = `
-            <div class="flex items-start justify-between">
-              <div class="flex items-center gap-3">
-                <span class="text-3xl">${p.avatar}</span>
-                <div>
-                  <h3 class="font-bold text-sm text-zinc-900 dark:text-white">${p.name}</h3>
-                  <div class="text-xs text-orange-600 dark:text-orange-400 font-medium">${p.title}</div>
-                </div>
-              </div>
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold ${p.status === 'online' ? 'bg-emerald-50 dark:bg-emerald-950 text-emerald-600' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400'}">
-                ● ${p.status.toUpperCase()}
-              </span>
-            </div>
-            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">${p.bio}</p>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              ${p.capabilities.map(c => `<span class="px-2 py-0.5 bg-zinc-100 dark:bg-[#202230] text-zinc-600 dark:text-zinc-400 rounded text-[10px] font-mono">${c}</span>`).join('')}
-            </div>
-            <div class="pt-3 border-t border-bordercol dark:border-[#26283b] flex items-center justify-between text-xs">
-              <span class="text-zinc-400 font-mono">Đang phụ trách: <b>${p.tasks_count} tasks</b></span>
-              <button onclick="chatWithPartner('${p.name}')" class="px-3 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-semibold shadow-sm transition">
-                Trò Chuyện
-              </button>
-            </div>
-          `;
-          grid.appendChild(card);
-        });
+        // Render danh sách Roster bên trái
+        renderRosterList();
+
+        // Mặc định chọn an-marketing (theo chuẩn ảnh) hoặc người đầu tiên
+        const targetPartner = allRosterPartners.find(p => p.id === activePartnerId) || allRosterPartners[0];
+        if (targetPartner) {
+          selectPartner(targetPartner.id);
+        }
       } catch (e) {
-        console.error("Error loading partners", e);
+        console.error('Error loading partners in Rosters Studio', e);
       }
     }
 
-    function chatWithPartner(name) {
-      navigateTo('chat');
-      sendQuickPrompt(`Xin chào trợ lý ${name}! Bạn có thể giúp tôi giải quyết các công việc đang phụ trách hôm nay không?`);
+    function renderRosterList() {
+      const container = document.getElementById('rosterAgentsListContainer');
+      if (!container) return;
+
+      const q = currentRosterFilter.toLowerCase().trim();
+      const filtered = allRosterPartners.filter(p => {
+        if (!q) return true;
+        return (p.name && p.name.toLowerCase().includes(q)) ||
+               (p.role && p.role.toLowerCase().includes(q)) ||
+               (p.title && p.title.toLowerCase().includes(q));
+      });
+
+      // Nhóm theo: System, Auto, Others
+      const systemGroup = filtered.filter(p => p.category === 'system');
+      const autoGroup = filtered.filter(p => p.category === 'auto');
+      const othersGroup = filtered.filter(p => p.category !== 'system' && p.category !== 'auto');
+
+      let html = '';
+
+      // GROUP 1: SYSTEM
+      if (systemGroup.length > 0) {
+        html += `
+          <div>
+            <div class="px-2 py-1 text-[10px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider flex items-center justify-between">
+              <span>System</span>
+              <span class="text-[9px] font-mono">${systemGroup.length}</span>
+            </div>
+            <div class="space-y-1 mt-0.5">
+              ${systemGroup.map(p => renderRosterItemHtml(p)).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // GROUP 2: AUTO (BẬT AUTO CHẠY 24/7)
+      if (autoGroup.length > 0) {
+        html += `
+          <div>
+            <div class="px-2 py-1 text-[10px] font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider flex items-center justify-between">
+              <span class="flex items-center gap-1">⚡ Auto (Tự hành)</span>
+              <span class="text-[9px] font-mono">${autoGroup.length}</span>
+            </div>
+            <div class="space-y-1 mt-0.5">
+              ${autoGroup.map(p => renderRosterItemHtml(p)).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // GROUP 3: OTHERS (CHUYÊN GIA)
+      if (othersGroup.length > 0) {
+        html += `
+          <div>
+            <div class="px-2 py-1 text-[10px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider flex items-center justify-between">
+              <span>Others</span>
+              <span class="text-[9px] font-mono">${othersGroup.length}</span>
+            </div>
+            <div class="space-y-1 mt-0.5">
+              ${othersGroup.map(p => renderRosterItemHtml(p)).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function renderRosterItemHtml(p) {
+      const isActive = p.id === activePartnerId;
+      const activeClass = isActive 
+        ? 'bg-orange-50 dark:bg-[#25283c] border-orange-500 dark:border-orange-500 shadow-sm' 
+        : 'bg-white dark:bg-[#1a1c29] border-bordercol dark:border-[#272a3c] hover:border-zinc-300 dark:hover:border-zinc-700';
+
+      const avatarBg = p.avatar_color || '#8b5cf6';
+      const iconSymbol = p.icon_symbol || '●';
+
+      let statusBadge = '';
+      if (p.category === 'system') {
+        statusBadge = '<span class="px-1.5 py-0.2 rounded text-[9px] font-bold bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">System</span>';
+      } else if (p.auto_mode || p.category === 'auto') {
+        statusBadge = '<span class="px-1.5 py-0.2 rounded text-[9px] font-bold bg-orange-100 dark:bg-orange-950 text-orange-600 dark:text-orange-300">Auto</span>';
+      }
+
+      return `
+        <div onclick="selectPartner('${p.id}')" class="p-2 rounded-xl border ${activeClass} cursor-pointer transition flex items-start gap-2.5">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs text-white shrink-0 mt-0.5 shadow-sm" style="background-color: ${avatarBg}">
+            ${iconSymbol}
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-1">
+              <span class="font-bold text-xs text-zinc-900 dark:text-white truncate">${p.name}</span>
+              ${statusBadge}
+            </div>
+            <p class="text-[10px] text-zinc-500 dark:text-zinc-400 truncate mt-0.5">${p.role || p.title || ''}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function filterRosterAgents(val) {
+      currentRosterFilter = val;
+      renderRosterList();
+    }
+
+    function switchRosterTab(tab) {
+      currentRosterTab = tab;
+      const btnAgents = document.getElementById('rosterTabAgents');
+      const btnFlows = document.getElementById('rosterTabWorkflows');
+
+      if (tab === 'agents') {
+        btnAgents.className = 'flex-1 py-1.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 bg-white dark:bg-[#1e202f] text-orange-600 dark:text-orange-400 shadow-sm border border-bordercol dark:border-[#2f3248]';
+        btnFlows.className = 'flex-1 py-1.5 rounded-lg text-xs font-medium text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 transition flex items-center justify-center gap-1.5';
+        renderRosterList();
+      } else {
+        btnFlows.className = 'flex-1 py-1.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 bg-white dark:bg-[#1e202f] text-orange-600 dark:text-orange-400 shadow-sm border border-bordercol dark:border-[#2f3248]';
+        btnAgents.className = 'flex-1 py-1.5 rounded-lg text-xs font-medium text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 transition flex items-center justify-center gap-1.5';
+        const container = document.getElementById('rosterAgentsListContainer');
+        container.innerHTML = `
+          <div class="p-3 text-center space-y-2 text-zinc-500">
+            <i data-lucide="git-branch" class="w-6 h-6 mx-auto text-zinc-400"></i>
+            <div class="font-bold text-xs text-zinc-700 dark:text-zinc-300">Quy Trình Tự Động (Workflows)</div>
+            <p class="text-[11px] leading-relaxed">Chuỗi phối hợp giữa các cộng sự: <i>Khách hỏi -> Javis Vu tiếp nhận -> Duy phân tích -> An duyệt</i>.</p>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+      }
+    }
+
+    function selectPartner(partnerId) {
+      activePartnerId = partnerId;
+      const partner = allRosterPartners.find(p => p.id === partnerId);
+      if (!partner) return;
+
+      // Cập nhật highlight danh sách
+      renderRosterList();
+
+      // Cập nhật Cột Giữa (Workspace)
+      const wsAvatar = document.getElementById('activeWorkspaceAvatar');
+      const wsName = document.getElementById('activeWorkspaceName');
+      const wsModelLabel = document.getElementById('activeWorkspaceModelLabel');
+      const modelSelect = document.getElementById('rosterModelSelect');
+      const skillPillLabel = document.getElementById('rosterSkillPillLabel');
+
+      if (wsAvatar) {
+        wsAvatar.innerText = partner.icon_symbol || '●';
+        wsAvatar.style.backgroundColor = partner.avatar_color || '#8b5cf6';
+      }
+      if (wsName) wsName.innerText = partner.name;
+      if (wsModelLabel) wsModelLabel.innerText = `${partner.model || 'GPT-4o mini'} · ${partner.status || 'online'}`;
+      if (modelSelect && partner.model) modelSelect.value = partner.model;
+
+      const activeSkill = (partner.skills && partner.skills.length > 0) ? partner.skills[0] : '30 kĩ năng xuất sắc';
+      if (skillPillLabel) skillPillLabel.innerText = activeSkill;
+
+      // Render tin nhắn chat của Agent này
+      renderPartnerChatHistory(partner);
+
+      // Cập nhật Cột Phải (Inspector / Settings)
+      const inspAgentId = document.getElementById('inspAgentId');
+      const inspAvatarBox = document.getElementById('inspAvatarBox');
+      const inspInputName = document.getElementById('inspInputName');
+      const inspInputRole = document.getElementById('inspInputRole');
+      const inspInputPrompt = document.getElementById('inspInputPrompt');
+      const inspDocsBadges = document.getElementById('inspDocsBadges');
+      const inspSkillsTagsList = document.getElementById('inspSkillsTagsList');
+      const inspAutoToggle = document.getElementById('inspAutoToggle');
+      const inspAutoBadge = document.getElementById('inspAutoStatusBadge');
+      const inspInputBudget = document.getElementById('inspInputBudget');
+
+      if (inspAgentId) inspAgentId.innerText = partner.id;
+      if (inspAvatarBox) {
+        inspAvatarBox.innerText = partner.icon_symbol || '●';
+        inspAvatarBox.style.backgroundColor = partner.avatar_color || '#8b5cf6';
+      }
+      if (inspInputName) inspInputName.value = partner.name || '';
+      if (inspInputRole) inspInputRole.value = partner.role || partner.title || '';
+      if (inspInputPrompt) inspInputPrompt.value = partner.system_prompt || '';
+      if (inspInputBudget) inspInputBudget.value = partner.budget || '$0.50 / ngày';
+
+      // Badges Documents
+      if (inspDocsBadges) {
+        const docs = partner.assistant_documents || ['00 - System/Rules.md'];
+        inspDocsBadges.innerHTML = docs.map(d => `
+          <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-[#25283c] border border-bordercol dark:border-[#33374e] text-zinc-700 dark:text-zinc-300 text-[10px] font-mono flex items-center gap-1">
+            <i data-lucide="file-text" class="w-2.5 h-2.5 text-orange-500"></i>
+            <span>${d}</span>
+          </span>
+        `).join('');
+      }
+
+      // Skills Tags
+      if (inspSkillsTagsList) {
+        const skills = partner.skills || ['General Specialist'];
+        inspSkillsTagsList.innerHTML = skills.map(s => `
+          <span class="px-2 py-0.5 rounded-full bg-orange-50 dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-300 text-[10px] font-mono font-semibold flex items-center gap-1">
+            <span>${s}</span>
+            <button onclick="removeSkillFromPartner('${s}')" class="hover:text-rose-500">×</button>
+          </span>
+        `).join('');
+      }
+
+      // Auto toggle
+      const isAuto = !!partner.auto_mode;
+      if (inspAutoToggle) inspAutoToggle.checked = isAuto;
+      if (inspAutoBadge) {
+        inspAutoBadge.innerText = isAuto ? 'ON' : 'OFF';
+        inspAutoBadge.className = isAuto 
+          ? 'px-1.5 py-0.2 rounded text-[9px] font-bold bg-orange-100 dark:bg-orange-950 text-orange-600'
+          : 'px-1.5 py-0.2 rounded text-[9px] font-bold bg-zinc-200 dark:bg-zinc-800 text-zinc-600';
+      }
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function renderPartnerChatHistory(partner) {
+      const chatContainer = document.getElementById('rosterChatMessages');
+      if (!chatContainer) return;
+
+      const chatList = partner.sample_chat || [];
+      if (chatList.length === 0) {
+        chatContainer.innerHTML = `
+          <div class="h-full flex flex-col items-center justify-center text-center p-8 text-zinc-400 space-y-2">
+            <div class="w-10 h-10 rounded-2xl flex items-center justify-center text-lg text-white font-bold shadow-sm" style="background-color: ${partner.avatar_color || '#8b5cf6'}">
+              ${partner.icon_symbol || '●'}
+            </div>
+            <div class="font-bold text-xs text-zinc-700 dark:text-zinc-200">${partner.name} sẵn sàng nhận nhiệm vụ!</div>
+            <p class="text-[11px] max-w-xs leading-relaxed">Hãy giao việc hoặc viết yêu cầu ở thanh bên dưới. Cộng sự sẽ áp dụng vai trò và kỹ năng chuyên biệt để thực hiện.</p>
+          </div>
+        `;
+        return;
+      }
+
+      chatContainer.innerHTML = chatList.map(msg => {
+        const isUser = msg.role === 'user';
+        if (isUser) {
+          return `
+            <div class="flex justify-end">
+              <div class="max-w-[85%] rounded-2xl rounded-tr-none px-4 py-2.5 bg-orange-600 text-white text-xs leading-relaxed shadow-sm">
+                ${msg.text}
+              </div>
+            </div>
+          `;
+        } else {
+          const renderedText = (window.marked && typeof marked.parse === 'function') 
+            ? marked.parse(msg.text) 
+            : msg.text.replace(/\n/g, '<br/>');
+
+          return `
+            <div class="flex items-start gap-2.5">
+              <div class="w-6 h-6 rounded-lg flex items-center justify-center font-bold text-white text-[10px] shrink-0 mt-0.5 shadow-sm" style="background-color: ${partner.avatar_color || '#8b5cf6'}">
+                ${partner.icon_symbol || '●'}
+              </div>
+              <div class="max-w-[90%] rounded-2xl rounded-tl-none p-3.5 bg-zinc-100 dark:bg-[#1f2130] border border-bordercol dark:border-[#2b2d40] text-xs text-zinc-800 dark:text-zinc-200 leading-relaxed shadow-sm space-y-1">
+                ${renderedText}
+              </div>
+            </div>
+          `;
+        }
+      }).join('');
+
+      // Auto scroll to bottom
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    async function handleRosterChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('rosterChatInput');
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const partner = allRosterPartners.find(p => p.id === activePartnerId);
+      if (!partner) return;
+
+      const model = document.getElementById('rosterModelSelect').value;
+      const skill = document.getElementById('rosterSkillPillLabel').innerText;
+
+      // Append user message immediately
+      if (!partner.sample_chat) partner.sample_chat = [];
+      partner.sample_chat.push({ role: 'user', text: msg });
+      input.value = '';
+      renderPartnerChatHistory(partner);
+
+      // Loading indicator
+      const chatContainer = document.getElementById('rosterChatMessages');
+      const loadingId = 'loading-' + Date.now();
+      const loadingDiv = document.createElement('div');
+      loadingDiv.id = loadingId;
+      loadingDiv.className = 'flex items-center gap-2 text-xs text-zinc-400 p-2 font-mono';
+      loadingDiv.innerHTML = `<span class="animate-spin text-orange-600">●</span> <span>${partner.name} đang phân tích tài liệu và thực thi...</span>`;
+      chatContainer.appendChild(loadingDiv);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      try {
+        const res = await fetch('/api/studio/partners/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            partner_id: partner.id,
+            message: msg,
+            model: model,
+            skill: skill
+          })
+        });
+        const data = await res.json();
+        const loadEl = document.getElementById(loadingId);
+        if (loadEl) loadEl.remove();
+
+        if (data.status === 'success') {
+          partner.sample_chat = data.sample_chat;
+          renderPartnerChatHistory(partner);
+        }
+      } catch (err) {
+        console.error('Chat error', err);
+        const loadEl = document.getElementById(loadingId);
+        if (loadEl) loadEl.remove();
+      }
+    }
+
+    function clearAgentActiveChat() {
+      const partner = allRosterPartners.find(p => p.id === activePartnerId);
+      if (partner) {
+        partner.sample_chat = [];
+        renderPartnerChatHistory(partner);
+      }
+    }
+
+    function cycleActiveSkill() {
+      const partner = allRosterPartners.find(p => p.id === activePartnerId);
+      if (!partner || !partner.skills || partner.skills.length === 0) return;
+      const currentLabel = document.getElementById('rosterSkillPillLabel').innerText;
+      const idx = partner.skills.indexOf(currentLabel);
+      const nextIdx = (idx + 1) % partner.skills.length;
+      document.getElementById('rosterSkillPillLabel').innerText = partner.skills[nextIdx];
+    }
+
+    function changeActivePartnerModel(model) {
+      const partner = allRosterPartners.find(p => p.id === activePartnerId);
+      if (partner) {
+        partner.model = model;
+        const wsModelLabel = document.getElementById('activeWorkspaceModelLabel');
+        if (wsModelLabel) wsModelLabel.innerText = `${model} · ${partner.status || 'online'}`;
+      }
+    }
+
+    function handleInspAutoToggle(checked) {
+      const partner = allRosterPartners.find(p => p.id === activePartnerId);
+      if (partner) {
+        partner.auto_mode = checked;
+        const badge = document.getElementById('inspAutoStatusBadge');
+        if (badge) {
+          badge.innerText = checked ? 'ON' : 'OFF';
+          badge.className = checked 
+            ? 'px-1.5 py-0.2 rounded text-[9px] font-bold bg-orange-100 dark:bg-orange-950 text-orange-600'
+            : 'px-1.5 py-0.2 rounded text-[9px] font-bold bg-zinc-200 dark:bg-zinc-800 text-zinc-600';
+        }
+        renderRosterList();
+      }
+    }
+
+    async function saveActivePartnerSettings() {
+      const partner = allRosterPartners.find(p => p.id === activePartnerId);
+      if (!partner) return;
+
+      const newName = document.getElementById('inspInputName').value.trim();
+      const newRole = document.getElementById('inspInputRole').value.trim();
+      const newPrompt = document.getElementById('inspInputPrompt').value.trim();
+      const newBudget = document.getElementById('inspInputBudget').value.trim();
+      const isAuto = document.getElementById('inspAutoToggle').checked;
+
+      partner.name = newName;
+      partner.role = newRole;
+      partner.system_prompt = newPrompt;
+      partner.budget = newBudget;
+      partner.auto_mode = isAuto;
+
+      try {
+        const res = await fetch('/api/studio/partners/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: partner.id,
+            name: newName,
+            role: newRole,
+            system_prompt: newPrompt,
+            budget: newBudget,
+            auto_mode: isAuto
+          })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          selectPartner(partner.id);
+          alert('✅ Đã lưu thay đổi hồ sơ & quy chế cộng sự [' + newName + '] thành công!');
+        }
+      } catch (err) {
+        console.error('Save partner error', err);
+        alert('Lỗi lưu cài đặt!');
+      }
+    }
+
+    function switchInspectorTab(tab) {
+      currentInspectorTab = tab;
+      const btnHist = document.getElementById('inspTabHistory');
+      const btnJobs = document.getElementById('inspTabJobs');
+      const btnSet = document.getElementById('inspTabSettings');
+      const panel = document.getElementById('inspectorContentArea');
+
+      const activeCls = 'px-2.5 py-1 rounded-md text-xs font-bold bg-white dark:bg-[#1e202f] text-orange-600 dark:text-orange-400 shadow-sm border border-bordercol dark:border-[#2f3248] transition';
+      const inactiveCls = 'px-2.5 py-1 rounded-md text-xs font-medium text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 transition';
+
+      btnHist.className = (tab === 'history') ? activeCls : inactiveCls;
+      btnJobs.className = (tab === 'jobs') ? activeCls : inactiveCls;
+      btnSet.className = (tab === 'settings') ? activeCls : inactiveCls;
+
+      const partner = allRosterPartners.find(p => p.id === activePartnerId);
+
+      if (tab === 'history') {
+        panel.innerHTML = `
+          <div class="space-y-3">
+            <h4 class="font-bold text-xs text-zinc-800 dark:text-zinc-200">Nhật Ký Tác Vụ Gần Đây</h4>
+            <div class="space-y-2">
+              <div class="p-2.5 bg-white dark:bg-[#1a1c29] border border-bordercol dark:border-[#2c2f42] rounded-lg">
+                <div class="flex items-center justify-between text-[10px] text-zinc-400 mb-1">
+                  <span>Hôm nay, 08:30</span>
+                  <span class="text-emerald-500 font-bold">Hoàn thành</span>
+                </div>
+                <div class="font-bold text-xs text-zinc-800 dark:text-zinc-200">Đã chưng cất 3 ghi chú Marketing sang Wiki</div>
+              </div>
+              <div class="p-2.5 bg-white dark:bg-[#1a1c29] border border-bordercol dark:border-[#2c2f42] rounded-lg">
+                <div class="flex items-center justify-between text-[10px] text-zinc-400 mb-1">
+                  <span>Hôm qua, 18:45</span>
+                  <span class="text-emerald-500 font-bold">Hoàn thành</span>
+                </div>
+                <div class="font-bold text-xs text-zinc-800 dark:text-zinc-200">Đã kiểm tra bất thường tỷ lệ chuyển đổi tuần</div>
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (tab === 'jobs') {
+        panel.innerHTML = `
+          <div class="space-y-3">
+            <h4 class="font-bold text-xs text-zinc-800 dark:text-zinc-200">Hàng Đợi Công Việc (Background Jobs)</h4>
+            <div class="space-y-2">
+              <div class="p-2.5 bg-white dark:bg-[#1a1c29] border border-bordercol dark:border-[#2c2f42] rounded-lg space-y-1">
+                <div class="flex items-center justify-between text-[10px]">
+                  <span class="font-mono text-orange-600 font-bold">#JOB-1029</span>
+                  <span class="px-1.5 py-0.2 bg-amber-100 dark:bg-amber-950 text-amber-600 rounded text-[9px] font-bold animate-pulse">Running</span>
+                </div>
+                <div class="font-bold text-xs text-zinc-800 dark:text-zinc-200">Quét số liệu Meta Ads Graph API</div>
+                <div class="text-[10px] text-zinc-400">Ngân sách tiêu hao: $0.08 / $0.80</div>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        selectPartner(activePartnerId);
+      }
+    }
+
+    // MODAL HELPERS
+    function openAssistantDocumentsModal() {
+      const modal = document.getElementById('assistantDocsModal');
+      const partner = allRosterPartners.find(p => p.id === activePartnerId);
+      const listContainer = document.getElementById('assistantDocsList');
+
+      if (partner && listContainer) {
+        const docs = partner.assistant_documents || ['01 - Projects/Marketing Strategy 2026.md', '07 - Wiki/Brand Standards.md'];
+        listContainer.innerHTML = docs.map(d => `
+          <div class="p-3 bg-zinc-50 dark:bg-[#1f2130] border border-zinc-200 dark:border-zinc-800 rounded-xl flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="file-text" class="w-4 h-4 text-orange-500"></i>
+              <div>
+                <div class="font-bold text-xs text-zinc-800 dark:text-zinc-200">${d}</div>
+                <div class="text-[10px] text-zinc-400">Định dạng Markdown · Đọc được trong Obsidian</div>
+              </div>
+            </div>
+            <button onclick="previewDocContent('${d}')" class="px-2.5 py-1 bg-white dark:bg-[#25283c] border border-zinc-200 dark:border-zinc-700 rounded-lg text-[10px] font-semibold text-zinc-700 dark:text-zinc-200 hover:text-orange-600">
+              Xem trước
+            </button>
+          </div>
+        `).join('');
+      }
+
+      modal.classList.remove('hidden');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeAssistantDocsModal() {
+      document.getElementById('assistantDocsModal').classList.add('hidden');
+    }
+
+    function previewDocContent(docPath) {
+      alert('📄 Đang mở tài liệu Second Brain: ' + docPath + '\n\nCộng sự tự động trích xuất các quy chuẩn từ tài liệu này để phản hồi chuẩn xác theo triết lý thương hiệu Thịnh Vượng Số.');
+    }
+
+    function openUploadAgentModal() {
+      document.getElementById('uploadAgentModal').classList.remove('hidden');
+    }
+
+    function closeUploadAgentModal() {
+      document.getElementById('uploadAgentModal').classList.add('hidden');
+    }
+
+    async function submitUploadAgent() {
+      const val = document.getElementById('uploadAgentMarkdownInput').value.trim();
+      if (!val) {
+        alert('Vui lòng dán nội dung file Markdown!');
+        return;
+      }
+      try {
+        const res = await fetch('/api/studio/partners/upload', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ markdown_content: val })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          closeUploadAgentModal();
+          await loadPartners();
+          selectPartner(data.agent.id);
+          alert('🎉 Tuyệt vời! Đã nhập cộng sự [' + data.agent.name + '] vào Roster!');
+        }
+      } catch (e) {
+        alert('Lỗi nhập cộng sự!');
+      }
+    }
+
+    function openJavisStoreModal() {
+      document.getElementById('javisStoreModal').classList.remove('hidden');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeJavisStoreModal() {
+      document.getElementById('javisStoreModal').classList.add('hidden');
+    }
+
+    async function recruitStoreAgent(agentKey) {
+      const templateMap = {
+        'chi-tiktok': '# Chi - TikTok Viral Scriptwriter\nVai trò: Viết kịch bản video ngắn triệu view\n\nBạn là Chi, biên kịch video ngắn tài ba...',
+        'thinh-closer': '# Thịnh - High-Ticket Closer Zalo\nVai trò: Chốt đơn tư vấn 1:1 qua Zalo 24/7\n\nBạn là Thịnh, chuyên viên chốt sale thân thiện...',
+        'lam-finance': '# Lâm - Financial Auditor\nVai trò: Lập báo cáo PnL và kiểm soát dòng tiền\n\nBạn là Lâm, kiểm toán tài chính nội bộ...',
+        'phong-seo': '# Phong - SEO Semantic Architect\nVai trò: Xây dựng Topic Cluster và dàn ý bài viết E-E-A-T\n\nBạn là Phong, chuyên gia SEO...'
+      };
+      const md = templateMap[agentKey] || '# New Agent\nVai trò: Specialist';
+      try {
+        const res = await fetch('/api/studio/partners/upload', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ markdown_content: md })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          closeJavisStoreModal();
+          await loadPartners();
+          selectPartner(data.agent.id);
+          alert('🚀 Chúc mừng! Đã tuyển dụng cộng sự [' + data.agent.name + '] thành công!');
+        }
+      } catch (e) {
+        alert('Lỗi tuyển dụng!');
+      }
+    }
+
+    function openNewAgentModal() {
+      openUploadAgentModal();
+    }
+
+    function startVoiceInputForRoster() {
+      alert('🎙️ Đang kích hoạt thu âm giọng nói (Whisper AI)... Vui lòng nói lệnh giao việc cho cộng sự.');
+    }
+
+    function triggerAvatarUpload() {
+      alert('🖼️ Chọn ảnh đại diện mới từ máy tính của bạn hoặc từ Second Brain Vault.');
+    }
+
+    function changeAvatarPreset() {
+      const partner = allRosterPartners.find(p => p.id === activePartnerId);
+      if (!partner) return;
+      const presets = ['▲', '■', '●', '◆', '✦', '⬡', '★'];
+      const colors = ['#8b5cf6', '#3b82f6', '#10b981', '#f59e0b', '#ec4899', '#06b6d4', '#ea580c'];
+      const curIdx = presets.indexOf(partner.icon_symbol || '▲');
+      const nextIdx = (curIdx + 1) % presets.length;
+      partner.icon_symbol = presets[nextIdx];
+      partner.avatar_color = colors[nextIdx];
+      selectPartner(partner.id);
+    }
+
+
     }
 
         // CAPABILITIES: OMNICHANNEL CHATBOT & SLEEP COCKPIT (CHUẨN ẢNH)
@@ -4083,6 +5450,324 @@
       } catch (e) {
         logEl.innerHTML = `<div class="text-red-500">Lỗi khi thực thi: ${e.message}</div>`;
       }
+    }
+
+    // =========================================================================
+    // LOGIC PHÒNG TÁC CHIẾN MULTI-AGENT (TEAMS & ORCHESTRATOR WAR ROOM)
+    // =========================================================================
+    const TEAM_ROOMS_DATA = {
+      'growth_active': {
+        title: 'Javis Growth - Marketing',
+        subtitle: 'Trưởng nhóm điều phối · Hai (Email) · Mai (Brand) · An (Lead)',
+        messages: [
+          {
+            role: 'lead',
+            name: 'Trưởng nhóm (Team Lead)',
+            badge: 'Chỉ đạo mục tiêu',
+            icon: '👑',
+            color: 'bg-orange-600',
+            text: `purchase, activation and return. One goal and one CTA per email, matched to each segment (leads, Zoom course buyers, JAVISER members), with exit rules so buyers never get another sales email.\n\nGive me a concrete brief, say a welcome series for new leads, and I'll map the order of emails and draft them right away.`,
+            footer: '🎯 Nhiệm vụ đã chia: Mai định vị brand voice · An chuỗi email 3 nhịp'
+          },
+          {
+            role: 'mai',
+            name: 'Mai - Brand Context',
+            badge: 'Owner',
+            icon: '🎨',
+            color: 'bg-gradient-to-tr from-rose-500 to-pink-500',
+            text: `I'm Mai, on Javis brand content: long blog posts in Minh Quy's voice, social posts, short video scripts, use case stories and image briefs. Hand me the insight, offer and CTA and I can write right away. Wherever your real experience is needed, I mark it <span class="px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-mono font-bold text-[10px] border border-amber-300 dark:border-amber-700">"C-DCK"</span> instead of making it up.`,
+            footer: '🛡️ Cam kết không bịa đặt: Đánh dấu C-DCK để hỏi thêm trải nghiệm thật từ người dùng'
+          },
+          {
+            role: 'an',
+            name: 'An - Email & Nurture',
+            badge: 'Marketing Lead',
+            icon: '✉️',
+            color: 'bg-gradient-to-tr from-emerald-500 to-teal-500',
+            text: `I introduced myself in message #10571, so no repeat. To start right away I need three decisions: the first audience (new leads, Zoom course buyers or JAVISER members), the main offer and CTA, and the list's email consent. Until then I'll use <code class="px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-orange-600 font-mono rounded text-[10px]">[PLACEHOLDER]</code> and draft the welcome series for new leads.`,
+            footer: '⚡ Trạng thái: Sẵn sàng sinh chuỗi 3 email theo khung nhận thức'
+          }
+        ]
+      },
+      'marketing_empty': {
+        title: 'Marketing Room',
+        subtitle: 'Chưa có tin nhắn mới · Sẵn sàng khởi động chiến dịch',
+        messages: [
+          {
+            role: 'lead',
+            name: 'Trưởng nhóm Marketing',
+            badge: 'Sẵn sàng',
+            icon: '📊',
+            color: 'bg-zinc-600',
+            text: 'Chào bạn, phòng Marketing đã tập hợp đủ nhân sự. Hãy giao một mục tiêu (SEO, Google Ads, Content) để tôi bóc tách việc cho team nhé!',
+            footer: 'Trạng thái: Đang đợi brief từ bạn'
+          }
+        ]
+      },
+      'tech_dev': {
+        title: 'Product & Engineering Room',
+        subtitle: 'Tech Lead điều phối · Fullstack Code Agent · QA & Security Auditor',
+        messages: [
+          {
+            role: 'lead',
+            name: 'Tech Lead Architect',
+            badge: 'Điều phối kỹ thuật',
+            icon: '⚡',
+            color: 'bg-emerald-600',
+            text: 'Tôi quản lý Git Repo và kiến trúc hệ thống. Mọi task lập trình đều được tạo nhánh riêng feature/..., viết unit test trước khi mở Pull Request.',
+            footer: 'Git Branch: main · Tự động kiểm tra lint & build'
+          },
+          {
+            role: 'dev',
+            name: 'Fullstack Code Agent',
+            badge: 'Python / Next.js',
+            icon: '💻',
+            color: 'bg-blue-600',
+            text: 'Đã sẵn sàng. Tôi có thể đọc toàn bộ codebase, sửa bug và deploy preview. Chờ brief yêu cầu từ Tech Lead.',
+            footer: 'MCP Server: Filesystem & Git kết nối'
+          }
+        ]
+      },
+      'executive': {
+        title: 'Executive & CFO Room',
+        subtitle: 'CFO Agent · Phân tích PnL · Đối soát tự động đa nguồn',
+        messages: [
+          {
+            role: 'lead',
+            name: 'Trưởng nhóm Điều Hành',
+            badge: 'CFO / Điều hành',
+            icon: '💼',
+            color: 'bg-purple-600',
+            text: 'Chào sếp! Tôi theo dõi dòng tiền, chi phí quảng cáo và doanh thu thực từ Pancake POS & Ngân hàng. Cần đối soát tháng này không sếp?',
+            footer: 'Kết nối: Meta Ads API + Google Sheets + POS'
+          }
+        ]
+      }
+    };
+
+    let activeTeamRoomId = 'growth_active';
+
+    function switchTeamRoom(roomId) {
+      activeTeamRoomId = roomId;
+      const roomData = TEAM_ROOMS_DATA[roomId];
+      if (!roomData) return;
+
+      ['marketing_empty', 'growth_active', 'tech_dev', 'executive', 'custom_room'].forEach(id => {
+        const el = document.getElementById(`team-room-${id}`);
+        if (el) {
+          if (id === roomId) {
+            el.className = 'p-2.5 rounded-xl bg-white dark:bg-[#1a1c27] border-2 border-orange-500 shadow-sm cursor-pointer transition';
+          } else {
+            el.className = 'p-2.5 rounded-xl hover:bg-white dark:hover:bg-[#1a1c27] border border-transparent hover:border-bordercol dark:hover:border-zinc-700 cursor-pointer transition';
+          }
+        }
+      });
+
+      const titleEl = document.getElementById('currentRoomTitle');
+      if (titleEl) {
+        titleEl.innerHTML = `<span>${roomData.title}</span><span class="w-2 h-2 rounded-full bg-emerald-500"></span>`;
+      }
+
+      renderTeamChatMessages(roomData.messages);
+    }
+
+    function renderTeamChatMessages(messages) {
+      const stream = document.getElementById('teamChatStream');
+      if (!stream) return;
+      stream.innerHTML = '';
+
+      messages.forEach(msg => {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'bg-[#faf8f4] dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-4 space-y-2 shadow-xs transition hover:border-orange-500/40';
+        msgDiv.innerHTML = `
+          <div class="flex items-center justify-between pb-1.5 border-b border-bordercol/60 dark:border-zinc-800">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-md ${msg.color} text-white flex items-center justify-center text-xs font-bold shadow-xs">${msg.icon}</span>
+              <span class="font-extrabold text-zinc-900 dark:text-white">${msg.name}</span>
+            </div>
+            <span class="text-[9px] bg-orange-100 dark:bg-orange-950 text-orange-600 px-2 py-0.5 rounded font-bold">${msg.badge}</span>
+          </div>
+          <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">${msg.text.replace(/\\n/g, '<br>')}</p>
+          ${msg.footer ? `<div class="pt-1 text-[10px] font-mono text-zinc-400 border-t border-bordercol/40 dark:border-zinc-800/60">${msg.footer}</div>` : ''}
+        `;
+        stream.appendChild(msgDiv);
+      });
+
+      stream.scrollTop = stream.scrollHeight;
+      if (window.lucide) lucide.createIcons();
+    }
+
+    async function sendTeamBrief(customText) {
+      const input = document.getElementById('teamBriefInput');
+      const text = customText || (input ? input.value.trim() : '');
+      if (!text) return;
+
+      const stream = document.getElementById('teamChatStream');
+      if (!stream) return;
+
+      // 1. Append User Message
+      const userDiv = document.createElement('div');
+      userDiv.className = 'p-3 bg-gradient-to-r from-orange-600 to-amber-600 text-white rounded-2xl ml-8 text-right shadow-sm text-xs font-medium space-y-1';
+      userDiv.innerHTML = `
+        <div class="text-[10px] text-orange-100 font-mono">Bạn (Chủ phòng / Sếp) vừa giao brief:</div>
+        <div>${text}</div>
+      `;
+      stream.appendChild(userDiv);
+      if (input) input.value = '';
+      stream.scrollTop = stream.scrollHeight;
+
+      // 2. Typing indicator for Team Lead
+      const typingDiv = document.createElement('div');
+      typingDiv.id = 'leadTypingIndicator';
+      typingDiv.className = 'p-3 bg-white dark:bg-[#1c1e2b] border border-orange-300 dark:border-orange-800/60 rounded-2xl flex items-center gap-2.5 text-xs text-orange-600 font-medium animate-pulse';
+      typingDiv.innerHTML = `
+        <span class="w-2 h-2 rounded-full bg-orange-500 animate-ping"></span>
+        <span>👑 Trưởng nhóm đang đọc brief, bóc tách công việc và chỉ định đúng chuyên gia...</span>
+      `;
+      stream.appendChild(typingDiv);
+      stream.scrollTop = stream.scrollHeight;
+
+      // 3. Step 1: Lead responds
+      setTimeout(() => {
+        if (typingDiv.parentNode) typingDiv.parentNode.removeChild(typingDiv);
+
+        const leadDiv = document.createElement('div');
+        leadDiv.className = 'bg-[#faf8f4] dark:bg-[#1a1c27] border-2 border-orange-500/60 rounded-2xl p-4 space-y-2 shadow-xs text-xs';
+        leadDiv.innerHTML = `
+          <div class="flex items-center justify-between pb-1 border-b border-bordercol dark:border-zinc-800">
+            <div class="flex items-center gap-2 font-bold text-zinc-900 dark:text-white">
+              <span class="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center text-xs">👑</span>
+              <span>Trưởng nhóm điều phối</span>
+            </div>
+            <span class="text-[9px] bg-orange-100 dark:bg-orange-950 text-orange-600 px-2 py-0.5 rounded font-bold">Đã tiếp nhận brief</span>
+          </div>
+          <p class="text-zinc-800 dark:text-zinc-200 leading-relaxed">
+            Tôi đã đọc brief: <i>"${text}"</i>.<br>
+            Nhiệm vụ này gồm 2 phần: <b>1. Thiết lập tone & thông điệp cốt lõi</b> (giao cho Mai) và <b>2. Soạn khung triển khai cụ thể</b> (giao cho An). Mai và An vào việc ngay nhé!
+          </p>
+        `;
+        stream.appendChild(leadDiv);
+        stream.scrollTop = stream.scrollHeight;
+
+        // Step 2: Mai and An respond
+        setTimeout(() => {
+          const specialistsDiv = document.createElement('div');
+          specialistsDiv.className = 'bg-white dark:bg-[#1c1e2b] border border-rose-300 dark:border-rose-900/50 rounded-2xl p-4 space-y-2 shadow-xs text-xs';
+          specialistsDiv.innerHTML = `
+            <div class="flex items-center justify-between pb-1 border-b border-bordercol dark:border-zinc-800">
+              <div class="flex items-center gap-2 font-bold text-zinc-900 dark:text-white">
+                <span class="w-6 h-6 rounded-md bg-rose-500 text-white flex items-center justify-center text-xs">🎨</span>
+                <span>Mai - Brand Context</span>
+              </div>
+              <span class="text-[9px] bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-400 px-2 py-0.5 rounded font-bold">Bản nháp 1</span>
+            </div>
+            <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed">
+              Dạ sếp! Em đã phác thảo thông điệp chính theo giọng văn truyền cảm hứng. Em có chừa nhãn <span class="px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-mono font-bold text-[10px]">C-DCK</span> ở câu chuyện thực tế để chờ sếp điền thêm case study thật của mình, tuyệt đối không bịa đặt!
+            </p>
+            <div class="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-300 text-[11px] flex items-center gap-1.5">
+              <span>✓</span>
+              <span>An đã tiếp nhận ngữ cảnh của Mai để viết tiếp chuỗi email đón tiếp!</span>
+            </div>
+          `;
+          stream.appendChild(specialistsDiv);
+          stream.scrollTop = stream.scrollHeight;
+          if (window.lucide) lucide.createIcons();
+        }, 1200);
+
+      }, 800);
+    }
+
+    function simulateBriefFlow(type) {
+      if (currentActiveView !== 'teamwork') {
+        navigateTo('teamwork');
+      }
+      switchTeamRoom('growth_active');
+
+      if (type === 'welcome') {
+        sendTeamBrief('Triển khai chuỗi Welcome Series 3 email đón tiếp 200 học viên vừa đăng ký khoá học Second Brain tối qua.');
+      } else if (type === 'brand') {
+        sendTeamBrief('Mai ơi, viết cho anh 1 bài post dài trên Facebook theo đúng phong cách Minh Quý: chia sẻ về lý do doanh nghiệp cần Second Brain thay vì thuê thêm nhân viên làm tay chân.');
+      } else if (type === 'review') {
+        sendTeamBrief('Trưởng nhóm nghiệm thu và tổng hợp báo cáo kết quả toàn bộ chiến dịch tuần này gửi sếp xem duyệt.');
+      }
+    }
+
+    function openNewTeamModal() {
+      const el = document.getElementById('newTeamModal');
+      if (el) el.classList.remove('hidden');
+    }
+    function closeNewTeamModal() {
+      const el = document.getElementById('newTeamModal');
+      if (el) el.classList.add('hidden');
+    }
+    function createNewTeamRoom() {
+      const name = document.getElementById('newTeamRoomName').value.trim() || 'Phòng Tác Chiến Mới';
+      const brief = document.getElementById('newTeamInitialBrief').value.trim();
+      closeNewTeamModal();
+
+      TEAM_ROOMS_DATA['custom_room'] = {
+        title: name,
+        subtitle: 'Trưởng nhóm điều phối · Vừa được kích hoạt',
+        messages: [
+          {
+            role: 'lead',
+            name: 'Trưởng nhóm điều phối',
+            badge: 'Sẵn sàng',
+            icon: '👑',
+            color: 'bg-orange-600',
+            text: `Chào sếp! Phòng tác chiến "${name}" đã được gom đầy đủ nhân sự và ghim công cụ sẵn sàng. Hãy giao brief hoặc mục tiêu đầu tiên để tôi điều phối cả phòng nhé!`,
+            footer: brief ? `Brief ban đầu: "${brief}"` : 'Đang đợi brief đầu tiên'
+          }
+        ]
+      };
+
+      switchTeamRoom('custom_room');
+      alert(`🎉 Đã kích hoạt phòng tác chiến mới: "${name}"!
+Trưởng nhóm đã sẵn sàng nhận lệnh.`);
+    }
+
+    function openExportTeamModal() {
+      const el = document.getElementById('exportTeamModal');
+      if (el) el.classList.remove('hidden');
+    }
+    function closeExportTeamModal() {
+      const el = document.getElementById('exportTeamModal');
+      if (el) el.classList.add('hidden');
+    }
+
+    function downloadTeamZipFile() {
+      const manifest = {
+        package_name: "javis-growth-marketing",
+        version: "1.0.0",
+        lead_orchestrator: {
+          role: "Growth & Strategy Team Lead",
+          capabilities: ["task_decomposition", "role_assignment", "deliverable_review"]
+        },
+        agents: [
+          { name: "Mai", role: "Brand Context Specialist", voice_model: "Minh Quy Voice", anti_hallucination: "C-DCK verified" },
+          { name: "An", role: "Email & Nurture Specialist", frameworks: ["AIDA", "Cognitive Flow"] }
+        ],
+        security_policy: {
+          export_secrets: false,
+          export_private_history: false,
+          kernel_enforced: true
+        },
+        exported_at: new Date().toISOString()
+      };
+
+      const blob = new Blob([JSON.stringify(manifest, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = "growth.team.javis.zip";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      closeExportTeamModal();
+      alert("✅ Đã xuất gói phòng tác chiến 'growth.team.javis.zip' thành công!
+Bạn có thể mang sang máy chủ khác, mở bằng bất kỳ bộ giải nén nào. Khóa API và lịch sử chat đã được loại bỏ an toàn.");
     }
 
     // KHỞI ĐỘNG HỆ THỐNG
