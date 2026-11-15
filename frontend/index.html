@@ -787,35 +787,35 @@
               Biến một công cụ thành chatbot chăm sóc khách trên <strong class="text-zinc-800 dark:text-zinc-200">WhatsApp, Messenger, Instagram, Telegram, Slack, Lark, Threads, Zalo, Zalo OA</strong> và nhiều kênh khác. Mọi cuộc trò chuyện về chung một hộp thư, và bạn tiếp quản bất kỳ cuộc nào chỉ bằng một cú bấm.
             </p>
 
-            <!-- Channel Badges Row (9 Channels Pill List) -->
+            <!-- Channel Badges Row (9 Channels Pill List - Interactive) -->
             <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-emerald-500 transition cursor-default">
+              <button onclick="showChannelInfoModal('WhatsApp')" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-emerald-500 hover:text-emerald-600 transition cursor-pointer hover:scale-105 active:scale-95">
                 <i data-lucide="phone-call" class="w-3.5 h-3.5 text-emerald-500"></i> WhatsApp
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-blue-500 transition cursor-default">
+              </button>
+              <button onclick="showChannelInfoModal('Messenger')" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-blue-500 hover:text-blue-600 transition cursor-pointer hover:scale-105 active:scale-95">
                 <i data-lucide="message-square" class="w-3.5 h-3.5 text-blue-500"></i> Messenger
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-pink-500 transition cursor-default">
+              </button>
+              <button onclick="showChannelInfoModal('Instagram')" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-pink-500 hover:text-pink-600 transition cursor-pointer hover:scale-105 active:scale-95">
                 <i data-lucide="camera" class="w-3.5 h-3.5 text-pink-500"></i> Instagram
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-sky-500 transition cursor-default">
+              </button>
+              <button onclick="showChannelInfoModal('Telegram')" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-sky-500 hover:text-sky-600 transition cursor-pointer hover:scale-105 active:scale-95">
                 <i data-lucide="send" class="w-3.5 h-3.5 text-sky-500"></i> Telegram
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-purple-500 transition cursor-default">
+              </button>
+              <button onclick="showChannelInfoModal('Slack')" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-purple-500 hover:text-purple-600 transition cursor-pointer hover:scale-105 active:scale-95">
                 <i data-lucide="hash" class="w-3.5 h-3.5 text-purple-500"></i> Slack
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-cyan-500 transition cursor-default">
+              </button>
+              <button onclick="showChannelInfoModal('Lark')" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-cyan-500 hover:text-cyan-600 transition cursor-pointer hover:scale-105 active:scale-95">
                 <i data-lucide="feather" class="w-3.5 h-3.5 text-cyan-500"></i> Lark
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-zinc-500 transition cursor-default">
+              </button>
+              <button onclick="showChannelInfoModal('Threads')" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-zinc-500 transition cursor-pointer hover:scale-105 active:scale-95">
                 <i data-lucide="at-sign" class="w-3.5 h-3.5 text-zinc-600"></i> Threads
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-blue-600 transition cursor-default">
-                <span class="w-2 h-2 rounded-full bg-blue-600"></span> Zalo
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-sky-600 transition cursor-default">
+              </button>
+              <button onclick="showChannelInfoModal('Zalo')" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-blue-600 hover:text-blue-600 transition cursor-pointer hover:scale-105 active:scale-95">
+                <span class="w-2 h-2 rounded-full bg-blue-600"></span> Zalo Cá Nhân
+              </button>
+              <button onclick="showChannelInfoModal('Zalo OA')" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-sky-600 hover:text-sky-600 transition cursor-pointer hover:scale-105 active:scale-95">
                 <span class="w-2 h-2 rounded-full bg-sky-500"></span> Zalo OA
-              </span>
+              </button>
             </div>
           </div>
 
@@ -915,43 +915,64 @@
                   </button>
                 </div>
 
-                <!-- 3 Hero Metric Cards -->
+                <!-- 3 Hero Metric Cards (Interactive with Click Feedback) -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-5">
-                  <div class="bg-white/80 dark:bg-[#1a162b]/80 backdrop-blur-sm border border-purple-200/60 dark:border-purple-800/40 rounded-xl p-4">
-                    <div class="text-3xl font-extrabold text-purple-950 dark:text-purple-100">79%</div>
+                  <div onclick="showHeroStatDetail('ai_rate')" class="bg-white/80 dark:bg-[#1a162b]/80 backdrop-blur-sm border border-purple-200/60 dark:border-purple-800/40 rounded-xl p-4 cursor-pointer hover:border-purple-500 hover:shadow-lg transition transform hover:-translate-y-0.5 active:translate-y-0 group">
+                    <div class="flex items-center justify-between">
+                      <div class="text-3xl font-extrabold text-purple-950 dark:text-purple-100 group-hover:text-purple-600 transition">79%</div>
+                      <i data-lucide="info" class="w-4 h-4 text-purple-400 opacity-60 group-hover:opacity-100"></i>
+                    </div>
                     <div class="text-xs text-zinc-600 dark:text-purple-200/80 mt-1">of all answers came from the AI</div>
-                    <div class="mt-2 text-[10px] text-purple-600 dark:text-purple-400 font-medium">Tỷ lệ tự động hóa toàn diện</div>
+                    <div class="mt-2 text-[10px] text-purple-600 dark:text-purple-400 font-medium flex items-center justify-between">
+                      <span>Tỷ lệ tự động hóa toàn diện</span>
+                      <span class="text-[9px] underline">Nhấn xem chi tiết ➔</span>
+                    </div>
                   </div>
 
-                  <div class="bg-white/80 dark:bg-[#1a162b]/80 backdrop-blur-sm border border-purple-200/60 dark:border-purple-800/40 rounded-xl p-4">
-                    <div class="text-3xl font-extrabold text-purple-950 dark:text-purple-100">42.8 h</div>
+                  <div onclick="showHeroStatDetail('hours_freed')" class="bg-white/80 dark:bg-[#1a162b]/80 backdrop-blur-sm border border-purple-200/60 dark:border-purple-800/40 rounded-xl p-4 cursor-pointer hover:border-purple-500 hover:shadow-lg transition transform hover:-translate-y-0.5 active:translate-y-0 group">
+                    <div class="flex items-center justify-between">
+                      <div class="text-3xl font-extrabold text-purple-950 dark:text-purple-100 group-hover:text-purple-600 transition">42.8 h</div>
+                      <i data-lucide="clock" class="w-4 h-4 text-purple-400 opacity-60 group-hover:opacity-100"></i>
+                    </div>
                     <div class="text-xs text-zinc-600 dark:text-purple-200/80 mt-1">freed up for you, estimated</div>
-                    <div class="mt-2 text-[10px] text-purple-600 dark:text-purple-400 font-medium">Thời gian chủ doanh nghiệp được giải phóng</div>
+                    <div class="mt-2 text-[10px] text-purple-600 dark:text-purple-400 font-medium flex items-center justify-between">
+                      <span>Thời gian giải phóng cho bạn</span>
+                      <span class="text-[9px] underline">Nhấn xem chi tiết ➔</span>
+                    </div>
                   </div>
 
-                  <div class="bg-white/80 dark:bg-[#1a162b]/80 backdrop-blur-sm border border-purple-200/60 dark:border-purple-800/40 rounded-xl p-4">
-                    <div class="text-3xl font-extrabold text-purple-950 dark:text-purple-100">567</div>
+                  <div onclick="showHeroStatDetail('night_answers')" class="bg-white/80 dark:bg-[#1a162b]/80 backdrop-blur-sm border border-purple-200/60 dark:border-purple-800/40 rounded-xl p-4 cursor-pointer hover:border-purple-500 hover:shadow-lg transition transform hover:-translate-y-0.5 active:translate-y-0 group">
+                    <div class="flex items-center justify-between">
+                      <div class="text-3xl font-extrabold text-purple-950 dark:text-purple-100 group-hover:text-amber-500 transition">567</div>
+                      <i data-lucide="moon" class="w-4 h-4 text-amber-500 opacity-80 group-hover:opacity-100"></i>
+                    </div>
                     <div class="text-xs text-zinc-600 dark:text-purple-200/80 mt-1">answers while you slept (11 pm to 7 am)</div>
-                    <div class="mt-2 text-[10px] text-amber-600 dark:text-amber-400 font-medium">🌙 Không bỏ lỡ bất kỳ khách hàng đêm nào</div>
+                    <div class="mt-2 text-[10px] text-amber-600 dark:text-amber-400 font-medium flex items-center justify-between">
+                      <span>🌙 Không bỏ lỡ khách ban đêm</span>
+                      <span class="text-[9px] underline">Nhấn xem chi tiết ➔</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Middle Stats Row: Customers served, Speed Tooltip, Hand replies, Waiting -->
+              <!-- Middle Stats Row: Customers served, Speed Tooltip, Hand replies, Waiting (Interactive) -->
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 
                 <!-- Customers served -->
-                <div class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4">
+                <div onclick="showMiddleStatDetail('customers')" class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4 cursor-pointer hover:border-emerald-500 hover:shadow-md transition">
                   <div class="text-xs text-zinc-500 flex items-center justify-between">
                     <span>Customers served</span>
                     <span class="text-[11px] font-semibold text-emerald-600">+20 new</span>
                   </div>
                   <div class="text-2xl font-bold text-zinc-900 dark:text-white mt-1">343</div>
-                  <div class="text-[10px] text-zinc-400 mt-1">Đã phục vụ trên mọi kênh</div>
+                  <div class="text-[10px] text-zinc-400 mt-1 flex items-center justify-between">
+                    <span>Đã phục vụ trên mọi kênh</span>
+                    <span class="text-emerald-600 font-bold">Chi tiết ➔</span>
+                  </div>
                 </div>
 
                 <!-- First Response Speed with Callout Badge (Đúng ảnh) -->
-                <div class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4 relative">
+                <div onclick="showMiddleStatDetail('speed')" class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4 relative cursor-pointer hover:border-purple-500 hover:shadow-md transition">
                   <div class="text-xs text-zinc-500">Tốc độ phản hồi đầu tiên</div>
                   <div class="flex items-center gap-2 mt-1">
                     <span class="text-2xl font-bold text-zinc-900 dark:text-white">32 s</span>
@@ -965,20 +986,26 @@
                 </div>
 
                 <!-- Hand replies -->
-                <div class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4">
+                <div onclick="showMiddleStatDetail('hand_replies')" class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4 cursor-pointer hover:border-orange-500 hover:shadow-md transition">
                   <div class="text-xs text-zinc-500 flex items-center justify-between">
                     <span>Hand replies</span>
                     <span class="text-[11px] font-semibold text-zinc-400">-12% vs trước</span>
                   </div>
                   <div class="text-2xl font-bold text-zinc-900 dark:text-white mt-1">683</div>
-                  <div class="text-[10px] text-zinc-400 mt-1">Tin nhắn người thật can thiệp</div>
+                  <div class="text-[10px] text-zinc-400 mt-1 flex items-center justify-between">
+                    <span>Tin người thật can thiệp</span>
+                    <span class="text-orange-600 font-bold">Chi tiết ➔</span>
+                  </div>
                 </div>
 
                 <!-- Waiting for you -->
-                <div class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4">
+                <div onclick="showMiddleStatDetail('waiting')" class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4 cursor-pointer hover:border-emerald-500 hover:shadow-md transition">
                   <div class="text-xs text-zinc-500">Waiting for you</div>
                   <div class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">0</div>
-                  <div class="text-[10px] text-zinc-400 mt-1">Trạng thái Zero Inbox hoàn hảo</div>
+                  <div class="text-[10px] text-zinc-400 mt-1 flex items-center justify-between">
+                    <span>Zero Inbox hoàn hảo</span>
+                    <span class="text-emerald-600 font-bold">Kiểm tra ➔</span>
+                  </div>
                 </div>
               </div>
 
@@ -1190,40 +1217,80 @@
             </div>
           </div>
 
-          <!-- ================= 3 CỘT GIÁ TRỊ THEN CHỐT Ở DƯỚI (CHUẨN 100% ẢNH 1-2-3) ================= -->
+          <!-- ================= 3 CỘT GIÁ TRỊ THEN CHỐT Ở DƯỚI (CHUẨN 100% ẢNH 1-2-3 - INTERACTIVE) ================= -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
             
             <!-- Card 1 -->
-            <div class="bg-white dark:bg-[#161722] border border-bordercol dark:border-[#2a2c3f] rounded-2xl p-6 shadow-sm hover:shadow-md transition space-y-3">
-              <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 font-extrabold text-sm flex items-center justify-center border border-orange-200 dark:border-orange-900/50">
-                1
+            <div onclick="showPillarDetail(1)" class="bg-white dark:bg-[#161722] border border-bordercol dark:border-[#2a2c3f] rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-orange-500 transition-all cursor-pointer transform hover:-translate-y-1 space-y-3 group">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 font-extrabold text-sm flex items-center justify-center border border-orange-200 dark:border-orange-900/50 group-hover:scale-110 transition">
+                  1
+                </div>
+                <span class="text-[10px] text-orange-600 font-bold uppercase tracking-wider group-hover:underline">Mở Hộp Thư ➔</span>
               </div>
-              <h3 class="text-base font-bold text-zinc-900 dark:text-white">Một hộp thư, mọi kênh</h3>
+              <h3 class="text-base font-bold text-zinc-900 dark:text-white group-hover:text-orange-600 transition">Một hộp thư, mọi kênh</h3>
               <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                 Tin nhắn từ từng tài khoản đã kết nối đổ về một chỗ, kèm câu AI trả lời xong với cái gì.
               </p>
             </div>
 
             <!-- Card 2 -->
-            <div class="bg-white dark:bg-[#161722] border border-bordercol dark:border-[#2a2c3f] rounded-2xl p-6 shadow-sm hover:shadow-md transition space-y-3">
-              <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 font-extrabold text-sm flex items-center justify-center border border-orange-200 dark:border-orange-900/50">
-                2
+            <div onclick="showPillarDetail(2)" class="bg-white dark:bg-[#161722] border border-bordercol dark:border-[#2a2c3f] rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-orange-500 transition-all cursor-pointer transform hover:-translate-y-1 space-y-3 group">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 font-extrabold text-sm flex items-center justify-center border border-orange-200 dark:border-orange-900/50 group-hover:scale-110 transition">
+                  2
+                </div>
+                <span class="text-[10px] text-orange-600 font-bold uppercase tracking-wider group-hover:underline">Xem Guardrails ➔</span>
               </div>
-              <h3 class="text-base font-bold text-zinc-900 dark:text-white">Bạn vẫn nắm quyền</h3>
+              <h3 class="text-base font-bold text-zinc-900 dark:text-white group-hover:text-orange-600 transition">Bạn vẫn nắm quyền</h3>
               <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                 Đặt giới hạn bot được làm gì, xem những cuộc bot chọn im lặng, và tiếp quản cuộc trò chuyện bất cứ lúc nào.
               </p>
             </div>
 
             <!-- Card 3 -->
-            <div class="bg-white dark:bg-[#161722] border border-bordercol dark:border-[#2a2c3f] rounded-2xl p-6 shadow-sm hover:shadow-md transition space-y-3">
-              <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 font-extrabold text-sm flex items-center justify-center border border-orange-200 dark:border-orange-900/50">
-                3
+            <div onclick="showPillarDetail(3)" class="bg-white dark:bg-[#161722] border border-bordercol dark:border-[#2a2c3f] rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-orange-500 transition-all cursor-pointer transform hover:-translate-y-1 space-y-3 group">
+              <div class="flex items-center justify-between">
+                <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 font-extrabold text-sm flex items-center justify-center border border-orange-200 dark:border-orange-900/50 group-hover:scale-110 transition">
+                  3
+                </div>
+                <span class="text-[10px] text-orange-600 font-bold uppercase tracking-wider group-hover:underline">Xem Thống Kê ➔</span>
               </div>
-              <h3 class="text-base font-bold text-zinc-900 dark:text-white">Con số cho thấy giá trị</h3>
+              <h3 class="text-base font-bold text-zinc-900 dark:text-white group-hover:text-orange-600 transition">Con số cho thấy giá trị</h3>
               <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                 Xem AI đã trả lời bao nhiêu tin, trả lời nhanh cỡ nào và bao nhiêu tin đến ngoài giờ làm việc.
               </p>
+            </div>
+          </div>
+
+          <!-- Chatbot Info / Detail Modal (Hiển thị thông tin chi tiết khi bấm vào bất kỳ ô nào) -->
+          <div id="cbInfoModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-200">
+              <div class="flex items-start justify-between border-b border-bordercol/60 dark:border-[#2f3248] pb-3">
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <h3 id="cbModalTitle" class="text-base font-bold text-zinc-900 dark:text-white">Chi Tiết Chỉ Số</h3>
+                    <span id="cbModalBadge" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-orange-100 text-orange-600 dark:bg-orange-950 dark:text-orange-400">Javis AI</span>
+                  </div>
+                  <p id="cbModalSubtitle" class="text-xs text-zinc-500">Thông tin phân tích chi tiết từ Javis OS Cockpit.</p>
+                </div>
+                <button onclick="closeChatbotDetailModal()" class="p-1 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200">
+                  <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+              </div>
+
+              <div id="cbModalBody" class="text-xs text-zinc-600 dark:text-zinc-300 space-y-3 leading-relaxed">
+                <!-- Nội dung được bơm bằng JavaScript -->
+              </div>
+
+              <div class="flex items-center justify-end gap-2 pt-3 border-t border-bordercol/60 dark:border-[#2f3248]">
+                <button onclick="closeChatbotDetailModal()" class="px-3 py-1.5 rounded-lg border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800">
+                  Đóng
+                </button>
+                <button id="cbModalActionBtn" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition shadow-sm">
+                  Khám phá thêm
+                </button>
+              </div>
             </div>
           </div>
 
@@ -4546,10 +4613,7 @@
       selectPartner(partner.id);
     }
 
-
-    }
-
-        // CAPABILITIES: OMNICHANNEL CHATBOT & SLEEP COCKPIT (CHUẨN ẢNH)
+    // CAPABILITIES: OMNICHANNEL CHATBOT & SLEEP COCKPIT (CHUẨN ẢNH)
     let currentChatbotStatsData = null;
     let allOmniConversations = [];
     let allOmniChannels = [];
@@ -4760,6 +4824,232 @@
       if (currentChatbotStatsData) {
         navigator.clipboard.writeText(JSON.stringify(currentChatbotStatsData, null, 2));
         alert("Đã sao chép Live JSON vào clipboard!");
+      }
+    }
+
+    // MODAL CHI TIẾT TƯƠNG TÁC CHO MỌI Ô TRÊN MÀN HÌNH CHATBOT
+    function openChatbotDetailModal(title, subtitle, badge, contentHtml, actionBtnText, actionCallback) {
+      const modal = document.getElementById('cbInfoModal');
+      if (!modal) return;
+      document.getElementById('cbModalTitle').innerText = title;
+      document.getElementById('cbModalSubtitle').innerText = subtitle;
+      document.getElementById('cbModalBadge').innerText = badge;
+      document.getElementById('cbModalBody').innerHTML = contentHtml;
+      
+      const btn = document.getElementById('cbModalActionBtn');
+      if (actionBtnText) {
+        btn.innerText = actionBtnText;
+        btn.classList.remove('hidden');
+        btn.onclick = () => {
+          closeChatbotDetailModal();
+          if (actionCallback) actionCallback();
+        };
+      } else {
+        btn.classList.add('hidden');
+      }
+
+      modal.classList.remove('hidden');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeChatbotDetailModal() {
+      const modal = document.getElementById('cbInfoModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // Xử lý khi nhấn vào 3 ô Hero Metric Cards
+    function showHeroStatDetail(type) {
+      if (type === 'ai_rate') {
+        openChatbotDetailModal(
+          "Tỷ Lệ Tự Động Hóa 79% (2.569 / 3.252 Tin)",
+          "Đo lường năng lực giải quyết câu hỏi khách hàng độc lập của AI.",
+          "79% Auto-Resolution",
+          `
+            <div class="space-y-3">
+              <div class="p-3 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900/50">
+                <span class="font-bold text-purple-900 dark:text-purple-200 block text-xs mb-1">💡 Cơ cấu các câu hỏi AI đã xử lý:</span>
+                <ul class="list-disc list-inside space-y-1 text-zinc-700 dark:text-zinc-300">
+                  <li><strong>1.156 tin (45%):</strong> Tra cứu báo giá, gói Setup Second Brain và tài liệu đào tạo từ Wiki.</li>
+                  <li><strong>822 tin (32%):</strong> Hỏi quy trình tích hợp API, tính năng Javis OS và bảo mật On-Premise.</li>
+                  <li><strong>591 tin (23%):</strong> Hẹn lịch tư vấn 1-1 và gửi tài liệu hướng dẫn qua email/Zalo.</li>
+                </ul>
+              </div>
+              <p>21% còn lại (683 tin nhắn) được AI chủ động chuyển giao cho bạn tiếp quản do liên quan tới đàm phán hợp đồng đặc biệt hoặc yêu cầu kỹ thuật chuyên sâu.</p>
+            </div>
+          `,
+          "Xem Các Cuộc Hội Thoại",
+          () => switchChatbotSubTab('conversations')
+        );
+      } else if (type === 'hours_freed') {
+        openChatbotDetailModal(
+          "Giải Phóng 42.8 Giờ Làm Việc Cho Bạn",
+          "Ước tính giá trị kinh tế trực tiếp mà Javis OS mang lại.",
+          "Tiết kiệm: 42.8 Giờ",
+          `
+            <div class="space-y-3">
+              <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50">
+                <span class="font-bold text-emerald-900 dark:text-emerald-200 block text-xs mb-1">⏱️ Cách tính thời gian tiết kiệm:</span>
+                <p>Mỗi câu trả lời thủ công tốn trung bình <strong>1 phút</strong> (đọc tin nhắn, tra cứu thông tin trong Second Brain, gõ câu trả lời và định dạng).</p>
+                <p class="mt-2 font-mono font-bold text-emerald-700 dark:text-emerald-300">2.569 câu trả lời = 2.569 phút ≈ 42.8 giờ làm việc!</p>
+              </div>
+              <p>Con số này tương đương hơn <strong>5.3 ngày làm việc hành chính (8 tiếng/ngày)</strong> hoàn toàn được giải phóng để bạn tập trung làm chiến lược, sản phẩm và chốt khách VIP.</p>
+            </div>
+          `,
+          "Xem Thống Kê Chi Tiết",
+          () => switchChatbotSubTab('stats')
+        );
+      } else if (type === 'night_answers') {
+        openChatbotDetailModal(
+          "567 Tin Nhắn Được Trả Lời Khi Bạn Ngủ (23h - 07h)",
+          "Bảo đảm 100% khách hàng ban đêm không bị bỏ rơi.",
+          "🌙 24/7 Túc Trực",
+          `
+            <div class="space-y-3">
+              <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/50">
+                <span class="font-bold text-amber-900 dark:text-amber-200 block text-xs mb-1">🌙 Giá trị khi bạn ngủ:</span>
+                <p>Khách hàng tìm hiểu sản phẩm lúc nửa đêm hoặc sáng sớm thường là những người có nhu cầu cấp bách. Nếu chờ đến 8:00 sáng hôm sau mới trả lời, <strong>73% khách hàng sẽ sang đối thủ</strong>.</p>
+                <p class="mt-2 font-semibold">Javis OS trả lời ngay sau 32 giây, giữ chân khách và ghi nhận thông tin đầy đủ vào Second Brain!</p>
+              </div>
+              <p>Khung giờ có lượng tin nhắn đêm cao nhất là từ <strong>23:00 - 01:00</strong> và <strong>05:30 - 07:00</strong> sáng.</p>
+            </div>
+          `,
+          "Xem Tin Nhắn Ban Đêm",
+          () => {
+            switchChatbotSubTab('conversations');
+          }
+        );
+      }
+    }
+
+    // Xử lý khi nhấn vào các ô Middle Stats
+    function showMiddleStatDetail(type) {
+      if (type === 'customers') {
+        openChatbotDetailModal(
+          "343 Khách Hàng Được Phục Vụ (+20 Khách Mới)",
+          "Tổng lượng khách hàng tương tác qua tất cả 9 kênh kết nối.",
+          "343 Khách Hàng",
+          `
+            <div class="space-y-2">
+              <p>Các nhóm đối tượng khách hàng trong tuần qua:</p>
+              <ul class="list-disc list-inside space-y-1">
+                <li><strong>210 Doanh nghiệp vừa và nhỏ:</strong> Cần triển khai Second Brain quản trị & AI nội bộ.</li>
+                <li><strong>85 Solopreneur / Chuyên gia:</strong> Đăng ký học quy trình tự động hóa cá nhân.</li>
+                <li><strong>48 Cá nhân:</strong> Tìm hiểu tài liệu Wiki và template Obsidian PARA.</li>
+              </ul>
+              <div class="p-2.5 rounded bg-zinc-100 dark:bg-[#1a1c27] text-zinc-500 font-mono text-[11px] mt-2">
+                Tỷ lệ quay lại tương tác nhiều lần: 46.2%
+              </div>
+            </div>
+          `,
+          "Xem Hộp Thư Hội Thoại",
+          () => switchChatbotSubTab('conversations')
+        );
+      } else if (type === 'speed') {
+        openChatbotDetailModal(
+          "Tốc Độ Phản Hồi: AI 32 Giây vs Người Thật 4 Phút",
+          "So sánh thời gian chờ đợi phản hồi đầu tiên của khách hàng.",
+          "Nhanh gấp 8 lần",
+          `
+            <div class="space-y-3">
+              <div class="p-3 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900/50">
+                <span class="font-bold text-purple-900 dark:text-purple-200 block text-xs mb-1">⚡ Tốc độ mang lại tỷ lệ chốt cao hơn:</span>
+                <p>Khách hàng nhận được câu trả lời chỉ sau <strong>32 giây</strong> có mức độ hài lòng cao hơn 85% so với việc phải chờ 4 phút khi người trực trả lời thủ công.</p>
+              </div>
+              <p>Hệ thống tự động tra cứu dữ liệu từ Obsidian Vault để câu trả lời luôn chuẩn xác và không bị bịa đặt (hallucination).</p>
+            </div>
+          `,
+          "Cấu Hình Tốc Độ AI",
+          () => switchChatbotSubTab('settings')
+        );
+      } else if (type === 'hand_replies') {
+        openChatbotDetailModal(
+          "683 Tin Nhắn Can Thiệp Bằng Tay (Human-in-the-loop)",
+          "Bảo đảm an toàn tuyệt đối với triết lý 'Bạn vẫn nắm quyền'.",
+          "683 Hand Replies",
+          `
+            <div class="space-y-3">
+              <p>Khi khách hàng hỏi về các chủ đề nhạy cảm như:</p>
+              <ul class="list-disc list-inside space-y-1 text-zinc-700 dark:text-zinc-300">
+                <li>Báo giá riêng biệt hoặc chiết khấu số lượng lớn</li>
+                <li>Hợp đồng thương mại & xuất hóa đơn VAT</li>
+                <li>Khiếu nại kỹ thuật cần kỹ sư kiểm tra</li>
+              </ul>
+              <p>AI sẽ tự động <strong>chọn im lặng</strong> và đẩy thông báo về app cho bạn tiếp quản với nút bấm 1-click!</p>
+            </div>
+          `,
+          "Xem Cuộc Trò Chuyện Cần Can Thiệp",
+          () => switchChatbotSubTab('conversations')
+        );
+      } else if (type === 'waiting') {
+        openChatbotDetailModal(
+          "Waiting For You: 0 (Zero Inbox Hoàn Hảo)",
+          "Toàn bộ tin nhắn đến đều đã được phản hồi hoặc giải quyết.",
+          "Zero Inbox: 0",
+          `
+            <div class="space-y-3">
+              <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50">
+                <span class="font-bold text-emerald-900 dark:text-emerald-200 block text-xs mb-1">✅ Tuyệt vời! Hiện không có khách nào đang phải chờ.</span>
+                <p>Mọi thắc mắc mới nhất đều đã được AI tiếp đón và xử lý ngay lập tức.</p>
+              </div>
+              <p>Bạn hoàn toàn yên tâm làm việc chuyên môn hoặc nghỉ ngơi mà không lo tin nhắn khách hàng bị trôi.</p>
+            </div>
+          `,
+          "Mở Hộp Thư",
+          () => switchChatbotSubTab('conversations')
+        );
+      }
+    }
+
+    // Xử lý khi nhấn vào 1 trong 9 Channel Badges
+    function showChannelInfoModal(chName) {
+      const ch = allOmniChannels.find(c => c.name.toLowerCase().includes(chName.toLowerCase()) || chName.toLowerCase().includes(c.name.toLowerCase()));
+      const msgCount = ch ? ch.messages : 150;
+      openChatbotDetailModal(
+        `Kênh Kết Nối: ${chName}`,
+        `Trạng thái đồng bộ tin nhắn qua kênh ${chName}.`,
+        "Đang Hoạt Động (24/7)",
+        `
+          <div class="space-y-3">
+            <div class="p-3 rounded-xl bg-zinc-100 dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248]">
+              <div class="flex justify-between text-xs mb-1">
+                <span>Số tin nhắn đã đồng bộ:</span>
+                <span class="font-bold text-orange-600 font-mono">${msgCount} tin</span>
+              </div>
+              <div class="flex justify-between text-xs mb-1">
+                <span>Trạng thái AI tự động:</span>
+                <span class="font-bold text-emerald-600">Đang Bật (Auto-Reply)</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span>Webhook sync:</span>
+                <span class="text-zinc-500 font-mono">https://api.javis.os/webhook/${chName.toLowerCase()}</span>
+              </div>
+            </div>
+            <p>Mọi tin nhắn từ tài khoản <strong>${chName}</strong> này đều được đưa về Hộp thư hợp nhất và phản hồi chuẩn hóa theo Second Brain.</p>
+          </div>
+        `,
+        "Lọc Tin Nhắn Kênh Này",
+        () => {
+          switchChatbotSubTab('conversations');
+          const sel = document.getElementById('convChannelFilter');
+          if (sel) {
+            sel.value = chName;
+            filterConversationsByChannel(chName);
+          }
+        }
+      );
+    }
+
+    // Xử lý khi nhấn vào 3 Cột Giá Trị Cốt Lõi (1 - 2 - 3)
+    function showPillarDetail(pillarNum) {
+      if (pillarNum === 1) {
+        switchChatbotSubTab('conversations');
+        showToast("📥 Đã chuyển sang Hộp Thư Hợp Nhất (Tất cả kênh đổ về một nơi)!");
+      } else if (pillarNum === 2) {
+        switchChatbotSubTab('settings');
+        showToast("🛡️ Đã mở Cài Đặt Guardrails (Quy tắc Bot im lặng & Tiếp quản)!");
+      } else if (pillarNum === 3) {
+        switchChatbotSubTab('stats');
+        showToast("📊 Đã mở Thống Kê & Báo Cáo ROI Giờ Ngủ!");
       }
     }
 
@@ -5766,8 +6056,7 @@ Trưởng nhóm đã sẵn sàng nhận lệnh.`);
       URL.revokeObjectURL(url);
 
       closeExportTeamModal();
-      alert("✅ Đã xuất gói phòng tác chiến 'growth.team.javis.zip' thành công!
-Bạn có thể mang sang máy chủ khác, mở bằng bất kỳ bộ giải nén nào. Khóa API và lịch sử chat đã được loại bỏ an toàn.");
+      alert("✅ Đã xuất gói phòng tác chiến growth.team.javis.zip thành công! Bạn có thể mang sang máy chủ khác. Khóa API và lịch sử chat đã được loại bỏ an toàn.");
     }
 
     // KHỞI ĐỘNG HỆ THỐNG

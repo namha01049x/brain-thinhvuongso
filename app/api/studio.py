@@ -173,11 +173,7 @@ PARTNERS_LIST = [
         "skills": ["30 kĩ năng xuất sắc", "Campaign Orchestrator", "Content Quality Gate", "Funnel Review"],
         "sample_chat": [
             {"role": "user", "text": "30 bước review chiến dịch marketing Q4"},
-            {"role": "agent", "text": "Đã nhận lệnh từ Sếp. Tôi đang kích hoạt quy trình **30 bước review chiến dịch Q4**:
-1. Thu thập dữ liệu ROI/ROAS từ Duy (Market Research) và Bao (Conversion).
-2. Đối chiếu mục tiêu doanh thu và ngân sách ads thực tế.
-3. Rà soát chất lượng nội dung và thông điệp qua Tough Reviser.
-4. Đề xuất 3 đòn bẩy tối ưu hóa chuyển đổi ngay trong tuần này."}
+            {"role": "agent", "text": "Đã nhận lệnh từ Sếp. Tôi đang kích hoạt quy trình 30 bước review chiến dịch Q4: 1. Thu thập dữ liệu ROI/ROAS từ Duy và Bao. 2. Đối chiếu mục tiêu doanh thu. 3. Rà soát chất lượng qua Tough Reviser. 4. Đề xuất 3 đòn bẩy tối ưu hóa."}
         ]
     },
     {
@@ -269,10 +265,7 @@ PARTNERS_LIST = [
         "skills": ["Email Sequence Engine", "Subject Line Scorer", "Unsubscribe Shield"],
         "sample_chat": [
             {"role": "user", "text": "Tạo kịch bản email chào mừng 3 ngày đầu cho học viên mới"},
-            {"role": "agent", "text": "Dạ, tôi đã soạn xong chuỗi 3 email chào mừng:
-- Email 1 (Ngay sau đăng ký): Trao quyền truy cập & bản đồ kho báu Second Brain.
-- Email 2 (Ngày 2): Hướng dẫn kích hoạt cộng sự AI đầu tiên trong 5 phút.
-- Email 3 (Ngày 3): Thử thách thực chiến và kết nối nhóm hỗ trợ VIP."}
+            {"role": "agent", "text": "Dạ, tôi đã soạn xong chuỗi 3 email chào mừng: 1. Quyền truy cập Second Brain, 2. Kích hoạt cộng sự AI đầu tiên, 3. Thử thách thực chiến & hỗ trợ VIP."}
         ]
     },
     {
@@ -295,10 +288,7 @@ PARTNERS_LIST = [
         "skills": ["Value Ladder Design", "Offer Crafting", "Conversion Architecture"],
         "sample_chat": [
             {"role": "user", "text": "Đề xuất cấu trúc phễu bán hàng cho khóa đào tạo AI Operating System"},
-            {"role": "agent", "text": "Tôi đề xuất phễu 3 nấc:
-1. Nấc Mồi (Lead Magnet): Template Second Brain Obsidian miễn phí + Video kích hoạt 15 phút.
-2. Nấc Chuyển đổi (Tripwire): Bộ 10 Agent Prompt & Skill Pack giá 199k.
-3. Nấc Lõi (Core Offer): Chương trình Coaching Thực chiến Cockpit JAVIS OS."}
+            {"role": "agent", "text": "Tôi đề xuất phễu 3 nấc: 1. Nấc Mồi: Template Second Brain Obsidian, 2. Nấc Chuyển đổi: Bộ 10 Agent Prompt 199k, 3. Nấc Lõi: Coaching Thực chiến Cockpit JAVIS OS."}
         ]
     }
 ]
@@ -812,8 +802,8 @@ def partner_chat(payload: PartnerChatPayload):
     
     partner["sample_chat"].append({"role": "user", "text": payload.message})
     
-    reply = f"[{p_name} - Model: {used_model} | Kỹ năng: {used_skill}]\n\nĐã tiếp nhận yêu cầu: \"{payload.message}\".\n\nTôi đã truy xuất các tài liệu liên kết trong Second Brain ({', '.join(partner.get('assistant_documents', ['Toàn bộ Wiki']))}). Kế hoạch hành động cụ thể đã được ghi nhận vào hàng đợi nhiệm vụ và đang được triển khai tối ưu theo đúng vai trò: {p_role}."
-    
+    docs_list = ", ".join(partner.get("assistant_documents", ["Toàn bộ Wiki"]))
+    reply = f"[{p_name}] Model: {used_model} | Kỹ năng: {used_skill} \n\nĐã tiếp nhận: {payload.message} \n\nĐã kết nối tài liệu: {docs_list}. Vai trò: {p_role}."
     partner["sample_chat"].append({"role": "agent", "text": reply})
     return {
         "status": "success",
