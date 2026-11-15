@@ -23,6 +23,32 @@ def get_messages(session_id: str):
     conn.close()
     return {"messages": messages}
 
+@router.post("/api/chat/send")
+async def send_chat_message_http(payload: dict):
+    prompt = payload.get("prompt", "").strip()
+    session_id = payload.get("session_id") or str(uuid.uuid4())[:8]
+    provider = payload.get("provider", "claude-code")
+    if not prompt:
+        return {"error": "Prompt cannot be empty"}
+
+    conn = get_db()
+    with conn:
+        cursor = conn.execute("SELECT id FROM sessions WHERE id = ?", (session_id,))
+        if not cursor.fetchone():
+            now = time.time()
+            title = prompt[:30] + ("..." if len(prompt) > 30 else "")
+            conn.execute("INSERT INTO sessions (id, title, created_at, updated_at) VALUES (?, ?, ?, ?)",
+                         (session_id, title, now, now))
+        else:
+            conn.execute("UPDATE sessions SET updated_at = ? WHERE id = ?", (time.time(), session_id))
+    conn.close()
+
+    chunks = []
+    async for chunk in stream_chat_turn(session_id, prompt, provider):
+        chunks.append(chunk)
+
+    return {"session_id": session_id, "chunks": chunks}
+
 @router.websocket("/ws")
 @router.websocket("/api/chat/ws")
 async def websocket_chat_endpoint(websocket: WebSocket):

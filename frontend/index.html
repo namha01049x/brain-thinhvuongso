@@ -2,7 +2,7 @@
 <html lang="vi" class="h-full">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>JAVIS OS · Cockpit Điều Hành & Second Brain</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ea580c'><circle cx='12' cy='12' r='10'/></svg>">
   
@@ -38,6 +38,35 @@
   </script>
 
   <style>
+    /* Mobile Safe Area, Touch Ergonomics & International Standards */
+    :root {
+      --sat: env(safe-area-inset-top, 0px);
+      --sab: env(safe-area-inset-bottom, 0px);
+      --sal: env(safe-area-inset-left, 0px);
+      --sar: env(safe-area-inset-right, 0px);
+    }
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+      .pb-safe {
+        padding-bottom: calc(env(safe-area-inset-bottom) + 0.5rem);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top);
+      }
+    }
+    html, body {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    @media (max-width: 767px) {
+      input, textarea, select {
+        font-size: 16px !important; /* Prevents unwanted auto-zoom on iOS Safari */
+      }
+    }
+    /* Smooth drawer transition */
+    #mainSidebar {
+      will-change: transform;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: #fbfaf8;
@@ -107,8 +136,13 @@
 
   <!-- TOP HEADER BAR (CHUẨN ẢNH 1, 2, 3) -->
   <header class="h-12 bg-white dark:bg-[#181a24] border-b border-bordercol dark:border-[#26283b] px-3 flex items-center justify-between z-30 shrink-0">
-    <!-- Left: Logo & Vault Selector -->
-    <div class="flex items-center gap-3">
+    <!-- Left: Hamburger (Mobile) + Logo & Vault Selector -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <!-- Mobile Drawer Hamburger Toggle Button -->
+      <button onclick="toggleMobileSidebar()" class="lg:hidden p-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-200 focus:outline-none transition-colors" aria-label="Mở menu điều hướng">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+
       <div class="flex items-center gap-2 cursor-pointer" onclick="navigateTo('brain-neural')">
         <div class="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -121,19 +155,18 @@
 
       <div class="h-4 w-px bg-zinc-200 dark:bg-zinc-700"></div>
 
-      <!-- Vault Selector Dropdown -->
-      <div onclick="navigateTo('brain-files')" class="flex items-center gap-1.5 px-2 py-0.5 bg-zinc-100 dark:bg-[#202230] hover:bg-zinc-200/80 rounded cursor-pointer transition text-xs font-medium text-zinc-700 dark:text-zinc-200">
-        <i data-lucide="book-open" class="w-3.5 h-3.5 text-zinc-500"></i>
-        <span id="headerVaultName">Minh Quy's Brain 3120</span>
-        <i data-lucide="chevron-down" class="w-3 h-3 text-zinc-400"></i>
-        <span class="text-zinc-400">·</span>
-        <span id="headerStats" class="text-zinc-500 text-[11px]">1918 notes · 2548 links</span>
+      <!-- Vault Selector Dropdown (Responsive) -->
+      <div onclick="navigateTo('brain-files')" class="flex items-center gap-1.5 px-2 py-0.5 bg-zinc-100 dark:bg-[#202230] hover:bg-zinc-200/80 rounded cursor-pointer transition text-xs font-medium text-zinc-700 dark:text-zinc-200 max-w-[150px] sm:max-w-none truncate">
+        <i data-lucide="book-open" class="w-3.5 h-3.5 text-zinc-500 shrink-0"></i>
+        <span id="headerVaultName" class="truncate">Minh Quy's Brain</span>
+        <i data-lucide="chevron-down" class="w-3 h-3 text-zinc-400 shrink-0"></i>
+        <span class="text-zinc-400 hidden sm:inline">·</span>
+        <span id="headerStats" class="text-zinc-500 text-[11px] hidden sm:inline">1918 notes · 2548 links</span>
       </div>
     </div>
 
-    <!-- Center: 3 TOP SPACES (CHUẨN TOP PILL: Việc | Second Brain | Kỹ năng) -->
-    <!-- Center: 4 TOP SPACES (Việc | Second Brain | Kỹ năng | Doanh nghiệp) -->
-    <div class="flex items-center bg-[#f0ede6] dark:bg-[#202230] p-1 rounded-full border border-bordercol dark:border-[#2d3044] text-xs font-semibold shadow-inner">
+    <!-- Center: TOP SPACES (Ẩn trên Mobile/Tablet < lg để tránh tràn layout, hiển thị trên Bottom Nav) -->
+    <div class="hidden lg:flex items-center bg-[#f0ede6] dark:bg-[#202230] p-1 rounded-full border border-bordercol dark:border-[#2d3044] text-xs font-semibold shadow-inner">
       <button onclick="switchSpace('tasks')" id="space-tasks" class="space-btn px-3 py-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
         <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
         <span data-i18n="top_tasks">Việc</span>
@@ -162,11 +195,11 @@
       </button>
     </div>
 
-    <!-- Right Controls: Notifications, Dark mode, History -->
-    <div class="flex items-center gap-2">
-      <button onclick="openNotificationModal()" class="flex items-center gap-1 px-2.5 py-1 rounded-md bg-orange-50 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-800 text-xs font-medium hover:bg-orange-100 transition">
+    <!-- Right Controls: Notifications, Dark mode, History (Mobile Responsive) -->
+    <div class="flex items-center gap-1.5 sm:gap-2">
+      <button onclick="openNotificationModal()" class="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-md bg-orange-50 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-800 text-xs font-medium hover:bg-orange-100 transition" title="Thông báo">
         <i data-lucide="bell" class="w-3.5 h-3.5"></i>
-        <span data-i18n="notifications">Notifications</span>
+        <span class="hidden sm:inline" data-i18n="notifications">Notifications</span>
         <span class="w-4 h-4 rounded-full bg-orange-600 text-white text-[10px] flex items-center justify-center font-bold">1</span>
       </button>
 
@@ -174,13 +207,13 @@
         <i data-lucide="sun" id="themeIcon" class="w-4 h-4"></i>
       </button>
 
-      <button onclick="location.reload()" class="p-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition" title="Tải lại">
+      <button onclick="location.reload()" class="hidden sm:inline-flex p-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition" title="Tải lại">
         <i data-lucide="refresh-cw" class="w-4 h-4"></i>
       </button>
 
-      <button onclick="openOwnershipHistoryModal()" class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition flex items-center gap-1">
+      <button onclick="openOwnershipHistoryModal()" class="px-2 sm:px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition flex items-center gap-1" title="Lịch sử sở hữu">
         <i data-lucide="history" class="w-3.5 h-3.5"></i>
-        <span data-i18n="history">History</span>
+        <span class="hidden sm:inline" data-i18n="history">History</span>
       </button>
     </div>
   </header>
@@ -188,20 +221,29 @@
   <!-- MAIN APP CONTAINER -->
   <div class="flex-1 flex overflow-hidden relative">
 
+    <!-- Mobile Drawer Backdrop Overlay -->
+    <div id="sidebarBackdrop" onclick="closeMobileSidebar()" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-40 hidden lg:hidden transition-opacity duration-300"></div>
+
     <!-- ========================================================================= -->
-    <!-- LEFT EXPANDED NAVIGATION SIDEBAR (CHUẨN 100% THANH MENU ẢNH 4, 1, 2, 3)     -->
+    <!-- NAVIGATION SIDEBAR (Desktop: side-by-side | Mobile/Tablet: slide drawer) -->
     <!-- ========================================================================= -->
-    <aside id="mainSidebar" class="w-56 bg-[#f9f8f4] dark:bg-[#161722] border-r border-bordercol dark:border-[#26283b] flex flex-col justify-between shrink-0 z-20 transition-all duration-200 text-xs select-none">
+    <aside id="mainSidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-72 sm:w-80 lg:w-56 bg-[#f9f8f4] dark:bg-[#161722] border-r border-bordercol dark:border-[#26283b] flex flex-col justify-between shrink-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out text-xs select-none shadow-2xl lg:shadow-none">
       
       <!-- Top Section: Logo Header & Menu Tree -->
       <div class="flex-1 flex flex-col overflow-y-auto custom-scrollbar">
         
-        <!-- Sidebar Brand Header (Ảnh 4) -->
-        <div class="h-12 px-3.5 border-b border-bordercol dark:border-[#26283b] flex items-center gap-2.5 shrink-0 bg-[#f4f2ea]/70 dark:bg-[#13141c]">
-          <div class="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <!-- Sidebar Brand Header (Ảnh 4) + Nút đóng Drawer Mobile -->
+        <div class="h-12 px-3.5 border-b border-bordercol dark:border-[#26283b] flex items-center justify-between shrink-0 bg-[#f4f2ea]/70 dark:bg-[#13141c]">
+          <div class="flex items-center gap-2.5">
+            <div class="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <span class="font-extrabold tracking-wider text-xs text-zinc-900 dark:text-white uppercase font-mono">JAVIS OS</span>
           </div>
-          <span class="font-extrabold tracking-wider text-xs text-zinc-900 dark:text-white uppercase font-mono">JAVIS OS</span>
+          <!-- Close button for Mobile/Tablet drawer -->
+          <button onclick="closeMobileSidebar()" class="lg:hidden p-1.5 rounded-lg text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200/60 dark:hover:bg-zinc-800 transition" aria-label="Đóng menu">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
         </div>
 
         <!-- Navigation Menu Items (Chuẩn Ảnh 4) -->
@@ -385,7 +427,7 @@
       <!-- ======================================================================= -->
       <!-- VIEW 1: DEDICATED CHAT VIEW                                             -->
       <!-- ======================================================================= -->
-      <section id="view-chat" class="flex-1 flex w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] hidden">
+      <section id="view-chat" class="flex-1 flex w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] hidden pb-20 lg:pb-6">
         <div class="max-w-4xl w-full mx-auto flex flex-col h-full p-4">
           <!-- Chat Header Bar -->
           <div class="flex items-center justify-between pb-3 border-b border-bordercol dark:border-[#26283b] shrink-0">
@@ -451,11 +493,30 @@
       </section>
 
       <!-- ======================================================================= -->
-      <!-- VIEW 2: BRAIN -> NEURALNETWORK (CHUẨN ẢNH 2 - 3 CỘT ĐỒNG THỜI)           -->
+      <!-- VIEW 2: BRAIN -> NEURALNETWORK (3 CỘT TRÊN DESKTOP, TAB CHUYỂN ĐỔI TRÊN MOBILE) -->
       <!-- ======================================================================= -->
-      <section id="view-brain-neural" class="flex-1 flex w-full h-full">
+      <section id="view-brain-neural" class="flex-1 flex flex-col w-full h-full pb-16 lg:pb-0">
+        <!-- Mobile/Tablet Segmented Switcher for 3 Columns (lg:hidden) -->
+        <div class="lg:hidden flex items-center justify-center p-2 bg-[#f4f2ea] dark:bg-[#181a24] border-b border-bordercol dark:border-[#26283b] gap-2 shrink-0 z-10">
+          <div class="inline-flex items-center bg-[#eae6dc] dark:bg-[#202230] p-1 rounded-xl text-xs font-semibold w-full max-w-sm justify-around shadow-inner">
+            <button onclick="switchNeuralMobileTab('graph')" id="neuralTab-graph" class="px-3 py-1.5 rounded-lg bg-white dark:bg-orange-600 text-orange-600 dark:text-white font-bold shadow-xs transition flex items-center gap-1">
+              <i data-lucide="network" class="w-3.5 h-3.5"></i>
+              <span>3D Brain</span>
+            </button>
+            <button onclick="switchNeuralMobileTab('chat')" id="neuralTab-chat" class="px-3 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1">
+              <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+              <span>Hội thoại</span>
+            </button>
+            <button onclick="switchNeuralMobileTab('vault')" id="neuralTab-vault" class="px-3 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1">
+              <i data-lucide="folder" class="w-3.5 h-3.5"></i>
+              <span>Vault Notes</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex-1 flex flex-col lg:flex-row w-full h-full overflow-hidden">
         <!-- CỘT 1 (LEFT): VAULT EXPLORER -->
-        <div class="w-64 border-r border-bordercol dark:border-[#26283b] bg-[#f9f8f4] dark:bg-[#181a24] flex flex-col shrink-0">
+        <div id="neuralColVault" class="hidden lg:flex w-full lg:w-64 border-r border-bordercol dark:border-[#26283b] bg-[#f9f8f4] dark:bg-[#181a24] flex-col shrink-0">
           <div class="p-3 border-b border-bordercol dark:border-[#26283b] space-y-2">
             <div class="flex items-center justify-between">
               <span class="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">VAULT</span>
@@ -484,7 +545,7 @@
         </div>
 
         <!-- CỘT 2 (CENTER): 3D NEURAL NETWORK GRAPH CANVAS (CÓ STATS & PHỐI CẢNH LƯỚI READY - ẢNH 2) -->
-        <div class="flex-1 flex flex-col relative bg-[#fcfbf9] dark:bg-[#111218] overflow-hidden">
+        <div id="neuralColGraph" class="flex-1 flex flex-col relative bg-[#fcfbf9] dark:bg-[#111218] overflow-hidden min-h-[300px]">
           
           <!-- Cluster Badges Overlay around graph (như Ảnh 2) -->
           <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-between z-10">
@@ -557,7 +618,7 @@
         </div>
 
         <!-- CỘT 3 (RIGHT): CONVERSATION PANEL (CHUẨN ẢNH 2) -->
-        <div class="w-80 md:w-96 border-l border-bordercol dark:border-[#26283b] bg-white dark:bg-[#181a24] flex flex-col shrink-0">
+        <div id="neuralColChat" class="hidden lg:flex w-full lg:w-80 xl:w-96 border-l border-bordercol dark:border-[#26283b] bg-white dark:bg-[#181a24] flex-col shrink-0">
           <div class="h-10 px-3 border-b border-bordercol dark:border-[#26283b] flex items-center justify-between text-xs font-semibold text-zinc-600 dark:text-zinc-300">
             <span data-i18n="conversation">CONVERSATION</span>
             <div class="flex items-center gap-1.5 text-zinc-400">
@@ -608,12 +669,13 @@
             </form>
           </div>
         </div>
+        </div><!-- End flex wrapper -->
       </section>
 
       <!-- ======================================================================= -->
       <!-- VIEW 3: BRAIN -> FILES (OBSIDIAN STYLE LIVE NOTE VIEWER & EDITOR)       -->
       <!-- ======================================================================= -->
-      <section id="view-brain-files" class="flex-1 flex w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] hidden">
+      <section id="view-brain-files" class="flex-1 flex w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] hidden pb-20 lg:pb-6">
         <!-- Explorer Sidebar -->
         <div class="w-64 border-r border-bordercol dark:border-[#26283b] bg-[#f9f8f4] dark:bg-[#161722] flex flex-col shrink-0 p-3">
           <div class="flex items-center justify-between pb-3 border-b border-bordercol dark:border-[#26283b]">
@@ -659,7 +721,7 @@
       <!-- ======================================================================= -->
       <!-- VIEW 4: BRAIN -> SELF-LEARNING (CHƯNG CẤT DỮ LIỆU & BỘ NHỚ TỰ ĐỘNG)     -->
       <!-- ======================================================================= -->
-      <section id="view-brain-learning" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+      <section id="view-brain-learning" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden pb-20 lg:pb-6">
         <div class="max-w-5xl w-full mx-auto space-y-6">
           <div class="flex items-start justify-between border-b border-bordercol dark:border-[#26283b] pb-4">
             <div>
@@ -750,7 +812,7 @@
       <!-- ======================================================================= -->
       <!-- VIEW 6: CAPABILITIES -> PARTNERS (DANH SÁCH TRỢ LÝ AI CHUYÊN GIA)       -->
       <!-- ======================================================================= -->
-      <section id="view-cap-partners" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+      <section id="view-cap-partners" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden pb-20 lg:pb-6">
         <div class="max-w-6xl w-full mx-auto space-y-8">
 
           <!-- ========================================================================= -->
@@ -861,16 +923,16 @@
                     </div>
                   </div>
 
-                  <!-- Window Interior: 2-Column Split (ĐỘI CỦA BẠN + Luồng Chat Tự Động) -->
-                  <div class="grid grid-cols-12 min-h-[380px]">
+                  <!-- Window Interior: Responsive Layout (ĐỘI CỦA BẠN dạng scroll ngang trên mobile, cột trên desktop) -->
+                  <div class="grid grid-cols-1 sm:grid-cols-12 min-h-[380px]">
                     
-                    <!-- Sub-Sidebar: ĐỘI CỦA BẠN (4 / 12 Cols) -->
-                    <div class="col-span-4 bg-[#faf9f6] dark:bg-[#14151e] border-r border-bordercol dark:border-[#26283b] p-3 space-y-3">
+                    <!-- Sub-Sidebar: ĐỘI CỦA BẠN (Mobile: swipe ngang, Desktop: 4 cols) -->
+                    <div class="sm:col-span-4 bg-[#faf9f6] dark:bg-[#14151e] border-b sm:border-b-0 sm:border-r border-bordercol dark:border-[#26283b] p-3 space-y-2 sm:space-y-3">
                       <div class="text-[10px] font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500 font-bold px-1">
                         ĐỘI CỦA BẠN
                       </div>
 
-                      <div class="space-y-1.5 text-xs">
+                      <div class="flex sm:flex-col overflow-x-auto custom-scrollbar gap-1.5 text-xs pb-1 sm:pb-0">
                         <!-- 1. Nghiên cứu · Gemini -->
                         <div id="mock-agent-gemini" onclick="filterTeamMockup('gemini')" class="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white dark:hover:bg-[#1f2130] transition cursor-pointer group" title="Bấm để xem tương tác của Nghiên cứu">
                           <div class="w-6 h-6 rounded-md bg-blue-50 dark:bg-blue-950/80 flex items-center justify-center shrink-0 text-blue-500 shadow-xs group-hover:scale-105 transition-transform">
@@ -917,8 +979,8 @@
                       </div>
                     </div>
 
-                    <!-- Chat Stream Panel (8 / 12 Cols) -->
-                    <div class="col-span-8 p-3.5 space-y-2.5 flex flex-col justify-between bg-white dark:bg-[#181a24]">
+                    <!-- Chat Stream Panel (Mobile: 12 Cols, Desktop: 8 Cols) -->
+                    <div class="sm:col-span-8 p-3 sm:p-3.5 space-y-2.5 flex flex-col justify-between bg-white dark:bg-[#181a24]">
                       <div class="space-y-2 text-xs" id="mockupChatStreamArea">
                         
                         <!-- 1. Javis tiếp nhận & phân bổ -->
@@ -1014,7 +1076,7 @@
             <!-- ======================================================================= -->
       <!-- VIEW 7: CAPABILITIES -> CHATBOT (OMNICHANNEL COCKPIT - CHUẨN 100% ẢNH)   -->
       <!-- ======================================================================= -->
-      <section id="view-cap-chatbot" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-4 md:p-8 overflow-y-auto custom-scrollbar hidden">
+      <section id="view-cap-chatbot" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-4 md:p-8 overflow-y-auto custom-scrollbar hidden pb-20 lg:pb-6">
         <div class="max-w-6xl w-full mx-auto space-y-8">
           
           <!-- ================= HEADER / MARKETING VALUE PITCH (TRỰC QUAN ĐÚNG ẢNH) ================= -->
@@ -1551,7 +1613,7 @@
       <!-- ======================================================================= -->
       <!-- VIEW 8: CAPABILITIES -> SKILLS & JAVIS STORE (CHUẨN 100% ẢNH 1)          -->
       <!-- ======================================================================= -->
-      <section id="view-cap-skills" class="flex-1 flex w-full h-full bg-[#13141c] text-white overflow-y-auto custom-scrollbar p-6 hidden">
+      <section id="view-cap-skills" class="flex-1 flex w-full h-full bg-[#13141c] text-white overflow-y-auto custom-scrollbar p-6 hidden pb-20 lg:pb-6">
         <div class="max-w-5xl w-full mx-auto space-y-6">
           
           <!-- Header Skills (Ảnh 1) -->
@@ -1620,7 +1682,7 @@
       <!-- ======================================================================= -->
       <!-- VIEW 9: CAPABILITIES -> PLUGINS (HỆ SINH THÁI TIỆN ÍCH MỞ RỘNG)         -->
       <!-- ======================================================================= -->
-      <section id="view-cap-plugins" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+      <section id="view-cap-plugins" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden pb-20 lg:pb-6">
         <div class="max-w-5xl w-full mx-auto space-y-6">
           <div class="border-b border-bordercol dark:border-[#26283b] pb-4">
             <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
@@ -1639,7 +1701,7 @@
       <!-- ======================================================================= -->
       <!-- VIEW 10: WORK -> TASKS & TIMELINE (CHUẨN 100% ẢNH 3)                    -->
       <!-- ======================================================================= -->
-      <section id="view-work-tasks" class="flex-1 flex w-full h-full hidden">
+      <section id="view-work-tasks" class="flex-1 flex w-full h-full hidden pb-20 lg:pb-6">
         <!-- Sub-sidebar Tasks (Ảnh 3) -->
         <div class="w-60 border-r border-bordercol dark:border-[#26283b] bg-[#f9f8f4] dark:bg-[#181a24] flex flex-col justify-between shrink-0 p-3 text-xs">
           <div class="space-y-4">
@@ -1730,7 +1792,7 @@
       <!-- ======================================================================= -->
       <!-- VIEW 11: WORK -> WEBHOOKS (QUẢN LÝ ENDPOINT & TRIGGER TỰ ĐỘNG)          -->
       <!-- ======================================================================= -->
-      <section id="view-work-webhooks" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+      <section id="view-work-webhooks" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden pb-20 lg:pb-6">
         <div class="max-w-5xl w-full mx-auto space-y-6">
           <div class="border-b border-bordercol dark:border-[#26283b] pb-4">
             <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
@@ -1757,7 +1819,7 @@
       <!-- ======================================================================= -->
       <!-- VIEW 12: CONNECTIONS (MCP HUB & TÍCH HỢP NỀN TẢNG)                      -->
       <!-- ======================================================================= -->
-      <section id="view-connections" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+      <section id="view-connections" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden pb-20 lg:pb-6">
         <div class="max-w-5xl w-full mx-auto space-y-6">
           <div class="flex items-center justify-between border-b border-bordercol dark:border-[#26283b] pb-4">
             <div>
@@ -1776,7 +1838,7 @@
       <!-- ======================================================================= -->
       <!-- VIEW 13: SYSTEM (CẤU HÌNH HỆ THỐNG & NHÀ CUNG CẤP AI)                   -->
       <!-- ======================================================================= -->
-      <section id="view-system" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+      <section id="view-system" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden pb-20 lg:pb-6">
         <div class="max-w-5xl w-full mx-auto space-y-6">
           <div class="border-b border-bordercol dark:border-[#26283b] pb-4">
             <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
@@ -1817,7 +1879,7 @@
       <!-- ======================================================================= -->
       <!-- VIEW 14: TEAMWORK 24/7 (ĐIỀU LÀM NÊN MỘT ĐỘI NGŨ - LÀM VIỆC KHÔNG NGỪNG) -->
       <!-- ======================================================================= -->
-      <section id="view-teamwork" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+      <section id="view-teamwork" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden pb-20 lg:pb-6">
         <div class="max-w-6xl w-full mx-auto space-y-8">
 
           <!-- ========================================================================= -->
@@ -1928,16 +1990,16 @@
                     </div>
                   </div>
 
-                  <!-- Window Interior: 2-Column Split (ĐỘI CỦA BẠN + Luồng Chat Tự Động) -->
-                  <div class="grid grid-cols-12 min-h-[380px]">
+                  <!-- Window Interior: Responsive Layout (ĐỘI CỦA BẠN dạng scroll ngang trên mobile, cột trên desktop) -->
+                  <div class="grid grid-cols-1 sm:grid-cols-12 min-h-[380px]">
                     
-                    <!-- Sub-Sidebar: ĐỘI CỦA BẠN (4 / 12 Cols) -->
-                    <div class="col-span-4 bg-[#faf9f6] dark:bg-[#14151e] border-r border-bordercol dark:border-[#26283b] p-3 space-y-3">
+                    <!-- Sub-Sidebar: ĐỘI CỦA BẠN (Mobile: swipe ngang, Desktop: 4 cols) -->
+                    <div class="sm:col-span-4 bg-[#faf9f6] dark:bg-[#14151e] border-b sm:border-b-0 sm:border-r border-bordercol dark:border-[#26283b] p-3 space-y-2 sm:space-y-3">
                       <div class="text-[10px] font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500 font-bold px-1">
                         ĐỘI CỦA BẠN
                       </div>
 
-                      <div class="space-y-1.5 text-xs">
+                      <div class="flex sm:flex-col overflow-x-auto custom-scrollbar gap-1.5 text-xs pb-1 sm:pb-0">
                         <!-- 1. Nghiên cứu · Gemini -->
                         <div id="mock-agent-gemini" onclick="filterTeamMockup('gemini')" class="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white dark:hover:bg-[#1f2130] transition cursor-pointer group" title="Bấm để xem tương tác của Nghiên cứu">
                           <div class="w-6 h-6 rounded-md bg-blue-50 dark:bg-blue-950/80 flex items-center justify-center shrink-0 text-blue-500 shadow-xs group-hover:scale-105 transition-transform">
@@ -1984,8 +2046,8 @@
                       </div>
                     </div>
 
-                    <!-- Chat Stream Panel (8 / 12 Cols) -->
-                    <div class="col-span-8 p-3.5 space-y-2.5 flex flex-col justify-between bg-white dark:bg-[#181a24]">
+                    <!-- Chat Stream Panel (Mobile: 12 Cols, Desktop: 8 Cols) -->
+                    <div class="sm:col-span-8 p-3 sm:p-3.5 space-y-2.5 flex flex-col justify-between bg-white dark:bg-[#181a24]">
                       <div class="space-y-2 text-xs" id="mockupChatStreamArea">
                         
                         <!-- 1. Javis tiếp nhận & phân bổ -->
@@ -2863,7 +2925,7 @@
       <!-- ======================================================================= -->
       <!-- VIEW 15: ENTERPRISE COCKPIT (BỘ NÃO DOANH NGHIỆP 4 LỚP - JAVIS ENTERPRISE) -->
       <!-- ======================================================================= -->
-      <section id="view-enterprise" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar">
+      <section id="view-enterprise" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar pb-20 lg:pb-6">
         <div class="max-w-6xl w-full mx-auto space-y-6">
           
           <!-- Enterprise Hero Banner (Chuẩn javisos.com.vn/doanh-nghiep) -->
@@ -4087,6 +4149,95 @@
       });
     }
 
+    
+    // =========================================================================
+    // MOBILE & TABLET INTERNATIONAL RESPONSIVE CONTROLLERS
+    // =========================================================================
+    function openMobileSidebar() {
+      const sidebar = document.getElementById('mainSidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      if (sidebar) sidebar.classList.remove('-translate-x-full');
+      if (backdrop) backdrop.classList.remove('hidden');
+    }
+
+    function closeMobileSidebar() {
+      const sidebar = document.getElementById('mainSidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      if (sidebar) sidebar.classList.add('-translate-x-full');
+      if (backdrop) backdrop.classList.add('hidden');
+    }
+
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('mainSidebar');
+      if (sidebar && sidebar.classList.contains('-translate-x-full')) {
+        openMobileSidebar();
+      } else {
+        closeMobileSidebar();
+      }
+    }
+
+    // Switch between 3 columns on Mobile in Neural Brain view
+    function switchNeuralMobileTab(tabKey) {
+      const colVault = document.getElementById('neuralColVault');
+      const colGraph = document.getElementById('neuralColGraph');
+      const colChat = document.getElementById('neuralColChat');
+
+      const tabGraph = document.getElementById('neuralTab-graph');
+      const tabChat = document.getElementById('neuralTab-chat');
+      const tabVault = document.getElementById('neuralTab-vault');
+
+      // Reset tabs styling
+      [tabGraph, tabChat, tabVault].forEach(t => {
+        if (t) {
+          t.className = 'px-3 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1';
+        }
+      });
+
+      // Hide all on mobile
+      if (colVault) colVault.classList.add('hidden');
+      if (colGraph) colGraph.classList.add('hidden');
+      if (colChat) colChat.classList.add('hidden');
+
+      if (tabKey === 'graph') {
+        if (colGraph) colGraph.classList.remove('hidden');
+        if (tabGraph) tabGraph.className = 'px-3 py-1.5 rounded-lg bg-white dark:bg-orange-600 text-orange-600 dark:text-white font-bold shadow-xs transition flex items-center gap-1';
+      } else if (tabKey === 'chat') {
+        if (colChat) colChat.classList.remove('hidden');
+        if (tabChat) tabChat.className = 'px-3 py-1.5 rounded-lg bg-white dark:bg-orange-600 text-orange-600 dark:text-white font-bold shadow-xs transition flex items-center gap-1';
+      } else if (tabKey === 'vault') {
+        if (colVault) colVault.classList.remove('hidden');
+        if (tabVault) tabVault.className = 'px-3 py-1.5 rounded-lg bg-white dark:bg-orange-600 text-orange-600 dark:text-white font-bold shadow-xs transition flex items-center gap-1';
+      }
+    }
+
+    function syncMobileBottomNav(targetView) {
+      const bottomNavMap = {
+        'chat': 'mob-nav-chat',
+        'brain-neural': 'mob-nav-brain',
+        'brain-files': 'mob-nav-brain',
+        'brain-learning': 'mob-nav-brain',
+        'work-tasks': 'mob-nav-tasks',
+        'work-webhooks': 'mob-nav-tasks',
+        'cap-partners': 'mob-nav-partners',
+        'teamwork': 'mob-nav-partners',
+        'enterprise': 'mob-nav-enterprise'
+      };
+
+      document.querySelectorAll('#mobileBottomNav button').forEach(btn => {
+        btn.classList.remove('text-orange-600', 'dark:text-orange-400', 'font-bold');
+        btn.classList.add('text-zinc-500', 'dark:text-zinc-400');
+      });
+
+      const activeBtnId = bottomNavMap[targetView];
+      if (activeBtnId) {
+        const activeBtn = document.getElementById(activeBtnId);
+        if (activeBtn) {
+          activeBtn.classList.remove('text-zinc-500', 'dark:text-zinc-400');
+          activeBtn.classList.add('text-orange-600', 'dark:text-orange-400', 'font-bold');
+        }
+      }
+    }
+
     // ĐIỀU HƯỚNG TẤT CẢ VIEW THEO MENU
     function navigateTo(targetView) {
       currentActiveView = targetView;
@@ -4106,6 +4257,10 @@
           }
         }
       });
+
+      // Tự động đóng menu drawer trên Mobile/Tablet sau khi bấm chọn
+      closeMobileSidebar();
+      syncMobileBottomNav(targetView);
 
       // Highlight sidebar active item
       document.querySelectorAll('#mainSidebar button, #mainSidebar a').forEach(btn => {
@@ -6782,5 +6937,40 @@ Trưởng nhóm đã sẵn sàng nhận lệnh.`);
       navigateTo('enterprise');
     });
   </script>
+  <!-- ========================================================================= -->
+  <!-- MOBILE BOTTOM NAVIGATION BAR (CHUẨN QUỐC TẾ CHO SMARTPHONE & TABLET)       -->
+  <!-- ========================================================================= -->
+  <nav id="mobileBottomNav" class="fixed bottom-0 inset-x-0 z-30 lg:hidden bg-white/95 dark:bg-[#161722]/95 backdrop-blur-md border-t border-bordercol dark:border-[#26283b] flex items-center justify-around px-2 py-1 shadow-lg select-none pb-safe">
+    <button onclick="navigateTo('chat')" id="mob-nav-chat" class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-zinc-500 dark:text-zinc-400 hover:text-orange-600 transition group min-w-[52px]">
+      <i data-lucide="message-square" class="w-4 h-4 mb-0.5 group-hover:scale-110 transition-transform"></i>
+      <span class="text-[10px] font-medium">Chat</span>
+    </button>
+
+    <button onclick="navigateTo('brain-neural')" id="mob-nav-brain" class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-zinc-500 dark:text-zinc-400 hover:text-orange-600 transition group min-w-[52px]">
+      <i data-lucide="brain" class="w-4 h-4 mb-0.5 group-hover:scale-110 transition-transform"></i>
+      <span class="text-[10px] font-medium">Brain</span>
+    </button>
+
+    <button onclick="navigateTo('work-tasks')" id="mob-nav-tasks" class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-zinc-500 dark:text-zinc-400 hover:text-orange-600 transition group min-w-[52px]">
+      <i data-lucide="check-square" class="w-4 h-4 mb-0.5 group-hover:scale-110 transition-transform"></i>
+      <span class="text-[10px] font-medium">Việc</span>
+    </button>
+
+    <button onclick="navigateTo('cap-partners')" id="mob-nav-partners" class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-zinc-500 dark:text-zinc-400 hover:text-orange-600 transition group min-w-[52px]">
+      <i data-lucide="users" class="w-4 h-4 mb-0.5 group-hover:scale-110 transition-transform"></i>
+      <span class="text-[10px] font-medium">Cộng sự</span>
+    </button>
+
+    <button onclick="navigateTo('enterprise')" id="mob-nav-enterprise" class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-orange-600 dark:text-orange-400 font-bold transition group min-w-[52px]">
+      <i data-lucide="building-2" class="w-4 h-4 mb-0.5 group-hover:scale-110 transition-transform"></i>
+      <span class="text-[10px]">Doanh nghiệp</span>
+    </button>
+
+    <button onclick="openMobileSidebar()" class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition group min-w-[48px]">
+      <i data-lucide="menu" class="w-4 h-4 mb-0.5 group-hover:scale-110 transition-transform"></i>
+      <span class="text-[10px] font-medium">Menu</span>
+    </button>
+  </nav>
+
 </body>
 </html>
