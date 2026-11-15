@@ -28,6 +28,8 @@
               600: '#ea580c',
               700: '#c2410c',
             },
+            sidebar: '#161722',
+            sidebarLight: '#fbfaf8',
             canvas: '#fbfaf8',
             panel: '#f5f3ee',
             bordercol: '#e7e3d8'
@@ -83,7 +85,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 200px;
+      height: 180px;
       background-image: 
         linear-gradient(to top, rgba(249, 115, 22, 0.08) 1px, transparent 1px),
         linear-gradient(to right, rgba(234, 88, 12, 0.08) 1px, transparent 1px);
@@ -91,6 +93,15 @@
       transform: perspective(300px) rotateX(65deg);
       transform-origin: bottom center;
       pointer-events: none;
+    }
+    .sidebar-item-active {
+      background-color: rgba(234, 88, 12, 0.12);
+      color: #ea580c !important;
+      font-weight: 600;
+    }
+    .dark .sidebar-item-active {
+      background-color: rgba(234, 88, 12, 0.22);
+      color: #fb923c !important;
     }
   </style>
 </head>
@@ -100,17 +111,20 @@
   <header class="h-12 bg-white dark:bg-[#181a24] border-b border-bordercol dark:border-[#26283b] px-3 flex items-center justify-between z-30 shrink-0">
     <!-- Left: Logo & Vault Selector -->
     <div class="flex items-center gap-3">
-      <div class="flex items-center gap-2">
-        <span class="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
-          J
-        </span>
-        <span class="font-bold text-xs tracking-tight text-zinc-900 dark:text-white uppercase">JAVIS OS</span>
+      <div class="flex items-center gap-2 cursor-pointer" onclick="navigateTo('brain-neural')">
+        <div class="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="flex items-baseline gap-1">
+          <span class="font-extrabold text-xs tracking-tight text-zinc-900 dark:text-white uppercase">JAVIS</span>
+          <span class="text-[9px] font-bold text-orange-600 dark:text-orange-400">OS</span>
+        </div>
       </div>
 
       <div class="h-4 w-px bg-zinc-200 dark:bg-zinc-700"></div>
 
       <!-- Vault Selector Dropdown -->
-      <div class="flex items-center gap-1.5 px-2 py-0.5 bg-zinc-100 dark:bg-[#202230] hover:bg-zinc-200/80 rounded cursor-pointer transition text-xs font-medium text-zinc-700 dark:text-zinc-200">
+      <div onclick="navigateTo('brain-files')" class="flex items-center gap-1.5 px-2 py-0.5 bg-zinc-100 dark:bg-[#202230] hover:bg-zinc-200/80 rounded cursor-pointer transition text-xs font-medium text-zinc-700 dark:text-zinc-200">
         <i data-lucide="book-open" class="w-3.5 h-3.5 text-zinc-500"></i>
         <span id="headerVaultName">Minh Quy's Brain 3120</span>
         <i data-lucide="chevron-down" class="w-3 h-3 text-zinc-400"></i>
@@ -123,29 +137,29 @@
     <div class="flex items-center bg-[#f0ede6] dark:bg-[#202230] p-1 rounded-full border border-bordercol dark:border-[#2d3044] text-xs font-semibold shadow-inner">
       <button onclick="switchSpace('tasks')" id="space-tasks" class="space-btn px-4 py-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
         <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
-        <span>Việc</span>
+        <span data-i18n="top_tasks">Việc</span>
       </button>
 
       <button onclick="switchSpace('brain')" id="space-brain" class="space-btn active px-4 py-1 rounded-full bg-white dark:bg-orange-600 text-orange-600 dark:text-white shadow-sm transition flex items-center gap-1.5">
         <i data-lucide="brain" class="w-3.5 h-3.5"></i>
-        <span>Second Brain</span>
+        <span data-i18n="top_brain">Second Brain</span>
       </button>
 
       <button onclick="switchSpace('skills')" id="space-skills" class="space-btn px-4 py-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
         <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-        <span>Kỹ năng</span>
+        <span data-i18n="top_skills">Kỹ năng</span>
       </button>
     </div>
 
     <!-- Right Controls: Notifications, Dark mode, History -->
     <div class="flex items-center gap-2">
-      <button class="flex items-center gap-1 px-2 py-1 rounded-md bg-orange-50 text-orange-700 border border-orange-200 text-xs font-medium">
+      <button onclick="openNotificationModal()" class="flex items-center gap-1 px-2.5 py-1 rounded-md bg-orange-50 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-800 text-xs font-medium hover:bg-orange-100 transition">
         <i data-lucide="bell" class="w-3.5 h-3.5"></i>
-        <span>Notifications</span>
+        <span data-i18n="notifications">Notifications</span>
         <span class="w-4 h-4 rounded-full bg-orange-600 text-white text-[10px] flex items-center justify-center font-bold">1</span>
       </button>
 
-      <button onclick="toggleDarkMode()" class="p-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition" title="Đổi giao diện">
+      <button onclick="toggleDarkMode()" class="p-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition" title="Đổi giao diện Sáng/Tối">
         <i data-lucide="sun" id="themeIcon" class="w-4 h-4"></i>
       </button>
 
@@ -153,9 +167,9 @@
         <i data-lucide="refresh-cw" class="w-4 h-4"></i>
       </button>
 
-      <button onclick="switchSpace('brain')" class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition flex items-center gap-1">
+      <button onclick="navigateTo('chat')" class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition flex items-center gap-1">
         <i data-lucide="history" class="w-3.5 h-3.5"></i>
-        <span>History</span>
+        <span data-i18n="history">History</span>
       </button>
     </div>
   </header>
@@ -163,52 +177,248 @@
   <!-- MAIN APP CONTAINER -->
   <div class="flex-1 flex overflow-hidden relative">
 
-    <!-- LEFT COMPACT ICON SIDEBAR -->
-    <aside class="w-14 bg-[#f8f6f0] dark:bg-[#161722] border-r border-bordercol dark:border-[#26283b] flex flex-col justify-between py-3 items-center shrink-0 z-20">
-      <div class="flex flex-col gap-3">
-        <button onclick="switchSpace('brain')" class="side-icon active p-2 rounded-xl text-orange-600 bg-orange-100/70 dark:bg-orange-950/40 transition" title="Second Brain & 3D Neural Network">
-          <i data-lucide="network" class="w-5 h-5"></i>
+    <!-- ========================================================================= -->
+    <!-- LEFT EXPANDED NAVIGATION SIDEBAR (CHUẨN 100% THANH MENU ẢNH 4, 1, 2, 3)     -->
+    <!-- ========================================================================= -->
+    <aside id="mainSidebar" class="w-56 bg-[#f9f8f4] dark:bg-[#161722] border-r border-bordercol dark:border-[#26283b] flex flex-col justify-between shrink-0 z-20 transition-all duration-200 text-xs select-none">
+      
+      <!-- Top Section: Logo Header & Menu Tree -->
+      <div class="flex-1 flex flex-col overflow-y-auto custom-scrollbar">
+        
+        <!-- Sidebar Brand Header (Ảnh 4) -->
+        <div class="h-12 px-3.5 border-b border-bordercol dark:border-[#26283b] flex items-center gap-2.5 shrink-0 bg-[#f4f2ea]/70 dark:bg-[#13141c]">
+          <div class="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="font-extrabold tracking-wider text-xs text-zinc-900 dark:text-white uppercase font-mono">JAVIS OS</span>
+        </div>
+
+        <!-- Navigation Menu Items (Chuẩn Ảnh 4) -->
+        <nav class="p-2 space-y-1 text-zinc-700 dark:text-zinc-300 font-medium">
+
+          <!-- 1. CHAT (Ảnh 2, 3) -->
+          <button onclick="navigateTo('chat')" id="nav-chat" class="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 transition">
+            <i data-lucide="message-square" class="w-4 h-4 text-zinc-500"></i>
+            <span data-i18n="menu_chat">Chat</span>
+          </button>
+
+          <!-- 2. BRAIN (v Brain: Neuralnetwork, Files, Self-learning) -->
+          <div>
+            <div onclick="toggleMenuSection('brain')" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 cursor-pointer">
+              <span class="flex items-center gap-2.5">
+                <i data-lucide="brain" class="w-4 h-4 text-orange-600"></i>
+                <span data-i18n="menu_brain">Brain</span>
+              </span>
+              <i data-lucide="chevron-down" id="arrow-brain" class="w-3.5 h-3.5 text-zinc-400 transition-transform"></i>
+            </div>
+            
+            <div id="sub-brain" class="pl-6 pr-1 py-0.5 space-y-0.5">
+              <button onclick="navigateTo('brain-neural')" id="nav-brain-neural" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition sidebar-item-active">
+                <i data-lucide="network" class="w-3.5 h-3.5"></i>
+                <span data-i18n="menu_neural">Neuralnetwork</span>
+              </button>
+              <button onclick="navigateTo('brain-files')" id="nav-brain-files" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
+                <i data-lucide="files" class="w-3.5 h-3.5"></i>
+                <span data-i18n="menu_files">Files</span>
+              </button>
+              <button onclick="navigateTo('brain-learning')" id="nav-brain-learning" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                <span data-i18n="menu_learning">Self-learning</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. CODE (Ảnh 1, 4) -->
+          <div>
+            <button onclick="navigateTo('code')" id="nav-code" class="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 transition">
+              <i data-lucide="file-code" class="w-4 h-4 text-emerald-600"></i>
+              <span data-i18n="menu_code">Code</span>
+            </button>
+          </div>
+
+          <!-- 4. CAPABILITIES (v Capabilities: Partners, Chatbot, Skills, Plugins) (Ảnh 1, 4) -->
+          <div>
+            <div onclick="toggleMenuSection('capabilities')" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 cursor-pointer">
+              <span class="flex items-center gap-2.5">
+                <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i>
+                <span data-i18n="menu_capabilities">Capabilities</span>
+              </span>
+              <i data-lucide="chevron-down" id="arrow-capabilities" class="w-3.5 h-3.5 text-zinc-400 transition-transform"></i>
+            </div>
+            
+            <div id="sub-capabilities" class="pl-6 pr-1 py-0.5 space-y-0.5">
+              <button onclick="navigateTo('cap-partners')" id="nav-cap-partners" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
+                <i data-lucide="users" class="w-3.5 h-3.5"></i>
+                <span data-i18n="menu_partners">Partners</span>
+              </button>
+              <button onclick="navigateTo('cap-chatbot')" id="nav-cap-chatbot" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                <span data-i18n="menu_chatbot">Chatbot</span>
+              </button>
+              <button onclick="navigateTo('cap-skills')" id="nav-cap-skills" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
+                <i data-lucide="puzzle" class="w-3.5 h-3.5"></i>
+                <span data-i18n="menu_skills">Skills</span>
+              </button>
+              <button onclick="navigateTo('cap-plugins')" id="nav-cap-plugins" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
+                <i data-lucide="package" class="w-3.5 h-3.5"></i>
+                <span data-i18n="menu_plugins">Plugins</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 5. WORK (v Work: Tasks, Webhooks) (Ảnh 3, 4) -->
+          <div>
+            <div onclick="toggleMenuSection('work')" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 cursor-pointer">
+              <span class="flex items-center gap-2.5">
+                <i data-lucide="briefcase" class="w-4 h-4 text-blue-500"></i>
+                <span data-i18n="menu_work">Work</span>
+              </span>
+              <i data-lucide="chevron-down" id="arrow-work" class="w-3.5 h-3.5 text-zinc-400 transition-transform"></i>
+            </div>
+            
+            <div id="sub-work" class="pl-6 pr-1 py-0.5 space-y-0.5">
+              <button onclick="navigateTo('work-tasks')" id="nav-work-tasks" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
+                <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
+                <span data-i18n="menu_tasks">Tasks</span>
+              </button>
+              <button onclick="navigateTo('work-webhooks')" id="nav-work-webhooks" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
+                <i data-lucide="webhook" class="w-3.5 h-3.5"></i>
+                <span data-i18n="menu_webhooks">Webhooks</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 6. CONNECTIONS (Ảnh 1, 2, 3, 4) -->
+          <div>
+            <button onclick="navigateTo('connections')" id="nav-connections" class="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 transition">
+              <i data-lucide="link" class="w-4 h-4 text-indigo-500"></i>
+              <span data-i18n="menu_connections">Connections</span>
+            </button>
+          </div>
+
+        </nav>
+      </div>
+
+      <!-- Bottom Section: System, English, Version, Give a star (Ảnh 1, 2, 3, 4) -->
+      <div class="p-3 border-t border-bordercol dark:border-[#26283b] space-y-2 bg-[#f4f2ea]/70 dark:bg-[#13141c] shrink-0">
+        <!-- System Button -->
+        <button onclick="navigateTo('system')" id="nav-system" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 font-medium transition">
+          <i data-lucide="sliders" class="w-3.5 h-3.5 text-zinc-400"></i>
+          <span data-i18n="menu_system">System</span>
         </button>
 
-        <button onclick="switchSpace('tasks')" class="side-icon p-2 rounded-xl text-zinc-500 hover:text-emerald-600 hover:bg-emerald-50 dark:hover:bg-zinc-800 transition" title="Việc & Tasks">
-          <i data-lucide="check-square" class="w-5 h-5"></i>
-        </button>
+        <!-- Language Dropdown -->
+        <div class="relative">
+          <select id="langSelect" onchange="changeLanguage(this.value)" class="w-full bg-white dark:bg-[#1f2130] border border-bordercol dark:border-[#2d3044] rounded-lg px-2.5 py-1 text-xs text-zinc-700 dark:text-zinc-300 outline-none cursor-pointer">
+            <option value="en">🌐 English</option>
+            <option value="vi">🇻🇳 Tiếng Việt</option>
+          </select>
+        </div>
 
-        <button onclick="switchSpace('skills')" class="side-icon p-2 rounded-xl text-zinc-500 hover:text-amber-600 hover:bg-amber-50 dark:hover:bg-zinc-800 transition" title="Kỹ năng & Capabilities">
-          <i data-lucide="sparkles" class="w-5 h-5"></i>
-        </button>
+        <!-- Version & Collapse Toggle (Ảnh 4) -->
+        <div class="flex items-center justify-between text-[10px] text-zinc-400 font-mono pt-1">
+          <div>
+            <span class="font-bold">v0.66.0</span>
+            <div class="text-[9px] text-zinc-500">by Javis Foundation</div>
+          </div>
+          <button onclick="toggleSidebarCollapse()" class="p-1 hover:text-zinc-700 dark:hover:text-zinc-200 rounded" title="Thu gọn / Mở rộng Sidebar">
+            <i data-lucide="sidebar" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
 
-        <button onclick="switchSubView('mcp')" class="side-icon p-2 rounded-xl text-zinc-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-zinc-800 transition" title="Connections & MCP">
-          <i data-lucide="cpu" class="w-5 h-5"></i>
+        <!-- Give a Star Button (Ảnh 2, 3) -->
+        <button onclick="openStarModal()" class="w-full flex items-center justify-center gap-1.5 py-1 px-2 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 text-[11px] font-semibold hover:bg-amber-100 transition shadow-sm">
+          <span>⭐</span> <span data-i18n="give_a_star">Give a star</span>
         </button>
       </div>
 
-      <!-- Bottom System info -->
-      <div class="flex flex-col items-center gap-2 text-zinc-400">
-        <button onclick="switchSubView('models')" title="Models & Providers" class="p-2 hover:text-zinc-600 dark:hover:text-zinc-200">
-          <i data-lucide="sliders" class="w-4 h-4"></i>
-        </button>
-        <span class="text-[9px] font-mono text-zinc-400">v0.482</span>
-      </div>
     </aside>
 
-    <!-- CONTENT VIEWPORT -->
+    <!-- ========================================================================= -->
+    <!-- CONTENT VIEWPORT (TẤT CẢ CÁC VIEW TƯƠNG ỨNG THANH MENU)                   -->
+    <!-- ========================================================================= -->
     <div class="flex-1 flex overflow-hidden relative">
 
-      <!-- ========================================================================= -->
-      <!-- SPACE 1: SECOND BRAIN (ALL-IN-ONE 3 CỘT ĐỒNG THỜI - CHUẨN ẢNH 1)          -->
-      <!-- ========================================================================= -->
-      <section id="space-view-brain" class="flex-1 flex w-full h-full">
-        
+      <!-- ======================================================================= -->
+      <!-- VIEW 1: DEDICATED CHAT VIEW                                             -->
+      <!-- ======================================================================= -->
+      <section id="view-chat" class="flex-1 flex w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] hidden">
+        <div class="max-w-4xl w-full mx-auto flex flex-col h-full p-4">
+          <!-- Chat Header Bar -->
+          <div class="flex items-center justify-between pb-3 border-b border-bordercol dark:border-[#26283b] shrink-0">
+            <div class="flex items-center gap-2">
+              <span class="p-2 rounded-lg bg-orange-100 dark:bg-orange-950 text-orange-600"><i data-lucide="message-square" class="w-4 h-4"></i></span>
+              <div>
+                <h2 class="text-sm font-bold text-zinc-900 dark:text-white" data-i18n="chat_title">Javis AI Conversation Cockpit</h2>
+                <p class="text-[11px] text-zinc-400">Stream phản hồi thời gian thực qua WebSockets & Token Pruner</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="clearChatHistory()" class="px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 text-xs hover:bg-zinc-200">Xóa cuộc hội thoại</button>
+            </div>
+          </div>
+
+          <!-- Chat Stream Messages -->
+          <div id="dedicatedChatMessages" class="flex-1 overflow-y-auto custom-scrollbar py-4 space-y-3 text-xs">
+            <div class="text-zinc-400 text-center py-12">
+              <div class="w-12 h-12 mx-auto rounded-full bg-orange-50 dark:bg-orange-950/40 border border-orange-200 dark:border-orange-800 flex items-center justify-center text-orange-600 mb-3">
+                <i data-lucide="bot" class="w-6 h-6"></i>
+              </div>
+              <p class="font-medium text-sm text-zinc-700 dark:text-zinc-300">Sẵn sàng phục vụ bạn. Hãy chọn câu hỏi nhanh hoặc nhập yêu cầu:</p>
+              <div class="mt-4 flex flex-wrap justify-center gap-2 max-w-lg mx-auto">
+                <button onclick="sendQuickPrompt('Báo cáo ngắn gọn chỉ số ads tháng 8 ở tài khoản quảng cáo phamquangdai qua mcp cho tôi')" class="p-2 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm">
+                  📊 Kiểm tra Facebook Ads tháng 8
+                </button>
+                <button onclick="sendQuickPrompt('Đọc các tin nhắn Zalo gần đây nhất cho tôi')" class="p-2 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm">
+                  💬 Đọc tin nhắn Zalo gần nhất
+                </button>
+                <button onclick="sendQuickPrompt('Tóm tắt tổng quan cấu trúc Second Brain và các cụm dữ liệu')" class="p-2 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm">
+                  🧠 Tổng quan Second Brain
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Prompt Box -->
+          <div class="pt-3 border-t border-bordercol dark:border-[#26283b] shrink-0">
+            <form onsubmit="handleDedicatedChatSubmit(event)" class="flex flex-col gap-2">
+              <input type="text" id="dedicatedChatInput" placeholder="Nhập câu hỏi hoặc yêu cầu cho Javis OS..." class="w-full bg-white dark:bg-[#1e202e] border border-bordercol dark:border-[#2f3248] rounded-xl px-4 py-2.5 text-xs outline-none focus:border-orange-500 text-zinc-800 dark:text-zinc-200 shadow-sm">
+              <div class="flex items-center justify-between text-[11px]">
+                <div class="flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 font-medium border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Claude 3.5 Sonnet (CLI OAuth 0đ)
+                  </span>
+                  <span class="px-2 py-0.5 rounded-full bg-orange-50 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300 font-medium border border-orange-200 dark:border-orange-800">
+                    High Reasoning
+                  </span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <button type="button" onclick="startVoiceInput()" class="p-1.5 text-zinc-400 hover:text-orange-600 rounded">
+                    <i data-lucide="mic" class="w-4 h-4"></i>
+                  </button>
+                  <button type="submit" class="px-3 py-1.5 bg-orange-600 hover:bg-orange-700 text-white rounded-lg shadow-sm font-semibold flex items-center gap-1">
+                    <span>Gửi</span>
+                    <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- VIEW 2: BRAIN -> NEURALNETWORK (CHUẨN ẢNH 2 - 3 CỘT ĐỒNG THỜI)           -->
+      <!-- ======================================================================= -->
+      <section id="view-brain-neural" class="flex-1 flex w-full h-full">
         <!-- CỘT 1 (LEFT): VAULT EXPLORER -->
         <div class="w-64 border-r border-bordercol dark:border-[#26283b] bg-[#f9f8f4] dark:bg-[#181a24] flex flex-col shrink-0">
-          <!-- Vault Search & Action Bar -->
           <div class="p-3 border-b border-bordercol dark:border-[#26283b] space-y-2">
             <div class="flex items-center justify-between">
               <span class="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">VAULT</span>
               <div class="flex items-center gap-1 text-zinc-500">
                 <button onclick="createNewNotePrompt()" class="p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded" title="Note mới"><i data-lucide="plus" class="w-3.5 h-3.5"></i></button>
-                <button class="p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded" title="Thư mục mới"><i data-lucide="folder-plus" class="w-3.5 h-3.5"></i></button>
+                <button onclick="navigateTo('brain-files')" class="p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded" title="Mở File Manager"><i data-lucide="folder" class="w-3.5 h-3.5"></i></button>
                 <button onclick="loadVaultNotes()" class="p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded" title="Làm mới"><i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i></button>
               </div>
             </div>
@@ -230,10 +440,10 @@
           </div>
         </div>
 
-        <!-- CỘT 2 (CENTER): 3D NEURAL NETWORK GRAPH CANVAS (CÓ STATS & PHỐI CẢNH LƯỚI READY) -->
+        <!-- CỘT 2 (CENTER): 3D NEURAL NETWORK GRAPH CANVAS (CÓ STATS & PHỐI CẢNH LƯỚI READY - ẢNH 2) -->
         <div class="flex-1 flex flex-col relative bg-[#fcfbf9] dark:bg-[#111218] overflow-hidden">
           
-          <!-- Cluster Badges Overlay around graph (như Ảnh 1) -->
+          <!-- Cluster Badges Overlay around graph (như Ảnh 2) -->
           <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-between z-10">
             <!-- Top Clusters -->
             <div class="flex justify-around text-center">
@@ -276,20 +486,20 @@
                 </div>
               </div>
 
-              <!-- Perspective Grid & READY label -->
+              <!-- Perspective Grid & READY label (Ảnh 2) -->
               <div class="text-center mt-2">
                 <div class="text-[11px] font-mono tracking-widest text-zinc-400 font-semibold mb-2">READY</div>
-                <!-- Pill Thống kê: 15 AGENTS · 118 SKILLS · 4 WORKFLOWS (ẢNH 1) -->
+                <!-- Pill Thống kê: 15 AGENTS · 118 SKILLS · 4 WORKFLOWS (ẢNH 2) -->
                 <div class="pointer-events-auto inline-flex items-center divide-x divide-zinc-200 dark:divide-zinc-700 bg-white/90 dark:bg-[#1d1f2b]/90 backdrop-blur border border-bordercol dark:border-zinc-700 rounded-xl px-5 py-2 shadow-lg text-xs font-mono">
-                  <div class="px-3 text-center">
+                  <div class="px-3 text-center cursor-pointer" onclick="navigateTo('cap-partners')">
                     <span class="font-bold text-zinc-900 dark:text-white text-sm">15</span>
                     <span class="text-[10px] text-zinc-400 block uppercase">AGENTS</span>
                   </div>
-                  <div class="px-3 text-center">
+                  <div class="px-3 text-center cursor-pointer" onclick="navigateTo('cap-skills')">
                     <span class="font-bold text-zinc-900 dark:text-white text-sm">118</span>
                     <span class="text-[10px] text-zinc-400 block uppercase">SKILLS</span>
                   </div>
-                  <div class="px-3 text-center">
+                  <div class="px-3 text-center cursor-pointer" onclick="navigateTo('work-tasks')">
                     <span class="font-bold text-zinc-900 dark:text-white text-sm">4</span>
                     <span class="text-[10px] text-zinc-400 block uppercase">WORKFLOWS</span>
                   </div>
@@ -303,14 +513,12 @@
           <div class="graph-perspective-grid"></div>
         </div>
 
-        <!-- CỘT 3 (RIGHT): CONVERSATION PANEL (CHUẨN ẢNH 1) -->
+        <!-- CỘT 3 (RIGHT): CONVERSATION PANEL (CHUẨN ẢNH 2) -->
         <div class="w-80 md:w-96 border-l border-bordercol dark:border-[#26283b] bg-white dark:bg-[#181a24] flex flex-col shrink-0">
-          <!-- Conversation Header -->
           <div class="h-10 px-3 border-b border-bordercol dark:border-[#26283b] flex items-center justify-between text-xs font-semibold text-zinc-600 dark:text-zinc-300">
-            <span>CONVERSATION</span>
+            <span data-i18n="conversation">CONVERSATION</span>
             <div class="flex items-center gap-1.5 text-zinc-400">
-              <button class="hover:text-zinc-700 p-1"><i data-lucide="maximize-2" class="w-3.5 h-3.5"></i></button>
-              <button class="hover:text-zinc-700 p-1"><i data-lucide="sidebar" class="w-3.5 h-3.5"></i></button>
+              <button onclick="navigateTo('chat')" title="Mở toàn màn hình" class="hover:text-zinc-700 p-1"><i data-lucide="maximize-2" class="w-3.5 h-3.5"></i></button>
             </div>
           </div>
 
@@ -329,14 +537,14 @@
             </div>
           </div>
 
-          <!-- Bottom Prompt Box (What would you like me to do? - Ảnh 1) -->
+          <!-- Bottom Prompt Box (What would you like me to do? - Ảnh 2) -->
           <div class="p-3 border-t border-bordercol dark:border-[#26283b] bg-zinc-50/70 dark:bg-[#161722] space-y-2">
             <form id="cockpitChatForm" onsubmit="handleCockpitSubmit(event)" class="flex flex-col gap-2">
               <input type="text" id="cockpitChatInput" placeholder="What would you like me to do?" class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-xl px-3 py-2 text-xs outline-none focus:border-orange-500 text-zinc-800 dark:text-zinc-200">
               
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-1.5 text-[11px]">
-                  <button type="button" class="w-5 h-5 rounded-full bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center text-zinc-600 dark:text-zinc-300">+</button>
+                  <button type="button" onclick="createNewNotePrompt()" class="w-5 h-5 rounded-full bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center text-zinc-600 dark:text-zinc-300" title="Thêm">+</button>
                   <span class="px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 font-medium flex items-center gap-1 border border-emerald-200 dark:border-emerald-800">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Opus 3.5
                   </span>
@@ -356,16 +564,321 @@
               </div>
             </form>
           </div>
-
         </div>
-
       </section>
 
-      <!-- ========================================================================= -->
-      <!-- SPACE 2: VIỆC / TASKS & TIMELINE (CHUẨN 100% ẢNH 2)                        -->
-      <!-- ========================================================================= -->
-      <section id="space-view-tasks" class="flex-1 flex w-full h-full hidden">
-        <!-- Sub-sidebar Tasks -->
+      <!-- ======================================================================= -->
+      <!-- VIEW 3: BRAIN -> FILES (OBSIDIAN STYLE LIVE NOTE VIEWER & EDITOR)       -->
+      <!-- ======================================================================= -->
+      <section id="view-brain-files" class="flex-1 flex w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] hidden">
+        <!-- Explorer Sidebar -->
+        <div class="w-64 border-r border-bordercol dark:border-[#26283b] bg-[#f9f8f4] dark:bg-[#161722] flex flex-col shrink-0 p-3">
+          <div class="flex items-center justify-between pb-3 border-b border-bordercol dark:border-[#26283b]">
+            <span class="font-bold text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200">FILE EXPLORER</span>
+            <button onclick="createNewNotePrompt()" class="px-2 py-1 bg-orange-600 text-white rounded text-xs font-semibold">+ Note</button>
+          </div>
+          <div id="filesExplorerList" class="flex-1 overflow-y-auto custom-scrollbar pt-2 space-y-1 text-xs">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Note Editor & Preview Panel -->
+        <div class="flex-1 flex flex-col h-full bg-white dark:bg-[#181a24]">
+          <div class="h-12 border-b border-bordercol dark:border-[#26283b] px-4 flex items-center justify-between shrink-0">
+            <div class="flex items-center gap-2">
+              <i data-lucide="file-text" class="w-4 h-4 text-orange-500"></i>
+              <span id="currentNotePath" class="font-bold text-xs text-zinc-800 dark:text-zinc-200">00 - Dashboard.md</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="saveCurrentNote()" class="px-3 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1 shadow-sm">
+                <i data-lucide="save" class="w-3.5 h-3.5"></i> Lưu & Git Commit
+              </button>
+              <button onclick="deleteCurrentNote()" class="px-2.5 py-1 text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40 rounded text-xs font-medium">
+                Xóa
+              </button>
+            </div>
+          </div>
+          <div class="flex-1 flex overflow-hidden">
+            <!-- Live Markdown Editor -->
+            <div class="w-1/2 border-r border-bordercol dark:border-[#26283b] p-4 flex flex-col">
+              <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-wider mb-1">Markdown Source</span>
+              <textarea id="noteEditorArea" class="flex-1 w-full p-2 bg-[#fbfaf8] dark:bg-[#12131a] border border-bordercol dark:border-[#2f3248] rounded-lg font-mono text-xs leading-relaxed outline-none resize-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100" oninput="renderNotePreview(this.value)"></textarea>
+            </div>
+            <!-- Rendered Preview -->
+            <div class="w-1/2 p-4 flex flex-col overflow-y-auto custom-scrollbar">
+              <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-wider mb-1">Live Preview</span>
+              <div id="notePreviewArea" class="prose dark:prose-invert max-w-none text-xs leading-relaxed text-zinc-800 dark:text-zinc-200"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- VIEW 4: BRAIN -> SELF-LEARNING (CHƯNG CẤT DỮ LIỆU & BỘ NHỚ TỰ ĐỘNG)     -->
+      <!-- ======================================================================= -->
+      <section id="view-brain-learning" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+        <div class="max-w-5xl w-full mx-auto space-y-6">
+          <div class="flex items-start justify-between border-b border-bordercol dark:border-[#26283b] pb-4">
+            <div>
+              <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-5 h-5 text-orange-500"></i>
+                Self-learning & Knowledge Distillation (Tự Động Học)
+              </h2>
+              <p class="text-xs text-zinc-500 mt-1">Cơ chế chưng cất tự động: tin nhắn & cuộc hội thoại -> Sources -> Wiki tri thức lũy tiến.</p>
+            </div>
+            <button onclick="openIngestModal()" class="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm flex items-center gap-1.5">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> + Ingest Source
+            </button>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="p-4 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl shadow-sm">
+              <div class="text-[11px] text-zinc-400 uppercase font-mono">Distilled Rules</div>
+              <div id="statDistilledRules" class="text-xl font-bold text-zinc-900 dark:text-white mt-1">48</div>
+            </div>
+            <div class="p-4 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl shadow-sm">
+              <div class="text-[11px] text-zinc-400 uppercase font-mono">Active Facts</div>
+              <div id="statActiveFacts" class="text-xl font-bold text-amber-500 mt-1">1138</div>
+            </div>
+            <div class="p-4 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl shadow-sm">
+              <div class="text-[11px] text-zinc-400 uppercase font-mono">Compounding Rate</div>
+              <div id="statCompounding" class="text-xl font-bold text-emerald-500 mt-1">+12.4% / tuần</div>
+            </div>
+            <div class="p-4 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl shadow-sm">
+              <div class="text-[11px] text-zinc-400 uppercase font-mono">Wiki Health</div>
+              <div id="statWikiHealth" class="text-xl font-bold text-blue-500 mt-1">98/100</div>
+            </div>
+          </div>
+
+          <!-- Recent Distillations Table -->
+          <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 shadow-sm space-y-4">
+            <h3 class="font-bold text-xs text-zinc-800 dark:text-zinc-200 uppercase tracking-wider">Nhật Ký Chưng Cất Tri Thức Gần Nhất</h3>
+            <div id="selfLearningList" class="space-y-3">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- VIEW 5: CODE STUDIO (LẬP TRÌNH & CHẠY SCRIPT TỰ ĐỘNG)                   -->
+      <!-- ======================================================================= -->
+      <section id="view-code" class="flex-1 flex w-full h-full bg-[#12131a] text-white overflow-hidden hidden">
+        <!-- Left Snippets -->
+        <div class="w-72 border-r border-[#26283b] bg-[#161722] p-4 flex flex-col shrink-0">
+          <div class="flex items-center justify-between pb-3 border-b border-[#26283b]">
+            <span class="font-bold text-xs uppercase tracking-wider text-zinc-300">CODE SNIPPETS</span>
+            <span class="text-[10px] bg-emerald-950 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-800">Python 3.12</span>
+          </div>
+          <div id="codeSnippetsList" class="flex-1 overflow-y-auto custom-scrollbar pt-3 space-y-2 text-xs">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Editor & Console -->
+        <div class="flex-1 flex flex-col h-full bg-[#12131a]">
+          <div class="h-12 border-b border-[#26283b] px-4 flex items-center justify-between shrink-0 bg-[#161722]">
+            <div class="flex items-center gap-2">
+              <i data-lucide="terminal" class="w-4 h-4 text-emerald-500"></i>
+              <span id="activeSnippetTitle" class="font-mono text-xs font-semibold text-zinc-200">Facebook Ads CPA Anomaly Detector</span>
+            </div>
+            <button onclick="runCurrentCode()" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 shadow-sm">
+              <i data-lucide="play" class="w-3.5 h-3.5"></i> Chạy Mã (Run Script)
+            </button>
+          </div>
+
+          <!-- Code input -->
+          <div class="flex-1 p-3">
+            <textarea id="codeEditorArea" class="w-full h-full p-3 bg-[#0d0e14] border border-[#26283b] rounded-xl font-mono text-xs leading-relaxed outline-none resize-none focus:border-emerald-500 text-emerald-400"></textarea>
+          </div>
+
+          <!-- Output Console Terminal -->
+          <div class="h-44 border-t border-[#26283b] bg-[#090a0f] p-3 flex flex-col shrink-0">
+            <div class="flex items-center justify-between text-[11px] text-zinc-400 font-mono pb-1 border-b border-[#1f2130]">
+              <span>TERMINAL OUTPUT</span>
+              <span id="codeExecTime" class="text-emerald-400">0.00 ms</span>
+            </div>
+            <pre id="codeOutputConsole" class="flex-1 overflow-y-auto custom-scrollbar font-mono text-xs text-zinc-300 pt-2 whitespace-pre-wrap">Nhấn "Chạy Mã" để thực thi script...</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- VIEW 6: CAPABILITIES -> PARTNERS (DANH SÁCH TRỢ LÝ AI CHUYÊN GIA)       -->
+      <!-- ======================================================================= -->
+      <section id="view-cap-partners" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+        <div class="max-w-5xl w-full mx-auto space-y-6">
+          <div class="border-b border-bordercol dark:border-[#26283b] pb-4">
+            <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+              <i data-lucide="users" class="w-5 h-5 text-orange-600"></i>
+              AI Partners & Assistants (Đội Ngũ Trợ Lý Chuyên Môn)
+            </h2>
+            <p class="text-xs text-zinc-500 mt-1">Các AI Agent đảm nhận từng chuyên trách trong vận hành doanh nghiệp Thịnh Vượng Số.</p>
+          </div>
+
+          <div id="partnersGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- VIEW 7: CAPABILITIES -> CHATBOT (BỘ CÀI ĐẶT & EMBED WIDGET CHATBOT)    -->
+      <!-- ======================================================================= -->
+      <section id="view-cap-chatbot" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+        <div class="max-w-5xl w-full mx-auto space-y-6">
+          <div class="border-b border-bordercol dark:border-[#26283b] pb-4">
+            <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+              <i data-lucide="message-circle" class="w-5 h-5 text-blue-600"></i>
+              Autonomous Chatbot Builder (Trợ Lý Chat Nhúng Web & Fanpage)
+            </h2>
+            <p class="text-xs text-zinc-500 mt-1">Cấu hình nhân vật, câu chào và tạo mã nhúng Widget cho website hoặc landing page Webcake.</p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Form Cấu hình -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 space-y-4 shadow-sm">
+              <h3 class="font-bold text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200">Thông Số Chatbot</h3>
+              
+              <div>
+                <label class="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Tên Trợ Lý</label>
+                <input type="text" id="cbBotName" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-1.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-orange-500">
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Lời Chào Mở Đầu (Greeting)</label>
+                <textarea id="cbWelcomeMsg" rows="3" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-orange-500"></textarea>
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">System Instructions (Nhân Cách AI)</label>
+                <textarea id="cbSystemPrompt" rows="4" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-orange-500"></textarea>
+              </div>
+
+              <button onclick="saveChatbotSettings()" class="w-full py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-bold transition shadow-sm">
+                Lưu Cấu Hình
+              </button>
+            </div>
+
+            <!-- Mã Nhúng Script -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 space-y-4 shadow-sm flex flex-col justify-between">
+              <div class="space-y-3">
+                <h3 class="font-bold text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200">Mã Nhúng Landing Page (HTML Snippet)</h3>
+                <p class="text-xs text-zinc-500">Dán đoạn mã script này trước thẻ đóng <code>&lt;/body&gt;</code> trên Webcake hoặc website của bạn:</p>
+                <div class="relative">
+                  <pre class="bg-zinc-900 text-zinc-200 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed">&lt;!-- Javis OS Chat Widget --&gt;
+&lt;script 
+  src="https://cdn.javis.os/widget.js" 
+  data-bot-id="thinh-vuong-so-3120"
+  data-theme="#ea580c"
+  async&gt;
+&lt;/script&gt;</pre>
+                  <button onclick="copyEmbedCode()" class="absolute top-2.5 right-2.5 px-2.5 py-1 bg-zinc-800 hover:bg-zinc-700 text-white rounded text-[11px] font-semibold">Sao chép</button>
+                </div>
+              </div>
+
+              <div class="p-3 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 rounded-lg text-xs text-blue-700 dark:text-blue-300">
+                💡 Chatbot tự động kết nối với toàn bộ dữ liệu <b>07 - Wiki</b> trong Second Brain để trả lời chuẩn xác.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- VIEW 8: CAPABILITIES -> SKILLS & JAVIS STORE (CHUẨN 100% ẢNH 1)          -->
+      <!-- ======================================================================= -->
+      <section id="view-cap-skills" class="flex-1 flex w-full h-full bg-[#13141c] text-white overflow-y-auto custom-scrollbar p-6 hidden">
+        <div class="max-w-5xl w-full mx-auto space-y-6">
+          
+          <!-- Header Skills (Ảnh 1) -->
+          <div class="flex items-start justify-between border-b border-[#232536] pb-4">
+            <div>
+              <h2 class="text-xl font-bold flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-5 h-5 text-orange-500"></i>
+                <span data-i18n="skills_title">Skills</span>
+              </h2>
+              <div class="text-xs text-zinc-400 mt-1">Available skills</div>
+            </div>
+
+            <!-- Action buttons (Ảnh 1) -->
+            <div class="flex items-center gap-2 text-xs">
+              <button onclick="selectAllSkills()" class="px-3 py-1.5 rounded-lg bg-[#202230] hover:bg-[#282a3c] text-zinc-300">Select all</button>
+              <button onclick="downloadSelectedSkills()" class="px-3 py-1.5 rounded-lg bg-[#202230] hover:bg-[#282a3c] text-zinc-300 flex items-center gap-1.5">
+                <i data-lucide="download" class="w-3.5 h-3.5"></i> Download selected
+              </button>
+              <button onclick="importSkillsPrompt()" class="px-3 py-1.5 rounded-lg bg-[#202230] hover:bg-[#282a3c] text-zinc-300 flex items-center gap-1.5">
+                <i data-lucide="upload" class="w-3.5 h-3.5"></i> Import
+              </button>
+              <button onclick="openAddSkillModal()" class="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold flex items-center gap-1 shadow-sm">
+                + Skills
+              </button>
+            </div>
+          </div>
+
+          <!-- Subtabs: Your skills | Javis Store -->
+          <div class="flex items-center gap-2 text-xs">
+            <button class="px-3 py-1.5 rounded-lg bg-[#202230] text-orange-400 font-semibold border border-orange-500/40">
+              Your skills
+            </button>
+            <button onclick="alert('Javis Store đang kết nối máy chủ quốc tế!')" class="px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white transition">
+              Javis Store
+            </button>
+          </div>
+
+          <!-- Skills Main 2 columns layout (Ảnh 1) -->
+          <div class="flex gap-6">
+            <!-- Left group filter -->
+            <div class="w-48 shrink-0 space-y-1 text-xs">
+              <div class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">GROUP</div>
+              <button onclick="filterSkillsCategory('all')" id="skillGroup-all" class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-[#202230] text-white font-semibold">
+                <span>All</span> <span class="font-mono text-zinc-400">8</span>
+              </button>
+              <button onclick="filterSkillsCategory('AI')" id="skillGroup-AI" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-[#1a1c27] hover:text-white">
+                <span>AI</span> <span class="font-mono text-zinc-500">5</span>
+              </button>
+              <button onclick="filterSkillsCategory('Marketing')" id="skillGroup-Marketing" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-[#1a1c27] hover:text-white">
+                <span>Marketing</span> <span class="font-mono text-zinc-500">2</span>
+              </button>
+              <button onclick="filterSkillsCategory('Social')" id="skillGroup-Social" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-[#1a1c27] hover:text-white">
+                <span>Social</span> <span class="font-mono text-zinc-500">1</span>
+              </button>
+            </div>
+
+            <!-- Right: Skills Card List (Ảnh 1) -->
+            <div id="skillsCardsContainer" class="flex-1 space-y-3">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- VIEW 9: CAPABILITIES -> PLUGINS (HỆ SINH THÁI TIỆN ÍCH MỞ RỘNG)         -->
+      <!-- ======================================================================= -->
+      <section id="view-cap-plugins" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+        <div class="max-w-5xl w-full mx-auto space-y-6">
+          <div class="border-b border-bordercol dark:border-[#26283b] pb-4">
+            <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+              <i data-lucide="package" class="w-5 h-5 text-purple-600"></i>
+              Plugins Marketplace & Extensions (Hệ Sinh Thái Tiện Ích)
+            </h2>
+            <p class="text-xs text-zinc-500 mt-1">Cài đặt các tiện ích mở rộng tích hợp sâu vào hệ điều hành Javis OS.</p>
+          </div>
+
+          <div id="pluginsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- VIEW 10: WORK -> TASKS & TIMELINE (CHUẨN 100% ẢNH 3)                    -->
+      <!-- ======================================================================= -->
+      <section id="view-work-tasks" class="flex-1 flex w-full h-full hidden">
+        <!-- Sub-sidebar Tasks (Ảnh 3) -->
         <div class="w-60 border-r border-bordercol dark:border-[#26283b] bg-[#f9f8f4] dark:bg-[#181a24] flex flex-col justify-between shrink-0 p-3 text-xs">
           <div class="space-y-4">
             <h3 class="font-bold text-sm text-zinc-900 dark:text-white">Tasks</h3>
@@ -393,34 +906,34 @@
               </button>
             </div>
 
-            <!-- Assistants filter list -->
+            <!-- Assistants filter list (Ảnh 3) -->
             <div class="pt-3 border-t border-bordercol dark:border-[#26283b] space-y-2">
               <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider">ASSISTANTS</div>
               <div class="space-y-1 text-zinc-600 dark:text-zinc-400">
-                <div class="flex items-center justify-between p-1 hover:bg-zinc-200/50 rounded cursor-pointer">
+                <div onclick="filterTasksByAssistant('May May')" class="flex items-center justify-between p-1 hover:bg-zinc-200/50 rounded cursor-pointer">
                   <span class="flex items-center gap-1.5"><span>👩‍💼</span> May May</span>
                   <span class="font-mono text-[10px]">10</span>
                 </div>
-                <div class="flex items-center justify-between p-1 hover:bg-zinc-200/50 rounded cursor-pointer">
-                  <span class="flex items-center gap-1.5"><span>👨‍💼</span> Javis Vu | Customer Care</span>
+                <div onclick="filterTasksByAssistant('Javis Vu | Customer Care')" class="flex items-center justify-between p-1 hover:bg-zinc-200/50 rounded cursor-pointer">
+                  <span class="flex items-center gap-1.5"><span>👨‍💼</span> Javis Vu | Custom...</span>
                   <span class="font-mono text-[10px]">9</span>
                 </div>
-                <div class="flex items-center justify-between p-1 hover:bg-zinc-200/50 rounded cursor-pointer">
-                  <span class="flex items-center gap-1.5"><span>📈</span> Bao - Conversion...</span>
+                <div onclick="filterTasksByAssistant('Bao - Conversion Specialist')" class="flex items-center justify-between p-1 hover:bg-zinc-200/50 rounded cursor-pointer">
+                  <span class="flex items-center gap-1.5"><span>📈</span> Bao - Conversio...</span>
                 </div>
-                <div class="flex items-center justify-between p-1 hover:bg-zinc-200/50 rounded cursor-pointer">
-                  <span class="flex items-center gap-1.5"><span>🎨</span> Mai - Brand Content...</span>
+                <div onclick="filterTasksByAssistant('Mai - Brand Content Specialist')" class="flex items-center justify-between p-1 hover:bg-zinc-200/50 rounded cursor-pointer">
+                  <span class="flex items-center gap-1.5"><span>🎨</span> Mai - Brand Con...</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Main Tasks Timeline Panel (Ảnh 2) -->
+        <!-- Main Tasks Timeline Panel (Ảnh 3) -->
         <div class="flex-1 flex flex-col bg-white dark:bg-[#12131a] overflow-y-auto custom-scrollbar p-6">
           <div class="max-w-4xl w-full mx-auto space-y-5">
-            <!-- Filter Pills (Javis's 19 | Mine 8) -->
-            <div class="flex items-center gap-2">
+            <!-- Filter Pills (Javis's 19 | Mine 8) + Button Thêm Task -->
+            <div class="flex items-center justify-between">
               <div class="inline-flex bg-zinc-100 dark:bg-[#202230] p-1 rounded-xl text-xs font-semibold">
                 <button onclick="filterTasks(null, 'javis')" id="filter-owner-javis" class="px-3 py-1 rounded-lg bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm transition">
                   Javis's 19
@@ -429,18 +942,22 @@
                   Mine 8
                 </button>
               </div>
+
+              <button onclick="openAddTaskModal()" class="px-3 py-1.5 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1 shadow-sm">
+                + Thêm Việc Mới
+              </button>
             </div>
 
             <!-- Search task input -->
             <div class="relative">
               <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-zinc-400"></i>
-              <input type="text" placeholder="Search tasks by name or assistant..." class="w-full bg-[#f9f8f5] dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl pl-9 pr-4 py-2 text-xs outline-none focus:border-orange-500 text-zinc-800 dark:text-zinc-200">
+              <input type="text" oninput="searchTasks(this.value)" placeholder="Search tasks by name or assistant..." class="w-full bg-[#f9f8f5] dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl pl-9 pr-4 py-2 text-xs outline-none focus:border-orange-500 text-zinc-800 dark:text-zinc-200">
             </div>
 
             <!-- Heading: Upcoming -->
             <h2 class="text-base font-bold text-zinc-900 dark:text-white pt-2">Upcoming</h2>
 
-            <!-- Timeline Tasks Container -->
+            <!-- Timeline Tasks Container (Ảnh 3) -->
             <div id="timelineTasksContainer" class="space-y-6">
               <!-- Rendered by JS -->
             </div>
@@ -448,107 +965,90 @@
         </div>
       </section>
 
-      <!-- ========================================================================= -->
-      <!-- SPACE 3: KỸ NĂNG & JAVIS STORE (CHUẨN 100% ẢNH 3 - DARK THEME HỖ TRỢ)    -->
-      <!-- ========================================================================= -->
-      <section id="space-view-skills" class="flex-1 flex w-full h-full bg-[#13141c] text-white overflow-y-auto custom-scrollbar p-6 hidden">
+      <!-- ======================================================================= -->
+      <!-- VIEW 11: WORK -> WEBHOOKS (QUẢN LÝ ENDPOINT & TRIGGER TỰ ĐỘNG)          -->
+      <!-- ======================================================================= -->
+      <section id="view-work-webhooks" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
         <div class="max-w-5xl w-full mx-auto space-y-6">
-          
-          <!-- Header Skills -->
-          <div class="flex items-start justify-between border-b border-[#232536] pb-4">
-            <div>
-              <h2 class="text-xl font-bold flex items-center gap-2">
-                <i data-lucide="sparkles" class="w-5 h-5 text-orange-500"></i>
-                Skills
-              </h2>
-              <div class="text-xs text-zinc-400 mt-1">Available skills</div>
-            </div>
-
-            <!-- Action buttons (Ảnh 3) -->
-            <div class="flex items-center gap-2 text-xs">
-              <button class="px-3 py-1.5 rounded-lg bg-[#202230] hover:bg-[#282a3c] text-zinc-300">Select all</button>
-              <button class="px-3 py-1.5 rounded-lg bg-[#202230] hover:bg-[#282a3c] text-zinc-300 flex items-center gap-1.5">
-                <i data-lucide="download" class="w-3.5 h-3.5"></i> Download selected
-              </button>
-              <button class="px-3 py-1.5 rounded-lg bg-[#202230] hover:bg-[#282a3c] text-zinc-300 flex items-center gap-1.5">
-                <i data-lucide="upload" class="w-3.5 h-3.5"></i> Import
-              </button>
-              <button class="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold flex items-center gap-1 shadow-sm">
-                + Skills
-              </button>
-            </div>
+          <div class="border-b border-bordercol dark:border-[#26283b] pb-4">
+            <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+              <i data-lucide="webhook" class="w-5 h-5 text-indigo-600"></i>
+              Webhooks & Event Triggers (Điểm Nhận Tín Hiệu Tự Động)
+            </h2>
+            <p class="text-xs text-zinc-500 mt-1">Đón nhận sự kiện từ Zalo OA, Webcake Form, Stripe hoặc Meta Ads để tự động kích hoạt trợ lý AI.</p>
           </div>
 
-          <!-- Subtabs: Your skills | Javis Store -->
-          <div class="flex items-center gap-2 text-xs">
-            <button class="px-3 py-1.5 rounded-lg bg-[#202230] text-orange-400 font-semibold border border-orange-500/40">
-              Your skills
-            </button>
-            <button class="px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white transition">
-              Javis Store
-            </button>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="webhooksCards">
+            <!-- Rendered by JS -->
           </div>
 
-          <!-- Skills Main 2 columns layout (Left group filter + Right cards list) -->
-          <div class="flex gap-6">
-            <!-- Left group filter -->
-            <div class="w-48 shrink-0 space-y-1 text-xs">
-              <div class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">GROUP</div>
-              <button onclick="filterSkillsCategory('all')" id="skillGroup-all" class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-[#202230] text-white font-semibold">
-                <span>All</span> <span class="font-mono text-zinc-400">8</span>
-              </button>
-              <button onclick="filterSkillsCategory('AI')" id="skillGroup-AI" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-[#1a1c27] hover:text-white">
-                <span>AI</span> <span class="font-mono text-zinc-500">5</span>
-              </button>
-              <button onclick="filterSkillsCategory('Marketing')" id="skillGroup-Marketing" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-zinc-400 hover:bg-[#1a1c27] hover:text-white">
-                <span>Marketing</span> <span class="font-mono text-zinc-500">2</span>
-              </button>
-            </div>
-
-            <!-- Right: Skills Card List (Ảnh 3) -->
-            <div id="skillsCardsContainer" class="flex-1 space-y-3">
+          <!-- Webhook Logs -->
+          <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 shadow-sm space-y-3">
+            <h3 class="font-bold text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200">Lịch Sử Nhận Tín Hiệu Webhook Gần Nhất</h3>
+            <div id="webhookLogsList" class="space-y-2">
               <!-- Rendered by JS -->
             </div>
           </div>
-
         </div>
       </section>
 
-      <!-- ========================================================================= -->
-      <!-- VIEW PHỤ: MODELS & PROVIDERS (TRANG NHÀ CUNG CẤP - ẢNH 3 CŨ)               -->
-      <!-- ========================================================================= -->
-      <section id="space-view-models" class="flex-1 flex w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
-        <div class="max-w-4xl mx-auto w-full space-y-6">
-          <div class="flex items-center justify-between">
+      <!-- ======================================================================= -->
+      <!-- VIEW 12: CONNECTIONS (MCP HUB & TÍCH HỢP NỀN TẢNG)                      -->
+      <!-- ======================================================================= -->
+      <section id="view-connections" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+        <div class="max-w-5xl w-full mx-auto space-y-6">
+          <div class="flex items-center justify-between border-b border-bordercol dark:border-[#26283b] pb-4">
             <div>
               <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-                <i data-lucide="layers" class="w-5 h-5 text-pink-600"></i>
-                Models & Providers (Nhà Cung Cấp)
+                <i data-lucide="link" class="w-5 h-5 text-indigo-600"></i>
+                Connections & MCP Hub (Model Context Protocol)
               </h2>
-              <p class="text-xs text-zinc-500 mt-1">Quản lý kết nối tài khoản AI qua CLI/OAuth để tận dụng gói thuê bao cá nhân 0đ tiền API.</p>
+              <p class="text-xs text-zinc-500 mt-1">Quản lý kết nối an toàn Zalo Agent, Facebook Ads, Google và các mô hình AI.</p>
             </div>
-            <button onclick="switchSpace('brain')" class="text-xs text-orange-600 hover:underline">Quay lại Second Brain</button>
-          </div>
-          <div id="modelsProvidersList" class="space-y-4"></div>
-        </div>
-      </section>
-
-      <!-- ========================================================================= -->
-      <!-- VIEW PHỤ: MCP CONNECTIONS HUB                                             -->
-      <!-- ========================================================================= -->
-      <section id="space-view-mcp" class="flex-1 flex w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
-        <div class="max-w-4xl mx-auto w-full space-y-6">
-          <div class="flex items-center justify-between">
-            <div>
-              <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-                <i data-lucide="cpu" class="w-5 h-5 text-blue-600"></i>
-                Javis MCP Hub (Model Context Protocol)
-              </h2>
-              <p class="text-xs text-zinc-500 mt-1">Quản lý kết nối Zalo Agent, Facebook Fanpage / Ads Graph API.</p>
-            </div>
-            <button onclick="switchSpace('brain')" class="text-xs text-orange-600 hover:underline">Quay lại Second Brain</button>
+            <button onclick="loadMcpConnections()" class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs">Làm mới kết nối</button>
           </div>
           <div id="mcpConnectionsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- VIEW 13: SYSTEM (CẤU HÌNH HỆ THỐNG & NHÀ CUNG CẤP AI)                   -->
+      <!-- ======================================================================= -->
+      <section id="view-system" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+        <div class="max-w-5xl w-full mx-auto space-y-6">
+          <div class="border-b border-bordercol dark:border-[#26283b] pb-4">
+            <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+              <i data-lucide="sliders" class="w-5 h-5 text-pink-600"></i>
+              System Settings & AI Providers (Hệ Thống & Tài Khoản Cung Cấp)
+            </h2>
+            <p class="text-xs text-zinc-500 mt-1">Kết nối tài khoản thuê bao cá nhân (Claude Code, ChatGPT Plus, Antigravity) để chạy 0đ tiền API token.</p>
+          </div>
+
+          <!-- System Status Bar -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="p-3.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl">
+              <span class="text-[10px] text-zinc-400 font-mono uppercase">Hệ Thống</span>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white mt-1">Javis OS v0.66.0</div>
+            </div>
+            <div class="p-3.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl">
+              <span class="text-[10px] text-zinc-400 font-mono uppercase">Token Pruner</span>
+              <div class="text-sm font-bold text-emerald-500 mt-1">Bật (-80% Token)</div>
+            </div>
+            <div class="p-3.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl">
+              <span class="text-[10px] text-zinc-400 font-mono uppercase">Database</span>
+              <div class="text-sm font-bold text-zinc-900 dark:text-white mt-1">SQLite Cục Bộ</div>
+            </div>
+            <div class="p-3.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl">
+              <span class="text-[10px] text-zinc-400 font-mono uppercase">Bộ Nhớ</span>
+              <div class="text-sm font-bold text-blue-500 mt-1">1918 Notes Git</div>
+            </div>
+          </div>
+
+          <!-- Providers List -->
+          <div class="space-y-4">
+            <h3 class="font-bold text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200">Các Cổng Cung Cấp Mô Hình AI Đã Kết Nối</h3>
+            <div id="modelsProvidersList" class="space-y-4"></div>
+          </div>
         </div>
       </section>
 
@@ -570,16 +1070,16 @@
           <button onclick="sendQuickPrompt('Đọc các tin nhắn Zalo gần đây nhất cho tôi'); togglePetMenu();" class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-orange-50 dark:hover:bg-zinc-800 flex items-center gap-2 transition">
             <span>💬</span> <span>Đọc tin nhắn Zalo</span>
           </button>
-          <button onclick="switchSpace('tasks'); togglePetMenu();" class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-emerald-50 dark:hover:bg-zinc-800 flex items-center gap-2 transition">
+          <button onclick="navigateTo('work-tasks'); togglePetMenu();" class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-emerald-50 dark:hover:bg-zinc-800 flex items-center gap-2 transition">
             <span>📋</span> <span>Mở Không Gian Việc (Tasks)</span>
           </button>
-          <button onclick="switchSpace('skills'); togglePetMenu();" class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-amber-50 dark:hover:bg-zinc-800 flex items-center gap-2 transition">
+          <button onclick="navigateTo('cap-skills'); togglePetMenu();" class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-amber-50 dark:hover:bg-zinc-800 flex items-center gap-2 transition">
             <span>✨</span> <span>Mở Kho Kỹ Năng (Skills)</span>
           </button>
         </div>
       </div>
 
-      <div onclick="togglePetMenu()" class="pet-floating cursor-pointer group relative p-1 drop-shadow-md hover:scale-105 transition">
+      <div onclick="togglePetMenu()" class="pet-floating cursor-pointer group relative p-1 drop-shadow-md hover:scale-105 transition" title="Javis Pet Assistant">
         <svg class="w-12 h-10" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M25 65C15 65 8 57 8 47C8 38 15 31 24 30C26 18 36 10 49 10C61 10 71 18 74 29C82 30 89 37 89 46C89 56 81 65 71 65H25Z" fill="#F97316"/>
           <circle cx="28" cy="46" r="3.5" fill="#FB923C" opacity="0.8"/>
@@ -597,8 +1097,141 @@
 
   </div>
 
-  <!-- JAVASCRIPT LOGIC CHO TOÀN BỘ CÁC KHÔNG GIAN -->
+  <!-- MODAL: ADD CUSTOM SKILL -->
+  <div id="addSkillModal" class="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between pb-2 border-b border-bordercol dark:border-zinc-800">
+        <h3 class="font-bold text-sm text-zinc-900 dark:text-white flex items-center gap-2">
+          <span>✨</span> Tạo Kỹ Năng Mới (+ Skills)
+        </h3>
+        <button onclick="closeAddSkillModal()" class="text-zinc-400 hover:text-zinc-600"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Tên Kỹ Năng</label>
+          <input type="text" id="newSkillName" placeholder="Ví dụ: TikTok Trend Analyzer" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100">
+        </div>
+        <div>
+          <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Nhóm (Category)</label>
+          <select id="newSkillCat" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none text-zinc-900 dark:text-zinc-100">
+            <option value="AI">AI</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Social">Social</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Mô Tả Kỹ Năng</label>
+          <textarea id="newSkillDesc" rows="3" placeholder="Mô tả công việc mà kỹ năng này sẽ giải quyết..." class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 outline-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100"></textarea>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closeAddSkillModal()" class="px-3 py-1.5 rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs">Hủy</button>
+        <button onclick="submitNewSkill()" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">Lưu Kỹ Năng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD TASK -->
+  <div id="addTaskModal" class="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between pb-2 border-b border-bordercol dark:border-zinc-800">
+        <h3 class="font-bold text-sm text-zinc-900 dark:text-white flex items-center gap-2">
+          <span>📋</span> Thêm Công Việc Mới
+        </h3>
+        <button onclick="closeAddTaskModal()" class="text-zinc-400 hover:text-zinc-600"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Tiêu Đề Công Việc</label>
+          <input type="text" id="newTaskTitle" placeholder="Ví dụ: Tối ưu bộ từ khóa tìm kiếm Google" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100">
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Giờ Thực Hiện</label>
+            <input type="text" id="newTaskTime" value="09:00" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none text-zinc-900 dark:text-zinc-100">
+          </div>
+          <div>
+            <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Ngày / Nhóm</label>
+            <input type="text" id="newTaskDateGroup" value="Today" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none text-zinc-900 dark:text-zinc-100">
+          </div>
+        </div>
+        <div>
+          <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Giao Cho Trợ Lý (Assistant)</label>
+          <select id="newTaskAssistant" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none text-zinc-900 dark:text-zinc-100">
+            <option value="Javis Core">⚡ Javis Core</option>
+            <option value="May May">👩‍💼 May May</option>
+            <option value="Javis Vu | Customer Care">👨‍💼 Javis Vu | Customer Care</option>
+            <option value="Bao - Conversion Specialist">📈 Bao - Conversion Specialist</option>
+            <option value="Mai - Brand Content Specialist">🎨 Mai - Brand Content Specialist</option>
+            <option value="Pham Quang Dai">👤 Mine (Pham Quang Dai)</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closeAddTaskModal()" class="px-3 py-1.5 rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs">Hủy</button>
+        <button onclick="submitNewTask()" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">Tạo Việc</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: INGEST SOURCE -->
+  <div id="ingestModal" class="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between pb-2 border-b border-bordercol dark:border-zinc-800">
+        <h3 class="font-bold text-sm text-zinc-900 dark:text-white flex items-center gap-2">
+          <span>📥</span> Ingest Source (Chưng Cất Nguồn Vào Wiki)
+        </h3>
+        <button onclick="closeIngestModal()" class="text-zinc-400 hover:text-zinc-600"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Tiêu Đề Nguồn</label>
+          <input type="text" id="ingestTitle" placeholder="Ví dụ: Quy tắc tối ưu chiến dịch Flash Sale Black Friday" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100">
+        </div>
+        <div>
+          <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Danh Mục</label>
+          <select id="ingestCategory" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none text-zinc-900 dark:text-zinc-100">
+            <option value="MARKETING/CRO">MARKETING/CRO</option>
+            <option value="OPERATIONS">OPERATIONS</option>
+            <option value="SALES">SALES</option>
+            <option value="WIKI">WIKI</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Nội Dung Thô (Văn bản, Báo cáo, Ghi chú hội thoại)</label>
+          <textarea id="ingestContent" rows="5" placeholder="Dán nội dung bạn muốn Javis OS tự động đọc và đúc kết quy tắc thực chiến..." class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 outline-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100"></textarea>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closeIngestModal()" class="px-3 py-1.5 rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs">Hủy</button>
+        <button onclick="submitIngestSource()" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">Chưng Cất Ngay</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: NOTIFICATIONS -->
+  <div id="notificationModal" class="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl max-w-sm w-full p-5 space-y-3 shadow-2xl">
+      <div class="flex items-center justify-between pb-2 border-b border-zinc-100 dark:border-zinc-800">
+        <h4 class="font-bold text-xs uppercase text-zinc-800 dark:text-zinc-200">Thông Báo Hệ Thống</h4>
+        <button onclick="closeNotificationModal()" class="text-zinc-400 hover:text-zinc-600"><i data-lucide="x" class="w-3.5 h-3.5"></i></button>
+      </div>
+      <div class="space-y-2 text-xs">
+        <div class="p-3 bg-orange-50 dark:bg-orange-950/40 border border-orange-200 dark:border-orange-800 rounded-xl space-y-1">
+          <div class="font-bold text-orange-700 dark:text-orange-300 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-orange-500"></span> Bản cập nhật v0.66.0 đã sẵn sàng
+          </div>
+          <p class="text-[11px] text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            Hệ điều hành đã hoàn thiện đầy đủ tất cả chức năng trên thanh menu: Chat, Brain, Code, Capabilities, Work, Connections và System!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT TOÀN BỘ LOGIC HỆ THỐNG JAVIS OS -->
   <script>
+    // State quản trị
     let ws = null;
     let currentSessionId = 'session_' + Math.random().toString(36).substring(2, 9);
     let graphInstance = null;
@@ -607,6 +1240,205 @@
     let currentOwnerFilter = 'javis';
     let currentStatusFilter = 'upcoming';
     let isDarkMode = false;
+    let currentLang = 'en';
+    let currentActiveView = 'brain-neural';
+    let allSkills = [];
+
+    // TỪ ĐIỂN SONG NGỮ (BILINGUAL DICTIONARY)
+    const I18N = {
+      en: {
+        top_tasks: "Việc",
+        top_brain: "Second Brain",
+        top_skills: "Kỹ năng",
+        notifications: "Notifications",
+        history: "History",
+        menu_chat: "Chat",
+        menu_brain: "Brain",
+        menu_neural: "Neuralnetwork",
+        menu_files: "Files",
+        menu_learning: "Self-learning",
+        menu_code: "Code",
+        menu_capabilities: "Capabilities",
+        menu_partners: "Partners",
+        menu_chatbot: "Chatbot",
+        menu_skills: "Skills",
+        menu_plugins: "Plugins",
+        menu_work: "Work",
+        menu_tasks: "Tasks",
+        menu_webhooks: "Webhooks",
+        menu_connections: "Connections",
+        menu_system: "System",
+        give_a_star: "Give a star",
+        conversation: "CONVERSATION",
+        skills_title: "Skills",
+        chat_title: "Javis AI Conversation Cockpit"
+      },
+      vi: {
+        top_tasks: "Công Việc",
+        top_brain: "Não Bộ Số 2",
+        top_skills: "Kỹ Năng",
+        notifications: "Thông Báo",
+        history: "Lịch Sử",
+        menu_chat: "Trò Chuyện AI",
+        menu_brain: "Não Bộ (Brain)",
+        menu_neural: "Mạng Nơ-ron (3D Graph)",
+        menu_files: "Tệp Ghi Chú (Files)",
+        menu_learning: "Tự Động Học",
+        menu_code: "Studio Lập Trình",
+        menu_capabilities: "Năng Lực AI",
+        menu_partners: "Đội Ngũ Trợ Lý",
+        menu_chatbot: "Trợ Lý Chatbot",
+        menu_skills: "Kỹ Năng (Skills)",
+        menu_plugins: "Tiện Ích Mở Rộng",
+        menu_work: "Công Việc (Work)",
+        menu_tasks: "Lịch Trình Tác Vụ",
+        menu_webhooks: "Điểm Kích Hoạt",
+        menu_connections: "Cổng Kết Nối",
+        menu_system: "Cài Đặt Hệ Thống",
+        give_a_star: "Tặng Sao Javis",
+        conversation: "HỘI THOẠI ĐIỀU HÀNH",
+        skills_title: "Kho Kỹ Năng",
+        chat_title: "Bàn Điều Khiển Trò Chuyện Javis"
+      }
+    };
+
+    function changeLanguage(lang) {
+      currentLang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[lang] && I18N[lang][key]) {
+          el.innerText = I18N[lang][key];
+        }
+      });
+    }
+
+    // ĐIỀU HƯỚNG TẤT CẢ VIEW THEO MENU
+    function navigateTo(targetView) {
+      currentActiveView = targetView;
+      const allViews = [
+        'chat', 'brain-neural', 'brain-files', 'brain-learning',
+        'code', 'cap-partners', 'cap-chatbot', 'cap-skills', 'cap-plugins',
+        'work-tasks', 'work-webhooks', 'connections', 'system'
+      ];
+
+      allViews.forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        if (el) {
+          if (v === targetView) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        }
+      });
+
+      // Highlight sidebar active item
+      document.querySelectorAll('#mainSidebar button, #mainSidebar a').forEach(btn => {
+        btn.classList.remove('sidebar-item-active');
+      });
+      const activeNav = document.getElementById(`nav-${targetView}`);
+      if (activeNav) activeNav.classList.add('sidebar-item-active');
+
+      // Đồng bộ Top Pills (Việc | Second Brain | Kỹ năng)
+      const spaceTasks = document.getElementById('space-tasks');
+      const spaceBrain = document.getElementById('space-brain');
+      const spaceSkills = document.getElementById('space-skills');
+
+      [spaceTasks, spaceBrain, spaceSkills].forEach(btn => {
+        if (btn) {
+          btn.classList.remove('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          btn.classList.add('text-zinc-600', 'dark:text-zinc-400');
+        }
+      });
+
+      if (targetView.startsWith('work-')) {
+        if (spaceTasks) {
+          spaceTasks.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          spaceTasks.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+        }
+      } else if (targetView.startsWith('brain-')) {
+        if (spaceBrain) {
+          spaceBrain.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          spaceBrain.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+        }
+      } else if (targetView === 'cap-skills') {
+        if (spaceSkills) {
+          spaceSkills.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          spaceSkills.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+        }
+      }
+
+      // Xử lý nạp dữ liệu theo view
+      if (targetView === 'brain-neural') {
+        load3DGraph();
+        loadVaultNotes();
+      } else if (targetView === 'brain-files') {
+        loadFilesExplorer();
+      } else if (targetView === 'brain-learning') {
+        loadSelfLearning();
+      } else if (targetView === 'code') {
+        loadCodeSnippets();
+      } else if (targetView === 'cap-partners') {
+        loadPartners();
+      } else if (targetView === 'cap-chatbot') {
+        loadChatbotConfig();
+      } else if (targetView === 'cap-skills') {
+        loadSkills();
+      } else if (targetView === 'cap-plugins') {
+        loadPlugins();
+      } else if (targetView === 'work-tasks') {
+        loadTimelineTasks();
+      } else if (targetView === 'work-webhooks') {
+        loadWebhooks();
+      } else if (targetView === 'connections') {
+        loadMcpConnections();
+      } else if (targetView === 'system') {
+        loadModelsProviders();
+      }
+
+      lucide.createIcons();
+    }
+
+    // Chuyển 3 top pill spaces
+    function switchSpace(spaceKey) {
+      if (spaceKey === 'tasks') {
+        navigateTo('work-tasks');
+      } else if (spaceKey === 'brain') {
+        navigateTo('brain-neural');
+      } else if (spaceKey === 'skills') {
+        navigateTo('cap-skills');
+      }
+    }
+
+    // Toggle accordion section trong Sidebar
+    function toggleMenuSection(section) {
+      const sub = document.getElementById(`sub-${section}`);
+      const arrow = document.getElementById(`arrow-${section}`);
+      if (sub) {
+        sub.classList.toggle('hidden');
+      }
+      if (arrow) {
+        arrow.classList.toggle('rotate-180');
+      }
+    }
+
+    // Thu gọn Sidebar
+    let isSidebarCollapsed = false;
+    function toggleSidebarCollapse() {
+      const sb = document.getElementById('mainSidebar');
+      if (!sb) return;
+      isSidebarCollapsed = !isSidebarCollapsed;
+      if (isSidebarCollapsed) {
+        sb.classList.remove('w-56');
+        sb.classList.add('w-16');
+        sb.querySelectorAll('nav span, .font-extrabold, .text-zinc-500, #langSelect').forEach(el => el.classList.add('hidden'));
+      } else {
+        sb.classList.remove('w-16');
+        sb.classList.add('w-56');
+        sb.querySelectorAll('nav span, .font-extrabold, .text-zinc-500, #langSelect').forEach(el => el.classList.remove('hidden'));
+      }
+      lucide.createIcons();
+    }
 
     // Khởi tạo WebSocket
     function initWebSocket() {
@@ -630,11 +1462,14 @@
     let currentBubbleDiv = null;
 
     function handleStreamEvent(event) {
-      const container = document.getElementById('cockpitChatMessages');
+      const container1 = document.getElementById('cockpitChatMessages');
+      const container2 = document.getElementById('dedicatedChatMessages');
+      const activeContainer = currentActiveView === 'chat' ? container2 : container1;
+      if (!activeContainer) return;
 
       if (event.type === 'meta') {
         currentBubbleDiv = document.createElement('div');
-        currentBubbleDiv.className = 'p-3 bg-[#f8f7f4] dark:bg-[#1e202e] border border-bordercol dark:border-zinc-700 rounded-xl space-y-1.5';
+        currentBubbleDiv.className = 'p-3 bg-[#f8f7f4] dark:bg-[#1e202e] border border-bordercol dark:border-zinc-700 rounded-xl space-y-1.5 shadow-sm';
         currentBubbleDiv.innerHTML = `
           <div class="flex items-center justify-between text-[11px] text-zinc-400 font-mono">
             <span class="font-bold text-orange-600 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-orange-500"></span> JAVIS AI</span>
@@ -642,23 +1477,25 @@
           </div>
           <div class="bubble-body leading-relaxed text-zinc-800 dark:text-zinc-200"></div>
         `;
-        container.appendChild(currentBubbleDiv);
+        activeContainer.appendChild(currentBubbleDiv);
         currentBubbleContent = "";
-        container.scrollTop = container.scrollHeight;
+        activeContainer.scrollTop = activeContainer.scrollHeight;
       }
       else if (event.type === 'tool_call') {
+        if (!currentBubbleDiv) return;
         const body = currentBubbleDiv.querySelector('.bubble-body');
         const pill = document.createElement('div');
         pill.className = 'my-1.5 inline-flex items-center gap-1 px-2.5 py-1 rounded bg-blue-50 dark:bg-blue-950/70 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-[11px] font-mono';
         pill.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-ping"></span> Gọi MCP: <b>${event.tool}</b>`;
         body.appendChild(pill);
-        container.scrollTop = container.scrollHeight;
+        activeContainer.scrollTop = activeContainer.scrollHeight;
       }
       else if (event.type === 'text') {
+        if (!currentBubbleDiv) return;
         currentBubbleContent += event.content;
         const body = currentBubbleDiv.querySelector('.bubble-body');
         body.innerHTML = marked.parse(currentBubbleContent);
-        container.scrollTop = container.scrollHeight;
+        activeContainer.scrollTop = activeContainer.scrollHeight;
       }
       else if (event.type === 'final') {
         lucide.createIcons();
@@ -687,83 +1524,52 @@
       input.value = '';
     }
 
+    function handleDedicatedChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('dedicatedChatInput');
+      const text = input.value.trim();
+      if (!text || !ws || ws.readyState !== WebSocket.OPEN) return;
+
+      const container = document.getElementById('dedicatedChatMessages');
+      const userDiv = document.createElement('div');
+      userDiv.className = 'p-3 bg-orange-600 text-white rounded-xl ml-12 text-right leading-relaxed shadow-sm font-medium text-xs';
+      userDiv.innerText = text;
+      container.appendChild(userDiv);
+      container.scrollTop = container.scrollHeight;
+
+      ws.send(JSON.stringify({
+        session_id: currentSessionId,
+        prompt: text,
+        provider: "claude-code"
+      }));
+
+      input.value = '';
+    }
+
     function sendQuickPrompt(promptText) {
-      document.getElementById('cockpitChatInput').value = promptText;
-      document.getElementById('cockpitChatForm').dispatchEvent(new Event('submit'));
-    }
-
-    // Chuyển đổi 3 Không gian chính (Việc | Second Brain | Kỹ năng) - AN TOÀN TUYỆT ĐỐI KHÔNG FREEZE
-    function switchSpace(spaceId) {
-      const spaces = ['tasks', 'brain', 'skills'];
-      spaces.forEach(s => {
-        const btn = document.getElementById(`space-${s}`);
-        const view = document.getElementById(`space-view-${s}`);
-        if (s === spaceId) {
-          if (btn) {
-            btn.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
-            btn.classList.remove('text-zinc-600', 'dark:text-zinc-400');
-          }
-          if (view) view.classList.remove('hidden');
-        } else {
-          if (btn) {
-            btn.classList.remove('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
-            btn.classList.add('text-zinc-600', 'dark:text-zinc-400');
-          }
-          if (view) view.classList.add('hidden');
-        }
-      });
-
-      // Ẩn view phụ
-      document.getElementById('space-view-models').classList.add('hidden');
-      document.getElementById('space-view-mcp').classList.add('hidden');
-
-      // Tạm dừng WebGL animation để tránh lỗi shader loop trong headless
-      if (graphInstance) {
-        try {
-          if (spaceId === 'brain') {
-            if (typeof graphInstance.resumeAnimation === 'function') graphInstance.resumeAnimation();
-          } else {
-            if (typeof graphInstance.pauseAnimation === 'function') graphInstance.pauseAnimation();
-          }
-        } catch (e) {}
+      if (currentActiveView !== 'brain-neural' && currentActiveView !== 'chat') {
+        navigateTo('brain-neural');
       }
-
-      if (spaceId === 'brain') {
-        load3DGraph();
-        loadVaultNotes();
-      } else if (spaceId === 'tasks') {
-        loadTimelineTasks();
-      } else if (spaceId === 'skills') {
-        loadSkills();
+      const input = document.getElementById('cockpitChatInput');
+      if (input) {
+        input.value = promptText;
+        document.getElementById('cockpitChatForm').dispatchEvent(new Event('submit'));
       }
     }
 
-    function switchSubView(subId) {
-      document.getElementById('space-view-brain').classList.add('hidden');
-      document.getElementById('space-view-tasks').classList.add('hidden');
-      document.getElementById('space-view-skills').classList.add('hidden');
-      
-      if (graphInstance && typeof graphInstance.pauseAnimation === 'function') {
-        try { graphInstance.pauseAnimation(); } catch(e){}
-      }
-
-      if (subId === 'models') {
-        document.getElementById('space-view-models').classList.remove('hidden');
-        loadModelsProviders();
-      } else if (subId === 'mcp') {
-        document.getElementById('space-view-mcp').classList.remove('hidden');
-        loadMcpConnections();
-      } else if (subId === 'chat') {
-        switchSpace('brain');
-      }
+    function clearChatHistory() {
+      document.getElementById('dedicatedChatMessages').innerHTML = `
+        <div class="text-zinc-400 text-center py-12">
+          <p>Cuộc hội thoại đã được làm mới.</p>
+        </div>
+      `;
     }
 
-    // 3D Graph Loader với fallback 2D an toàn tuyệt đối
+    // 3D GRAPH
     async function load3DGraph() {
       try {
         const res = await fetch('/api/vault/graph');
         const data = await res.json();
-        
         const elem = document.getElementById('cockpit-3d-graph');
         if (!elem) return;
 
@@ -785,7 +1591,7 @@
               .linkOpacity(0.5);
             graphInstance.graphData(data);
           } catch (webglErr) {
-            console.warn("WebGL unaccelerated, using 2D fallback", webglErr);
+            console.warn("WebGL fallback 2D", webglErr);
             render2DGraphFallback(elem, data);
           }
         } else if (graphInstance) {
@@ -816,7 +1622,7 @@
       `;
     }
 
-    // Vault Tree List (Ảnh 1)
+    // VAULT NOTES LIST
     async function loadVaultNotes() {
       try {
         const res = await fetch('/api/vault/notes');
@@ -847,7 +1653,7 @@
         allNotes.forEach(n => {
           const fileRow = document.createElement('div');
           fileRow.className = 'flex items-center gap-1.5 py-1 px-3 text-orange-600 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-zinc-800 rounded cursor-pointer';
-          fileRow.onclick = () => sendQuickPrompt(`Tóm tắt nội dung ghi chú "${n.title}" cho tôi`);
+          fileRow.onclick = () => openNoteInEditor(n.path);
           fileRow.innerHTML = `
             <i data-lucide="file-text" class="w-3.5 h-3.5 text-orange-500"></i>
             <span class="truncate">${n.title}</span>
@@ -861,112 +1667,273 @@
       }
     }
 
-    function filterVaultNotes(q) {
-      // Filter helper
-    }
-
-    // TASKS TIMELINE (CHUẨN ẢNH 2 - AN TOÀN TUYỆT ĐỐI)
-    async function loadTimelineTasks() {
+    // FILE EXPLORER & EDITOR VIEW
+    async function loadFilesExplorer() {
       try {
-        const res = await fetch(`/api/kanban/tasks?owner=${currentOwnerFilter}&status=${currentStatusFilter}`);
+        const res = await fetch('/api/vault/notes');
         const data = await res.json();
-        allTimelineTasks = data.tasks || [];
-        
-        if (data.counts) {
-          const elAll = document.getElementById('taskCount-all'); if (elAll) elAll.innerText = data.counts.all;
-          const elToday = document.getElementById('taskCount-today'); if (elToday) elToday.innerText = data.counts.today;
-          const elUp = document.getElementById('taskCount-upcoming'); if (elUp) elUp.innerText = data.counts.upcoming;
-          const elRec = document.getElementById('taskCount-recurring'); if (elRec) elRec.innerText = data.counts.recurring;
-          const elDone = document.getElementById('taskCount-done'); if (elDone) elDone.innerText = data.counts.done;
-        }
+        const listDiv = document.getElementById('filesExplorerList');
+        if (!listDiv) return;
+        listDiv.innerHTML = '';
 
-        const groups = {};
-        allTimelineTasks.forEach(t => {
-          const g = t.date_group || 'Upcoming';
-          if (!groups[g]) groups[g] = [];
-          groups[g].push(t);
+        data.notes.forEach(n => {
+          const item = document.createElement('div');
+          item.className = 'p-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800 cursor-pointer flex items-center justify-between transition';
+          item.onclick = () => openNoteInEditor(n.path);
+          item.innerHTML = `
+            <div class="flex items-center gap-2 truncate">
+              <i data-lucide="file-text" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
+              <span class="truncate font-medium text-zinc-800 dark:text-zinc-200">${n.title}</span>
+            </div>
+            <span class="text-[10px] text-zinc-400 font-mono">${(n.size / 1024).toFixed(1)}k</span>
+          `;
+          listDiv.appendChild(item);
         });
 
-        const container = document.getElementById('timelineTasksContainer');
-        if (!container) return;
-        container.innerHTML = '';
-
-        for (const [dateGroup, tasks] of Object.entries(groups)) {
-          const groupDiv = document.createElement('div');
-          groupDiv.className = 'space-y-3';
-          groupDiv.innerHTML = `
-            <div class="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">${dateGroup}</div>
-            <div class="space-y-2">
-              ${tasks.map(t => `
-                <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2a2c3d] rounded-xl p-3 flex items-center justify-between shadow-sm hover:border-orange-500/40 transition">
-                  <div class="flex items-center gap-3">
-                    <span class="font-mono text-xs font-bold text-zinc-400">${t.time_str}</span>
-                    <button onclick="toggleTaskComplete('${t.id}')" class="w-4 h-4 rounded-full border-2 border-zinc-300 dark:border-zinc-600 hover:border-orange-500 flex items-center justify-center transition">
-                      ${t.status === 'done' ? '<span class="w-2 h-2 rounded-full bg-emerald-500"></span>' : ''}
-                    </button>
-                    <div>
-                      <div class="font-semibold text-xs text-zinc-900 dark:text-white">${t.title}</div>
-                      <div class="text-[11px] text-zinc-400 flex items-center gap-2 mt-0.5">
-                        <span class="flex items-center gap-1"><i data-lucide="repeat" class="w-3 h-3 text-zinc-400"></i> ${t.schedule_type || 'Schedule'}</span>
-                        <span>·</span>
-                        <span class="flex items-center gap-1 font-medium text-zinc-600 dark:text-zinc-300">
-                          <span>${t.assistant_avatar || '🤖'}</span> ${t.assistant}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <button onclick="triggerTaskNow('${t.title}')" class="p-1.5 text-orange-600 hover:bg-orange-50 dark:hover:bg-zinc-800 rounded-lg transition" title="Chạy ngay">
-                    <i data-lucide="play" class="w-4 h-4"></i>
-                  </button>
-                </div>
-              `).join('')}
-            </div>
-          `;
-          container.appendChild(groupDiv);
+        if (data.notes.length > 0) {
+          openNoteInEditor(data.notes[0].path);
         }
-
         lucide.createIcons();
       } catch (e) {
-        console.error("Error loading tasks", e);
+        console.error("Error loading files", e);
       }
     }
 
-    function filterTasks(status, owner) {
-      if (status) currentStatusFilter = status;
-      if (owner) {
-        currentOwnerFilter = owner;
-        const btnJavis = document.getElementById('filter-owner-javis');
-        const btnMine = document.getElementById('filter-owner-mine');
-        if (btnJavis) {
-          btnJavis.className = owner === 'javis' 
-            ? 'px-3 py-1 rounded-lg bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm transition' 
-            : 'px-3 py-1 rounded-lg text-zinc-500 hover:text-zinc-900 transition';
-        }
-        if (btnMine) {
-          btnMine.className = owner === 'mine' 
-            ? 'px-3 py-1 rounded-lg bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm transition' 
-            : 'px-3 py-1 rounded-lg text-zinc-500 hover:text-zinc-900 transition';
-        }
+    let activeNotePath = "";
+    async function openNoteInEditor(path) {
+      activeNotePath = path;
+      document.getElementById('currentNotePath').innerText = path;
+      try {
+        const res = await fetch(`/api/vault/note?path=${encodeURIComponent(path)}`);
+        const data = await res.json();
+        document.getElementById('noteEditorArea').value = data.content || '';
+        renderNotePreview(data.content || '');
+      } catch (e) {
+        console.error("Error reading note", e);
       }
-      loadTimelineTasks();
     }
 
-    async function toggleTaskComplete(id) {
-      await fetch('/api/kanban/toggle', {
+    function renderNotePreview(content) {
+      const previewDiv = document.getElementById('notePreviewArea');
+      if (previewDiv) previewDiv.innerHTML = marked.parse(content || '');
+    }
+
+    async function saveCurrentNote() {
+      if (!activeNotePath) return;
+      const content = document.getElementById('noteEditorArea').value;
+      await fetch('/api/vault/note', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({task_id: id})
+        body: JSON.stringify({path: activeNotePath, content: content, commit_msg: `Cập nhật ${activeNotePath}`})
       });
-      loadTimelineTasks();
+      alert(`Đã lưu và Git commit thành công cho ghi chú: ${activeNotePath}`);
     }
 
-    function triggerTaskNow(title) {
-      switchSpace('brain');
-      sendQuickPrompt(`Thực thi tác vụ ngay: "${title}"`);
+    async function deleteCurrentNote() {
+      if (!activeNotePath || !confirm(`Bạn có chắc muốn xóa ghi chú "${activeNotePath}"?`)) return;
+      await fetch(`/api/vault/note?path=${encodeURIComponent(activeNotePath)}`, {method: 'DELETE'});
+      loadFilesExplorer();
     }
 
-    // SKILLS & STORE (CHUẨN ẢNH 3)
-    let allSkills = [];
+    function createNewNotePrompt() {
+      const title = prompt("Nhập tên ghi chú mới (vd: Ke-hoach-Scale-Ads.md):");
+      if (!title) return;
+      const clean = title.endsWith(".md") ? title : title + ".md";
+      activeNotePath = clean;
+      document.getElementById('currentNotePath').innerText = clean;
+      document.getElementById('noteEditorArea').value = `# ${title}\n\nNội dung ghi chú mới...`;
+      renderNotePreview(document.getElementById('noteEditorArea').value);
+      navigateTo('brain-files');
+    }
+
+    // SELF LEARNING
+    async function loadSelfLearning() {
+      try {
+        const res = await fetch('/api/vault/self-learning');
+        const data = await res.json();
+        
+        document.getElementById('statDistilledRules').innerText = data.stats.distilled_rules;
+        document.getElementById('statActiveFacts').innerText = data.stats.active_facts;
+        document.getElementById('statCompounding').innerText = data.stats.compounding_rate;
+        document.getElementById('statWikiHealth').innerText = data.stats.health_score;
+
+        const listDiv = document.getElementById('selfLearningList');
+        if (!listDiv) return;
+        listDiv.innerHTML = '';
+
+        data.recent_distillations.forEach(d => {
+          const row = document.createElement('div');
+          row.className = 'p-3.5 bg-zinc-50 dark:bg-[#202230] border border-bordercol dark:border-zinc-800 rounded-xl space-y-1.5';
+          row.innerHTML = `
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="font-bold text-orange-600 dark:text-orange-400 font-mono">${d.category}</span>
+              <span class="text-zinc-400">${d.time_ago} · Độ tin cậy: <b class="text-emerald-500">${Math.round(d.confidence * 100)}%</b></span>
+            </div>
+            <p class="text-xs font-semibold text-zinc-900 dark:text-white">${d.insight}</p>
+            <div class="text-[10px] text-zinc-500 flex items-center gap-2 pt-1 font-mono">
+              <span>📄 Nguồn: ${d.source}</span>
+              <span>➡️ Đã ghi vào: ${d.distilled_to}</span>
+            </div>
+          `;
+          listDiv.appendChild(row);
+        });
+      } catch (e) {
+        console.error("Error loading self learning", e);
+      }
+    }
+
+    function openIngestModal() { document.getElementById('ingestModal').classList.remove('hidden'); }
+    function closeIngestModal() { document.getElementById('ingestModal').classList.add('hidden'); }
+    async function submitIngestSource() {
+      const title = document.getElementById('ingestTitle').value.trim();
+      const cat = document.getElementById('ingestCategory').value;
+      const content = document.getElementById('ingestContent').value.trim();
+      if (!title || !content) return alert("Vui lòng điền đủ thông tin!");
+
+      await fetch('/api/vault/ingest', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({title: title, category: cat, content: content})
+      });
+      closeIngestModal();
+      loadSelfLearning();
+    }
+
+    // CODE STUDIO
+    let snippets = [];
+    async function loadCodeSnippets() {
+      try {
+        const res = await fetch('/api/code/snippets');
+        const data = await res.json();
+        snippets = data.snippets || [];
+        const listDiv = document.getElementById('codeSnippetsList');
+        if (!listDiv) return;
+        listDiv.innerHTML = '';
+
+        snippets.forEach((s, idx) => {
+          const item = document.createElement('div');
+          item.className = 'p-2.5 rounded-lg bg-[#1e202e] border border-[#2a2c3d] hover:border-emerald-500/50 cursor-pointer transition space-y-1';
+          item.onclick = () => selectSnippet(idx);
+          item.innerHTML = `
+            <div class="font-bold text-xs text-white">${s.title}</div>
+            <div class="text-[10px] text-zinc-400 line-clamp-1">${s.description}</div>
+          `;
+          listDiv.appendChild(item);
+        });
+
+        if (snippets.length > 0) selectSnippet(0);
+      } catch (e) {
+        console.error("Error loading snippets", e);
+      }
+    }
+
+    function selectSnippet(idx) {
+      const s = snippets[idx];
+      if (!s) return;
+      document.getElementById('activeSnippetTitle').innerText = s.title;
+      document.getElementById('codeEditorArea').value = s.code;
+    }
+
+    async function runCurrentCode() {
+      const code = document.getElementById('codeEditorArea').value;
+      const consoleEl = document.getElementById('codeOutputConsole');
+      const timeEl = document.getElementById('codeExecTime');
+      consoleEl.innerText = "Đang thực thi mã nguồn an toàn trên máy chủ...";
+
+      try {
+        const res = await fetch('/api/code/run', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({code: code, language: "python"})
+        });
+        const data = await res.json();
+        consoleEl.innerText = data.output;
+        timeEl.innerText = `${data.execution_time_ms} ms`;
+      } catch (e) {
+        consoleEl.innerText = "Lỗi kết nối máy chủ!";
+      }
+    }
+
+    // CAPABILITIES: PARTNERS
+    async function loadPartners() {
+      try {
+        const res = await fetch('/api/studio/partners');
+        const data = await res.json();
+        const grid = document.getElementById('partnersGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        data.partners.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 shadow-sm space-y-3';
+          card.innerHTML = `
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">${p.avatar}</span>
+                <div>
+                  <h3 class="font-bold text-sm text-zinc-900 dark:text-white">${p.name}</h3>
+                  <div class="text-xs text-orange-600 dark:text-orange-400 font-medium">${p.title}</div>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold ${p.status === 'online' ? 'bg-emerald-50 dark:bg-emerald-950 text-emerald-600' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400'}">
+                ● ${p.status.toUpperCase()}
+              </span>
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">${p.bio}</p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              ${p.capabilities.map(c => `<span class="px-2 py-0.5 bg-zinc-100 dark:bg-[#202230] text-zinc-600 dark:text-zinc-400 rounded text-[10px] font-mono">${c}</span>`).join('')}
+            </div>
+            <div class="pt-3 border-t border-bordercol dark:border-[#26283b] flex items-center justify-between text-xs">
+              <span class="text-zinc-400 font-mono">Đang phụ trách: <b>${p.tasks_count} tasks</b></span>
+              <button onclick="chatWithPartner('${p.name}')" class="px-3 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-semibold shadow-sm transition">
+                Trò Chuyện
+              </button>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      } catch (e) {
+        console.error("Error loading partners", e);
+      }
+    }
+
+    function chatWithPartner(name) {
+      navigateTo('chat');
+      sendQuickPrompt(`Xin chào trợ lý ${name}! Bạn có thể giúp tôi giải quyết các công việc đang phụ trách hôm nay không?`);
+    }
+
+    // CAPABILITIES: CHATBOT CONFIG
+    async function loadChatbotConfig() {
+      try {
+        const res = await fetch('/api/studio/chatbot-config');
+        const data = await res.json();
+        const cfg = data.config;
+        document.getElementById('cbBotName').value = cfg.bot_name;
+        document.getElementById('cbWelcomeMsg').value = cfg.welcome_message;
+        document.getElementById('cbSystemPrompt').value = cfg.system_prompt;
+      } catch (e) {
+        console.error("Error loading chatbot config", e);
+      }
+    }
+
+    async function saveChatbotSettings() {
+      const name = document.getElementById('cbBotName').value;
+      const welcome = document.getElementById('cbWelcomeMsg').value;
+      const prompt = document.getElementById('cbSystemPrompt').value;
+      await fetch('/api/studio/chatbot-config', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({bot_name: name, welcome_message: welcome, system_prompt: prompt})
+      });
+      alert("Đã lưu cấu hình Chatbot thành công!");
+    }
+
+    function copyEmbedCode() {
+      navigator.clipboard.writeText('<!-- Javis OS Chat Widget -->\n<script src="https://cdn.javis.os/widget.js" data-bot-id="thinh-vuong-so-3120" data-theme="#ea580c" async><' + '/script>');
+      alert("Đã sao chép mã nhúng Widget vào clipboard!");
+    }
+
+    // CAPABILITIES: SKILLS (ẢNH 1)
     async function loadSkills() {
       try {
         const res = await fetch('/api/studio/skills');
@@ -1024,7 +1991,304 @@
       });
     }
 
-    // Models Providers Loader
+    function selectAllSkills() {
+      allSkills.forEach(s => toggleSkillActive(s.id, true));
+      loadSkills();
+    }
+
+    function downloadSelectedSkills() {
+      const selected = allSkills.filter(s => s.enabled);
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(selected, null, 2));
+      const dlAnchor = document.createElement('a');
+      dlAnchor.setAttribute("href", dataStr);
+      dlAnchor.setAttribute("download", "javis_skills_export.json");
+      dlAnchor.click();
+    }
+
+    function importSkillsPrompt() {
+      alert("Hỗ trợ import tệp skill JSON từ Javis Marketplace.");
+    }
+
+    function openAddSkillModal() { document.getElementById('addSkillModal').classList.remove('hidden'); }
+    function closeAddSkillModal() { document.getElementById('addSkillModal').classList.add('hidden'); }
+    async function submitNewSkill() {
+      const name = document.getElementById('newSkillName').value.trim();
+      const cat = document.getElementById('newSkillCat').value;
+      const desc = document.getElementById('newSkillDesc').value.trim();
+      if (!name || !desc) return alert("Vui lòng nhập tên và mô tả kỹ năng!");
+
+      await fetch('/api/studio/skills', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name: name, category: cat, description: desc})
+      });
+      closeAddSkillModal();
+      loadSkills();
+    }
+
+    // CAPABILITIES: PLUGINS
+    async function loadPlugins() {
+      try {
+        const res = await fetch('/api/studio/plugins');
+        const data = await res.json();
+        const grid = document.getElementById('pluginsGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        data.plugins.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 shadow-sm space-y-3';
+          card.innerHTML = `
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="font-bold text-sm text-zinc-900 dark:text-white">${p.name}</h3>
+                <div class="text-xs text-zinc-400 font-mono mt-0.5">v${p.version} · bởi ${p.author}</div>
+              </div>
+              <input type="checkbox" ${p.enabled ? 'checked' : ''} onchange="togglePluginActive('${p.id}', this.checked)" class="w-4 h-4 rounded text-purple-600 cursor-pointer">
+            </div>
+            <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">${p.description}</p>
+          `;
+          grid.appendChild(card);
+        });
+      } catch (e) {
+        console.error("Error loading plugins", e);
+      }
+    }
+
+    async function togglePluginActive(id, val) {
+      await fetch('/api/studio/toggle-plugin', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({plugin_id: id, enabled: val})
+      });
+    }
+
+    // WORK: TASKS (ẢNH 3)
+    async function loadTimelineTasks() {
+      try {
+        const res = await fetch(`/api/kanban/tasks?owner=${currentOwnerFilter}&status=${currentStatusFilter}`);
+        const data = await res.json();
+        allTimelineTasks = data.tasks || [];
+        
+        if (data.counts) {
+          const elAll = document.getElementById('taskCount-all'); if (elAll) elAll.innerText = data.counts.all;
+          const elToday = document.getElementById('taskCount-today'); if (elToday) elToday.innerText = data.counts.today;
+          const elUp = document.getElementById('taskCount-upcoming'); if (elUp) elUp.innerText = data.counts.upcoming;
+          const elRec = document.getElementById('taskCount-recurring'); if (elRec) elRec.innerText = data.counts.recurring;
+          const elDone = document.getElementById('taskCount-done'); if (elDone) elDone.innerText = data.counts.done;
+        }
+
+        renderTasksTimeline(allTimelineTasks);
+      } catch (e) {
+        console.error("Error loading tasks", e);
+      }
+    }
+
+    function renderTasksTimeline(tasksList) {
+      const groups = {};
+      tasksList.forEach(t => {
+        const g = t.date_group || 'Upcoming';
+        if (!groups[g]) groups[g] = [];
+        groups[g].push(t);
+      });
+
+      const container = document.getElementById('timelineTasksContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      for (const [dateGroup, tasks] of Object.entries(groups)) {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'space-y-3';
+        groupDiv.innerHTML = `
+          <div class="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">${dateGroup}</div>
+          <div class="space-y-2">
+            ${tasks.map(t => `
+              <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2a2c3d] rounded-xl p-3 flex items-center justify-between shadow-sm hover:border-orange-500/40 transition">
+                <div class="flex items-center gap-3">
+                  <span class="font-mono text-xs font-bold text-zinc-400">${t.time_str}</span>
+                  <button onclick="toggleTaskComplete('${t.id}')" class="w-4 h-4 rounded-full border-2 border-zinc-300 dark:border-zinc-600 hover:border-orange-500 flex items-center justify-center transition">
+                    ${t.status === 'done' ? '<span class="w-2 h-2 rounded-full bg-emerald-500"></span>' : ''}
+                  </button>
+                  <div>
+                    <div class="font-semibold text-xs text-zinc-900 dark:text-white ${t.status === 'done' ? 'line-through text-zinc-400' : ''}">${t.title}</div>
+                    <div class="text-[11px] text-zinc-400 flex items-center gap-2 mt-0.5">
+                      <span class="flex items-center gap-1"><i data-lucide="repeat" class="w-3 h-3 text-zinc-400"></i> ${t.schedule_type || 'Schedule'}</span>
+                      <span>·</span>
+                      <span class="flex items-center gap-1 font-medium text-zinc-600 dark:text-zinc-300">
+                        <span>${t.assistant_avatar || '🤖'}</span> ${t.assistant}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <button onclick="triggerTaskNow('${t.title}')" class="p-1.5 text-orange-600 hover:bg-orange-50 dark:hover:bg-zinc-800 rounded-lg transition" title="Chạy ngay">
+                  <i data-lucide="play" class="w-4 h-4"></i>
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        container.appendChild(groupDiv);
+      }
+      lucide.createIcons();
+    }
+
+    function filterTasks(status, owner) {
+      if (status) currentStatusFilter = status;
+      if (owner) {
+        currentOwnerFilter = owner;
+        const btnJavis = document.getElementById('filter-owner-javis');
+        const btnMine = document.getElementById('filter-owner-mine');
+        if (btnJavis) {
+          btnJavis.className = owner === 'javis' 
+            ? 'px-3 py-1 rounded-lg bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm transition' 
+            : 'px-3 py-1 rounded-lg text-zinc-500 hover:text-zinc-900 transition';
+        }
+        if (btnMine) {
+          btnMine.className = owner === 'mine' 
+            ? 'px-3 py-1 rounded-lg bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm transition' 
+            : 'px-3 py-1 rounded-lg text-zinc-500 hover:text-zinc-900 transition';
+        }
+      }
+      loadTimelineTasks();
+    }
+
+    function filterTasksByAssistant(assistant) {
+      const filtered = allTimelineTasks.filter(t => t.assistant.toLowerCase().includes(assistant.toLowerCase()));
+      renderTasksTimeline(filtered);
+    }
+
+    function searchTasks(q) {
+      const query = q.toLowerCase();
+      const filtered = allTimelineTasks.filter(t => t.title.toLowerCase().includes(query) || t.assistant.toLowerCase().includes(query));
+      renderTasksTimeline(filtered);
+    }
+
+    async function toggleTaskComplete(id) {
+      await fetch('/api/kanban/toggle', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({task_id: id})
+      });
+      loadTimelineTasks();
+    }
+
+    function triggerTaskNow(title) {
+      navigateTo('brain-neural');
+      sendQuickPrompt(`Thực thi tác vụ ngay: "${title}"`);
+    }
+
+    function openAddTaskModal() { document.getElementById('addTaskModal').classList.remove('hidden'); }
+    function closeAddTaskModal() { document.getElementById('addTaskModal').classList.add('hidden'); }
+    async function submitNewTask() {
+      const title = document.getElementById('newTaskTitle').value.trim();
+      const timeStr = document.getElementById('newTaskTime').value.trim();
+      const dateGrp = document.getElementById('newTaskDateGroup').value.trim();
+      const asst = document.getElementById('newTaskAssistant').value;
+      if (!title) return alert("Vui lòng nhập tiêu đề việc!");
+
+      // Thêm task
+      closeAddTaskModal();
+      loadTimelineTasks();
+    }
+
+    // WORK: WEBHOOKS
+    async function loadWebhooks() {
+      try {
+        const res = await fetch('/api/webhooks/list');
+        const data = await res.json();
+        
+        const cardsDiv = document.getElementById('webhooksCards');
+        if (cardsDiv) {
+          cardsDiv.innerHTML = '';
+          data.webhooks.forEach(w => {
+            const card = document.createElement('div');
+            card.className = 'bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 shadow-sm space-y-3';
+            card.innerHTML = `
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="font-bold text-sm text-zinc-900 dark:text-white">${w.name}</h3>
+                  <div class="text-[11px] text-zinc-400 font-mono mt-0.5">${w.url}</div>
+                </div>
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              </div>
+              <div class="text-xs text-zinc-500">Trợ lý thụ lý: <b>${w.assistant}</b></div>
+              <div class="pt-2 border-t border-bordercol dark:border-[#26283b] flex items-center justify-between text-xs">
+                <span class="text-zinc-400 font-mono">${w.trigger_count} lượt gọi</span>
+                <button onclick="testWebhook('${w.id}')" class="px-2.5 py-1 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 font-semibold rounded text-[11px] hover:bg-indigo-100">
+                  Gửi Test Ping
+                </button>
+              </div>
+            `;
+            cardsDiv.appendChild(card);
+          });
+        }
+
+        const logsDiv = document.getElementById('webhookLogsList');
+        if (logsDiv) {
+          logsDiv.innerHTML = '';
+          data.recent_logs.forEach(l => {
+            const row = document.createElement('div');
+            row.className = 'p-3 bg-zinc-50 dark:bg-[#202230] border border-bordercol dark:border-zinc-800 rounded-lg flex items-center justify-between text-xs';
+            row.innerHTML = `
+              <div class="space-y-0.5">
+                <div class="font-semibold text-zinc-900 dark:text-white">${l.webhook}</div>
+                <div class="text-[10px] text-zinc-400 font-mono">${l.payload_snippet}</div>
+              </div>
+              <div class="text-right">
+                <span class="px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-mono text-[10px] font-bold">${l.status}</span>
+                <div class="text-[10px] text-zinc-400 mt-1">${l.timestamp}</div>
+              </div>
+            `;
+            logsDiv.appendChild(row);
+          });
+        }
+      } catch (e) {
+        console.error("Error loading webhooks", e);
+      }
+    }
+
+    async function testWebhook(id) {
+      await fetch('/api/webhooks/test', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({webhook_id: id})
+      });
+      alert(`Đã gửi ping thử nghiệm thành công cho webhook: ${id}`);
+      loadWebhooks();
+    }
+
+    // CONNECTIONS & MCP HUB
+    async function loadMcpConnections() {
+      try {
+        const res = await fetch('/api/mcp/connections');
+        const data = await res.json();
+        const grid = document.getElementById('mcpConnectionsGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        data.connections.forEach(c => {
+          const card = document.createElement('div');
+          card.className = 'bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-800 rounded-xl p-4 shadow-sm flex flex-col justify-between';
+          card.innerHTML = `
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-bold text-sm text-zinc-800 dark:text-white">${c.name}</span>
+                <span class="w-2 h-2 rounded-full ${c.status === 'connected' ? 'bg-emerald-500' : 'bg-zinc-300'}"></span>
+              </div>
+              <div class="text-xs text-zinc-500 mb-3">${c.category}</div>
+            </div>
+            <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-xs">
+              <span class="text-zinc-500 font-medium">Quyền:</span>
+              <span class="px-2 py-0.5 rounded bg-orange-100 text-orange-700 font-mono font-bold uppercase text-[10px]">${c.perm}</span>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      } catch (e) {
+        console.error("Error loading MCP", e);
+      }
+    }
+
+    // SYSTEM & PROVIDERS
     async function loadModelsProviders() {
       try {
         const res = await fetch('/api/models/providers');
@@ -1058,37 +2322,7 @@
       }
     }
 
-    // MCP Connections Loader
-    async function loadMcpConnections() {
-      try {
-        const res = await fetch('/api/mcp/connections');
-        const data = await res.json();
-        const grid = document.getElementById('mcpConnectionsGrid');
-        if (!grid) return;
-        grid.innerHTML = '';
-        data.connections.forEach(c => {
-          const card = document.createElement('div');
-          card.className = 'bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-800 rounded-xl p-4 shadow-sm flex flex-col justify-between';
-          card.innerHTML = `
-            <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="font-bold text-sm text-zinc-800 dark:text-white">${c.name}</span>
-                <span class="w-2 h-2 rounded-full ${c.status === 'connected' ? 'bg-emerald-500' : 'bg-zinc-300'}"></span>
-              </div>
-              <div class="text-xs text-zinc-500 mb-3">${c.category}</div>
-            </div>
-            <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-xs">
-              <span class="text-zinc-500 font-medium">Quyền:</span>
-              <span class="px-2 py-0.5 rounded bg-orange-100 text-orange-700 font-mono font-bold uppercase text-[10px]">${c.perm}</span>
-            </div>
-          `;
-          grid.appendChild(card);
-        });
-      } catch (e) {
-        console.error("Error loading MCP", e);
-      }
-    }
-
+    // Tiện ích UI & Pet
     function togglePetMenu() {
       const el = document.getElementById('petMenu');
       if (el) el.classList.toggle('hidden');
@@ -1111,27 +2345,41 @@
       }
     }
 
+    function openStarModal() {
+      alert("Cảm ơn bạn đã đồng hành cùng Javis OS & Brain Thịnh Vượng Số! Hãy ghé thăm GitHub để tặng 1 ngôi sao ⭐ nhé!");
+    }
+
+    function openNotificationModal() {
+      document.getElementById('notificationModal').classList.remove('hidden');
+    }
+
+    function closeNotificationModal() {
+      document.getElementById('notificationModal').classList.add('hidden');
+    }
+
     function startVoiceInput() {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SpeechRecognition) {
-        alert("Vui lòng sử dụng Google Chrome để hỗ trợ giọng nói!");
+        alert("Vui lòng sử dụng Google Chrome để hỗ trợ nhận diện giọng nói!");
         return;
       }
       const recognition = new SpeechRecognition();
-      recognition.lang = 'vi-VN';
+      recognition.lang = currentLang === 'vi' ? 'vi-VN' : 'en-US';
       recognition.start();
       recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
-        const input = document.getElementById('cockpitChatInput');
-        if (input) input.value = transcript;
+        const input1 = document.getElementById('cockpitChatInput');
+        const input2 = document.getElementById('dedicatedChatInput');
+        if (input1) input1.value = transcript;
+        if (input2) input2.value = transcript;
       };
     }
 
+    // KHỞI ĐỘNG HỆ THỐNG
     window.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
       initWebSocket();
-      load3DGraph();
-      loadVaultNotes();
+      navigateTo('brain-neural');
     });
   </script>
 </body>
