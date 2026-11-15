@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="vi" class="h-full">
+<html lang="vi" class="h-full dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  <title>JAVIS OS · Cockpit Điều Hành & Second Brain</title>
+  <title>MLM BRAIN OS 4.0 · Cockpit Quản Trị Bộ Não & Second Brain</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ea580c'><circle cx='12' cy='12' r='10'/></svg>">
   
-    <!-- Preconnect & Performance -->
+      <!-- Google Fonts: Be Vietnam Pro & IBM Plex Mono for MLM BRAIN Luxury -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600;1,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Preconnect & Performance -->
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -24,19 +28,37 @@
       darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'monospace']
+          },
           colors: {
             brand: {
-              50: '#fff7ed',
-              100: '#ffedd5',
-              500: '#f97316',
-              600: '#ea580c',
-              700: '#c2410c',
+              50: '#fffbeb',
+              100: '#fef3c7',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
             },
-            sidebar: '#161722',
-            sidebarLight: '#fbfaf8',
-            canvas: '#fbfaf8',
-            panel: '#f5f3ee',
-            bordercol: '#e7e3d8'
+            stage: {
+              950: '#070B14',
+              900: '#0B0F19',
+              850: '#0D1322',
+              800: '#111827',
+              700: '#1e293b'
+            },
+            gold: {
+              300: '#fde68a',
+              400: '#fcd34d',
+              500: '#f59e0b',
+              600: '#d97706'
+            },
+            sidebar: '#070B14',
+            sidebarLight: '#0B0F19',
+            canvas: '#070B14',
+            panel: '#0D1322',
+            bordercol: 'rgba(245, 158, 11, 0.18)'
           }
         }
       }
@@ -139,12 +161,141 @@
       background-color: rgba(234, 88, 12, 0.22);
       color: #fb923c !important;
     }
+  
+    
+    /* ========================================================================= */
+    /* MLM BRAIN OFFICIAL PALETTE & TYPOGRAPHY (CHUẨN MLMBRAIN.NET)              */
+    /* ========================================================================= */
+    :root {
+      --canvas: #1B2632;
+      --panel: #16212C;
+      --surface: #2C3B4D;
+      --footer: #121B24;
+      --text-primary: #EEE9DF;
+      --text-secondary: #C9C1B1;
+      --accent: #FFB162;
+      --accent-hover: #FFC07D;
+      --accent-warm: #A35139;
+      --border-subtle: rgba(229, 184, 121, 0.18);
+      --border-card: rgba(44, 59, 77, 0.55);
+    }
+
+    body {
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif !important;
+      background-color: var(--canvas) !important;
+      color: var(--text-primary) !important;
+    }
+
+    .font-editorial {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* Tiêu đề & Điểm nhấn dịu mắt chuẩn mlmbrain.net */
+    .mlm-accent-text {
+      color: #FFB162 !important;
+    }
+    
+    .mlm-gold-text {
+      color: #EEE9DF !important;
+    }
+
+    .mlm-sub-text {
+      color: #C9C1B1 !important;
+    }
+
+    /* Nút bấm chuẩn trang chủ mlmbrain.net */
+    .btn-mlmbrain-primary {
+      background-color: #FFB162 !important;
+      color: #121B24 !important;
+      font-weight: 700 !important;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(255, 177, 98, 0.22);
+    }
+    .btn-mlmbrain-primary:hover {
+      background-color: #FFC07D !important;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(255, 177, 98, 0.35);
+    }
+
+    /* Thẻ card chuẩn mlmbrain.net: Nền #16212C, viền mờ #2C3B4D / #E5B879 */
+    .mlm-card {
+      background-color: #16212C !important;
+      border: 1px solid rgba(44, 59, 77, 0.6) !important;
+    }
+    .mlm-card:hover {
+      border-color: rgba(255, 177, 98, 0.35) !important;
+    }
+
+    /* Active Menu Item: Dịu mắt, cam hổ phách trầm ấm */
+    .sidebar-item-active, .dark .sidebar-item-active {
+      background: rgba(255, 177, 98, 0.12) !important;
+      color: #FFB162 !important;
+      border-left: 3px solid #FFB162 !important;
+      font-weight: 600 !important;
+    }
+
+    /* Perspective Grid Floor dịu nhẹ */
+    .graph-perspective-grid {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background-image: 
+        linear-gradient(to top, rgba(255, 177, 98, 0.08) 1px, transparent 1px),
+        linear-gradient(to right, rgba(44, 59, 77, 0.3) 1px, transparent 1px);
+      background-size: 38px 38px;
+      transform: perspective(350px) rotateX(65deg);
+      transform-origin: bottom center;
+      mask-image: radial-gradient(ellipse at 50% 100%, black 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 100%, black 20%, transparent 80%);
+      pointer-events: none;
+    }
+
+    /* Custom scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #121B24;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 177, 98, 0.25);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 177, 98, 0.45);
+    }
+.dark .sidebar-item-active {
+      background: linear-gradient(90deg, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0.03) 100%) !important;
+      color: #FEF08A !important;
+      border-left: 3px solid #F59E0B !important;
+      font-weight: 700 !important;
+    }
+
+    /* Custom luxury scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(7, 11, 20, 0.6);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(245, 158, 11, 0.25);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(245, 158, 11, 0.5);
+    }
+
   </style>
 </head>
 <body class="h-full flex flex-col overflow-hidden select-none transition-colors duration-200">
 
   <!-- TOP HEADER BAR (CHUẨN ẢNH 1, 2, 3) -->
-  <header class="h-12 bg-white dark:bg-[#181a24] border-b border-bordercol dark:border-[#26283b] px-3 flex items-center justify-between z-30 shrink-0">
+  <header class="h-12 bg-[#16212C] border-b border-[#2C3B4D]/60 px-3 flex items-center justify-between z-30 shrink-0">
     <!-- Left: Hamburger (Mobile) + Logo & Vault Selector -->
     <div class="flex items-center gap-2 sm:gap-3">
       <!-- Mobile Drawer Hamburger Toggle Button -->
@@ -152,13 +303,16 @@
         <i data-lucide="menu" class="w-5 h-5"></i>
       </button>
 
-      <div class="flex items-center gap-2 cursor-pointer" onclick="navigateTo('brain-neural')">
-        <div class="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
-          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <div class="flex items-center gap-2 cursor-pointer group" onclick="navigateTo('brain-neural')">
+        <div class="w-7 h-7 rounded-lg bg-[#FFB162] text-[#121B24] flex items-center justify-center font-black text-xs shadow-md group-hover:scale-105 transition-transform">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         </div>
-        <div class="flex items-baseline gap-1">
-          <span class="font-extrabold text-xs tracking-tight text-zinc-900 dark:text-white uppercase">JAVIS</span>
-          <span class="text-[9px] font-bold text-orange-600 dark:text-orange-400">OS</span>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5">
+            <span class="font-black text-xs tracking-wider text-[#EEE9DF] uppercase font-mono">MLM BRAIN</span>
+            <span class="text-[9px] font-bold bg-[#2C3B4D] text-[#FFB162] border border-[#FFB162]/30 px-1.5 py-0.2 rounded">OS 4.0</span>
+          </div>
+          <span class="text-[9px] text-[#C9C1B1] font-medium">BỘ NÃO KINH DOANH MẠNG LƯỚI</span>
         </div>
       </div>
 
@@ -167,10 +321,10 @@
       <!-- Vault Selector Dropdown (Responsive) -->
       <div onclick="navigateTo('brain-files')" class="flex items-center gap-1.5 px-2 py-0.5 bg-zinc-100 dark:bg-[#202230] hover:bg-zinc-200/80 rounded cursor-pointer transition text-xs font-medium text-zinc-700 dark:text-zinc-200 max-w-[150px] sm:max-w-none truncate">
         <i data-lucide="book-open" class="w-3.5 h-3.5 text-zinc-500 shrink-0"></i>
-        <span id="headerVaultName" class="truncate">Minh Quy's Brain</span>
+        <span id="headerVaultName" class="truncate font-semibold text-[#EEE9DF]">MLM Second Brain Vault</span>
         <i data-lucide="chevron-down" class="w-3 h-3 text-zinc-400 shrink-0"></i>
         <span class="text-zinc-400 hidden sm:inline">·</span>
-        <span id="headerStats" class="text-zinc-500 text-[11px] hidden sm:inline">1918 notes · 2548 links</span>
+        <span id="headerStats" class="text-[#C9C1B1] text-[11px] hidden sm:inline font-mono">1,918 nodes · 2,548 links · 98% Wiki Health</span>
       </div>
     </div>
 
@@ -197,10 +351,10 @@
         <span class="text-[9px] bg-orange-100 text-orange-600 dark:bg-orange-950 dark:text-orange-400 px-1.5 py-0.2 rounded-full font-mono font-bold">ROSTERS</span>
       </button>
 
-      <button onclick="switchSpace('enterprise')" id="space-enterprise" class="space-btn active px-3 py-1 rounded-full bg-white dark:bg-orange-600 text-orange-600 dark:text-white shadow-sm transition flex items-center gap-1.5 font-bold">
+      <button onclick="switchSpace('enterprise')" id="space-enterprise" class="space-btn active px-3 py-1 rounded-full bg-white bg-[#FFB162] text-[#121B24] shadow-sm transition flex items-center gap-1.5 font-bold">
         <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
         <span>Doanh nghiệp</span>
-        <span class="text-[9px] bg-orange-600 text-white dark:bg-white dark:text-orange-600 px-1.5 py-0.2 rounded-full font-mono font-bold">4 LỚP</span>
+        <span class="text-[9px] btn-mlmbrain-primary text-white dark:bg-white dark:text-orange-600 px-1.5 py-0.2 rounded-full font-mono font-bold">4 LỚP</span>
       </button>
     </div>
 
@@ -209,7 +363,7 @@
       <button onclick="openNotificationModal()" class="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-md bg-orange-50 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-800 text-xs font-medium hover:bg-orange-100 transition" title="Thông báo">
         <i data-lucide="bell" class="w-3.5 h-3.5"></i>
         <span class="hidden sm:inline" data-i18n="notifications">Notifications</span>
-        <span class="w-4 h-4 rounded-full bg-orange-600 text-white text-[10px] flex items-center justify-center font-bold">1</span>
+        <span class="w-4 h-4 rounded-full btn-mlmbrain-primary text-white text-[10px] flex items-center justify-center font-bold">1</span>
       </button>
 
       <button onclick="toggleDarkMode()" class="p-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition" title="Đổi giao diện Sáng/Tối">
@@ -236,21 +390,18 @@
     <!-- ========================================================================= -->
     <!-- NAVIGATION SIDEBAR (Desktop: side-by-side | Mobile/Tablet: slide drawer) -->
     <!-- ========================================================================= -->
-    <aside id="mainSidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-72 sm:w-80 lg:w-56 bg-[#f9f8f4] dark:bg-[#161722] border-r border-bordercol dark:border-[#26283b] flex flex-col justify-between shrink-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out text-xs select-none shadow-2xl lg:shadow-none">
+    <aside id="mainSidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-72 sm:w-80 lg:w-56 bg-[#16212C] border-r border-[#2C3B4D]/60 flex flex-col justify-between shrink-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out text-xs select-none shadow-2xl lg:shadow-none">
       
       <!-- Top Section: Logo Header & Menu Tree -->
       <div class="flex-1 flex flex-col overflow-y-auto custom-scrollbar">
         
-        <!-- Sidebar Brand Header (Ảnh 4) + Nút đóng Drawer Mobile -->
-        <div class="h-12 px-3.5 border-b border-bordercol dark:border-[#26283b] flex items-center justify-between shrink-0 bg-[#f4f2ea]/70 dark:bg-[#13141c]">
-          <div class="flex items-center gap-2.5">
-            <div class="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <span class="font-extrabold tracking-wider text-xs text-zinc-900 dark:text-white uppercase font-mono">JAVIS OS</span>
+        <!-- Mobile Drawer Close Header (Chỉ hiện trên Mobile/Tablet) -->
+        <div class="lg:hidden h-12 px-3.5 border-b border-[#2C3B4D]/50 flex items-center justify-between shrink-0 bg-[#16212C]">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-[#EEE9DF] uppercase tracking-wider font-mono">MLM BRAIN</span>
+            <span class="text-[9px] px-1.5 py-0.2 rounded bg-[#FFB162]/20 text-[#FFB162] font-semibold">MENU</span>
           </div>
-          <!-- Close button for Mobile/Tablet drawer -->
-          <button onclick="closeMobileSidebar()" class="lg:hidden p-1.5 rounded-lg text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200/60 dark:hover:bg-zinc-800 transition" aria-label="Đóng menu">
+          <button onclick="closeMobileSidebar()" class="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-white/10 transition" aria-label="Đóng menu">
             <i data-lucide="x" class="w-4 h-4"></i>
           </button>
         </div>
@@ -302,7 +453,7 @@
           <div>
             <div onclick="toggleMenuSection('capabilities')" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 cursor-pointer">
               <span class="flex items-center gap-2.5">
-                <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i>
+                <i data-lucide="lightbulb" class="w-4 h-4 text-[#EEE9DF]0"></i>
                 <span data-i18n="menu_capabilities">Capabilities</span>
               </span>
               <i data-lucide="chevron-down" id="arrow-capabilities" class="w-3.5 h-3.5 text-zinc-400 transition-transform"></i>
@@ -318,7 +469,7 @@
               </button>
               <button onclick="navigateTo('teamwork')" id="nav-teamwork" class="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
                 <span class="flex items-center gap-2">
-                  <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i>
+                  <i data-lucide="zap" class="w-3.5 h-3.5 text-[#EEE9DF]0"></i>
                   <span data-i18n="menu_teamwork">Đội ngũ tự động</span>
                 </span>
                 <span class="px-1 py-0.2 rounded bg-orange-100 dark:bg-orange-950 text-orange-600 dark:text-orange-400 text-[9px] font-bold">24/7</span>
@@ -386,7 +537,7 @@
                 <i data-lucide="building-2" class="w-4 h-4 text-orange-600"></i>
                 <span>Bộ Não Doanh Nghiệp</span>
               </span>
-              <span class="text-[9px] bg-orange-600 text-white px-1.5 py-0.2 rounded font-mono font-bold">4 LỚP</span>
+              <span class="text-[9px] btn-mlmbrain-primary text-white px-1.5 py-0.2 rounded font-mono font-bold">4 LỚP</span>
             </button>
           </div>
 
@@ -421,7 +572,7 @@
         </div>
 
         <!-- Give a Star Button (Ảnh 2, 3) -->
-        <button onclick="openStarModal()" class="w-full flex items-center justify-center gap-1.5 py-1 px-2 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 text-[11px] font-semibold hover:bg-amber-100 transition shadow-sm">
+        <button onclick="openStarModal()" class="w-full flex items-center justify-center gap-1.5 py-1 px-2 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-[#FFB162] border border-amber-200 dark:border-amber-800/60 text-[11px] font-semibold hover:bg-amber-100 transition shadow-sm">
           <span>⭐</span> <span data-i18n="give_a_star">Give a star</span>
         </button>
       </div>
@@ -476,7 +627,7 @@
           <!-- Bottom Prompt Box -->
           <div class="pt-3 border-t border-bordercol dark:border-[#26283b] shrink-0">
             <form onsubmit="handleDedicatedChatSubmit(event)" class="flex flex-col gap-2">
-              <input type="text" id="dedicatedChatInput" placeholder="Nhập câu hỏi hoặc yêu cầu cho Javis OS..." class="w-full bg-white dark:bg-[#1e202e] border border-bordercol dark:border-[#2f3248] rounded-xl px-4 py-2.5 text-xs outline-none focus:border-orange-500 text-zinc-800 dark:text-zinc-200 shadow-sm">
+              <input type="text" id="dedicatedChatInput" placeholder="Nhập câu hỏi hoặc yêu cầu cho Javis OS..." class="w-full bg-white dark:bg-[#1e202e] border border-bordercol dark:border-[#2f3248] rounded-xl px-4 py-2.5 text-xs outline-none focus:border-[#FFB162] text-zinc-800 dark:text-zinc-200 shadow-sm">
               <div class="flex items-center justify-between text-[11px]">
                 <div class="flex items-center gap-2">
                   <span class="px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 font-medium border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
@@ -490,7 +641,7 @@
                   <button type="button" onclick="startVoiceInput()" class="p-1.5 text-zinc-400 hover:text-orange-600 rounded">
                     <i data-lucide="mic" class="w-4 h-4"></i>
                   </button>
-                  <button type="submit" class="px-3 py-1.5 bg-orange-600 hover:bg-orange-700 text-white rounded-lg shadow-sm font-semibold flex items-center gap-1">
+                  <button type="submit" class="px-3 py-1.5 btn-mlmbrain-primary hover:bg-orange-700 text-white rounded-lg shadow-sm font-semibold flex items-center gap-1">
                     <span>Gửi</span>
                     <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
                   </button>
@@ -508,7 +659,7 @@
         <!-- Mobile/Tablet Segmented Switcher for 3 Columns (lg:hidden) -->
         <div class="lg:hidden flex items-center justify-center p-2 bg-[#f4f2ea] dark:bg-[#181a24] border-b border-bordercol dark:border-[#26283b] gap-2 shrink-0 z-10">
           <div class="inline-flex items-center bg-[#eae6dc] dark:bg-[#202230] p-1 rounded-xl text-xs font-semibold w-full max-w-sm justify-around shadow-inner">
-            <button onclick="switchNeuralMobileTab('graph')" id="neuralTab-graph" class="px-3 py-1.5 rounded-lg bg-white dark:bg-orange-600 text-orange-600 dark:text-white font-bold shadow-xs transition flex items-center gap-1">
+            <button onclick="switchNeuralMobileTab('graph')" id="neuralTab-graph" class="px-3 py-1.5 rounded-lg bg-white bg-[#FFB162] text-[#121B24] font-bold shadow-xs transition flex items-center gap-1">
               <i data-lucide="network" class="w-3.5 h-3.5"></i>
               <span>3D Brain</span>
             </button>
@@ -525,7 +676,7 @@
 
         <div class="flex-1 flex flex-col lg:flex-row w-full h-full overflow-hidden">
         <!-- CỘT 1 (LEFT): VAULT EXPLORER -->
-        <div id="neuralColVault" class="hidden lg:flex w-full lg:w-64 border-r border-bordercol dark:border-[#26283b] bg-[#f9f8f4] dark:bg-[#181a24] flex-col shrink-0">
+        <div id="neuralColVault" class="hidden lg:flex w-full lg:w-64 border-r border-[#2C3B4D]/60 bg-[#16212C] flex-col shrink-0">
           <div class="p-3 border-b border-bordercol dark:border-[#26283b] space-y-2">
             <div class="flex items-center justify-between">
               <span class="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">VAULT</span>
@@ -538,7 +689,7 @@
             <!-- Search note -->
             <div class="relative">
               <i data-lucide="search" class="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-zinc-400"></i>
-              <input type="text" id="brainVaultSearch" oninput="filterVaultNotes(this.value)" placeholder="Find a note..." class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-md pl-8 pr-2 py-1 text-xs outline-none focus:border-orange-500 text-zinc-800 dark:text-zinc-200">
+              <input type="text" id="brainVaultSearch" oninput="filterVaultNotes(this.value)" placeholder="Find a note..." class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-md pl-8 pr-2 py-1 text-xs outline-none focus:border-[#FFB162] text-zinc-800 dark:text-zinc-200">
             </div>
             <!-- Filter Name / Content (TƯƠNG TÁC LỌC DANH SÁCH) -->
             <div class="flex items-center gap-2 text-[11px] font-medium text-zinc-500">
@@ -554,64 +705,76 @@
         </div>
 
         <!-- CỘT 2 (CENTER): 3D NEURAL NETWORK GRAPH CANVAS (CÓ STATS & PHỐI CẢNH LƯỚI READY - ẢNH 2) -->
-        <div id="neuralColGraph" class="flex-1 flex flex-col relative bg-[#fcfbf9] dark:bg-[#111218] overflow-hidden min-h-[300px]">
+        <div id="neuralColGraph" class="flex-1 flex flex-col relative bg-[#1B2632] overflow-hidden min-h-[300px]">
           
-          <!-- Cluster Badges Overlay around graph (TƯƠNG TÁC 100% KHI BẤM VÀO TỪNG CỤM) -->
+          <!-- Cluster Badges Overlay around graph (MLM BRAIN LUXURY DESIGN) -->
           <div class="absolute inset-0 pointer-events-none p-4 md:p-6 flex flex-col justify-between z-10">
             <!-- Top Clusters -->
             <div class="flex justify-around text-center">
-              <div onclick="openClusterExplorer('SOURCES')" class="pointer-events-auto cursor-pointer p-2.5 rounded-xl bg-white/90 dark:bg-[#1a1c27]/90 backdrop-blur border border-bordercol/80 dark:border-zinc-800 shadow-sm hover:border-zinc-600 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm SOURCES">
-                <div class="text-[11px] font-bold text-zinc-800 dark:text-zinc-200 tracking-wider flex items-center justify-center gap-1">
+              <!-- Cluster: SOURCES -->
+              <div onclick="openClusterExplorer('SOURCES')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-amber-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm SOURCES">
+                <div class="text-[11px] font-bold text-[#FFB162] tracking-wider flex items-center justify-center gap-1.5 font-mono">
+                  <span class="w-2 h-2 rounded-full bg-amber-400"></span>
                   <span>SOURCES</span>
-                  <i data-lucide="external-link" class="w-3 h-3 text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-white transition-colors"></i>
+                  <i data-lucide="external-link" class="w-3 h-3 text-[#FFB162]/70 group-hover:text-[#EEE9DF] transition-colors"></i>
                 </div>
-                <div class="text-[10px] text-zinc-500 font-mono">56 note · 3% Vault</div>
+                <div class="text-[10px] text-zinc-400 font-mono mt-0.5">56 note · 3% Vault</div>
               </div>
 
-              <div onclick="openClusterExplorer('MARKETING')" class="pointer-events-auto cursor-pointer p-2.5 rounded-xl bg-white/90 dark:bg-[#1a1c27]/90 backdrop-blur border border-bordercol/80 dark:border-zinc-800 shadow-sm hover:border-red-500 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm MARKETING">
-                <div class="text-[11px] font-bold text-red-500 tracking-wider flex items-center justify-center gap-1">
+              <!-- Cluster: MARKETING -->
+              <div onclick="openClusterExplorer('MARKETING')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-rose-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm MARKETING">
+                <div class="text-[11px] font-bold text-rose-400 tracking-wider flex items-center justify-center gap-1.5 font-mono">
+                  <span class="w-2 h-2 rounded-full bg-rose-400"></span>
                   <span>MARKETING</span>
-                  <i data-lucide="external-link" class="w-3 h-3 text-red-400 group-hover:text-red-600 transition-colors"></i>
+                  <i data-lucide="external-link" class="w-3 h-3 text-rose-400/70 group-hover:text-rose-200 transition-colors"></i>
                 </div>
-                <div class="text-[10px] text-zinc-500 font-mono">52 note · 3% Vault</div>
+                <div class="text-[10px] text-zinc-400 font-mono mt-0.5">52 note · 3% Vault</div>
               </div>
             </div>
 
             <!-- Middle Clusters -->
             <div class="flex justify-between items-center px-2 md:px-4">
               <div class="space-y-4 text-left">
-                <div onclick="openClusterExplorer('BUSINESS')" class="pointer-events-auto cursor-pointer p-2.5 rounded-xl bg-white/90 dark:bg-[#1a1c27]/90 backdrop-blur border border-bordercol/80 dark:border-zinc-800 shadow-sm hover:border-blue-500 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm BUSINESS">
-                  <div class="text-[11px] font-bold text-blue-500 tracking-wider flex items-center gap-1">
+                <!-- Cluster: BUSINESS -->
+                <div onclick="openClusterExplorer('BUSINESS')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-sky-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm BUSINESS">
+                  <div class="text-[11px] font-bold text-sky-400 tracking-wider flex items-center gap-1.5 font-mono">
+                    <span class="w-2 h-2 rounded-full bg-sky-400"></span>
                     <span>BUSINESS</span>
-                    <i data-lucide="external-link" class="w-3 h-3 text-blue-400 group-hover:text-blue-600 transition-colors"></i>
+                    <i data-lucide="external-link" class="w-3 h-3 text-sky-400/70 group-hover:text-sky-200 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-500 font-mono">74 note · 4% Vault</div>
+                  <div class="text-[10px] text-zinc-400 font-mono mt-0.5">74 note · 4% Vault</div>
                 </div>
 
-                <div onclick="openClusterExplorer('WIKI')" class="pointer-events-auto cursor-pointer p-2.5 rounded-xl bg-white/90 dark:bg-[#1a1c27]/90 backdrop-blur border border-bordercol/80 dark:border-zinc-800 shadow-sm hover:border-indigo-500 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm WIKI">
-                  <div class="text-[11px] font-bold text-indigo-500 tracking-wider flex items-center gap-1">
+                <!-- Cluster: WIKI -->
+                <div onclick="openClusterExplorer('WIKI')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-indigo-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm WIKI">
+                  <div class="text-[11px] font-bold text-indigo-400 tracking-wider flex items-center gap-1.5 font-mono">
+                    <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
                     <span>WIKI</span>
-                    <i data-lucide="external-link" class="w-3 h-3 text-indigo-400 group-hover:text-indigo-600 transition-colors"></i>
+                    <i data-lucide="external-link" class="w-3 h-3 text-indigo-400/70 group-hover:text-indigo-200 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-500 font-mono">176 note · 9% Vault</div>
+                  <div class="text-[10px] text-zinc-400 font-mono mt-0.5">176 note · 9% Vault</div>
                 </div>
               </div>
 
               <div class="space-y-4 text-right">
-                <div onclick="openClusterExplorer('PERSONAL')" class="pointer-events-auto cursor-pointer p-2.5 rounded-xl bg-white/90 dark:bg-[#1a1c27]/90 backdrop-blur border border-bordercol/80 dark:border-zinc-800 shadow-sm hover:border-purple-500 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm PERSONAL">
-                  <div class="text-[11px] font-bold text-purple-500 tracking-wider flex items-center justify-end gap-1">
+                <!-- Cluster: PERSONAL -->
+                <div onclick="openClusterExplorer('PERSONAL')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-purple-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm PERSONAL">
+                  <div class="text-[11px] font-bold text-purple-400 tracking-wider flex items-center justify-end gap-1.5 font-mono">
+                    <span class="w-2 h-2 rounded-full bg-purple-400"></span>
                     <span>PERSONAL</span>
-                    <i data-lucide="external-link" class="w-3 h-3 text-purple-400 group-hover:text-purple-600 transition-colors"></i>
+                    <i data-lucide="external-link" class="w-3 h-3 text-purple-400/70 group-hover:text-purple-200 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-500 font-mono">36 note · 2% Vault</div>
+                  <div class="text-[10px] text-zinc-400 font-mono mt-0.5">36 note · 2% Vault</div>
                 </div>
 
-                <div onclick="openClusterExplorer('PRODUCTIVITY')" class="pointer-events-auto cursor-pointer p-2.5 rounded-xl bg-white/90 dark:bg-[#1a1c27]/90 backdrop-blur border border-bordercol/80 dark:border-zinc-800 shadow-sm hover:border-emerald-500 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm PRODUCTIVITY">
-                  <div class="text-[11px] font-bold text-emerald-500 tracking-wider flex items-center justify-end gap-1">
+                <!-- Cluster: PRODUCTIVITY -->
+                <div onclick="openClusterExplorer('PRODUCTIVITY')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-emerald-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm PRODUCTIVITY">
+                  <div class="text-[11px] font-bold text-emerald-400 tracking-wider flex items-center justify-end gap-1.5 font-mono">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
                     <span>PRODUCTIVITY</span>
-                    <i data-lucide="external-link" class="w-3 h-3 text-emerald-400 group-hover:text-emerald-600 transition-colors"></i>
+                    <i data-lucide="external-link" class="w-3 h-3 text-emerald-400/70 group-hover:text-emerald-200 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-500 font-mono">33 note · 2% Vault</div>
+                  <div class="text-[10px] text-zinc-400 font-mono mt-0.5">33 note · 2% Vault</div>
                 </div>
               </div>
             </div>
@@ -619,39 +782,46 @@
             <!-- Bottom Clusters & Ready Floor -->
             <div class="flex flex-col items-center gap-2">
               <div class="flex justify-around w-full text-center">
-                <div onclick="openClusterExplorer('FACTS')" class="pointer-events-auto cursor-pointer p-2.5 rounded-xl bg-white/90 dark:bg-[#1a1c27]/90 backdrop-blur border border-bordercol/80 dark:border-zinc-800 shadow-sm hover:border-amber-500 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm FACTS">
-                  <div class="text-[11px] font-bold text-amber-500 tracking-wider flex items-center justify-center gap-1">
+                <!-- Cluster: FACTS -->
+                <div onclick="openClusterExplorer('FACTS')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#FFB162]/40 hover:border-amber-300 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm FACTS">
+                  <div class="text-[11px] font-bold text-[#FFB162] tracking-wider flex items-center justify-center gap-1.5 font-mono">
+                    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
                     <span>FACTS</span>
-                    <i data-lucide="external-link" class="w-3 h-3 text-amber-400 group-hover:text-amber-600 transition-colors"></i>
+                    <i data-lucide="external-link" class="w-3 h-3 text-[#FFB162]/70 group-hover:text-[#EEE9DF] transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-500 font-mono">1138 note · 59% Vault</div>
+                  <div class="text-[10px] text-zinc-400 font-mono mt-0.5">1138 note · 59% Vault</div>
                 </div>
 
-                <div onclick="openClusterExplorer('SALES')" class="pointer-events-auto cursor-pointer p-2.5 rounded-xl bg-white/90 dark:bg-[#1a1c27]/90 backdrop-blur border border-bordercol/80 dark:border-zinc-800 shadow-sm hover:border-rose-500 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm SALES">
-                  <div class="text-[11px] font-bold text-rose-500 tracking-wider flex items-center justify-center gap-1">
+                <!-- Cluster: SALES -->
+                <div onclick="openClusterExplorer('SALES')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-orange-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm SALES">
+                  <div class="text-[11px] font-bold text-orange-400 tracking-wider flex items-center justify-center gap-1.5 font-mono">
+                    <span class="w-2 h-2 rounded-full bg-orange-400"></span>
                     <span>SALES</span>
-                    <i data-lucide="external-link" class="w-3 h-3 text-rose-400 group-hover:text-rose-600 transition-colors"></i>
+                    <i data-lucide="external-link" class="w-3 h-3 text-orange-400/70 group-hover:text-orange-200 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-500 font-mono">30 note · 2% Vault</div>
+                  <div class="text-[10px] text-zinc-400 font-mono mt-0.5">30 note · 2% Vault</div>
                 </div>
               </div>
 
-              <!-- Perspective Grid & READY label (Ảnh 2) -->
-              <div class="text-center mt-2">
-                <div class="text-[11px] font-mono tracking-widest text-zinc-400 font-semibold mb-2">READY</div>
-                <!-- Pill Thống kê: 15 AGENTS · 118 SKILLS · 4 WORKFLOWS (ẢNH 2) -->
-                <div class="pointer-events-auto inline-flex items-center divide-x divide-zinc-200 dark:divide-zinc-700 bg-white/90 dark:bg-[#1d1f2b]/90 backdrop-blur border border-bordercol dark:border-zinc-700 rounded-xl px-5 py-2 shadow-lg text-xs font-mono">
-                  <div class="px-3 text-center cursor-pointer" onclick="navigateTo('cap-partners')">
-                    <span class="font-bold text-zinc-900 dark:text-white text-sm">15</span>
-                    <span class="text-[10px] text-zinc-400 block uppercase">AGENTS</span>
+              <!-- Perspective Grid & READY label (Ảnh 4) -->
+              <div class="text-center mt-2 flex flex-col items-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2C3B4D]/60 border border-[#2C3B4D]/70 text-[#FFB162] text-[10px] font-mono tracking-widest font-bold mb-2 shadow-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span>NEURAL NETWORK LIVE · 1,918 NODES · READY</span>
+                </div>
+                <!-- Pill Thống kê: 15 AGENTS · 118 SKILLS · 4 WORKFLOWS -->
+                <div class="pointer-events-auto inline-flex items-center divide-x divide-amber-500/20 mlm-card rounded-2xl border border-[#2C3B4D]/70 rounded-2xl px-6 py-2.5 shadow-2xl text-xs font-mono">
+                  <div class="px-4 text-center cursor-pointer hover:text-[#FFB162] transition" onclick="navigateTo('cap-partners')">
+                    <span class="font-black text-[#FFB162] text-sm">15</span>
+                    <span class="text-[10px] text-zinc-400 block uppercase font-medium">AGENTS</span>
                   </div>
-                  <div class="px-3 text-center cursor-pointer" onclick="navigateTo('cap-skills')">
-                    <span class="font-bold text-zinc-900 dark:text-white text-sm">118</span>
-                    <span class="text-[10px] text-zinc-400 block uppercase">SKILLS</span>
+                  <div class="px-4 text-center cursor-pointer hover:text-[#FFB162] transition" onclick="navigateTo('cap-skills')">
+                    <span class="font-black text-[#FFB162] text-sm">118</span>
+                    <span class="text-[10px] text-zinc-400 block uppercase font-medium">SKILLS</span>
                   </div>
-                  <div class="px-3 text-center cursor-pointer" onclick="navigateTo('work-tasks')">
-                    <span class="font-bold text-zinc-900 dark:text-white text-sm">4</span>
-                    <span class="text-[10px] text-zinc-400 block uppercase">WORKFLOWS</span>
+                  <div class="px-4 text-center cursor-pointer hover:text-[#FFB162] transition" onclick="navigateTo('work-tasks')">
+                    <span class="font-black text-[#FFB162] text-sm">4</span>
+                    <span class="text-[10px] text-zinc-400 block uppercase font-medium">WORKFLOWS</span>
                   </div>
                 </div>
               </div>
@@ -663,51 +833,81 @@
           <div class="graph-perspective-grid"></div>
         </div>
 
-        <!-- CỘT 3 (RIGHT): CONVERSATION PANEL (CHUẨN ẢNH 2) -->
-        <div id="neuralColChat" class="hidden lg:flex w-full lg:w-80 xl:w-96 border-l border-bordercol dark:border-[#26283b] bg-white dark:bg-[#181a24] flex-col shrink-0">
-          <div class="h-10 px-3 border-b border-bordercol dark:border-[#26283b] flex items-center justify-between text-xs font-semibold text-zinc-600 dark:text-zinc-300">
-            <span data-i18n="conversation">CONVERSATION</span>
-            <div class="flex items-center gap-1.5 text-zinc-400">
-              <button onclick="navigateTo('chat')" title="Mở toàn màn hình" class="hover:text-zinc-700 p-1"><i data-lucide="maximize-2" class="w-3.5 h-3.5"></i></button>
+                <!-- CỘT 3 (RIGHT): HỎI ĐÁP CÙNG BỘ NÃO MLM BRAIN (CHAT COPILOT THỰC CHIẾN) -->
+        <div id="neuralColChat" class="hidden lg:flex w-full lg:w-80 xl:w-96 border-l border-[#2C3B4D]/60 bg-[#16212C] flex-col shrink-0">
+          <!-- Chat Header -->
+          <div class="h-11 px-3.5 border-b border-[#2C3B4D]/60 flex items-center justify-between text-xs font-semibold bg-[#121B24]/70">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="font-bold text-[#EEE9DF] uppercase tracking-wider font-mono">HỎI ĐÁP BỘ NÃO AI</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[#C9C1B1] font-mono">1,918 notes</span>
+              <button onclick="navigateTo('chat')" title="Mở chat toàn màn hình" class="text-zinc-400 hover:text-[#FFB162] p-1 transition"><i data-lucide="maximize-2" class="w-3.5 h-3.5"></i></button>
             </div>
           </div>
 
           <!-- Chat Stream Area -->
-          <div id="cockpitChatMessages" class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-3 text-xs">
-            <div class="text-zinc-400 text-center py-10">
-              <p>Speak or type to start a conversation with Javis.</p>
-              <div class="mt-4 flex flex-col gap-1.5 text-left text-zinc-700 dark:text-zinc-300">
-                <button onclick="sendQuickPrompt('Báo cáo ngắn gọn chỉ số ads tháng 8 ở tài khoản quảng cáo phamquangdai qua mcp cho tôi')" class="p-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg hover:border-orange-500 transition">
-                  📊 Kiểm tra Facebook Ads tháng 8
+          <div id="cockpitChatMessages" class="flex-1 overflow-y-auto custom-scrollbar p-3.5 space-y-3 text-xs bg-[#16212C]">
+            <div class="text-center py-4 space-y-3">
+              <div class="w-10 h-10 rounded-xl bg-[#2C3B4D]/60 text-[#FFB162] border border-[#FFB162]/30 flex items-center justify-center mx-auto shadow-sm">
+                <i data-lucide="brain-circuit" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-[#EEE9DF] text-xs">Trợ Lý Bộ Não MLM Brain 4.0</h4>
+                <p class="text-[11px] text-[#C9C1B1] mt-0.5 max-w-[260px] mx-auto leading-relaxed">Hỏi đáp chiến lược, xử lý từ chối, kịch bản đối thoại hoặc tra cứu toàn bộ 1,918 ghi chú.</p>
+              </div>
+
+              <!-- Quick Prompts Thực Chiến Chuẩn MLM -->
+              <div class="flex flex-col gap-1.5 text-left pt-2">
+                <span class="text-[10px] text-[#C9C1B1] font-mono uppercase font-semibold">Gợi ý câu hỏi thực chiến:</span>
+                
+                <button onclick="sendQuickPrompt('Khách hàng chê sản phẩm trên Shopee rẻ hơn, tôi nên xử lý thế nào để giữ chân?')" class="p-2.5 bg-[#1B2632] border border-[#2C3B4D] hover:border-[#FFB162]/60 rounded-xl text-left text-zinc-300 hover:text-[#EEE9DF] transition text-[11px] flex items-start gap-2 group cursor-pointer">
+                  <span class="text-[#FFB162] group-hover:scale-110 transition-transform">💬</span>
+                  <span>Khách chê hàng Shopee rẻ hơn, xử lý sao?</span>
                 </button>
-                <button onclick="sendQuickPrompt('Đọc các tin nhắn Zalo gần đây nhất cho tôi')" class="p-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg hover:border-orange-500 transition">
-                  💬 Đọc tin nhắn Zalo gần nhất
+
+                <button onclick="sendQuickPrompt('Kịch bản 3 câu mở lời phá băng tự nhiên cho người mới F1 đi chia sẻ')" class="p-2.5 bg-[#1B2632] border border-[#2C3B4D] hover:border-[#FFB162]/60 rounded-xl text-left text-zinc-300 hover:text-[#EEE9DF] transition text-[11px] flex items-start gap-2 group cursor-pointer">
+                  <span class="text-[#FFB162] group-hover:scale-110 transition-transform">💬</span>
+                  <span>Kịch bản 3 câu mở lời phá băng F1</span>
+                </button>
+
+                <button onclick="sendQuickPrompt('Tóm tắt 5 bước phễu STEPP hút đối tác tự nhiên không chèo kéo')" class="p-2.5 bg-[#1B2632] border border-[#2C3B4D] hover:border-[#FFB162]/60 rounded-xl text-left text-zinc-300 hover:text-[#EEE9DF] transition text-[11px] flex items-start gap-2 group cursor-pointer">
+                  <span class="text-[#FFB162] group-hover:scale-110 transition-transform">💬</span>
+                  <span>5 bước phễu STEPP hút đối tác tự nhiên</span>
+                </button>
+
+                <button onclick="sendQuickPrompt('Quy tắc 2-a-Day của Eric Worre áp dụng vào nhịp làm việc hàng ngày')" class="p-2.5 bg-[#1B2632] border border-[#2C3B4D] hover:border-[#FFB162]/60 rounded-xl text-left text-zinc-300 hover:text-[#EEE9DF] transition text-[11px] flex items-start gap-2 group cursor-pointer">
+                  <span class="text-[#FFB162] group-hover:scale-110 transition-transform">💬</span>
+                  <span>Quy tắc 2-a-Day Eric Worre mỗi ngày</span>
                 </button>
               </div>
             </div>
           </div>
 
-          <!-- Bottom Prompt Box (What would you like me to do? - Ảnh 2) -->
-          <div class="p-3 border-t border-bordercol dark:border-[#26283b] bg-zinc-50/70 dark:bg-[#161722] space-y-2">
+          <!-- Bottom Prompt Box -->
+          <div class="p-3 border-t border-[#2C3B4D]/60 bg-[#121B24] space-y-2">
             <form id="cockpitChatForm" onsubmit="handleCockpitSubmit(event)" class="flex flex-col gap-2">
-              <input type="text" id="cockpitChatInput" placeholder="What would you like me to do?" class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-xl px-3 py-2 text-xs outline-none focus:border-orange-500 text-zinc-800 dark:text-zinc-200">
+              <div class="relative">
+                <input type="text" id="cockpitChatInput" placeholder="Hỏi bất kỳ điều gì với bộ não..." class="w-full bg-[#1B2632] border border-[#2C3B4D] focus:border-[#FFB162] rounded-xl pl-3 pr-9 py-2.5 text-xs text-[#EEE9DF] placeholder-[#C9C1B1]/60 outline-none transition font-sans">
+                <button type="submit" class="absolute right-2 top-2 p-1 text-[#FFB162] hover:text-[#FFC07D] transition cursor-pointer" title="Gửi câu hỏi">
+                  <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+              </div>
               
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-1.5 text-[11px]">
-                  <button type="button" onclick="createNewNotePrompt()" class="w-5 h-5 rounded-full bg-zinc-200 dark:bg-zinc-700 flex items-center justify-center text-zinc-600 dark:text-zinc-300" title="Thêm">+</button>
-                  <span class="px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 font-medium flex items-center gap-1 border border-emerald-200 dark:border-emerald-800">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Opus 3.5
+              <div class="flex items-center justify-between text-[11px]">
+                <div class="flex items-center gap-1.5 text-[#C9C1B1]">
+                  <span class="px-2 py-0.5 rounded-md bg-[#2C3B4D]/60 text-[#FFB162] font-mono text-[10px] border border-[#2C3B4D]">
+                    Gemini 2.5 Flash
                   </span>
-                  <span class="px-2 py-0.5 rounded-full bg-orange-50 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300 font-medium border border-orange-200 dark:border-orange-800">
-                    High
-                  </span>
+                  <span class="text-[10px] text-zinc-400">· Trực tiếp từ Vault</span>
                 </div>
 
                 <div class="flex items-center gap-1">
-                  <button type="button" onclick="startVoiceInput()" class="p-1.5 text-zinc-400 hover:text-orange-600 rounded">
+                  <button type="button" onclick="startVoiceInput()" class="p-1.5 text-zinc-400 hover:text-[#FFB162] rounded transition cursor-pointer" title="Nhập bằng giọng nói">
                     <i data-lucide="mic" class="w-4 h-4"></i>
                   </button>
-                  <button type="submit" class="p-1.5 bg-orange-600 hover:bg-orange-700 text-white rounded-lg shadow-sm">
+                  <button type="submit" class="px-2.5 py-1 btn-mlmbrain-primary rounded-lg text-xs font-bold flex items-center gap-1 shadow-sm cursor-pointer">
                     <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
                   </button>
                 </div>
@@ -721,44 +921,78 @@
       <!-- ======================================================================= -->
       <!-- VIEW 3: BRAIN -> FILES (OBSIDIAN STYLE LIVE NOTE VIEWER & EDITOR)       -->
       <!-- ======================================================================= -->
-      <section id="view-brain-files" class="flex-1 flex w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] hidden pb-20 lg:pb-6">
-        <!-- Explorer Sidebar -->
-        <div class="w-64 border-r border-bordercol dark:border-[#26283b] bg-[#f9f8f4] dark:bg-[#161722] flex flex-col shrink-0 p-3">
-          <div class="flex items-center justify-between pb-3 border-b border-bordercol dark:border-[#26283b]">
-            <span class="font-bold text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200">FILE EXPLORER</span>
-            <button onclick="createNewNotePrompt()" class="px-2 py-1 bg-orange-600 text-white rounded text-xs font-semibold">+ Note</button>
+      <section id="view-brain-files" class="flex-1 flex w-full h-full bg-[#1B2632] hidden pb-20 lg:pb-0 overflow-hidden">
+        <!-- Explorer Sidebar (Dark Obsidian) -->
+        <div class="w-72 border-r border-[#2C3B4D]/60 bg-[#16212C] flex flex-col shrink-0 p-3.5">
+          <div class="flex items-center justify-between pb-3 border-b border-[#2C3B4D]/60">
+            <div class="flex items-center gap-2">
+              <i data-lucide="folder-tree" class="w-4 h-4 text-[#FFB162]"></i>
+              <span class="font-bold text-xs uppercase tracking-wider text-[#EEE9DF] font-mono">FILE EXPLORER</span>
+            </div>
+            <button onclick="createNewNotePrompt()" class="px-2.5 py-1 btn-mlmbrain-primary rounded-lg text-xs font-bold flex items-center gap-1 shadow-sm">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Note
+            </button>
           </div>
-          <div id="filesExplorerList" class="flex-1 overflow-y-auto custom-scrollbar pt-2 space-y-1 text-xs">
+          
+          <!-- Search box in file explorer -->
+          <div class="relative my-2.5">
+            <i data-lucide="search" class="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-zinc-500"></i>
+            <input type="text" id="fileExplorerSearchInput" oninput="filterFileExplorerList(this.value)" placeholder="Lọc theo tên note..." class="w-full bg-[#1B2632] border border-[#2C3B4D]/60 rounded-lg pl-8 pr-2 py-1.5 text-xs text-white placeholder-zinc-500 outline-none focus:border-[#FFB162] transition font-mono">
+          </div>
+
+          <div id="filesExplorerList" class="flex-1 overflow-y-auto custom-scrollbar pt-1 space-y-1 text-xs">
             <!-- Rendered by JS -->
           </div>
         </div>
 
         <!-- Note Editor & Preview Panel -->
-        <div class="flex-1 flex flex-col h-full bg-white dark:bg-[#181a24]">
-          <div class="h-12 border-b border-bordercol dark:border-[#26283b] px-4 flex items-center justify-between shrink-0">
-            <div class="flex items-center gap-2">
-              <i data-lucide="file-text" class="w-4 h-4 text-orange-500"></i>
-              <span id="currentNotePath" class="font-bold text-xs text-zinc-800 dark:text-zinc-200">00 - Dashboard.md</span>
+        <div class="flex-1 flex flex-col h-full bg-[#1B2632] overflow-hidden">
+          <!-- Top Note Action Bar -->
+          <div class="h-12 border-b border-[#2C3B4D]/60 bg-[#16212C] px-4 flex items-center justify-between shrink-0">
+            <div class="flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-[#2C3B4D]/60 border border-[#2C3B4D]/70 flex items-center justify-center text-[#FFB162]">
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+              </div>
+              <div class="flex items-center gap-2">
+                <span id="currentNotePath" class="font-bold text-xs text-[#EEE9DF] font-mono">00 - Dashboard.md</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 border border-[#2C3B4D]/70 text-emerald-400 font-mono">🟢 Synced Git</span>
+              </div>
             </div>
             <div class="flex items-center gap-2">
-              <button onclick="saveCurrentNote()" class="px-3 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1 shadow-sm">
-                <i data-lucide="save" class="w-3.5 h-3.5"></i> Lưu & Git Commit
+              <button onclick="saveCurrentNote()" class="px-4 py-1.5 btn-mlmbrain-primary rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                <i data-lucide="save" class="w-3.5 h-3.5"></i>
+                <span>Lưu & Git Commit</span>
               </button>
-              <button onclick="deleteCurrentNote()" class="px-2.5 py-1 text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40 rounded text-xs font-medium">
+              <button onclick="deleteCurrentNote()" class="px-3 py-1.5 text-rose-400 hover:bg-rose-950/40 rounded-lg text-xs font-semibold transition border border-rose-900/30">
                 Xóa
               </button>
             </div>
           </div>
+
+          <!-- Split Screen: Editor & Live Preview -->
           <div class="flex-1 flex overflow-hidden">
-            <!-- Live Markdown Editor -->
-            <div class="w-1/2 border-r border-bordercol dark:border-[#26283b] p-4 flex flex-col">
-              <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-wider mb-1">Markdown Source</span>
-              <textarea id="noteEditorArea" class="flex-1 w-full p-2 bg-[#fbfaf8] dark:bg-[#12131a] border border-bordercol dark:border-[#2f3248] rounded-lg font-mono text-xs leading-relaxed outline-none resize-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100" oninput="renderNotePreview(this.value)"></textarea>
+            <!-- Live Markdown Editor (Left) -->
+            <div class="w-1/2 border-r border-[#2C3B4D]/60 p-4 flex flex-col bg-[#1B2632]">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-mono text-[#FFB162]/80 uppercase tracking-wider font-semibold flex items-center gap-1.5">
+                  <i data-lucide="code" class="w-3.5 h-3.5"></i> MARKDOWN SOURCE
+                </span>
+                <span id="editorStatsHud" class="text-[10px] font-mono text-zinc-500">UTF-8 · Live Edit</span>
+              </div>
+              <textarea id="noteEditorArea" class="flex-1 w-full p-4 bg-[#16212C] border border-[#2C3B4D]/60 rounded-xl font-mono text-xs leading-relaxed outline-none resize-none focus:border-[#FFB162] focus:ring-1 focus:ring-amber-400/30 text-[#EEE9DF] selection:bg-amber-500/30 custom-scrollbar" placeholder="Nhập nội dung markdown tại đây..." oninput="renderNotePreview(this.value)"></textarea>
             </div>
-            <!-- Rendered Preview -->
-            <div class="w-1/2 p-4 flex flex-col overflow-y-auto custom-scrollbar">
-              <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-wider mb-1">Live Preview</span>
-              <div id="notePreviewArea" class="prose dark:prose-invert max-w-none text-xs leading-relaxed text-zinc-800 dark:text-zinc-200"></div>
+
+            <!-- Rendered Preview (Right) -->
+            <div class="w-1/2 p-4 flex flex-col overflow-y-auto custom-scrollbar bg-[#16212C]">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-mono text-[#FFB162]/80 uppercase tracking-wider font-semibold flex items-center gap-1.5">
+                  <i data-lucide="eye" class="w-3.5 h-3.5"></i> LIVE PREVIEW (CHUẨN MLM BRAIN)
+                </span>
+                <span class="text-[10px] font-mono text-emerald-400">Renderer Active</span>
+              </div>
+              <div id="notePreviewArea" class="p-5 bg-[#1B2632] border border-[#2C3B4D]/60 rounded-xl flex-1 overflow-y-auto custom-scrollbar prose prose-invert max-w-none text-xs leading-relaxed text-zinc-200">
+                <!-- Live markdown parsed here -->
+              </div>
             </div>
           </div>
         </div>
@@ -767,48 +1001,139 @@
       <!-- ======================================================================= -->
       <!-- VIEW 4: BRAIN -> SELF-LEARNING (CHƯNG CẤT DỮ LIỆU & BỘ NHỚ TỰ ĐỘNG)     -->
       <!-- ======================================================================= -->
-      <section id="view-brain-learning" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden pb-20 lg:pb-6">
+      <section id="view-brain-learning" class="flex-1 flex flex-col w-full h-full bg-[#1B2632] p-4 md:p-8 overflow-y-auto custom-scrollbar hidden pb-24 lg:pb-8">
         <div class="max-w-5xl w-full mx-auto space-y-6">
-          <div class="flex items-start justify-between border-b border-bordercol dark:border-[#26283b] pb-4">
+          
+          <!-- Header Banner -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-[#2C3B4D]/60 pb-5 gap-4">
             <div>
-              <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-                <i data-lucide="sparkles" class="w-5 h-5 text-orange-500"></i>
-                Self-learning & Knowledge Distillation (Tự Động Học)
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#2C3B4D]/60 border border-[#2C3B4D]/70 text-[#FFB162] text-[10px] font-mono font-semibold uppercase mb-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Autonomous Knowledge Distillation Engine</span>
+              </div>
+              <h2 class="text-xl md:text-2xl font-black text-white flex items-center gap-2.5">
+                <i data-lucide="sparkles" class="w-6 h-6 text-[#FFB162]"></i>
+                <span class="text-[#EEE9DF]">Self-learning & Knowledge Distillation (Tự Động Học)</span>
               </h2>
-              <p class="text-xs text-zinc-500 mt-1">Cơ chế chưng cất tự động: tin nhắn & cuộc hội thoại -> Sources -> Wiki tri thức lũy tiến.</p>
+              <p class="text-xs text-zinc-400 mt-1.5 max-w-2xl leading-relaxed">
+                Cơ chế tự động hóa tri thức MLM: Quét tin nhắn, voice call & tình huống xử lý từ chối thực tế → Trích xuất mẫu số thành công (Sources) → Bồi đắp vào Wiki trường tồn.
+              </p>
             </div>
-            <button onclick="openIngestModal()" class="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm flex items-center gap-1.5">
-              <i data-lucide="plus" class="w-3.5 h-3.5"></i> + Ingest Source
+            <button onclick="openIngestModal()" class="px-5 py-2.5 rounded-xl btn-mlmbrain-primary flex items-center gap-2 text-xs font-bold shrink-0">
+              <i data-lucide="plus-circle" class="w-4 h-4"></i>
+              <span>+ Ingest Source</span>
             </button>
           </div>
 
-          <!-- Stats Grid -->
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="p-4 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl shadow-sm">
-              <div class="text-[11px] text-zinc-400 uppercase font-mono">Distilled Rules</div>
-              <div id="statDistilledRules" class="text-xl font-bold text-zinc-900 dark:text-white mt-1">48</div>
+          <!-- Stats HUD Grid (4 thẻ chỉ số đẳng cấp) -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Thẻ 1: Distilled Rules -->
+            <div class="p-5 rounded-2xl mlm-card rounded-2xl relative overflow-hidden group">
+              <div class="absolute -right-3 -top-3 w-16 h-16 bg-[#FFB162]/5 rounded-full blur-xl group-hover:bg-[#2C3B4D]/80 transition-all"></div>
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] text-zinc-400 uppercase font-mono tracking-wider font-semibold">Distilled Rules</span>
+                <span class="p-1 rounded-md bg-[#2C3B4D]/60 text-[#FFB162] text-xs">📜</span>
+              </div>
+              <div class="flex items-baseline gap-2 mt-2">
+                <div id="statDistilledRules" class="text-3xl font-black text-white font-mono">48</div>
+                <span class="text-[11px] text-[#FFB162]/80 font-medium">quy tắc</span>
+              </div>
+              <div class="mt-2 text-[10px] text-zinc-500 font-medium flex items-center gap-1">
+                <span class="text-emerald-400">●</span> 100% chuẩn hoá thực chiến
+              </div>
             </div>
-            <div class="p-4 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl shadow-sm">
-              <div class="text-[11px] text-zinc-400 uppercase font-mono">Active Facts</div>
-              <div id="statActiveFacts" class="text-xl font-bold text-amber-500 mt-1">1138</div>
+
+            <!-- Thẻ 2: Active Facts -->
+            <div class="p-5 rounded-2xl mlm-card rounded-2xl relative overflow-hidden group">
+              <div class="absolute -right-3 -top-3 w-16 h-16 bg-[#FFB162]/5 rounded-full blur-xl group-hover:bg-[#2C3B4D]/80 transition-all"></div>
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] text-zinc-400 uppercase font-mono tracking-wider font-semibold">Active Facts</span>
+                <span class="p-1 rounded-md bg-[#2C3B4D]/60 text-[#FFB162] text-xs">⚡</span>
+              </div>
+              <div class="flex items-baseline gap-2 mt-2">
+                <div id="statActiveFacts" class="text-3xl font-black text-[#FFB162] font-mono">1138</div>
+                <span class="text-[11px] text-[#FFB162] font-medium">+42 tuần này</span>
+              </div>
+              <div class="mt-2 text-[10px] text-zinc-500 font-medium flex items-center gap-1">
+                <span class="text-[#FFB162]">●</span> Dữ liệu sống sản phẩm & khách
+              </div>
             </div>
-            <div class="p-4 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl shadow-sm">
-              <div class="text-[11px] text-zinc-400 uppercase font-mono">Compounding Rate</div>
-              <div id="statCompounding" class="text-xl font-bold text-emerald-500 mt-1">+12.4% / tuần</div>
+
+            <!-- Thẻ 3: Compounding Rate -->
+            <div class="p-5 rounded-2xl mlm-card rounded-2xl relative overflow-hidden group">
+              <div class="absolute -right-3 -top-3 w-16 h-16 bg-emerald-500/5 rounded-full blur-xl group-hover:bg-emerald-500/15 transition-all"></div>
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] text-zinc-400 uppercase font-mono tracking-wider font-semibold">Compounding Rate</span>
+                <span class="p-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs">📈</span>
+              </div>
+              <div class="flex items-baseline gap-2 mt-2">
+                <div id="statCompounding" class="text-2xl md:text-3xl font-black text-emerald-400 font-mono">+12.4%</div>
+                <span class="text-[11px] text-zinc-400">/ tuần</span>
+              </div>
+              <div class="mt-2 text-[10px] text-zinc-500 font-medium flex items-center gap-1">
+                <span class="text-emerald-400">▲</span> Tri thức tự tích lũy theo thời gian
+              </div>
             </div>
-            <div class="p-4 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl shadow-sm">
-              <div class="text-[11px] text-zinc-400 uppercase font-mono">Wiki Health</div>
-              <div id="statWikiHealth" class="text-xl font-bold text-blue-500 mt-1">98/100</div>
+
+            <!-- Thẻ 4: Wiki Health -->
+            <div class="p-5 rounded-2xl mlm-card rounded-2xl relative overflow-hidden group">
+              <div class="absolute -right-3 -top-3 w-16 h-16 bg-blue-500/5 rounded-full blur-xl group-hover:bg-blue-500/15 transition-all"></div>
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] text-zinc-400 uppercase font-mono tracking-wider font-semibold">Wiki Health</span>
+                <span class="p-1 rounded-md bg-blue-500/10 text-blue-400 text-xs">🛡️</span>
+              </div>
+              <div class="flex items-baseline gap-2 mt-2">
+                <div id="statWikiHealth" class="text-3xl font-black text-blue-400 font-mono">98/100</div>
+              </div>
+              <div class="mt-2 text-[10px] text-zinc-500 font-medium flex items-center gap-1">
+                <span class="text-blue-400">●</span> 0 liên kết gãy · 2,548 kết nối
+              </div>
             </div>
           </div>
 
-          <!-- Recent Distillations Table -->
-          <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 shadow-sm space-y-4">
-            <h3 class="font-bold text-xs text-zinc-800 dark:text-zinc-200 uppercase tracking-wider">Nhật Ký Chưng Cất Tri Thức Gần Nhất</h3>
-            <div id="selfLearningList" class="space-y-3">
-              <!-- Rendered by JS -->
+          <!-- Fast Ingest Box (Nạp tri thức thực chiến trực tiếp) -->
+          <div class="p-5 rounded-2xl mlm-card rounded-2xl space-y-3.5 border border-[#2C3B4D]/70 bg-gradient-to-br from-[#0D1322] via-[#0B0F19] to-[#070B14]">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                <h4 class="text-xs font-bold text-[#EEE9DF] uppercase tracking-wider font-mono">⚡ Chưng Cất Tri Thức Nhanh (Instant Ingest)</h4>
+              </div>
+              <span class="text-[11px] text-zinc-400">Bóc tách insight từ tin nhắn hoặc kịch bản</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <input type="text" id="quickIngestTitle" placeholder="Tiêu đề tình huống (VD: Khách chê phá giá Shopee)..." class="md:col-span-2 bg-[#1B2632] border border-[#2C3B4D]/60 rounded-xl px-3.5 py-2 text-xs text-white placeholder-zinc-500 outline-none focus:border-[#FFB162] transition">
+              <select id="quickIngestCat" class="bg-[#1B2632] border border-[#2C3B4D]/60 rounded-xl px-3 py-2 text-xs text-[#FFB162] outline-none focus:border-[#FFB162]">
+                <option value="XỬ LÝ TỪ CHỐI / SHOPEE">Xử lý từ chối / Phá giá Shopee</option>
+                <option value="TÂM LÝ HỌC / GIA ĐÌNH">Tâm lý học / Gia đình cấm cản</option>
+                <option value="VẬN HÀNH / CLB & FIT">Vận hành / CLB Dinh Dưỡng & Fit</option>
+                <option value="NHÂN BẢN / PROCODE">Nhân bản F1 / ProCode Eric Worre</option>
+                <option value="CHÍNH SÁCH / TRẢ THƯỞNG">Chính sách & Bảng giá trả thưởng</option>
+              </select>
+            </div>
+            <textarea id="quickIngestContent" rows="2" placeholder="Dán nội dung hội thoại, câu phản đối của khách, hoặc giải pháp mà Leader vừa ứng biến hiệu quả..." class="w-full bg-[#1B2632] border border-[#2C3B4D]/60 rounded-xl p-3 text-xs text-white placeholder-zinc-500 outline-none focus:border-[#FFB162] transition resize-none"></textarea>
+            <div class="flex items-center justify-end">
+              <button onclick="handleQuickIngestSubmit()" class="px-5 py-2 rounded-xl btn-mlmbrain-primary text-xs font-bold flex items-center gap-2">
+                <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                <span>Chưng Cất Thành Quy Tắc Mới</span>
+              </button>
             </div>
           </div>
+
+          <!-- Recent Distillations List -->
+          <div class="rounded-2xl mlm-card rounded-2xl p-5 md:p-6 space-y-4">
+            <div class="flex items-center justify-between border-b border-[#2C3B4D]/60 pb-3">
+              <div class="flex items-center gap-2">
+                <i data-lucide="history" class="w-4 h-4 text-[#FFB162]"></i>
+                <h3 class="font-bold text-xs text-zinc-200 uppercase tracking-wider font-mono">Nhật Ký Chưng Cất Tri Thức Gần Nhất</h3>
+              </div>
+              <span class="text-[11px] text-zinc-400">Tự động đồng bộ vào Vault</span>
+            </div>
+            
+            <div id="selfLearningList" class="space-y-3">
+              <!-- Rendered by JS với dark luxury card -->
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -925,7 +1250,7 @@
                 <!-- BƯỚC 3: Kết quả về bộ não của bạn (Active chuẩn ảnh) -->
                 <div id="step-card-3" onclick="selectMultiModelStep(3)" class="step-card cursor-pointer p-4 rounded-2xl border-2 transition-all duration-300 bg-orange-50/90 dark:bg-orange-950/40 border-orange-400 dark:border-orange-600 shadow-sm group">
                   <div class="flex items-start gap-3.5">
-                    <div id="step-badge-3" class="w-7 h-7 rounded-lg bg-orange-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                    <div id="step-badge-3" class="w-7 h-7 rounded-lg btn-mlmbrain-primary text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
                       3
                     </div>
                     <div class="space-y-1">
@@ -1032,7 +1357,7 @@
                         <!-- 1. Javis tiếp nhận & phân bổ -->
                         <div id="mock-msg-javis" class="p-2.5 rounded-xl bg-[#f5f4ee] dark:bg-[#202230] border border-bordercol/60 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 leading-relaxed transition-all duration-300">
                           <div class="flex items-center gap-1.5 text-[10px] font-bold text-orange-600 dark:text-orange-400 mb-0.5">
-                            <span class="w-3.5 h-3.5 rounded-full bg-orange-600 text-white flex items-center justify-center text-[8px] font-extrabold">★</span>
+                            <span class="w-3.5 h-3.5 rounded-full btn-mlmbrain-primary text-white flex items-center justify-center text-[8px] font-extrabold">★</span>
                             <span>Javis</span>
                           </div>
                           <p class="text-[11px] pl-5">Em nhận. Nhà nghiên cứu làm trước, rồi Người viết, rồi Người duyệt.</p>
@@ -1068,7 +1393,7 @@
                         <!-- 5. Kết quả Markdown file: research-brief.md -->
                         <div id="mock-msg-card" onclick="openResearchBriefModal()" class="p-2.5 rounded-xl bg-orange-50/80 dark:bg-orange-950/40 border border-orange-200 dark:border-orange-900/60 flex items-center justify-between cursor-pointer hover:bg-orange-100/90 dark:hover:bg-orange-900/40 transition group shadow-xs">
                           <div class="flex items-center gap-2.5">
-                            <div class="w-7 h-7 rounded-lg bg-orange-600 text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                            <div class="w-7 h-7 rounded-lg btn-mlmbrain-primary text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
                               <i data-lucide="file-text" class="w-4 h-4"></i>
                             </div>
                             <div>
@@ -1080,7 +1405,7 @@
                               </div>
                             </div>
                           </div>
-                          <span class="text-[10px] font-bold text-orange-600 dark:text-orange-400 bg-white dark:bg-[#1a1c27] px-2 py-0.5 rounded border border-orange-200 dark:border-orange-800/80 shadow-2xs group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                          <span class="text-[10px] font-bold text-orange-600 dark:text-orange-400 bg-white dark:bg-[#1a1c27] px-2 py-0.5 rounded border border-orange-200 dark:border-orange-800/80 shadow-2xs group-hover:btn-mlmbrain-primary group-hover:text-white transition-colors">
                             Mở xem file
                           </span>
                         </div>
@@ -1199,7 +1524,7 @@
               <div class="flex items-center gap-2">
                 <button class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-orange-100 dark:bg-orange-950/60 text-orange-700 dark:text-orange-400 text-xs font-semibold hover:bg-orange-200 transition">
                   <i data-lucide="bell" class="w-3.5 h-3.5"></i>
-                  Notifications <span class="w-1.5 h-1.5 rounded-full bg-orange-600"></span>
+                  Notifications <span class="w-1.5 h-1.5 rounded-full btn-mlmbrain-primary"></span>
                 </button>
               </div>
             </div>
@@ -1296,11 +1621,11 @@
 
                   <div onclick="showHeroStatDetail('night_answers')" class="bg-white/80 dark:bg-[#1a162b]/80 backdrop-blur-sm border border-purple-200/60 dark:border-purple-800/40 rounded-xl p-4 cursor-pointer hover:border-purple-500 hover:shadow-lg transition transform hover:-translate-y-0.5 active:translate-y-0 group">
                     <div class="flex items-center justify-between">
-                      <div class="text-3xl font-extrabold text-purple-950 dark:text-purple-100 group-hover:text-amber-500 transition">567</div>
-                      <i data-lucide="moon" class="w-4 h-4 text-amber-500 opacity-80 group-hover:opacity-100"></i>
+                      <div class="text-3xl font-extrabold text-purple-950 dark:text-purple-100 group-hover:text-[#EEE9DF]0 transition">567</div>
+                      <i data-lucide="moon" class="w-4 h-4 text-[#EEE9DF]0 opacity-80 group-hover:opacity-100"></i>
                     </div>
                     <div class="text-xs text-zinc-600 dark:text-purple-200/80 mt-1">answers while you slept (11 pm to 7 am)</div>
-                    <div class="mt-2 text-[10px] text-amber-600 dark:text-amber-400 font-medium flex items-center justify-between">
+                    <div class="mt-2 text-[10px] text-amber-600 dark:text-[#FFB162] font-medium flex items-center justify-between">
                       <span>🌙 Không bỏ lỡ khách ban đêm</span>
                       <span class="text-[9px] underline">Nhấn xem chi tiết ➔</span>
                     </div>
@@ -1375,7 +1700,7 @@
 
                   <!-- Night badge callout -->
                   <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 text-purple-300 text-xs font-semibold shadow">
-                    <i data-lucide="moon" class="w-3.5 h-3.5 text-amber-400"></i>
+                    <i data-lucide="moon" class="w-3.5 h-3.5 text-[#FFB162]"></i>
                     <span>Trả lời cả ban đêm (Over rest hours, the AI still replied)</span>
                   </div>
                 </div>
@@ -1506,17 +1831,17 @@
                   <h4 class="font-bold text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200">Thông Số Trợ Lý</h4>
                   <div>
                     <label class="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Tên Trợ Lý</label>
-                    <input type="text" id="cbBotName" class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-1.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-orange-500">
+                    <input type="text" id="cbBotName" class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-1.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-[#FFB162]">
                   </div>
                   <div>
                     <label class="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Lời Chào Mở Đầu (Greeting)</label>
-                    <textarea id="cbWelcomeMsg" rows="3" class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-orange-500"></textarea>
+                    <textarea id="cbWelcomeMsg" rows="3" class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-[#FFB162]"></textarea>
                   </div>
                   <div>
                     <label class="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">System Instructions (Nhân Cách & Phạm Vi Trả Lời)</label>
-                    <textarea id="cbSystemPrompt" rows="4" class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-orange-500"></textarea>
+                    <textarea id="cbSystemPrompt" rows="4" class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-[#FFB162]"></textarea>
                   </div>
-                  <button onclick="saveChatbotSettings()" class="w-full py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-bold transition shadow-sm">
+                  <button onclick="saveChatbotSettings()" class="w-full py-2 btn-mlmbrain-primary hover:bg-orange-700 text-white rounded-lg text-xs font-bold transition shadow-sm">
                     Lưu Cấu Hình
                   </button>
                 </div>
@@ -1525,7 +1850,7 @@
                 <div class="space-y-6">
                   <!-- Guardrails Box -->
                   <div class="bg-[#faf8f5] dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 space-y-3">
-                    <h4 class="font-bold text-xs uppercase tracking-wider text-amber-700 dark:text-amber-400 flex items-center gap-1.5">
+                    <h4 class="font-bold text-xs uppercase tracking-wider text-amber-700 dark:text-[#FFB162] flex items-center gap-1.5">
                       <i data-lucide="shield-alert" class="w-4 h-4"></i>
                       Quy Tắc "Bạn Vẫn Nắm Quyền" (Bot Silence Guardrails)
                     </h4>
@@ -1564,7 +1889,7 @@
             <div id="cbSubView-json" class="p-6 space-y-4 hidden">
               <div class="flex items-center justify-between border-b border-bordercol dark:border-[#2a2c3f] pb-3">
                 <h3 class="font-bold text-xs uppercase tracking-wider text-zinc-700 dark:text-zinc-300 font-mono">GET /api/studio/chatbot-stats (Live Data)</h3>
-                <button onclick="copyChatbotJson()" class="px-2.5 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded text-xs font-semibold">Copy JSON</button>
+                <button onclick="copyChatbotJson()" class="px-2.5 py-1 btn-mlmbrain-primary hover:bg-orange-700 text-white rounded text-xs font-semibold">Copy JSON</button>
               </div>
               <pre id="cbJsonPreview" class="bg-zinc-900 text-emerald-400 p-4 rounded-xl text-xs font-mono overflow-x-auto max-h-96 leading-relaxed"></pre>
             </div>
@@ -1640,7 +1965,7 @@
                 <button onclick="closeChatbotDetailModal()" class="px-3 py-1.5 rounded-lg border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800">
                   Đóng
                 </button>
-                <button id="cbModalActionBtn" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition shadow-sm">
+                <button id="cbModalActionBtn" class="px-4 py-1.5 rounded-lg btn-mlmbrain-primary hover:bg-orange-700 text-white text-xs font-bold transition shadow-sm">
                   Khám phá thêm
                 </button>
               </div>
@@ -1681,7 +2006,7 @@
               <button onclick="importSkillsPrompt()" class="px-3 py-1.5 rounded-lg bg-[#202230] hover:bg-[#282a3c] text-zinc-300 flex items-center gap-1.5">
                 <i data-lucide="upload" class="w-3.5 h-3.5"></i> Import
               </button>
-              <button onclick="openAddSkillModal()" class="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold flex items-center gap-1 shadow-sm">
+              <button onclick="openAddSkillModal()" class="px-3.5 py-1.5 rounded-lg btn-mlmbrain-primary hover:bg-orange-700 text-white font-semibold flex items-center gap-1 shadow-sm">
                 + Skills
               </button>
             </div>
@@ -1759,7 +2084,7 @@
                 <span id="taskCount-all" class="font-mono text-zinc-400">19</span>
               </button>
               <button onclick="filterTasks('today', null)" class="w-full flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-zinc-200/70 dark:hover:bg-zinc-800">
-                <span class="flex items-center gap-2"><i data-lucide="sun" class="w-4 h-4 text-amber-500"></i> Today</span>
+                <span class="flex items-center gap-2"><i data-lucide="sun" class="w-4 h-4 text-[#EEE9DF]0"></i> Today</span>
                 <span id="taskCount-today" class="font-mono text-zinc-400">2</span>
               </button>
               <button onclick="filterTasks('upcoming', null)" class="w-full flex items-center justify-between px-2 py-1.5 rounded-lg bg-orange-100/70 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300 font-medium">
@@ -1813,7 +2138,7 @@
                 </button>
               </div>
 
-              <button onclick="openAddTaskModal()" class="px-3 py-1.5 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1 shadow-sm">
+              <button onclick="openAddTaskModal()" class="px-3 py-1.5 btn-mlmbrain-primary hover:bg-orange-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1 shadow-sm">
                 + Thêm Việc Mới
               </button>
             </div>
@@ -1821,7 +2146,7 @@
             <!-- Search task input -->
             <div class="relative">
               <i data-lucide="search" class="w-4 h-4 absolute left-3 top-3 text-zinc-400"></i>
-              <input type="text" oninput="searchTasks(this.value)" placeholder="Search tasks by name or assistant..." class="w-full bg-[#f9f8f5] dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl pl-9 pr-4 py-2 text-xs outline-none focus:border-orange-500 text-zinc-800 dark:text-zinc-200">
+              <input type="text" oninput="searchTasks(this.value)" placeholder="Search tasks by name or assistant..." class="w-full bg-[#f9f8f5] dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl pl-9 pr-4 py-2 text-xs outline-none focus:border-[#FFB162] text-zinc-800 dark:text-zinc-200">
             </div>
 
             <!-- Heading: Upcoming -->
@@ -1992,7 +2317,7 @@
                 <!-- BƯỚC 3: Kết quả về bộ não của bạn (Active chuẩn ảnh) -->
                 <div id="step-card-3" onclick="selectMultiModelStep(3)" class="step-card cursor-pointer p-4 rounded-2xl border-2 transition-all duration-300 bg-orange-50/90 dark:bg-orange-950/40 border-orange-400 dark:border-orange-600 shadow-sm group">
                   <div class="flex items-start gap-3.5">
-                    <div id="step-badge-3" class="w-7 h-7 rounded-lg bg-orange-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                    <div id="step-badge-3" class="w-7 h-7 rounded-lg btn-mlmbrain-primary text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
                       3
                     </div>
                     <div class="space-y-1">
@@ -2099,7 +2424,7 @@
                         <!-- 1. Javis tiếp nhận & phân bổ -->
                         <div id="mock-msg-javis" class="p-2.5 rounded-xl bg-[#f5f4ee] dark:bg-[#202230] border border-bordercol/60 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 leading-relaxed transition-all duration-300">
                           <div class="flex items-center gap-1.5 text-[10px] font-bold text-orange-600 dark:text-orange-400 mb-0.5">
-                            <span class="w-3.5 h-3.5 rounded-full bg-orange-600 text-white flex items-center justify-center text-[8px] font-extrabold">★</span>
+                            <span class="w-3.5 h-3.5 rounded-full btn-mlmbrain-primary text-white flex items-center justify-center text-[8px] font-extrabold">★</span>
                             <span>Javis</span>
                           </div>
                           <p class="text-[11px] pl-5">Em nhận. Nhà nghiên cứu làm trước, rồi Người viết, rồi Người duyệt.</p>
@@ -2135,7 +2460,7 @@
                         <!-- 5. Kết quả Markdown file: research-brief.md -->
                         <div id="mock-msg-card" onclick="openResearchBriefModal()" class="p-2.5 rounded-xl bg-orange-50/80 dark:bg-orange-950/40 border border-orange-200 dark:border-orange-900/60 flex items-center justify-between cursor-pointer hover:bg-orange-100/90 dark:hover:bg-orange-900/40 transition group shadow-xs">
                           <div class="flex items-center gap-2.5">
-                            <div class="w-7 h-7 rounded-lg bg-orange-600 text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                            <div class="w-7 h-7 rounded-lg btn-mlmbrain-primary text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
                               <i data-lucide="file-text" class="w-4 h-4"></i>
                             </div>
                             <div>
@@ -2147,7 +2472,7 @@
                               </div>
                             </div>
                           </div>
-                          <span class="text-[10px] font-bold text-orange-600 dark:text-orange-400 bg-white dark:bg-[#1a1c27] px-2 py-0.5 rounded border border-orange-200 dark:border-orange-800/80 shadow-2xs group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                          <span class="text-[10px] font-bold text-orange-600 dark:text-orange-400 bg-white dark:bg-[#1a1c27] px-2 py-0.5 rounded border border-orange-200 dark:border-orange-800/80 shadow-2xs group-hover:btn-mlmbrain-primary group-hover:text-white transition-colors">
                             Mở xem file
                           </span>
                         </div>
@@ -2176,7 +2501,7 @@
           <div class="text-center space-y-4 max-w-3xl mx-auto pt-4">
             <!-- Top Tag Pill (- TEAM -) -->
             <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-100/70 dark:bg-orange-950/60 border border-orange-200/80 dark:border-orange-800/50 text-orange-600 dark:text-orange-400 text-[11px] font-bold tracking-widest uppercase">
-              <span class="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse"></span>
+              <span class="w-1.5 h-1.5 rounded-full btn-mlmbrain-primary animate-pulse"></span>
               <span>— TEAM —</span>
             </div>
 
@@ -2356,7 +2681,7 @@
                   <div class="bg-[#faf8f4] dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-4 space-y-2 shadow-xs transition hover:border-orange-500/40">
                     <div class="flex items-center justify-between pb-1.5 border-b border-bordercol/60 dark:border-zinc-800">
                       <div class="flex items-center gap-2">
-                        <span class="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center text-xs font-bold shadow-xs">👑</span>
+                        <span class="w-6 h-6 rounded-md btn-mlmbrain-primary text-white flex items-center justify-center text-xs font-bold shadow-xs">👑</span>
                         <span class="font-extrabold text-zinc-900 dark:text-white">Trưởng nhóm (Team Lead)</span>
                         <span class="text-[10px] text-zinc-400 font-mono">Điều phối toàn diện</span>
                       </div>
@@ -2386,7 +2711,7 @@
                       <span class="text-[9px] text-zinc-400 font-mono">@share team here and only a few of you see</span>
                     </div>
                     <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal">
-                      I'm Mai, on Javis brand content: long blog posts in Minh Quy's voice, social posts, short video scripts, use case stories and image briefs. Hand me the insight, offer and CTA and I can write right away. Wherever your real experience is needed, I mark it <span class="px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-mono font-bold text-[10px] border border-amber-300 dark:border-amber-700">"C-DCK"</span> instead of making it up.
+                      I'm Mai, on Javis brand content: long blog posts in Minh Quy's voice, social posts, short video scripts, use case stories and image briefs. Hand me the insight, offer and CTA and I can write right away. Wherever your real experience is needed, I mark it <span class="px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-[#FFB162] font-mono font-bold text-[10px] border border-amber-300 dark:border-amber-700">"C-DCK"</span> instead of making it up.
                     </p>
                     <div class="pt-1 flex items-center gap-1.5 text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">
                       <i data-lucide="shield-check" class="w-3 h-3"></i>
@@ -2433,9 +2758,9 @@
 
                   <!-- Input Box with Send Button -->
                   <div class="relative flex items-center">
-                    <input type="text" id="teamBriefInput" onkeydown="if(event.key==='Enter') sendTeamBrief()" placeholder="Giao brief mới cho cả phòng... (Trưởng nhóm sẽ tự bóc tách và phân công)" class="w-full bg-[#fbfaf8] dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700 rounded-xl pl-3.5 pr-24 py-2.5 text-xs text-zinc-900 dark:text-white outline-none focus:border-orange-500 shadow-inner">
+                    <input type="text" id="teamBriefInput" onkeydown="if(event.key==='Enter') sendTeamBrief()" placeholder="Giao brief mới cho cả phòng... (Trưởng nhóm sẽ tự bóc tách và phân công)" class="w-full bg-[#fbfaf8] dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700 rounded-xl pl-3.5 pr-24 py-2.5 text-xs text-zinc-900 dark:text-white outline-none focus:border-[#FFB162] shadow-inner">
                     <div class="absolute right-1.5 flex items-center gap-1">
-                      <button onclick="sendTeamBrief()" class="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs shadow-xs transition flex items-center gap-1">
+                      <button onclick="sendTeamBrief()" class="px-3 py-1.5 rounded-lg btn-mlmbrain-primary hover:bg-orange-700 text-white font-bold text-xs shadow-xs transition flex items-center gap-1">
                         <span>Gửi Brief</span>
                         <i data-lucide="send" class="w-3 h-3"></i>
                       </button>
@@ -2509,7 +2834,7 @@
             <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/5 transition duration-300 flex flex-col justify-between space-y-4 group">
               <div class="space-y-3">
                 <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-full bg-amber-50 dark:bg-amber-950 border border-amber-300 dark:border-amber-800 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm shadow-xs group-hover:scale-110 transition-transform">
+                  <span class="w-8 h-8 rounded-full bg-amber-50 dark:bg-amber-950 border border-amber-300 dark:border-amber-800 text-amber-600 dark:text-[#FFB162] flex items-center justify-center font-bold text-sm shadow-xs group-hover:scale-110 transition-transform">
                     2
                   </span>
                   <h3 class="font-extrabold text-base text-zinc-900 dark:text-white group-hover:text-amber-600 transition-colors">
@@ -2598,7 +2923,7 @@
           <!-- ================================================================= -->
           <div class="pt-8 border-t border-bordercol dark:border-[#26283b] space-y-2">
             <div class="text-xs font-bold text-orange-600 tracking-wider uppercase flex items-center gap-1.5">
-              <span class="w-3.5 h-0.5 bg-orange-600"></span> ĐIỀU LÀM NÊN MỘT ĐỘI NGŨ
+              <span class="w-3.5 h-0.5 btn-mlmbrain-primary"></span> ĐIỀU LÀM NÊN MỘT ĐỘI NGŨ
             </div>
             <h2 class="text-2xl md:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
               Không chỉ là khung chat.<br>
@@ -2943,7 +3268,7 @@
                       <div class="text-[10px] text-orange-600/80 dark:text-orange-400/80 font-medium">chờ bạn duyệt trước khi gửi</div>
                     </div>
                   </div>
-                  <span class="w-3.5 h-3.5 rounded-full bg-orange-600 flex items-center justify-center text-white text-[9px]" id="perm-radio-draft">✓</span>
+                  <span class="w-3.5 h-3.5 rounded-full btn-mlmbrain-primary flex items-center justify-center text-white text-[9px]" id="perm-radio-draft">✓</span>
                 </div>
 
                 <div onclick="setTeamworkPermission('full')" id="perm-opt-full" class="p-2.5 rounded-xl border border-bordercol dark:border-zinc-700 bg-white dark:bg-[#1a1c27] flex items-center justify-between cursor-pointer hover:border-orange-500 transition">
@@ -3015,7 +3340,7 @@
 
           <!-- Enterprise Navigation Sub-Tabs -->
           <div class="flex items-center gap-2 border-b border-bordercol dark:border-[#26283b] pb-2 overflow-x-auto text-xs font-semibold">
-            <button onclick="switchEnterpriseSubTab('architecture')" id="ent-tab-architecture" class="ent-tab-btn active px-3.5 py-1.5 rounded-lg bg-orange-600 text-white flex items-center gap-1.5 transition">
+            <button onclick="switchEnterpriseSubTab('architecture')" id="ent-tab-architecture" class="ent-tab-btn active px-3.5 py-1.5 rounded-lg btn-mlmbrain-primary text-white flex items-center gap-1.5 transition">
               <i data-lucide="layers" class="w-3.5 h-3.5"></i>
               <span>4 Lớp Kiến Trúc</span>
             </button>
@@ -3064,7 +3389,7 @@
                   <div class="text-emerald-600 dark:text-emerald-400 font-medium text-[11px] pt-1">👉 Giải pháp: Số hoá vào Second Brain wiki liên kết.</div>
                 </div>
                 <div class="p-3 bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200/60 dark:border-amber-900/40 rounded-xl space-y-1.5">
-                  <div class="font-bold text-amber-700 dark:text-amber-400 flex items-center gap-1.5">
+                  <div class="font-bold text-amber-700 dark:text-[#FFB162] flex items-center gap-1.5">
                     <span>🗂️</span> Tài liệu có nhưng không tìm ra
                   </div>
                   <p class="text-zinc-600 dark:text-zinc-400 text-[11px]">Hàng nghìn file rải rác trên Drive, Zalo, nhóm chat. Muốn tìm một chính sách phải hỏi lòng vòng.</p>
@@ -3113,7 +3438,7 @@
                   </h3>
                   <p class="text-xs text-zinc-500 mt-1">Một lệnh chạy cả chuỗi việc: kéo số liệu Meta Ads → cập nhật Google Sheets → kiểm tra Pancake POS → báo cáo Telegram.</p>
                 </div>
-                <button onclick="runEnterprisePipelineTest()" id="btnRunPipeline" class="bg-orange-600 hover:bg-orange-700 text-white font-bold px-4 py-2 rounded-xl text-xs shadow flex items-center gap-2 transition">
+                <button onclick="runEnterprisePipelineTest()" id="btnRunPipeline" class="btn-mlmbrain-primary hover:bg-orange-700 text-white font-bold px-4 py-2 rounded-xl text-xs shadow flex items-center gap-2 transition">
                   <i data-lucide="zap" class="w-4 h-4"></i>
                   <span>Thực Thi Chuỗi Tác Vụ Ngay</span>
                 </button>
@@ -3174,28 +3499,28 @@
               <!-- 5 Step Timeline -->
               <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs">
                 <div class="p-4 bg-zinc-50 dark:bg-[#13141c] border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-2">
-                  <div class="w-6 h-6 rounded-full bg-orange-600 text-white font-bold flex items-center justify-center text-xs">1</div>
+                  <div class="w-6 h-6 rounded-full btn-mlmbrain-primary text-white font-bold flex items-center justify-center text-xs">1</div>
                   <div class="font-bold text-zinc-900 dark:text-white">Khảo sát & Thiết kế</div>
                   <p class="text-[11px] text-zinc-500">Làm việc với lãnh đạo và trưởng phòng: xác định tài liệu quan trọng, việc lặp lại nhiều, phân quyền dữ liệu.</p>
                   <div class="text-[10px] text-orange-600 font-mono font-semibold">Kết quả: Bản kiến trúc & thứ tự ưu tiên</div>
                 </div>
 
                 <div class="p-4 bg-zinc-50 dark:bg-[#13141c] border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-2">
-                  <div class="w-6 h-6 rounded-full bg-orange-600 text-white font-bold flex items-center justify-center text-xs">2</div>
+                  <div class="w-6 h-6 rounded-full btn-mlmbrain-primary text-white font-bold flex items-center justify-center text-xs">2</div>
                   <div class="font-bold text-zinc-900 dark:text-white">Dựng nền & Nạp tri thức</div>
                   <p class="text-[11px] text-zinc-500">Cài Javis OS trên VPS/máy chủ riêng, thiết lập bảo mật, cấu trúc tài liệu thành Second Brain wiki liên kết.</p>
                   <div class="text-[10px] text-orange-600 font-mono font-semibold">Kết quả: Bộ não 24/7 hỏi kèm nguồn</div>
                 </div>
 
                 <div class="p-4 bg-zinc-50 dark:bg-[#13141c] border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-2">
-                  <div class="w-6 h-6 rounded-full bg-orange-600 text-white font-bold flex items-center justify-center text-xs">3</div>
+                  <div class="w-6 h-6 rounded-full btn-mlmbrain-primary text-white font-bold flex items-center justify-center text-xs">3</div>
                   <div class="font-bold text-zinc-900 dark:text-white">Nối dữ liệu & Dựng trợ lý</div>
                   <p class="text-[11px] text-zinc-500">Nối Pancake POS, Ads, CRM qua MCP, cấu hình skills và workflows, thiết lập kênh Telegram & Zalo.</p>
                   <div class="text-[10px] text-orange-600 font-mono font-semibold">Kết quả: Trợ lý làm việc với số thật</div>
                 </div>
 
                 <div class="p-4 bg-zinc-50 dark:bg-[#13141c] border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-2">
-                  <div class="w-6 h-6 rounded-full bg-orange-600 text-white font-bold flex items-center justify-center text-xs">4</div>
+                  <div class="w-6 h-6 rounded-full btn-mlmbrain-primary text-white font-bold flex items-center justify-center text-xs">4</div>
                   <div class="font-bold text-zinc-900 dark:text-white">Đào tạo & Chuyển giao</div>
                   <p class="text-[11px] text-zinc-500">Huấn luyện nhân viên theo vai trò, bàn giao tài liệu vận hành và checklist phân quyền để đội ngũ tự chủ.</p>
                   <div class="text-[10px] text-orange-600 font-mono font-semibold">Kết quả: Đội ngũ tự làm chủ 100%</div>
@@ -3316,7 +3641,7 @@
       </div>
 
       <div class="p-3 border-t border-bordercol dark:border-[#26283b] bg-[#faf9f5] dark:bg-[#13141f] flex justify-end gap-2">
-        <button onclick="closeAssistantDocsModal()" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">
+        <button onclick="closeAssistantDocsModal()" class="px-4 py-1.5 rounded-lg btn-mlmbrain-primary hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">
           Đóng
         </button>
       </div>
@@ -3344,7 +3669,7 @@
       <div class="p-5 space-y-3 text-xs">
         <div>
           <label class="block font-bold text-zinc-700 dark:text-zinc-300 mb-1">Dán nội dung File Markdown mô tả Agent (.md)</label>
-          <textarea id="uploadAgentMarkdownInput" rows="7" placeholder="# Tên Cộng Sự&#10;Vai trò: Chuyên viên...&#10;&#10;System Prompt:&#10;Bạn là chuyên gia phụ trách..." class="w-full bg-[#fbfaf8] dark:bg-[#1e202f] border border-bordercol dark:border-[#2f3248] rounded-xl p-3 text-xs font-mono outline-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100"></textarea>
+          <textarea id="uploadAgentMarkdownInput" rows="7" placeholder="# Tên Cộng Sự&#10;Vai trò: Chuyên viên...&#10;&#10;System Prompt:&#10;Bạn là chuyên gia phụ trách..." class="w-full bg-[#fbfaf8] dark:bg-[#1e202f] border border-bordercol dark:border-[#2f3248] rounded-xl p-3 text-xs font-mono outline-none focus:border-[#FFB162] text-zinc-900 dark:text-zinc-100"></textarea>
         </div>
         <div class="p-2.5 rounded-lg bg-orange-50 dark:bg-orange-950/40 border border-orange-200 dark:border-orange-900/40 text-[11px] text-orange-800 dark:text-orange-300">
           💡 Bạn có thể copy bất kỳ prompt nhân sự nào từ Obsidian, Claude Projects hoặc GitHub để nhập về ngay lập tức.
@@ -3353,7 +3678,7 @@
 
       <div class="p-3 border-t border-bordercol dark:border-[#26283b] bg-[#faf9f5] dark:bg-[#13141f] flex justify-end gap-2">
         <button onclick="closeUploadAgentModal()" class="px-3 py-1.5 rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs">Hủy</button>
-        <button onclick="submitUploadAgent()" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">
+        <button onclick="submitUploadAgent()" class="px-4 py-1.5 rounded-lg btn-mlmbrain-primary hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">
           Nhập Cộng Sự Vào Roster
         </button>
       </div>
@@ -3367,7 +3692,7 @@
     <div class="bg-white dark:bg-[#181926] border border-bordercol dark:border-[#2f3248] rounded-2xl max-w-3xl w-full flex flex-col max-h-[85vh] shadow-2xl overflow-hidden">
       <div class="p-4 border-b border-bordercol dark:border-[#26283b] flex items-center justify-between bg-[#faf9f5] dark:bg-[#13141f]">
         <div class="flex items-center gap-2">
-          <span class="w-8 h-8 rounded-xl bg-orange-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+          <span class="w-8 h-8 rounded-xl btn-mlmbrain-primary text-white flex items-center justify-center font-bold text-sm shadow-sm">
             <i data-lucide="store" class="w-4 h-4"></i>
           </span>
           <div>
@@ -3396,7 +3721,7 @@
                   <div class="text-[10px] text-orange-600 font-mono">Claude 3.5 Sonnet · Marketing</div>
                 </div>
               </div>
-              <button onclick="recruitStoreAgent('chi-tiktok')" class="px-2.5 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-bold text-[10px] shadow-sm">
+              <button onclick="recruitStoreAgent('chi-tiktok')" class="px-2.5 py-1 btn-mlmbrain-primary hover:bg-orange-700 text-white rounded-lg font-bold text-[10px] shadow-sm">
                 Tuyển Dụng
               </button>
             </div>
@@ -3415,7 +3740,7 @@
                   <div class="text-[10px] text-emerald-600 font-mono">GPT-4o mini · Auto Mode 24/7</div>
                 </div>
               </div>
-              <button onclick="recruitStoreAgent('thinh-closer')" class="px-2.5 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-bold text-[10px] shadow-sm">
+              <button onclick="recruitStoreAgent('thinh-closer')" class="px-2.5 py-1 btn-mlmbrain-primary hover:bg-orange-700 text-white rounded-lg font-bold text-[10px] shadow-sm">
                 Tuyển Dụng
               </button>
             </div>
@@ -3434,7 +3759,7 @@
                   <div class="text-[10px] text-blue-500 font-mono">DeepSeek-V3 · Finance</div>
                 </div>
               </div>
-              <button onclick="recruitStoreAgent('lam-finance')" class="px-2.5 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-bold text-[10px] shadow-sm">
+              <button onclick="recruitStoreAgent('lam-finance')" class="px-2.5 py-1 btn-mlmbrain-primary hover:bg-orange-700 text-white rounded-lg font-bold text-[10px] shadow-sm">
                 Tuyển Dụng
               </button>
             </div>
@@ -3450,10 +3775,10 @@
                 <span class="text-2xl">🔍</span>
                 <div>
                   <h4 class="font-bold text-xs text-zinc-900 dark:text-white">Phong - SEO Semantic Architect</h4>
-                  <div class="text-[10px] text-amber-500 font-mono">Gemini 1.5 Flash · SEO</div>
+                  <div class="text-[10px] text-[#EEE9DF]0 font-mono">Gemini 1.5 Flash · SEO</div>
                 </div>
               </div>
-              <button onclick="recruitStoreAgent('phong-seo')" class="px-2.5 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-bold text-[10px] shadow-sm">
+              <button onclick="recruitStoreAgent('phong-seo')" class="px-2.5 py-1 btn-mlmbrain-primary hover:bg-orange-700 text-white rounded-lg font-bold text-[10px] shadow-sm">
                 Tuyển Dụng
               </button>
             </div>
@@ -3466,7 +3791,7 @@
       </div>
 
       <div class="p-3 border-t border-bordercol dark:border-[#26283b] bg-[#faf9f5] dark:bg-[#13141f] flex justify-end gap-2">
-        <button onclick="closeJavisStoreModal()" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">
+        <button onclick="closeJavisStoreModal()" class="px-4 py-1.5 rounded-lg btn-mlmbrain-primary hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">
           Đóng Cửa Hàng
         </button>
       </div>
@@ -3486,7 +3811,7 @@
       <div class="space-y-3 text-xs">
         <div>
           <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Tên Kỹ Năng</label>
-          <input type="text" id="newSkillName" placeholder="Ví dụ: TikTok Trend Analyzer" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100">
+          <input type="text" id="newSkillName" placeholder="Ví dụ: TikTok Trend Analyzer" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none focus:border-[#FFB162] text-zinc-900 dark:text-zinc-100">
         </div>
         <div>
           <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Nhóm (Category)</label>
@@ -3498,12 +3823,12 @@
         </div>
         <div>
           <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Mô Tả Kỹ Năng</label>
-          <textarea id="newSkillDesc" rows="3" placeholder="Mô tả công việc mà kỹ năng này sẽ giải quyết..." class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 outline-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100"></textarea>
+          <textarea id="newSkillDesc" rows="3" placeholder="Mô tả công việc mà kỹ năng này sẽ giải quyết..." class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 outline-none focus:border-[#FFB162] text-zinc-900 dark:text-zinc-100"></textarea>
         </div>
       </div>
       <div class="flex justify-end gap-2 pt-2">
         <button onclick="closeAddSkillModal()" class="px-3 py-1.5 rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs">Hủy</button>
-        <button onclick="submitNewSkill()" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">Lưu Kỹ Năng</button>
+        <button onclick="submitNewSkill()" class="px-4 py-1.5 rounded-lg btn-mlmbrain-primary hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">Lưu Kỹ Năng</button>
       </div>
     </div>
   </div>
@@ -3520,7 +3845,7 @@
       <div class="space-y-3 text-xs">
         <div>
           <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Tiêu Đề Công Việc</label>
-          <input type="text" id="newTaskTitle" placeholder="Ví dụ: Tối ưu bộ từ khóa tìm kiếm Google" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100">
+          <input type="text" id="newTaskTitle" placeholder="Ví dụ: Tối ưu bộ từ khóa tìm kiếm Google" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none focus:border-[#FFB162] text-zinc-900 dark:text-zinc-100">
         </div>
         <div class="grid grid-cols-2 gap-2">
           <div>
@@ -3546,7 +3871,7 @@
       </div>
       <div class="flex justify-end gap-2 pt-2">
         <button onclick="closeAddTaskModal()" class="px-3 py-1.5 rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs">Hủy</button>
-        <button onclick="submitNewTask()" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">Tạo Việc</button>
+        <button onclick="submitNewTask()" class="px-4 py-1.5 rounded-lg btn-mlmbrain-primary hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">Tạo Việc</button>
       </div>
     </div>
   </div>
@@ -3563,7 +3888,7 @@
       <div class="space-y-3 text-xs">
         <div>
           <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Tiêu Đề Nguồn</label>
-          <input type="text" id="ingestTitle" placeholder="Ví dụ: Quy tắc tối ưu chiến dịch Flash Sale Black Friday" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100">
+          <input type="text" id="ingestTitle" placeholder="Ví dụ: Quy tắc tối ưu chiến dịch Flash Sale Black Friday" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-2 outline-none focus:border-[#FFB162] text-zinc-900 dark:text-zinc-100">
         </div>
         <div>
           <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Danh Mục</label>
@@ -3576,12 +3901,12 @@
         </div>
         <div>
           <label class="block font-medium mb-1 text-zinc-700 dark:text-zinc-300">Nội Dung Thô (Văn bản, Báo cáo, Ghi chú hội thoại)</label>
-          <textarea id="ingestContent" rows="5" placeholder="Dán nội dung bạn muốn Javis OS tự động đọc và đúc kết quy tắc thực chiến..." class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 outline-none focus:border-orange-500 text-zinc-900 dark:text-zinc-100"></textarea>
+          <textarea id="ingestContent" rows="5" placeholder="Dán nội dung bạn muốn Javis OS tự động đọc và đúc kết quy tắc thực chiến..." class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 outline-none focus:border-[#FFB162] text-zinc-900 dark:text-zinc-100"></textarea>
         </div>
       </div>
       <div class="flex justify-end gap-2 pt-2">
         <button onclick="closeIngestModal()" class="px-3 py-1.5 rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs">Hủy</button>
-        <button onclick="submitIngestSource()" class="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">Chưng Cất Ngay</button>
+        <button onclick="submitIngestSource()" class="px-4 py-1.5 rounded-lg btn-mlmbrain-primary hover:bg-orange-700 text-white font-semibold text-xs shadow-sm">Chưng Cất Ngay</button>
       </div>
     </div>
   </div>
@@ -3620,7 +3945,7 @@
         <div class="space-y-6">
           <div>
             <div class="text-[11px] font-bold text-orange-600 tracking-wider uppercase flex items-center gap-1.5 mb-2">
-              <span class="w-3 h-0.5 bg-orange-600"></span> XÂY QUANH QUYỀN SỞ HỮU
+              <span class="w-3 h-0.5 btn-mlmbrain-primary"></span> XÂY QUANH QUYỀN SỞ HỮU
             </div>
             <h2 class="text-3xl font-extrabold text-zinc-900 dark:text-white leading-tight">
               Máy của bạn.<br>
@@ -3701,7 +4026,7 @@
             <div class="pt-2 border-t border-zinc-800/80">
               <div class="text-zinc-400"><span class="text-emerald-400">$</span> git log --oneline -3</div>
               <div id="terminalGitLogList" class="pl-1 pt-1 space-y-1 text-emerald-400 font-mono text-[11px]">
-                <div><span class="text-amber-400">4c3792c</span> learn: 3 trí nhớ, 1 ghi chú wiki</div>
+                <div><span class="text-[#FFB162]">4c3792c</span> learn: 3 trí nhớ, 1 ghi chú wiki</div>
               </div>
             </div>
           </div>
@@ -3711,7 +4036,7 @@
             <button onclick="navigateTo('brain-files'); closeOwnershipHistoryModal();" class="px-3 py-1.5 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-semibold hover:bg-zinc-300 flex items-center gap-1.5">
               <i data-lucide="folder-open" class="w-3.5 h-3.5"></i> Mở Thư Mục Files
             </button>
-            <button onclick="syncGitNow()" class="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold flex items-center gap-1.5 shadow-sm">
+            <button onclick="syncGitNow()" class="px-3.5 py-1.5 rounded-lg btn-mlmbrain-primary hover:bg-orange-700 text-white font-semibold flex items-center gap-1.5 shadow-sm">
               <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Git Commit & Sync
             </button>
           </div>
@@ -3744,7 +4069,7 @@
       <div class="space-y-3.5 text-xs">
         <div>
           <label class="block font-bold text-zinc-700 dark:text-zinc-300 mb-1">Tên Phòng Tác Chiến</label>
-          <input type="text" id="newTeamRoomName" placeholder="Ví dụ: Chiến Dịch Ra Mắt Q4 · Content Growth" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-xl px-3.5 py-2 text-xs text-zinc-900 dark:text-white outline-none focus:border-orange-500">
+          <input type="text" id="newTeamRoomName" placeholder="Ví dụ: Chiến Dịch Ra Mắt Q4 · Content Growth" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-xl px-3.5 py-2 text-xs text-zinc-900 dark:text-white outline-none focus:border-[#FFB162]">
         </div>
 
         <div>
@@ -3781,7 +4106,7 @@
 
         <div>
           <label class="block font-bold text-zinc-700 dark:text-zinc-300 mb-1">Mục Tiêu / Brief Khởi Đầu</label>
-          <textarea id="newTeamInitialBrief" rows="2" placeholder="Nhập mục tiêu lớn ban đầu để Trưởng nhóm bóc tách khi phòng mở ra..." class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-xl p-2.5 text-xs text-zinc-900 dark:text-white outline-none focus:border-orange-500"></textarea>
+          <textarea id="newTeamInitialBrief" rows="2" placeholder="Nhập mục tiêu lớn ban đầu để Trưởng nhóm bóc tách khi phòng mở ra..." class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-xl p-2.5 text-xs text-zinc-900 dark:text-white outline-none focus:border-[#FFB162]"></textarea>
         </div>
       </div>
 
@@ -3871,7 +4196,7 @@
     <div class="bg-white dark:bg-[#181a24] border border-bordercol dark:border-[#2f3248] rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto custom-scrollbar">
       <div class="flex items-center justify-between border-b border-bordercol dark:border-zinc-800 pb-3">
         <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-lg bg-orange-600 text-white flex items-center justify-center font-bold shadow-xs">
+          <div class="w-8 h-8 rounded-lg btn-mlmbrain-primary text-white flex items-center justify-center font-bold shadow-xs">
             <i data-lucide="file-text" class="w-4 h-4"></i>
           </div>
           <div>
@@ -3945,7 +4270,7 @@
             <i data-lucide="folder-open" class="w-3.5 h-3.5 text-orange-600"></i>
             <span>Mở Trong Second Brain</span>
           </button>
-          <button onclick="publishMultiModelBrief(); closeResearchBriefModal();" class="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-orange-600/20 cursor-pointer">
+          <button onclick="publishMultiModelBrief(); closeResearchBriefModal();" class="px-4 py-2 rounded-xl btn-mlmbrain-primary hover:bg-orange-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-orange-600/20 cursor-pointer">
             <i data-lucide="send" class="w-3.5 h-3.5"></i>
             <span>Xuất Bản Ngay (Slack/Telegram)</span>
           </button>
@@ -3962,7 +4287,7 @@
     <div class="bg-white dark:bg-[#181a24] border border-bordercol dark:border-[#2f3248] rounded-2xl max-w-xl w-full p-6 shadow-2xl space-y-4 max-h-[85vh] flex flex-col">
       <div class="flex items-center justify-between border-b border-bordercol dark:border-zinc-800 pb-3 shrink-0">
         <div class="flex items-center gap-2.5">
-          <div id="clusterModalIcon" class="w-8 h-8 rounded-lg bg-orange-600 text-white flex items-center justify-center font-bold shadow-xs">
+          <div id="clusterModalIcon" class="w-8 h-8 rounded-lg btn-mlmbrain-primary text-white flex items-center justify-center font-bold shadow-xs">
             <i data-lucide="layers" class="w-4 h-4"></i>
           </div>
           <div>
@@ -3978,7 +4303,7 @@
       <!-- Search in Cluster -->
       <div class="relative shrink-0">
         <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-2.5 text-zinc-400"></i>
-        <input type="text" id="clusterSearchInput" oninput="filterClusterNotes(this.value)" placeholder="Tìm kiếm trong cụm này..." class="w-full bg-zinc-50 dark:bg-[#13141c] border border-bordercol dark:border-zinc-700 rounded-xl pl-9 pr-3 py-1.5 text-xs outline-none focus:border-orange-500 text-zinc-800 dark:text-zinc-200">
+        <input type="text" id="clusterSearchInput" oninput="filterClusterNotes(this.value)" placeholder="Tìm kiếm trong cụm này..." class="w-full bg-zinc-50 dark:bg-[#13141c] border border-bordercol dark:border-zinc-700 rounded-xl pl-9 pr-3 py-1.5 text-xs outline-none focus:border-[#FFB162] text-zinc-800 dark:text-zinc-200">
       </div>
 
       <!-- Notes List Container -->
@@ -3991,7 +4316,7 @@
         <button onclick="closeClusterExplorer()" class="px-4 py-1.5 rounded-xl border border-bordercol dark:border-zinc-700 text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition cursor-pointer">
           Đóng
         </button>
-        <button id="clusterAskAiBtn" class="px-4 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-orange-600/20 cursor-pointer">
+        <button id="clusterAskAiBtn" class="px-4 py-1.5 rounded-xl btn-mlmbrain-primary hover:bg-orange-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-orange-600/20 cursor-pointer">
           <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
           <span>Hỏi Javis Về Cụm Này</span>
         </button>
@@ -4032,7 +4357,7 @@
 
         if (i === stepNum) {
           card.className = "step-card cursor-pointer p-4 rounded-2xl border-2 transition-all duration-300 bg-orange-50/90 dark:bg-orange-950/40 border-orange-400 dark:border-orange-600 shadow-sm group";
-          badge.className = "w-7 h-7 rounded-lg bg-orange-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs";
+          badge.className = "w-7 h-7 rounded-lg btn-mlmbrain-primary text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs";
         } else {
           card.className = "step-card cursor-pointer p-4 rounded-2xl border transition-all duration-300 bg-white/70 dark:bg-[#1a1c27]/70 hover:bg-white dark:hover:bg-[#1e202e] border-bordercol dark:border-zinc-800 hover:border-orange-300 dark:hover:border-orange-800 group shadow-xs";
           badge.className = "w-7 h-7 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center font-bold text-xs shrink-0 group-hover:border-orange-500 group-hover:text-orange-600 transition-colors";
@@ -4146,7 +4471,7 @@
 
             <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between text-xs">
               <span class="text-[11px] text-zinc-400 font-mono">Ngân sách: ${p.budget || 'Tự động'}</span>
-              <button onclick="sendQuickPrompt('Làm việc cùng ${p.name}: Hãy tóm tắt nhiệm vụ chính hôm nay')" class="px-3 py-1 rounded-lg bg-orange-50 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 hover:bg-orange-600 hover:text-white transition font-bold text-xs flex items-center gap-1 cursor-pointer">
+              <button onclick="sendQuickPrompt('Làm việc cùng ${p.name}: Hãy tóm tắt nhiệm vụ chính hôm nay')" class="px-3 py-1 rounded-lg bg-orange-50 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 hover:btn-mlmbrain-primary hover:text-white transition font-bold text-xs flex items-center gap-1 cursor-pointer">
                 <span>Giao việc</span>
                 <i data-lucide="arrow-right" class="w-3 h-3"></i>
               </button>
@@ -4288,7 +4613,7 @@
               <div class="text-[10px] text-zinc-400 truncate font-mono">${n.path}</div>
             </div>
           </div>
-          <button class="px-2 py-0.5 rounded bg-white dark:bg-[#1e202e] border border-bordercol dark:border-zinc-700 text-[10px] font-bold text-orange-600 shrink-0 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+          <button class="px-2 py-0.5 rounded bg-white dark:bg-[#1e202e] border border-bordercol dark:border-zinc-700 text-[10px] font-bold text-orange-600 shrink-0 group-hover:btn-mlmbrain-primary group-hover:text-white transition-colors">
             Mở xem
           </button>
         `;
@@ -4332,7 +4657,7 @@
     let allTimelineTasks = [];
     let currentOwnerFilter = 'javis';
     let currentStatusFilter = 'upcoming';
-    let isDarkMode = false;
+    let isDarkMode = true;
     let currentLang = 'en';
     let currentActiveView = 'brain-neural';
     let allSkills = [];
@@ -4458,13 +4783,13 @@
 
       if (tabKey === 'graph') {
         if (colGraph) colGraph.classList.remove('hidden');
-        if (tabGraph) tabGraph.className = 'px-3 py-1.5 rounded-lg bg-white dark:bg-orange-600 text-orange-600 dark:text-white font-bold shadow-xs transition flex items-center gap-1';
+        if (tabGraph) tabGraph.className = 'px-3 py-1.5 rounded-lg bg-white bg-[#FFB162] text-[#121B24] font-bold shadow-xs transition flex items-center gap-1';
       } else if (tabKey === 'chat') {
         if (colChat) colChat.classList.remove('hidden');
-        if (tabChat) tabChat.className = 'px-3 py-1.5 rounded-lg bg-white dark:bg-orange-600 text-orange-600 dark:text-white font-bold shadow-xs transition flex items-center gap-1';
+        if (tabChat) tabChat.className = 'px-3 py-1.5 rounded-lg bg-white bg-[#FFB162] text-[#121B24] font-bold shadow-xs transition flex items-center gap-1';
       } else if (tabKey === 'vault') {
         if (colVault) colVault.classList.remove('hidden');
-        if (tabVault) tabVault.className = 'px-3 py-1.5 rounded-lg bg-white dark:bg-orange-600 text-orange-600 dark:text-white font-bold shadow-xs transition flex items-center gap-1';
+        if (tabVault) tabVault.className = 'px-3 py-1.5 rounded-lg bg-white bg-[#FFB162] text-[#121B24] font-bold shadow-xs transition flex items-center gap-1';
       }
     }
 
@@ -4536,34 +4861,34 @@
       const spacePartners = document.getElementById('space-partners');
       [spaceTasks, spaceBrain, spaceSkills, spacePartners, spaceEnterprise].forEach(btn => {
         if (btn) {
-          btn.classList.remove('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          btn.classList.remove('active', 'bg-white', 'dark:btn-mlmbrain-primary', 'text-orange-600', 'dark:text-white', 'shadow-sm');
           btn.classList.add('text-zinc-600', 'dark:text-zinc-400');
         }
       });
 
       if (targetView.startsWith('work-')) {
         if (spaceTasks) {
-          spaceTasks.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          spaceTasks.classList.add('active', 'bg-white', 'dark:btn-mlmbrain-primary', 'text-orange-600', 'dark:text-white', 'shadow-sm');
           spaceTasks.classList.remove('text-zinc-600', 'dark:text-zinc-400');
         }
       } else if (targetView.startsWith('brain-')) {
         if (spaceBrain) {
-          spaceBrain.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          spaceBrain.classList.add('active', 'bg-white', 'dark:btn-mlmbrain-primary', 'text-orange-600', 'dark:text-white', 'shadow-sm');
           spaceBrain.classList.remove('text-zinc-600', 'dark:text-zinc-400');
         }
       } else if (targetView === 'cap-partners') {
         if (spacePartners) {
-          spacePartners.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          spacePartners.classList.add('active', 'bg-white', 'dark:btn-mlmbrain-primary', 'text-orange-600', 'dark:text-white', 'shadow-sm');
           spacePartners.classList.remove('text-zinc-600', 'dark:text-zinc-400');
         }
       } else if (targetView === 'cap-skills') {
         if (spaceSkills) {
-          spaceSkills.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          spaceSkills.classList.add('active', 'bg-white', 'dark:btn-mlmbrain-primary', 'text-orange-600', 'dark:text-white', 'shadow-sm');
           spaceSkills.classList.remove('text-zinc-600', 'dark:text-zinc-400');
         }
       } else if (targetView === 'enterprise') {
         if (spaceEnterprise) {
-          spaceEnterprise.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          spaceEnterprise.classList.add('active', 'bg-white', 'dark:btn-mlmbrain-primary', 'text-orange-600', 'dark:text-white', 'shadow-sm');
           spaceEnterprise.classList.remove('text-zinc-600', 'dark:text-zinc-400');
         }
       }
@@ -4586,7 +4911,7 @@
         loadChatbotConfig();
       } else if (targetView === 'cap-partners') {
         if (spacePartners) {
-          spacePartners.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          spacePartners.classList.add('active', 'bg-white', 'dark:btn-mlmbrain-primary', 'text-orange-600', 'dark:text-white', 'shadow-sm');
           spacePartners.classList.remove('text-zinc-600', 'dark:text-zinc-400');
         }
       } else if (targetView === 'cap-skills') {
@@ -4628,7 +4953,7 @@
         if (!row || !radio) return;
         if (opt === level) {
           row.className = 'p-2.5 rounded-xl border-2 border-orange-500 bg-orange-50/60 dark:bg-orange-950/40 flex items-center justify-between cursor-pointer transition';
-          radio.className = 'w-3.5 h-3.5 rounded-full bg-orange-600 flex items-center justify-center text-white text-[9px] font-bold';
+          radio.className = 'w-3.5 h-3.5 rounded-full btn-mlmbrain-primary flex items-center justify-center text-white text-[9px] font-bold';
           radio.innerText = '✓';
         } else {
           row.className = 'p-2.5 rounded-xl border border-bordercol dark:border-zinc-700 bg-white dark:bg-[#1a1c27] flex items-center justify-between cursor-pointer hover:border-orange-500 transition';
@@ -4781,7 +5106,7 @@
       const container = document.getElementById('cockpitChatMessages');
       if (container) {
         const userDiv = document.createElement('div');
-        userDiv.className = 'p-2.5 bg-orange-600 text-white rounded-xl ml-6 text-right leading-relaxed shadow-sm font-medium';
+        userDiv.className = 'p-2.5 btn-mlmbrain-primary text-white rounded-xl ml-6 text-right leading-relaxed shadow-sm font-medium';
         userDiv.innerText = text;
         container.appendChild(userDiv);
         container.scrollTop = container.scrollHeight;
@@ -4844,7 +5169,7 @@
 
       const container = document.getElementById('dedicatedChatMessages');
       const userDiv = document.createElement('div');
-      userDiv.className = 'p-3 bg-orange-600 text-white rounded-xl ml-12 text-right leading-relaxed shadow-sm font-medium text-xs';
+      userDiv.className = 'p-3 btn-mlmbrain-primary text-white rounded-xl ml-12 text-right leading-relaxed shadow-sm font-medium text-xs';
       userDiv.innerText = text;
       container.appendChild(userDiv);
       container.scrollTop = container.scrollHeight;
@@ -5117,7 +5442,7 @@
           ctx.beginPath();
           ctx.moveTo(sx, sy);
           ctx.lineTo(tx, ty);
-          ctx.strokeStyle = isDarkMode ? `rgba(148, 163, 184, ${0.15 * avgScale})` : `rgba(100, 116, 139, ${0.22 * avgScale})`;
+          ctx.strokeStyle = `rgba(245, 158, 11, ${0.25 * avgScale})`;
           ctx.lineWidth = Math.max(0.6, 1.2 * avgScale);
           ctx.stroke();
 
@@ -5127,7 +5452,7 @@
           const py = sy + (ty - sy) * l.particlePos;
           ctx.beginPath();
           ctx.arc(px, py, 1.6 * avgScale, 0, Math.PI * 2);
-          ctx.fillStyle = l.source.color;
+          ctx.fillStyle = '#F59E0B';
           ctx.fill();
         });
 
@@ -5160,7 +5485,7 @@
           // Nhãn tên Node
           if (node.screenScale > 0.72 || isHov) {
             ctx.font = `${isHov ? 'bold 11px' : '9px'} -apple-system, BlinkMacSystemFont, sans-serif`;
-            ctx.fillStyle = isDarkMode ? '#f1f5f9' : '#1e293b';
+            ctx.fillStyle = '#FEF08A';
             ctx.textAlign = 'center';
             ctx.fillText(node.name, node.screenX, node.screenY + r + 11);
           }
@@ -5237,46 +5562,79 @@
     }
 
     // FILE EXPLORER & EDITOR VIEW
+    let allExplorerNotes = [];
     async function loadFilesExplorer() {
       try {
         const res = await fetch('/api/vault/notes');
         const data = await res.json();
-        const listDiv = document.getElementById('filesExplorerList');
-        if (!listDiv) return;
-        listDiv.innerHTML = '';
+        allExplorerNotes = data.notes || [];
+        renderFileExplorerList(allExplorerNotes);
 
-        data.notes.forEach(n => {
-          const item = document.createElement('div');
-          item.className = 'p-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800 cursor-pointer flex items-center justify-between transition';
-          item.onclick = () => openNoteInEditor(n.path);
-          item.innerHTML = `
-            <div class="flex items-center gap-2 truncate">
-              <i data-lucide="file-text" class="w-3.5 h-3.5 text-orange-500 shrink-0"></i>
-              <span class="truncate font-medium text-zinc-800 dark:text-zinc-200">${n.title}</span>
-            </div>
-            <span class="text-[10px] text-zinc-400 font-mono">${(n.size / 1024).toFixed(1)}k</span>
-          `;
-          listDiv.appendChild(item);
-        });
-
-        if (data.notes.length > 0) {
-          openNoteInEditor(data.notes[0].path);
+        // Mặc định nạp 00 - Dashboard.md nếu có, hoặc note đầu tiên
+        const dashNote = allExplorerNotes.find(n => n.path === '00 - Dashboard.md' || n.filename === '00 - Dashboard.md');
+        if (dashNote) {
+          openNoteInEditor(dashNote.path);
+        } else if (allExplorerNotes.length > 0) {
+          openNoteInEditor(allExplorerNotes[0].path);
         }
-        lucide.createIcons();
       } catch (e) {
         console.error("Error loading files", e);
       }
     }
 
+    function filterFileExplorerList(query) {
+      const q = (query || '').toLowerCase().trim();
+      const filtered = allExplorerNotes.filter(n => {
+        if (!q) return true;
+        return (n.title && n.title.toLowerCase().includes(q)) || (n.path && n.path.toLowerCase().includes(q));
+      });
+      renderFileExplorerList(filtered);
+    }
+
+    function renderFileExplorerList(notes) {
+      const listDiv = document.getElementById('filesExplorerList');
+      if (!listDiv) return;
+      listDiv.innerHTML = '';
+
+      notes.forEach(n => {
+        const isActive = (n.path === activeNotePath);
+        const item = document.createElement('div');
+        item.className = `p-2 rounded-xl cursor-pointer flex items-center justify-between transition-all group ${
+          isActive 
+            ? 'bg-gradient-to-r from-amber-500/20 to-transparent border-l-2 border-amber-400 text-[#EEE9DF] font-semibold' 
+            : 'text-zinc-400 hover:text-[#EEE9DF] hover:bg-white/5'
+        }`;
+        item.onclick = () => {
+          openNoteInEditor(n.path);
+          renderFileExplorerList(notes);
+        };
+        item.innerHTML = `
+          <div class="flex items-center gap-2 truncate">
+            <i data-lucide="file-text" class="w-3.5 h-3.5 ${isActive ? 'text-[#FFB162]' : 'text-zinc-500 group-hover:text-[#FFB162]'} shrink-0"></i>
+            <span class="truncate text-xs font-mono">${n.title || n.filename}</span>
+          </div>
+          <span class="text-[9px] text-zinc-600 group-hover:text-zinc-400 font-mono shrink-0">${(n.size / 1024).toFixed(1)}k</span>
+        `;
+        listDiv.appendChild(item);
+      });
+      lucide.createIcons();
+    }
+
     let activeNotePath = "";
     async function openNoteInEditor(path) {
       activeNotePath = path;
-      document.getElementById('currentNotePath').innerText = path;
+      if (document.getElementById('currentNotePath')) document.getElementById('currentNotePath').innerText = path;
       try {
         const res = await fetch(`/api/vault/note?path=${encodeURIComponent(path)}`);
         const data = await res.json();
-        document.getElementById('noteEditorArea').value = data.content || '';
-        renderNotePreview(data.content || '');
+        const content = data.content || '';
+        if (document.getElementById('noteEditorArea')) document.getElementById('noteEditorArea').value = content;
+        renderNotePreview(content);
+        
+        // Re-render list to highlight current active note
+        if (allExplorerNotes && allExplorerNotes.length > 0) {
+          renderFileExplorerList(allExplorerNotes);
+        }
       } catch (e) {
         console.error("Error reading note", e);
       }
@@ -5284,7 +5642,15 @@
 
     function renderNotePreview(content) {
       const previewDiv = document.getElementById('notePreviewArea');
-      if (previewDiv) previewDiv.innerHTML = marked.parse(content || '');
+      if (previewDiv) {
+        previewDiv.innerHTML = marked.parse(content || '');
+      }
+      const statsHud = document.getElementById('editorStatsHud');
+      if (statsHud) {
+        const trimmed = (content || '').trim();
+        const wordCount = trimmed ? trimmed.split(/\s+/).length : 0;
+        statsHud.innerText = `${wordCount.toLocaleString()} từ · ${(content || '').length.toLocaleString()} ký tự · UTF-8`;
+      }
     }
 
     async function saveCurrentNote() {
@@ -5321,33 +5687,82 @@
         const res = await fetch('/api/vault/self-learning');
         const data = await res.json();
         
-        document.getElementById('statDistilledRules').innerText = data.stats.distilled_rules;
-        document.getElementById('statActiveFacts').innerText = data.stats.active_facts;
-        document.getElementById('statCompounding').innerText = data.stats.compounding_rate;
-        document.getElementById('statWikiHealth').innerText = data.stats.health_score;
+        if (document.getElementById('statDistilledRules')) document.getElementById('statDistilledRules').innerText = data.stats.distilled_rules;
+        if (document.getElementById('statActiveFacts')) document.getElementById('statActiveFacts').innerText = data.stats.active_facts;
+        if (document.getElementById('statCompounding')) document.getElementById('statCompounding').innerText = data.stats.compounding_rate;
+        if (document.getElementById('statWikiHealth')) document.getElementById('statWikiHealth').innerText = data.stats.health_score;
 
         const listDiv = document.getElementById('selfLearningList');
         if (!listDiv) return;
         listDiv.innerHTML = '';
 
-        data.recent_distillations.forEach(d => {
+        (data.recent_distillations || []).forEach(d => {
           const row = document.createElement('div');
-          row.className = 'p-3.5 bg-zinc-50 dark:bg-[#202230] border border-bordercol dark:border-zinc-800 rounded-xl space-y-1.5';
+          row.className = 'p-4 rounded-xl mlm-card rounded-2xl space-y-2 hover:border-amber-500/50 transition-all';
+          
+          let catBadgeClass = 'bg-[#2C3B4D]/80 text-[#FFB162] border-[#2C3B4D]/70';
+          const catUp = (d.category || '').toUpperCase();
+          if (catUp.includes('SHOPEE') || catUp.includes('TỪ CHỐI')) catBadgeClass = 'bg-[#2C3B4D]/80 text-[#FFB162] border-[#FFB162]/40';
+          else if (catUp.includes('GIA ĐÌNH') || catUp.includes('TÂM LÝ')) catBadgeClass = 'bg-purple-500/15 text-purple-300 border-purple-500/40';
+          else if (catUp.includes('CLB') || catUp.includes('VẬN HÀNH')) catBadgeClass = 'bg-emerald-500/15 text-emerald-300 border-emerald-500/40';
+          else if (catUp.includes('PROCODE') || catUp.includes('NHÂN BẢN')) catBadgeClass = 'bg-sky-500/15 text-sky-300 border-sky-500/40';
+
+          const confPercent = Math.round((d.confidence || 0.95) * 100);
+
           row.innerHTML = `
-            <div class="flex items-center justify-between text-[11px]">
-              <span class="font-bold text-orange-600 dark:text-orange-400 font-mono">${d.category}</span>
-              <span class="text-zinc-400">${d.time_ago} · Độ tin cậy: <b class="text-emerald-500">${Math.round(d.confidence * 100)}%</b></span>
+            <div class="flex items-center justify-between text-[11px] flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full border text-[10px] font-bold font-mono ${catBadgeClass}">${d.category}</span>
+                <span class="text-zinc-500 font-mono text-[10px]">${d.time_ago}</span>
+              </div>
+              <div class="flex items-center gap-1.5 text-zinc-400 text-[11px]">
+                <span>Độ tin cậy AI:</span>
+                <span class="font-bold text-emerald-400 font-mono">${confPercent}%</span>
+                <div class="w-12 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-[#FFB162] to-emerald-400" style="width: ${confPercent}%"></div>
+                </div>
+              </div>
             </div>
-            <p class="text-xs font-semibold text-zinc-900 dark:text-white">${d.insight}</p>
-            <div class="text-[10px] text-zinc-500 flex items-center gap-2 pt-1 font-mono">
-              <span>📄 Nguồn: ${d.source}</span>
-              <span>➡️ Đã ghi vào: ${d.distilled_to}</span>
+            <p class="text-xs font-semibold text-white leading-relaxed pl-1 border-l-2 border-[#FFB162]/40 py-0.5">${d.insight}</p>
+            <div class="flex items-center justify-between pt-1 border-t border-white/5 text-[10px] font-mono flex-wrap gap-2 text-zinc-400">
+              <div class="flex items-center gap-3 truncate">
+                <span class="truncate">📄 Nguồn: <span class="text-zinc-300">${d.source}</span></span>
+                <span class="text-[#FFB162]">➡️</span>
+                <span class="truncate">Wiki: <span class="text-[#FFB162]">${d.distilled_to}</span></span>
+              </div>
+              <button onclick="navigateTo('brain-files'); openNoteInEditor('${d.distilled_to}')" class="px-2.5 py-1 rounded bg-[#2C3B4D]/60 hover:bg-amber-500/20 text-[#FFB162] font-semibold transition flex items-center gap-1">
+                <span>Mở trong Editor</span>
+                <i data-lucide="arrow-right" class="w-3 h-3"></i>
+              </button>
             </div>
           `;
           listDiv.appendChild(row);
         });
+        lucide.createIcons();
       } catch (e) {
         console.error("Error loading self learning", e);
+      }
+    }
+
+    async function handleQuickIngestSubmit() {
+      const title = (document.getElementById('quickIngestTitle')?.value || '').trim();
+      const cat = document.getElementById('quickIngestCat')?.value || 'WIKI';
+      const content = (document.getElementById('quickIngestContent')?.value || '').trim();
+      if (!title || !content) return showToast("Vui lòng điền đủ tiêu đề và nội dung cần chưng cất!");
+
+      try {
+        const res = await fetch('/api/vault/ingest', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({title: title, category: cat, content: content})
+        });
+        const ret = await res.json();
+        showToast("✅ Đã chưng cất tri thức thành công và bồi đắp vào Vault!");
+        if (document.getElementById('quickIngestTitle')) document.getElementById('quickIngestTitle').value = '';
+        if (document.getElementById('quickIngestContent')) document.getElementById('quickIngestContent').value = '';
+        loadSelfLearning();
+      } catch (err) {
+        showToast("⚠️ Lỗi khi chưng cất: " + err.message);
       }
     }
 
@@ -5705,7 +6120,7 @@
         if (isUser) {
           return `
             <div class="flex justify-end">
-              <div class="max-w-[85%] rounded-2xl rounded-tr-none px-4 py-2.5 bg-orange-600 text-white text-xs leading-relaxed shadow-sm">
+              <div class="max-w-[85%] rounded-2xl rounded-tr-none px-4 py-2.5 btn-mlmbrain-primary text-white text-xs leading-relaxed shadow-sm">
                 ${msg.text}
               </div>
             </div>
@@ -6145,7 +6560,7 @@
         
         let statusBadge = '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300">AI đã trả lời chuẩn xác</span>';
         if (c.status === 'silence_hold') {
-          statusBadge = '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 animate-pulse">Bot giữ im lặng (Cần duyệt)</span>';
+          statusBadge = '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-[#FFB162] animate-pulse">Bot giữ im lặng (Cần duyệt)</span>';
         } else if (c.status === 'human_takeover') {
           statusBadge = '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">Bạn đã tiếp quản bằng tay</span>';
         }
@@ -6179,7 +6594,7 @@
 
           <div class="flex items-center justify-end gap-2 pt-1">
             ${c.status !== 'human_takeover' ? `
-              <button onclick="handleTakeover('${c.id}', 'takeover')" class="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition flex items-center gap-1 shadow-sm">
+              <button onclick="handleTakeover('${c.id}', 'takeover')" class="px-3 py-1.5 rounded-lg btn-mlmbrain-primary hover:bg-orange-700 text-white text-xs font-bold transition flex items-center gap-1 shadow-sm">
                 <i data-lucide="zap" class="w-3.5 h-3.5"></i> Tiếp quản 1-click
               </button>
             ` : `
@@ -6338,7 +6753,7 @@
           `
             <div class="space-y-3">
               <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/50">
-                <span class="font-bold text-amber-900 dark:text-amber-200 block text-xs mb-1">🌙 Giá trị khi bạn ngủ:</span>
+                <span class="font-bold text-amber-900 dark:text-[#EEE9DF] block text-xs mb-1">🌙 Giá trị khi bạn ngủ:</span>
                 <p>Khách hàng tìm hiểu sản phẩm lúc nửa đêm hoặc sáng sớm thường là những người có nhu cầu cấp bách. Nếu chờ đến 8:00 sáng hôm sau mới trả lời, <strong>73% khách hàng sẽ sang đối thủ</strong>.</p>
                 <p class="mt-2 font-semibold">Javis OS trả lời ngay sau 32 giây, giữ chân khách và ghi nhận thông tin đầy đủ vào Second Brain!</p>
               </div>
@@ -6931,7 +7346,7 @@
         const listEl = document.getElementById('terminalGitLogList');
         if (listEl && data.history && data.history.length > 0) {
           listEl.innerHTML = data.history.map(c => `
-            <div><span class="text-amber-400 font-bold">${c.hash}</span> ${c.message} <span class="text-zinc-500 text-[10px]">(${c.time})</span></div>
+            <div><span class="text-[#FFB162] font-bold">${c.hash}</span> ${c.message} <span class="text-zinc-500 text-[10px]">(${c.time})</span></div>
           `).join('');
         }
       } catch (e) {
@@ -7102,12 +7517,12 @@
 
     function switchEnterpriseSubTab(tabName) {
       document.querySelectorAll('.ent-tab-btn').forEach(b => {
-        b.classList.remove('active', 'bg-orange-600', 'text-white');
+        b.classList.remove('active', 'btn-mlmbrain-primary', 'text-white');
         b.classList.add('text-zinc-600', 'dark:text-zinc-400');
       });
       const activeBtn = document.getElementById(`ent-tab-${tabName}`);
       if (activeBtn) {
-        activeBtn.classList.add('active', 'bg-orange-600', 'text-white');
+        activeBtn.classList.add('active', 'btn-mlmbrain-primary', 'text-white');
         activeBtn.classList.remove('text-zinc-600', 'dark:text-zinc-400');
       }
 
@@ -7181,7 +7596,7 @@
             name: 'Trưởng nhóm (Team Lead)',
             badge: 'Chỉ đạo mục tiêu',
             icon: '👑',
-            color: 'bg-orange-600',
+            color: 'btn-mlmbrain-primary',
             text: `purchase, activation and return. One goal and one CTA per email, matched to each segment (leads, Zoom course buyers, JAVISER members), with exit rules so buyers never get another sales email.\n\nGive me a concrete brief, say a welcome series for new leads, and I'll map the order of emails and draft them right away.`,
             footer: '🎯 Nhiệm vụ đã chia: Mai định vị brand voice · An chuỗi email 3 nhịp'
           },
@@ -7191,7 +7606,7 @@
             badge: 'Owner',
             icon: '🎨',
             color: 'bg-gradient-to-tr from-rose-500 to-pink-500',
-            text: `I'm Mai, on Javis brand content: long blog posts in Minh Quy's voice, social posts, short video scripts, use case stories and image briefs. Hand me the insight, offer and CTA and I can write right away. Wherever your real experience is needed, I mark it <span class="px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-mono font-bold text-[10px] border border-amber-300 dark:border-amber-700">"C-DCK"</span> instead of making it up.`,
+            text: `I'm Mai, on Javis brand content: long blog posts in Minh Quy's voice, social posts, short video scripts, use case stories and image briefs. Hand me the insight, offer and CTA and I can write right away. Wherever your real experience is needed, I mark it <span class="px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-[#FFB162] font-mono font-bold text-[10px] border border-amber-300 dark:border-amber-700">"C-DCK"</span> instead of making it up.`,
             footer: '🛡️ Cam kết không bịa đặt: Đánh dấu C-DCK để hỏi thêm trải nghiệm thật từ người dùng'
           },
           {
@@ -7352,7 +7767,7 @@
         leadDiv.innerHTML = `
           <div class="flex items-center justify-between pb-1 border-b border-bordercol dark:border-zinc-800">
             <div class="flex items-center gap-2 font-bold text-zinc-900 dark:text-white">
-              <span class="w-6 h-6 rounded-md bg-orange-600 text-white flex items-center justify-center text-xs">👑</span>
+              <span class="w-6 h-6 rounded-md btn-mlmbrain-primary text-white flex items-center justify-center text-xs">👑</span>
               <span>Trưởng nhóm điều phối</span>
             </div>
             <span class="text-[9px] bg-orange-100 dark:bg-orange-950 text-orange-600 px-2 py-0.5 rounded font-bold">Đã tiếp nhận brief</span>
@@ -7378,7 +7793,7 @@
               <span class="text-[9px] bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-400 px-2 py-0.5 rounded font-bold">Bản nháp 1</span>
             </div>
             <p class="text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              Dạ sếp! Em đã phác thảo thông điệp chính theo giọng văn truyền cảm hứng. Em có chừa nhãn <span class="px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-mono font-bold text-[10px]">C-DCK</span> ở câu chuyện thực tế để chờ sếp điền thêm case study thật của mình, tuyệt đối không bịa đặt!
+              Dạ sếp! Em đã phác thảo thông điệp chính theo giọng văn truyền cảm hứng. Em có chừa nhãn <span class="px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-[#FFB162] font-mono font-bold text-[10px]">C-DCK</span> ở câu chuyện thực tế để chờ sếp điền thêm case study thật của mình, tuyệt đối không bịa đặt!
             </p>
             <div class="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-300 text-[11px] flex items-center gap-1.5">
               <span>✓</span>
@@ -7430,7 +7845,7 @@
             name: 'Trưởng nhóm điều phối',
             badge: 'Sẵn sàng',
             icon: '👑',
-            color: 'bg-orange-600',
+            color: 'btn-mlmbrain-primary',
             text: `Chào sếp! Phòng tác chiến "${name}" đã được gom đầy đủ nhân sự và ghim công cụ sẵn sàng. Hãy giao brief hoặc mục tiêu đầu tiên để tôi điều phối cả phòng nhé!`,
             footer: brief ? `Brief ban đầu: "${brief}"` : 'Đang đợi brief đầu tiên'
           }
@@ -7487,9 +7902,13 @@ Trưởng nhóm đã sẵn sàng nhận lệnh.`);
 
     // KHỞI ĐỘNG HỆ THỐNG
     window.addEventListener('DOMContentLoaded', () => {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
       lucide.createIcons();
       initWebSocket();
-      navigateTo('enterprise');
+      loadSelfLearning();
+      loadFilesExplorer();
+      navigateTo('brain-neural');
     });
   </script>
   <!-- ========================================================================= -->
@@ -7526,6 +7945,75 @@ Trưởng nhóm đã sẵn sàng nhận lệnh.`);
       <span class="text-[10px] font-medium">Menu</span>
     </button>
   </nav>
+
+
+  <!-- ========================================================================= -->
+  <!-- FLOATING AI BRAIN COPILOT TRIGGER BUTTON (CHUẨN MLMBRAIN.NET)             -->
+  <!-- ========================================================================= -->
+  <div id="floating-brain-trigger-container" class="fixed bottom-6 right-5 z-40 flex items-center transition-all duration-300">
+    <button id="btn-floating-brain" onclick="toggleFloatingBrainDrawer()" class="group relative flex items-center gap-2 px-4 py-2.5 rounded-full btn-mlmbrain-primary font-bold text-xs shadow-2xl transition-all transform hover:-translate-y-0.5 cursor-pointer border border-[#FFB162]/40" title="Hỏi Bộ Não AI">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+      </span>
+      <i data-lucide="cpu" class="w-4 h-4 text-[#121B24]"></i>
+      <span class="font-mono tracking-wide uppercase">HỎI BỘ NÃO AI</span>
+    </button>
+  </div>
+
+  <!-- FLOATING AI BRAIN DRAWER (Trượt ra từ bên phải) -->
+  <div id="floatingBrainDrawer" class="fixed inset-y-0 right-0 w-full sm:w-[460px] bg-[#16212C] border-l border-[#2C3B4D] shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    <!-- Header -->
+    <div class="p-4 border-b border-[#2C3B4D] flex items-center justify-between bg-[#121B24]">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-[#2C3B4D] border border-[#FFB162]/40 text-[#FFB162] flex items-center justify-center">
+          <i data-lucide="cpu" class="w-4 h-4"></i>
+        </div>
+        <div>
+          <h3 class="font-bold text-xs text-[#EEE9DF] uppercase tracking-wider font-mono">BỘ NÃO MLM BRAIN 4.0</h3>
+          <p class="text-[10px] text-[#C9C1B1]">Cố Vấn AI Thực Chiến · 1,918 nodes</p>
+        </div>
+      </div>
+      <button onclick="toggleFloatingBrainDrawer()" class="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-white/10 transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+
+    <!-- Messages List -->
+    <div id="floatingBrainMessages" class="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-3 text-xs bg-[#16212C]">
+      <div class="p-3.5 rounded-xl bg-[#1B2632] border border-[#2C3B4D] text-[#EEE9DF] space-y-1.5 leading-relaxed">
+        <div class="flex items-center gap-1.5 text-[#FFB162] font-bold text-[11px]">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span>MLM BRAIN AI ASSISTANT</span>
+        </div>
+        <p>Xin chào! Tôi là Trợ Lý AI của Bộ Não MLM Brain 4.0. Tôi nắm rõ 132 module Eric Worre, 4 trụ cột vận hành và hàng trăm kịch bản xử lý từ chối.</p>
+        <p class="text-[11px] text-[#C9C1B1]">Bạn có thể đặt bất kỳ câu hỏi nào về tình huống khách hàng hoặc chọn câu hỏi mẫu bên dưới:</p>
+      </div>
+
+      <div class="space-y-1.5 pt-1">
+        <button onclick="askFloatingPrompt('Kịch bản xử lý khi khách hàng bảo hàng đa cấp lừa đảo')" class="w-full text-left p-2.5 bg-[#1B2632]/80 border border-[#2C3B4D] hover:border-[#FFB162]/50 rounded-xl text-zinc-300 hover:text-[#EEE9DF] transition text-[11px]">
+          🎯 Xử lý khách nói đa cấp lừa đảo
+        </button>
+        <button onclick="askFloatingPrompt('Quy trình 72 giờ kích hoạt nhà phân phối mới F1')" class="w-full text-left p-2.5 bg-[#1B2632]/80 border border-[#2C3B4D] hover:border-[#FFB162]/50 rounded-xl text-zinc-300 hover:text-[#EEE9DF] transition text-[11px]">
+          🚀 Quy trình 72h kích hoạt người mới
+        </button>
+        <button onclick="askFloatingPrompt('Cách mở lời mời tham gia sự kiện Zoom HOM hiệu quả')" class="w-full text-left p-2.5 bg-[#1B2632]/80 border border-[#2C3B4D] hover:border-[#FFB162]/50 rounded-xl text-zinc-300 hover:text-[#EEE9DF] transition text-[11px]">
+          🎟️ Cách mời ứng viên vào Zoom HOM
+        </button>
+      </div>
+    </div>
+
+    <!-- Input Form -->
+    <div class="p-3.5 border-t border-[#2C3B4D] bg-[#121B24]">
+      <form onsubmit="handleFloatingBrainSubmit(event)" class="flex gap-2">
+        <input type="text" id="floatingBrainInput" placeholder="Nhập câu hỏi với bộ não..." class="flex-1 bg-[#1B2632] border border-[#2C3B4D] focus:border-[#FFB162] rounded-xl px-3 py-2 text-xs text-[#EEE9DF] placeholder-[#C9C1B1]/60 outline-none transition font-sans">
+        <button type="submit" class="px-4 py-2 rounded-xl btn-mlmbrain-primary text-xs font-bold shrink-0 flex items-center gap-1">
+          <span>Gửi</span>
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+        </button>
+      </form>
+    </div>
+  </div>
 
 </body>
 </html>

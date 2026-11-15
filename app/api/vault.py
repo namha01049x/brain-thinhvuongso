@@ -47,7 +47,7 @@ def get_graph():
 def get_history(limit: int = 10):
     return {"history": git_history(limit)}
 
-# Self-Learning & Auto-Distillation API
+# Self-Learning & Auto-Distillation API (Tailored for MLM BRAIN 4.0)
 SELF_LEARNING_DATA = {
     "stats": {
         "distilled_rules": 48,
@@ -58,29 +58,38 @@ SELF_LEARNING_DATA = {
     "recent_distillations": [
         {
             "id": "distill-1",
-            "source": "06 - Sources/Chiến lược Phễu Webcake Q4.md",
-            "distilled_to": "07 - Wiki/Kỹ thuật Tối ưu Landing Page High-Ticket.md",
-            "insight": "Khách hàng mua gói doanh nghiệp cần video walkthrough thực tế trước khi đặt lịch tư vấn.",
-            "category": "MARKETING/CRO",
+            "source": "06 - Sources/Hội thoại thực chiến đối đầu khách so sánh hàng Shopee.md",
+            "distilled_to": "07 - Wiki/Kịch bản hóa giải phá giá & cam kết đồng hành 1-1.md",
+            "insight": "Khách chê đắt hơn Shopee không phải vì thiếu tiền mà vì chưa thấy giá trị của người bảo trợ đồng hành quét chỉ số Tanita và thực đơn cá nhân hóa mỗi tuần.",
+            "category": "XỬ LÝ TỪ CHỐI / SHOPEE",
+            "confidence": 0.98,
+            "time_ago": "15 phút trước"
+        },
+        {
+            "id": "distill-2",
+            "source": "06 - Sources/Case Study F1 vượt qua gia đình cấm cản đa cấp.md",
+            "distilled_to": "07 - Wiki/Quy tắc hạ nhiệt phòng thủ & mượn lực bên thứ 3.md",
+            "insight": "Không tranh luận đúng sai với người thân; dùng kết quả vóc dáng và sự thay đổi thái độ sống tích cực làm bằng chứng thực chứng sau 21 ngày.",
+            "category": "TÂM LÝ HỌC / GIA ĐÌNH",
             "confidence": 0.96,
             "time_ago": "2 giờ trước"
         },
         {
-            "id": "distill-2",
-            "source": "01 - Daily Log/2026-11-14.md",
-            "distilled_to": "07 - Wiki/Quy trình Bàn giao Tự động qua Zalo.md",
-            "insight": "Nhắn tin xác nhận kèm link tài liệu trong vòng 3 phút giúp nâng tỷ lệ kích hoạt lên 89%.",
-            "category": "OPERATIONS",
-            "confidence": 0.94,
+            "id": "distill-3",
+            "source": "05 - Knowledge/Mo hinh CLB Dinh Duong 30 khach moi ngay.md",
+            "distilled_to": "07 - Wiki/Quy trình vận hành 21 chủ đề dinh dưỡng chuẩn mực.md",
+            "insight": "Duy trì văn hóa chào đón và khen ngợi thành viên mỗi sáng tại CLB giúp tỷ lệ tái ký gói tháng đạt trên 85% mà không cần chào mời.",
+            "category": "VẬN HÀNH / CLB & FIT",
+            "confidence": 0.97,
             "time_ago": "1 ngày trước"
         },
         {
-            "id": "distill-3",
-            "source": "06 - Sources/Hội thoại tư vấn gói Brain Doanh nghiệp.md",
-            "distilled_to": "07 - Wiki/Pain-point Khách hàng Doanh nghiệp SME.md",
-            "insight": "Rào cản lớn nhất của CEO SME là dữ liệu phân tán ở Zalo, Messenger, Drive và không đồng bộ được về một nơi.",
-            "category": "SALES",
-            "confidence": 0.98,
+            "id": "distill-4",
+            "source": "06 - Sources/Ghi chép đào tạo Top Leader Eric Worre NMPRO.md",
+            "distilled_to": "07 - Wiki/10 Nguyen tac danh du ProCode & Kỷ luật 2-a-Day.md",
+            "insight": "Người nghiệp dư cố trở thành chuyên gia thuyết trình; Người chuyên nghiệp dùng công cụ bên thứ ba (Video 5 phút, Form chẩn đoán) để ai cũng nhân bản được.",
+            "category": "NHÂN BẢN / PROCODE",
+            "confidence": 0.99,
             "time_ago": "2 ngày trước"
         }
     ]
