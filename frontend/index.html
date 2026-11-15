@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAVIS OS · Brain Thịnh Vượng Số</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ea580c'><circle cx='12' cy='12' r='10'/></svg>">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 3D Force Graph WebGL -->
+  <script src="https://unpkg.com/3d-force-graph"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Marked Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+            },
+            canvas: '#fbfaf8',
+            panel: '#f4f1ea',
+            bordercol: '#e6e1d5'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fbfaf8;
+      color: #27272a;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #d4cfc2;
+      border-radius: 10px;
+    }
+    .graph-tooltip {
+      background: rgba(15, 23, 42, 0.9);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col overflow-hidden select-none">
+
+  <!-- TOP HEADER BAR -->
+  <header class="h-13 bg-white border-b border-bordercol px-4 flex items-center justify-between z-20 shrink-0">
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-lg bg-orange-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
+          J
+        </span>
+        <span class="font-bold text-sm tracking-tight text-zinc-900">JAVIS OS</span>
+      </div>
+
+      <div class="h-4 w-px bg-zinc-200"></div>
+
+      <!-- Vault Selector -->
+      <div class="flex items-center gap-1.5 px-2.5 py-1 bg-zinc-100 hover:bg-zinc-200/80 rounded-md cursor-pointer transition text-xs font-medium text-zinc-700">
+        <i data-lucide="book-open" class="w-3.5 h-3.5 text-zinc-500"></i>
+        <span id="headerVaultName">Brain Thịnh Vượng Số</span>
+        <span class="text-zinc-400">·</span>
+        <span id="headerStats" class="text-zinc-500">6 note · 12 kết nối</span>
+      </div>
+    </div>
+
+    <!-- Right Header Badges -->
+    <div class="flex items-center gap-2">
+      <!-- Active Provider & Effort -->
+      <div class="hidden md:flex items-center gap-1.5 text-xs px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200/60 rounded-full font-medium">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Claude Code · ghim</span>
+        <span class="text-emerald-300">|</span>
+        <span class="text-emerald-600">Làn nhẹ (Tiết kiệm 80% Token)</span>
+      </div>
+
+      <!-- Connected Tools -->
+      <div class="hidden lg:flex items-center gap-1 text-xs text-zinc-500 px-2">
+        <span class="text-[11px] text-zinc-400">VỪA GỌI:</span>
+        <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-700 font-mono text-[11px]">
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Facebook Ads
+        </span>
+        <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-700 font-mono text-[11px]">
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Zalo Agent
+        </span>
+      </div>
+
+      <!-- Notification pill -->
+      <button class="relative p-1.5 rounded-md hover:bg-zinc-100 text-zinc-600 transition">
+        <i data-lucide="bell" class="w-4 h-4"></i>
+        <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-orange-500"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <div class="flex-1 flex overflow-hidden">
+    
+    <!-- LEFT NAVIGATION SIDEBAR -->
+    <aside class="w-16 md:w-56 bg-[#f7f5f0] border-r border-bordercol flex flex-col justify-between shrink-0">
+      <div class="py-3 px-2 flex flex-col gap-1">
+        <div class="text-[10px] font-bold text-zinc-400 px-2 mb-1 tracking-wider uppercase hidden md:block">KHÔNG GIAN</div>
+        
+        <button onclick="switchTab('chat')" id="nav-chat" class="nav-item active flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-zinc-700 hover:bg-zinc-200/70">
+          <i data-lucide="message-square" class="w-4 h-4 text-orange-600"></i>
+          <span class="hidden md:inline">Trò chuyện</span>
+        </button>
+
+        <button onclick="switchTab('graph')" id="nav-graph" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-zinc-700 hover:bg-zinc-200/70">
+          <i data-lucide="network" class="w-4 h-4 text-indigo-600"></i>
+          <span class="hidden md:inline">Đồ thị 3D</span>
+        </button>
+
+        <button onclick="switchTab('vault')" id="nav-vault" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-zinc-700 hover:bg-zinc-200/70">
+          <i data-lucide="brain" class="w-4 h-4 text-purple-600"></i>
+          <span class="hidden md:inline">Bộ não (Notes)</span>
+        </button>
+
+        <button onclick="switchTab('kanban')" id="nav-kanban" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-zinc-700 hover:bg-zinc-200/70">
+          <i data-lucide="trello" class="w-4 h-4 text-emerald-600"></i>
+          <span class="hidden md:inline">Việc (Kanban)</span>
+        </button>
+
+        <button onclick="switchTab('mcp')" id="nav-mcp" class="nav-item flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition text-zinc-700 hover:bg-zinc-200/70">
+          <i data-lucide="cpu" class="w-4 h-4 text-blue-600"></i>
+          <span class="hidden md:inline">Kết nối (MCP)</span>
+        </button>
+      </div>
+
+      <!-- Bottom System Status -->
+      <div class="p-3 border-t border-bordercol/80 flex flex-col gap-1 text-xs text-zinc-500">
+        <div class="flex items-center justify-between hidden md:flex">
+          <span class="flex items-center gap-1.5 text-zinc-600 font-medium">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Git Sync: On
+          </span>
+          <span class="text-[10px] bg-zinc-200 px-1.5 py-0.5 rounded font-mono">v1.0.0</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CENTER DYNAMIC CONTENT AREA -->
+    <main class="flex-1 flex flex-col bg-white overflow-hidden relative">
+
+      <!-- TAB 1: CHAT INTERFACE -->
+      <section id="tab-chat" class="flex-1 flex flex-col h-full">
+        <!-- Messages Scroll Area -->
+        <div id="chatMessages" class="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-6 space-y-5 max-w-4xl w-full mx-auto">
+          <!-- Welcome Bubble -->
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-full bg-orange-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
+              J
+            </div>
+            <div class="bg-[#f8f7f4] border border-bordercol rounded-2xl rounded-tl-none p-4 max-w-2xl text-sm leading-relaxed text-zinc-800 shadow-sm">
+              <p class="font-semibold text-zinc-900 mb-1">Xin chào Phạm Quảng Đại!</p>
+              <p>Tôi là trợ lý AI điều hành hệ thống **Brain Thịnh Vượng Số**. Hệ thống đã sẵn sàng với bộ nhớ Second Brain, đồ thị tri thức 3D và các kết nối MCP chính thức (Facebook Ads, Zalo Agent).</p>
+              <div class="mt-3 flex flex-wrap gap-2 text-xs">
+                <button onclick="sendQuickPrompt('Báo cáo ngắn gọn chỉ số ads tháng 8 ở tài khoản quảng cáo \"phamquangdai\" qua mcp cho tôi')" class="px-2.5 py-1.5 bg-white border border-zinc-200 rounded-lg text-zinc-700 hover:border-orange-500 hover:text-orange-600 transition">
+                  📊 Kiểm tra Ads tháng 8 qua MCP
+                </button>
+                <button onclick="sendQuickPrompt('Đọc các tin nhắn Zalo gần đây nhất cho tôi')" class="px-2.5 py-1.5 bg-white border border-zinc-200 rounded-lg text-zinc-700 hover:border-orange-500 hover:text-orange-600 transition">
+                  💬 Đọc tin nhắn Zalo gần nhất
+                </button>
+                <button onclick="switchTab('graph')" class="px-2.5 py-1.5 bg-white border border-zinc-200 rounded-lg text-zinc-700 hover:border-indigo-500 hover:text-indigo-600 transition">
+                  🌐 Xem đồ thị tri thức 3D
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Input Form -->
+        <div class="p-4 border-t border-bordercol bg-white/80 backdrop-blur shrink-0">
+          <form id="chatForm" onsubmit="handleChatSubmit(event)" class="max-w-4xl mx-auto flex items-center gap-2 bg-[#f6f4ef] border border-bordercol rounded-2xl p-1.5 pl-4 shadow-sm focus-within:ring-2 focus-within:ring-orange-500/30 focus-within:border-orange-500 transition">
+            <button type="button" onclick="startVoiceInput()" title="Ra lệnh giọng nói" class="text-zinc-400 hover:text-orange-600 transition p-1">
+              <i data-lucide="mic" class="w-5 h-5"></i>
+            </button>
+            <input type="text" id="chatInput" placeholder="Nói với Javis, gõ ở đây hoặc yêu cầu điều hành..." class="flex-1 bg-transparent border-none outline-none text-sm text-zinc-800 placeholder-zinc-400 px-2" autocomplete="off">
+            <button type="submit" class="w-9 h-9 rounded-xl bg-orange-600 hover:bg-orange-700 text-white flex items-center justify-center transition shadow-sm shrink-0">
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+          </form>
+          <div class="text-[11px] text-zinc-400 text-center mt-2 flex items-center justify-center gap-2">
+            <span>Dynamic Context Pruning: Kích hoạt</span>
+            <span>·</span>
+            <span>Auto-Save Git Commit</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: 3D KNOWLEDGE GRAPH -->
+      <section id="tab-graph" class="flex-1 flex flex-col h-full hidden">
+        <div class="h-11 px-4 border-b border-bordercol flex items-center justify-between bg-[#fbfaf8] shrink-0">
+          <div class="flex items-center gap-2 text-xs font-semibold text-zinc-700">
+            <i data-lucide="network" class="w-4 h-4 text-indigo-600"></i>
+            <span>BẢN ĐỒ TRI THỨC 3D (KNOWLEDGE GRAPH)</span>
+          </div>
+          <div id="graphStatsText" class="text-xs text-zinc-500 font-mono">
+            Đang tải dữ liệu nodes & links...
+          </div>
+        </div>
+        <div id="3d-graph" class="flex-1 w-full h-full bg-[#111318] relative">
+          <!-- Cluster Legend Overlay -->
+          <div class="absolute bottom-4 left-4 bg-zinc-900/85 backdrop-blur border border-zinc-700/60 rounded-xl p-3 text-xs text-white space-y-1.5 pointer-events-none shadow-xl">
+            <div class="font-semibold text-[11px] text-zinc-400 uppercase tracking-wider mb-1">Cụm Tri Thức</div>
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-red-400"></span> Marketing & Ads</div>
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span> Projects & Work</div>
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span> Digital Products</div>
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-indigo-400"></span> Wiki & Knowledge</div>
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span> Identity & Core</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: VAULT EXPLORER & NOTE EDITOR -->
+      <section id="tab-vault" class="flex-1 flex h-full hidden">
+        <!-- File List Column -->
+        <div class="w-64 border-r border-bordercol bg-[#f9f8f5] flex flex-col shrink-0">
+          <div class="p-3 border-b border-bordercol flex items-center justify-between">
+            <span class="text-xs font-bold text-zinc-600 uppercase">Tệp tin Ghi chú</span>
+            <button onclick="createNewNotePrompt()" class="p-1 hover:bg-zinc-200 rounded text-zinc-600" title="Tạo Note Mới">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <div id="vaultNotesList" class="flex-1 overflow-y-auto custom-scrollbar p-2 space-y-1 text-sm">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Note Editor Area -->
+        <div class="flex-1 flex flex-col bg-white">
+          <div class="h-12 border-b border-bordercol px-4 flex items-center justify-between bg-zinc-50">
+            <div class="flex items-center gap-2">
+              <i data-lucide="file-text" class="w-4 h-4 text-zinc-500"></i>
+              <span id="activeNotePath" class="text-xs font-mono font-medium text-zinc-700">Chưa chọn ghi chú</span>
+            </div>
+            <button onclick="saveActiveNote()" class="px-3 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded-md text-xs font-medium transition flex items-center gap-1.5 shadow-sm">
+              <i data-lucide="save" class="w-3.5 h-3.5"></i>
+              <span>Lưu & Commit Git</span>
+            </button>
+          </div>
+          <textarea id="noteContentTextarea" class="flex-1 p-5 outline-none font-mono text-sm leading-relaxed text-zinc-800 resize-none custom-scrollbar" placeholder="Nội dung ghi chú Markdown..."></textarea>
+        </div>
+      </section>
+
+      <!-- TAB 4: KANBAN BOARD -->
+      <section id="tab-kanban" class="flex-1 flex flex-col h-full bg-[#fbfaf8] hidden">
+        <div class="h-12 px-5 border-b border-bordercol flex items-center justify-between bg-white shrink-0">
+          <div class="flex items-center gap-2">
+            <i data-lucide="trello" class="w-4 h-4 text-emerald-600"></i>
+            <span class="text-xs font-bold text-zinc-800 tracking-wide uppercase">BẢNG ĐIỀU PHỐI TÁC VỤ (KANBAN 24/7)</span>
+          </div>
+          <button onclick="addNewTaskModal()" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium rounded-lg transition flex items-center gap-1.5">
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i> Thêm việc mới
+          </button>
+        </div>
+
+        <!-- Kanban Columns -->
+        <div class="flex-1 p-5 grid grid-cols-1 md:grid-cols-3 gap-5 overflow-y-auto">
+          <!-- Col 1: Todo -->
+          <div class="bg-[#f4f2ec] border border-bordercol rounded-xl p-3 flex flex-col">
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-bordercol">
+              <span class="text-xs font-bold text-zinc-700 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-zinc-400"></span> CẦN LÀM (TODO)
+              </span>
+              <span id="count-todo" class="text-[11px] font-mono text-zinc-500 bg-white px-2 py-0.5 rounded-full">0</span>
+            </div>
+            <div id="col-todo" class="flex-1 space-y-2 overflow-y-auto custom-scrollbar"></div>
+          </div>
+
+          <!-- Col 2: In Progress -->
+          <div class="bg-[#f4f2ec] border border-bordercol rounded-xl p-3 flex flex-col">
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-bordercol">
+              <span class="text-xs font-bold text-amber-700 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span> ĐANG CHẠY (DOING)
+              </span>
+              <span id="count-in_progress" class="text-[11px] font-mono text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full">0</span>
+            </div>
+            <div id="col-in_progress" class="flex-1 space-y-2 overflow-y-auto custom-scrollbar"></div>
+          </div>
+
+          <!-- Col 3: Done -->
+          <div class="bg-[#f4f2ec] border border-bordercol rounded-xl p-3 flex flex-col">
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-bordercol">
+              <span class="text-xs font-bold text-emerald-700 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span> HOÀN THÀNH (DONE)
+              </span>
+              <span id="count-done" class="text-[11px] font-mono text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">0</span>
+            </div>
+            <div id="col-done" class="flex-1 space-y-2 overflow-y-auto custom-scrollbar"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: MCP HUB (CONNECTORS & PERMISSIONS) -->
+      <section id="tab-mcp" class="flex-1 flex flex-col h-full bg-[#fbfaf8] p-6 overflow-y-auto custom-scrollbar hidden">
+        <div class="max-w-4xl mx-auto w-full space-y-6">
+          <div>
+            <h2 class="text-lg font-bold text-zinc-900 flex items-center gap-2">
+              <i data-lucide="cpu" class="w-5 h-5 text-blue-600"></i>
+              Trung Tâm Quản Lý Kết Nối MCP (Model Context Protocol Hub)
+            </h2>
+            <p class="text-xs text-zinc-500 mt-1">Cổng kết nối các công cụ thực tế cho AI với hệ thống phân quyền 3 tầng kiểm soát cứng bằng Python.</p>
+          </div>
+
+          <!-- Connectors List -->
+          <div id="mcpConnectionsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Audit Logs Section -->
+          <div class="bg-white border border-bordercol rounded-xl p-4 shadow-sm">
+            <h3 class="text-xs font-bold text-zinc-700 uppercase tracking-wide mb-3 flex items-center gap-2">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+              Nhật Ký Kiểm Toán Tool (MCP Audit Trail)
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs">
+                <thead>
+                  <tr class="border-b border-zinc-200 text-zinc-400 font-medium">
+                    <th class="py-2">Thời gian</th>
+                    <th class="py-2">Connector</th>
+                    <th class="py-2">Công cụ</th>
+                    <th class="py-2">Quyền</th>
+                    <th class="py-2">Trạng thái</th>
+                  </tr>
+                </thead>
+                <tbody id="mcpAuditRows" class="divide-y divide-zinc-100 text-zinc-700">
+                  <!-- Rendered by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- APPLICATION CORE JAVASCRIPT -->
+  <script>
+    let ws = null;
+    let currentSessionId = 'session_' + Math.random().toString(36).substring(2, 9);
+    let graphInstance = null;
+    let allNotes = [];
+    let activeNote = null;
+
+    // Khởi tạo WebSocket kết nối Backend
+    function initWebSocket() {
+      const loc = window.location;
+      const wsProtocol = loc.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsUrl = `${wsProtocol}//${loc.host}/ws`;
+
+      ws = new WebSocket(wsUrl);
+
+      ws.onopen = () => {
+        console.log("Connected to AI OS WebSocket");
+      };
+
+      ws.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          handleStreamEvent(data);
+        } catch (e) {
+          console.error("Error parsing WS event", e);
+        }
+      };
+
+      ws.onclose = () => {
+        setTimeout(initWebSocket, 2000);
+      };
+    }
+
+    let currentBubbleContent = null;
+    let currentBubbleDiv = null;
+
+    function handleStreamEvent(event) {
+      const container = document.getElementById('chatMessages');
+
+      if (event.type === 'meta') {
+        // Tạo bubble trả lời mới của Assistant
+        currentBubbleDiv = document.createElement('div');
+        currentBubbleDiv.className = 'flex items-start gap-3';
+        currentBubbleDiv.innerHTML = `
+          <div class="w-8 h-8 rounded-full bg-orange-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
+            J
+          </div>
+          <div class="bg-[#f8f7f4] border border-bordercol rounded-2xl rounded-tl-none p-4 max-w-2xl text-sm leading-relaxed text-zinc-800 shadow-sm w-full">
+            <div class="bubble-body prose prose-sm max-w-none"></div>
+          </div>
+        `;
+        container.appendChild(currentBubbleDiv);
+        currentBubbleContent = "";
+        container.scrollTop = container.scrollHeight;
+      }
+      else if (event.type === 'tool_call') {
+        const body = currentBubbleDiv.querySelector('.bubble-body');
+        const pill = document.createElement('div');
+        pill.className = 'my-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono font-medium';
+        pill.innerHTML = `<span class="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span> Đang gọi MCP: <b>${event.tool}</b>`;
+        body.appendChild(pill);
+        container.scrollTop = container.scrollHeight;
+      }
+      else if (event.type === 'text') {
+        currentBubbleContent += event.content;
+        const body = currentBubbleDiv.querySelector('.bubble-body');
+        body.innerHTML = marked.parse(currentBubbleContent);
+        container.scrollTop = container.scrollHeight;
+      }
+      else if (event.type === 'final') {
+        lucide.createIcons();
+      }
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text || !ws || ws.readyState !== WebSocket.OPEN) return;
+
+      // Hiển thị tin nhắn người dùng
+      const container = document.getElementById('chatMessages');
+      const userDiv = document.createElement('div');
+      userDiv.className = 'flex items-start justify-end gap-3';
+      userDiv.innerHTML = `
+        <div class="bg-orange-600 text-white rounded-2xl rounded-tr-none px-4 py-2.5 max-w-xl text-sm leading-relaxed shadow-sm">
+          ${text}
+        </div>
+      `;
+      container.appendChild(userDiv);
+      container.scrollTop = container.scrollHeight;
+
+      // Gửi qua WebSocket
+      ws.send(JSON.stringify({
+        session_id: currentSessionId,
+        prompt: text,
+        provider: "claude-code"
+      }));
+
+      input.value = '';
+    }
+
+    function sendQuickPrompt(promptText) {
+      document.getElementById('chatInput').value = promptText;
+      document.getElementById('chatForm').dispatchEvent(new Event('submit'));
+    }
+
+    // Switch Tabs
+    function switchTab(tabId) {
+      const tabs = ['chat', 'graph', 'vault', 'kanban', 'mcp'];
+      tabs.forEach(t => {
+        const el = document.getElementById(`tab-${t}`);
+        const nav = document.getElementById(`nav-${t}`);
+        if (t === tabId) {
+          el.classList.remove('hidden');
+          nav.classList.add('bg-zinc-200/80', 'font-bold');
+        } else {
+          el.classList.add('hidden');
+          nav.classList.remove('bg-zinc-200/80', 'font-bold');
+        }
+      });
+
+      if (tabId === 'graph') {
+        load3DGraph();
+      } else if (tabId === 'vault') {
+        loadVaultNotes();
+      } else if (tabId === 'kanban') {
+        loadKanbanTasks();
+      } else if (tabId === 'mcp') {
+        loadMcpConnections();
+      }
+    }
+
+    // 3D Graph Loader
+    async function load3DGraph() {
+      try {
+        const res = await fetch('/api/vault/graph');
+        const data = await res.json();
+        
+        document.getElementById('graphStatsText').innerText = 
+          `${data.stats.total_notes} ghi chú · ${data.stats.total_links} liên kết`;
+
+        const elem = document.getElementById('3d-graph');
+        if (!graphInstance) {
+          graphInstance = ForceGraph3D()(elem)
+            .backgroundColor('#111318')
+            .nodeLabel('name')
+            .nodeVal('val')
+            .nodeColor(node => {
+              if (node.cluster.includes('MARKETING')) return '#f87171';
+              if (node.cluster.includes('PROJECTS')) return '#34d399';
+              if (node.cluster.includes('DIGITAL')) return '#c084fc';
+              if (node.cluster.includes('WIKI')) return '#818cf8';
+              if (node.cluster.includes('IDENTITY')) return '#22d3ee';
+              return '#fbbf24';
+            })
+            .linkColor(() => '#334155')
+            .linkOpacity(0.4)
+            .onNodeClick(node => {
+              switchTab('vault');
+              openNote(node.path);
+            });
+        }
+        graphInstance.graphData(data);
+      } catch (e) {
+        console.error("Error loading graph", e);
+      }
+    }
+
+    // Vault Notes
+    async function loadVaultNotes() {
+      try {
+        const res = await fetch('/api/vault/notes');
+        const data = await res.json();
+        allNotes = data.notes;
+        
+        const listDiv = document.getElementById('vaultNotesList');
+        listDiv.innerHTML = '';
+        allNotes.forEach(n => {
+          const item = document.createElement('div');
+          item.className = 'p-2 rounded-lg cursor-pointer hover:bg-zinc-200/80 transition flex flex-col gap-0.5';
+          item.onclick = () => openNote(n.path);
+          item.innerHTML = `
+            <div class="font-medium text-xs text-zinc-800 truncate">${n.title}</div>
+            <div class="text-[10px] text-zinc-400 font-mono">${n.folder || 'Gốc'}</div>
+          `;
+          listDiv.appendChild(item);
+        });
+
+        if (allNotes.length > 0 && !activeNote) {
+          openNote(allNotes[0].path);
+        }
+      } catch (e) {
+        console.error("Error loading notes", e);
+      }
+    }
+
+    async function openNote(path) {
+      try {
+        const res = await fetch(`/api/vault/note?path=${encodeURIComponent(path)}`);
+        const data = await res.json();
+        activeNote = path;
+        document.getElementById('activeNotePath').innerText = path;
+        document.getElementById('noteContentTextarea').value = data.content;
+      } catch (e) {
+        console.error("Error opening note", e);
+      }
+    }
+
+    async function saveActiveNote() {
+      if (!activeNote) return;
+      const content = document.getElementById('noteContentTextarea').value;
+      try {
+        await fetch('/api/vault/note', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({path: activeNote, content: content})
+        });
+        alert('Đã lưu ghi chú và tự động commit Git!');
+      } catch (e) {
+        alert('Lỗi lưu ghi chú: ' + e);
+      }
+    }
+
+    // Kanban Tasks
+    async function loadKanbanTasks() {
+      try {
+        const res = await fetch('/api/kanban/tasks');
+        const data = await res.json();
+        const cols = { todo: [], in_progress: [], done: [] };
+        data.tasks.forEach(t => {
+          if (cols[t.status]) cols[t.status].push(t);
+        });
+
+        ['todo', 'in_progress', 'done'].forEach(st => {
+          document.getElementById(`count-${st}`).innerText = cols[st].length;
+          const container = document.getElementById(`col-${st}`);
+          container.innerHTML = '';
+          cols[st].forEach(t => {
+            const card = document.createElement('div');
+            card.className = 'bg-white p-3 rounded-lg border border-bordercol shadow-sm text-xs space-y-2';
+            card.innerHTML = `
+              <div class="font-semibold text-zinc-900">${t.title}</div>
+              <div class="text-[11px] text-zinc-500">${t.description || ''}</div>
+              <div class="flex items-center justify-between pt-1 border-t border-zinc-100 text-[10px]">
+                <span class="px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-600 font-mono">${t.priority}</span>
+                <div class="flex items-center gap-1">
+                  ${st !== 'in_progress' ? `<button onclick="updateTaskStatus('${t.id}', 'in_progress')" class="hover:text-amber-600 font-medium">Bắt đầu</button>` : ''}
+                  ${st !== 'done' ? `<button onclick="updateTaskStatus('${t.id}', 'done')" class="hover:text-emerald-600 font-medium">Xong</button>` : ''}
+                  <button onclick="removeTask('${t.id}')" class="text-zinc-400 hover:text-red-500">Xóa</button>
+                </div>
+              </div>
+            `;
+            container.appendChild(card);
+          });
+        });
+      } catch (e) {
+        console.error("Error loading kanban", e);
+      }
+    }
+
+    async function updateTaskStatus(taskId, status) {
+      await fetch('/api/kanban/task', {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({task_id: taskId, status: status})
+      });
+      loadKanbanTasks();
+    }
+
+    async function removeTask(taskId) {
+      await fetch(`/api/kanban/task/${taskId}`, { method: 'DELETE' });
+      loadKanbanTasks();
+    }
+
+    async function addNewTaskModal() {
+      const title = prompt("Nhập tiêu đề công việc cần làm:");
+      if (!title) return;
+      await fetch('/api/kanban/task', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({title: title})
+      });
+      loadKanbanTasks();
+    }
+
+    // MCP Connections
+    async function loadMcpConnections() {
+      try {
+        const res = await fetch('/api/mcp/connections');
+        const data = await res.json();
+        const grid = document.getElementById('mcpConnectionsGrid');
+        grid.innerHTML = '';
+
+        data.connections.forEach(c => {
+          const card = document.createElement('div');
+          card.className = 'bg-white border border-bordercol rounded-xl p-4 shadow-sm flex flex-col justify-between';
+          card.innerHTML = `
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-bold text-sm text-zinc-800">${c.name}</span>
+                <span class="w-2 h-2 rounded-full ${c.status === 'connected' ? 'bg-emerald-500' : 'bg-zinc-300'}"></span>
+              </div>
+              <div class="text-xs text-zinc-500 mb-3">${c.category}</div>
+            </div>
+            <div class="pt-3 border-t border-zinc-100 flex items-center justify-between text-xs">
+              <span class="text-zinc-500 font-medium">Phân quyền:</span>
+              <select onchange="updateMcpPerm('${c.id}', this.value)" class="text-xs border border-zinc-300 rounded px-2 py-1 outline-none bg-zinc-50">
+                <option value="readonly" ${c.perm === 'readonly' ? 'selected' : ''}>Chỉ đọc (Readonly)</option>
+                <option value="safe" ${c.perm === 'safe' ? 'selected' : ''}>Ghi nháp (Safe)</option>
+                <option value="full" ${c.perm === 'full' ? 'selected' : ''}>Toàn quyền (Full)</option>
+              </select>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+        // Load audit
+        const auditRes = await fetch('/api/mcp/audit');
+        const auditData = await auditRes.json();
+        const auditRows = document.getElementById('mcpAuditRows');
+        auditRows.innerHTML = '';
+        auditData.audit_logs.forEach(l => {
+          const row = document.createElement('tr');
+          const dateStr = new Date(l.created_at * 1000).toLocaleTimeString();
+          row.innerHTML = `
+            <td class="py-2 text-zinc-400 font-mono">${dateStr}</td>
+            <td class="py-2 font-medium">${l.connector}</td>
+            <td class="py-2 font-mono text-zinc-600">${l.tool}</td>
+            <td class="py-2"><span class="px-1.5 py-0.5 rounded bg-zinc-100 text-[10px] font-mono">${l.perm}</span></td>
+            <td class="py-2"><span class="text-emerald-600 font-semibold">${l.status}</span></td>
+          `;
+          auditRows.appendChild(row);
+        });
+      } catch (e) {
+        console.error("Error loading MCP", e);
+      }
+    }
+
+    async function updateMcpPerm(connectorId, perm) {
+      await fetch('/api/mcp/perm', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({connector_id: connectorId, perm: perm})
+      });
+      alert(`Đã cập nhật quyền cho ${connectorId} thành ${perm}!`);
+    }
+
+    // Giọng nói Voice STT qua Web Speech API
+    function startVoiceInput() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        alert("Trình duyệt không hỗ trợ Web Speech API. Vui lòng dùng Chrome!");
+        return;
+      }
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'vi-VN';
+      recognition.start();
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById('chatInput').value = transcript;
+      };
+    }
+
+    // Khởi chạy khi load trang
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      initWebSocket();
+      // Khởi tạo các tác vụ ban đầu
+      fetch('/api/kanban/tasks').then(r => r.json()).then(data => {
+        if (data.tasks.length === 0) {
+          fetch('/api/kanban/task', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({title: 'Kiểm tra chiến dịch Facebook Ads tháng 8', description: 'Đo lường CPA và tối ưu ngân sách'})
+          });
+          fetch('/api/kanban/task', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({title: 'Soạn thảo kịch bản Zoom Thang Giá Trị 5 Bậc', description: 'Hoàn thiện giáo án Slide A'})
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
