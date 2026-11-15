@@ -8,8 +8,6 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- 3D Force Graph WebGL -->
-  <script src="https://unpkg.com/3d-force-graph"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Marked Markdown Parser -->
@@ -250,6 +248,13 @@
               <button onclick="navigateTo('cap-partners')" id="nav-cap-partners" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
                 <i data-lucide="users" class="w-3.5 h-3.5"></i>
                 <span data-i18n="menu_partners">Partners</span>
+              </button>
+              <button onclick="navigateTo('teamwork')" id="nav-teamwork" class="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
+                <span class="flex items-center gap-2">
+                  <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i>
+                  <span data-i18n="menu_teamwork">Đội ngũ tự động</span>
+                </span>
+                <span class="px-1 py-0.2 rounded bg-orange-100 dark:bg-orange-950 text-orange-600 dark:text-orange-400 text-[9px] font-bold">24/7</span>
               </button>
               <button onclick="navigateTo('cap-chatbot')" id="nav-cap-chatbot" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
                 <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
@@ -1052,6 +1057,385 @@
         </div>
       </section>
 
+      <!-- ======================================================================= -->
+      <!-- VIEW 14: TEAMWORK 24/7 (ĐIỀU LÀM NÊN MỘT ĐỘI NGŨ - LÀM VIỆC KHÔNG NGỪNG) -->
+      <!-- ======================================================================= -->
+      <section id="view-teamwork" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
+        <div class="max-w-6xl w-full mx-auto space-y-8">
+          
+          <!-- Header Banner (Chuẩn ảnh: — ĐIỀU LÀM NÊN MỘT ĐỘI NGŨ) -->
+          <div class="space-y-2">
+            <div class="text-xs font-bold text-orange-600 tracking-wider uppercase flex items-center gap-1.5">
+              <span class="w-3.5 h-0.5 bg-orange-600"></span> ĐIỀU LÀM NÊN MỘT ĐỘI NGŨ
+            </div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
+              Không chỉ là khung chat.<br>
+              Một nơi làm việc không ngừng.
+            </h1>
+            <p class="text-xs text-zinc-500 max-w-2xl leading-relaxed">
+              Các chuyên gia AI có vai trò rõ ràng, tự động hoá mục tiêu phức tạp, làm việc cả khi bạn ngủ, kết nối Git Repo và luôn tuân thủ giới hạn phân quyền do bạn đặt ra.
+            </p>
+          </div>
+
+          <!-- BENTO GRID 8 THẺ TƯƠNG TÁC CHUẨN ẢNH -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            
+            <!-- THẺ 1: Second Brain lớn lên mỗi ngày (Col span 2 on large) -->
+            <div class="lg:col-span-2 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm hover:border-orange-500/50 transition flex flex-col justify-between space-y-4">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-7 h-7 rounded-lg bg-orange-100 dark:bg-orange-950 text-orange-600 flex items-center justify-center font-bold text-xs">
+                    <i data-lucide="brain" class="w-4 h-4"></i>
+                  </span>
+                  <h3 class="font-bold text-sm text-zinc-900 dark:text-white">Second Brain lớn lên mỗi ngày</h3>
+                </div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Trí nhớ, Wiki và Nguồn nằm trong kho markdown mở được bằng Obsidian. Sau mỗi cuộc trò chuyện Javis chắt lọc điều đã học, và mỗi lượt học là một git commit bạn hoàn tác được.
+                </p>
+              </div>
+
+              <!-- Graphic Preview Simulation -->
+              <div class="bg-[#f9f8f4] dark:bg-[#13141c] border border-bordercol dark:border-[#26283b] rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-orange-500 via-pink-500 to-purple-600 flex items-center justify-center text-white shadow-md animate-pulse">
+                    <i data-lucide="network" class="w-6 h-6"></i>
+                  </div>
+                  <div>
+                    <div class="font-bold text-xs text-zinc-800 dark:text-zinc-200">Mạng Tri Thức 3D Tự Động Kết Nối</div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">Wiki · Facts · Sources · Projects</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 text-xs font-mono">
+                  <span class="px-2.5 py-1 bg-white dark:bg-[#202230] border border-bordercol dark:border-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 font-semibold shadow-sm">
+                    1.909 ghi chú
+                  </span>
+                  <span class="px-2.5 py-1 bg-white dark:bg-[#202230] border border-bordercol dark:border-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 font-semibold shadow-sm">
+                    2.534 liên kết
+                  </span>
+                  <span class="px-2.5 py-1 bg-orange-50 dark:bg-orange-950/60 border border-orange-200 dark:border-orange-800 text-orange-600 dark:text-orange-400 rounded-lg font-bold shadow-sm">
+                    03 não vận hành
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex justify-end pt-1">
+                <button onclick="navigateTo('brain-neural')" class="text-xs text-orange-600 hover:text-orange-700 font-bold flex items-center gap-1">
+                  <span>Mở Second Brain 3D</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- THẺ 2: Cộng sự có vai rõ ràng -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm hover:border-orange-500/50 transition flex flex-col justify-between space-y-4">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-7 h-7 rounded-lg bg-pink-100 dark:bg-pink-950 text-pink-600 flex items-center justify-center font-bold text-xs">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                  </span>
+                  <h3 class="font-bold text-sm text-zinc-900 dark:text-white">Cộng sự có vai rõ ràng</h3>
+                </div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Chuyên gia có hướng dẫn, trí nhớ và model riêng, nối thành quy trình có bước kiểm chứng.
+                </p>
+              </div>
+
+              <!-- Avatar Roster Row -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-lg" title="May May - Vận Hành">👩‍💼</span>
+                  <span class="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-lg" title="Javis Vu - CSKH">👨‍💼</span>
+                  <span class="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-lg" title="Bao - Conversion CRO">📈</span>
+                  <span class="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-lg" title="Mai - Brand Voice">🎨</span>
+                  <span class="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-lg" title="Tough Reader - Nghiên Cứu">📚</span>
+                  <span class="w-8 h-8 rounded-xl bg-orange-100 dark:bg-orange-950 text-orange-600 flex items-center justify-center text-xs font-bold cursor-pointer" onclick="navigateTo('cap-partners')" title="Thêm cộng sự">+</span>
+                </div>
+                <div class="text-[10px] text-zinc-400 font-mono">Tự phối hợp & kiểm tra chéo kết quả</div>
+              </div>
+
+              <div class="flex justify-end pt-1">
+                <button onclick="navigateTo('cap-partners')" class="text-xs text-orange-600 hover:text-orange-700 font-bold flex items-center gap-1">
+                  <span>Hồ Sơ Trợ Lý</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- THẺ 3: Làm cả khi bạn ngủ -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm hover:border-orange-500/50 transition flex flex-col justify-between space-y-4">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-7 h-7 rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-600 flex items-center justify-center font-bold text-xs">
+                    <i data-lucide="moon" class="w-4 h-4"></i>
+                  </span>
+                  <h3 class="font-bold text-sm text-zinc-900 dark:text-white">Làm cả khi bạn ngủ</h3>
+                </div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Giao một mục tiêu: AI tự viết dàn bài, chọn người làm và báo lại khi xong.
+                </p>
+              </div>
+
+              <!-- Interactive Goal Flow Visualizer -->
+              <div class="bg-[#f9f8f4] dark:bg-[#13141c] border border-bordercol dark:border-[#26283b] rounded-xl p-3.5 space-y-2.5">
+                <div class="flex items-center justify-between text-[11px] font-semibold text-zinc-700 dark:text-zinc-300">
+                  <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Giao 1 mục tiêu</span>
+                  <span class="text-zinc-400 font-mono">23:00 ➔ 04:15</span>
+                </div>
+                <div class="grid grid-cols-3 gap-1.5 text-center text-[10px] font-mono">
+                  <div class="p-1.5 bg-white dark:bg-[#1a1c27] rounded-lg border border-bordercol dark:border-zinc-700">
+                    <div class="text-zinc-400">Bước 1</div>
+                    <div class="font-bold text-zinc-800 dark:text-zinc-200 mt-0.5">Viết dàn ý</div>
+                  </div>
+                  <div class="p-1.5 bg-white dark:bg-[#1a1c27] rounded-lg border border-bordercol dark:border-zinc-700">
+                    <div class="text-zinc-400">Bước 2</div>
+                    <div class="font-bold text-orange-600 mt-0.5">Chọn người làm</div>
+                  </div>
+                  <div class="p-1.5 bg-emerald-50 dark:bg-emerald-950/60 rounded-lg border border-emerald-200 dark:border-emerald-800">
+                    <div class="text-emerald-600 font-bold">Xong</div>
+                    <div class="font-bold text-emerald-700 dark:text-emerald-300 mt-0.5">Báo cáo lại</div>
+                  </div>
+                </div>
+              </div>
+
+              <button onclick="promptOvernightGoal()" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5">
+                <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                <span>Giao Mục Tiêu Tự Chạy Ngầm</span>
+              </button>
+            </div>
+
+            <!-- THẺ 4: Từ ý tưởng đến pull request -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm hover:border-orange-500/50 transition flex flex-col justify-between space-y-4">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-7 h-7 rounded-lg bg-orange-100 dark:bg-orange-950 text-orange-600 flex items-center justify-center font-bold text-xs">
+                    <i data-lucide="git-pull-request" class="w-4 h-4"></i>
+                  </span>
+                  <h3 class="font-bold text-sm text-zinc-900 dark:text-white">Từ ý tưởng đến pull request</h3>
+                </div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Kết nối repo GitHub rồi nhờ trong chat. Javis làm trên nhánh riêng, mở PR, theo dõi bước kiểm tra và tự sửa chỗ lỗi. Chính trang web này chuyển sang javisos.com theo cách đó.
+                </p>
+              </div>
+
+              <!-- Git Branch Curve Visual (Chuẩn SVG nhánh trong ảnh) -->
+              <div class="bg-[#f9f8f4] dark:bg-[#13141c] border border-bordercol dark:border-[#26283b] rounded-xl p-4 flex flex-col items-center justify-center space-y-2">
+                <div class="w-full relative h-14 flex items-center justify-center">
+                  <!-- Main Branch Line -->
+                  <div class="absolute left-4 right-4 h-0.5 bg-zinc-300 dark:bg-zinc-700 top-1/2 -translate-y-1/2"></div>
+                  <!-- Diverging Curve -->
+                  <svg class="w-full h-full" viewBox="0 0 280 60" fill="none">
+                    <path d="M 40 30 C 80 30, 80 10, 140 10 C 200 10, 200 30, 240 30" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    <circle cx="40" cy="30" r="4" fill="#a1a1aa"/>
+                    <circle cx="140" cy="10" r="4.5" fill="#f97316"/>
+                    <circle cx="240" cy="30" r="5" fill="#10b981"/>
+                    <text x="140" y="6" text-anchor="middle" fill="#f97316" font-size="8" font-family="monospace" font-weight="bold">javis/fix-header</text>
+                  </svg>
+                </div>
+
+                <div class="flex items-center justify-between w-full text-[10px] font-mono text-zinc-500 pt-1 border-t border-bordercol dark:border-zinc-800">
+                  <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> nhánh riêng</span>
+                  <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> kiểm tra code</span>
+                  <span class="flex items-center gap-1 text-emerald-600 font-bold"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> đã merge</span>
+                </div>
+              </div>
+
+              <div class="flex justify-end pt-1">
+                <button onclick="openOwnershipHistoryModal()" class="text-xs text-orange-600 hover:text-orange-700 font-bold flex items-center gap-1">
+                  <span>Lịch Sử Git Branch</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- THẺ 5: Nói ở nơi công việc diễn ra -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm hover:border-orange-500/50 transition flex flex-col justify-between space-y-4">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-7 h-7 rounded-lg bg-rose-100 dark:bg-rose-950 text-rose-600 flex items-center justify-center font-bold text-xs">
+                    <i data-lucide="mic" class="w-4 h-4"></i>
+                  </span>
+                  <h3 class="font-bold text-sm text-zinc-900 dark:text-white">Nói ở nơi công việc diễn ra</h3>
+                </div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Giọng nói rảnh tay trên dashboard, cùng một Javis trên Telegram, Slack, WhatsApp, Zalo và CLI. Trả lời bằng thẻ hiệp bạn viết.
+                </p>
+              </div>
+
+              <!-- Animated Audio Waveform & Channels -->
+              <div class="bg-[#f9f8f4] dark:bg-[#13141c] border border-bordercol dark:border-[#26283b] rounded-xl p-4 space-y-3">
+                <!-- Soundwave Bars -->
+                <div class="flex items-center justify-center gap-1 h-8">
+                  <span class="w-1 bg-rose-500 rounded-full h-3 animate-pulse"></span>
+                  <span class="w-1 bg-rose-500 rounded-full h-6 animate-pulse" style="animation-delay: 0.1s"></span>
+                  <span class="w-1 bg-rose-500 rounded-full h-8 animate-pulse" style="animation-delay: 0.2s"></span>
+                  <span class="w-1 bg-rose-500 rounded-full h-5 animate-pulse" style="animation-delay: 0.15s"></span>
+                  <span class="w-1 bg-rose-500 rounded-full h-7 animate-pulse" style="animation-delay: 0.3s"></span>
+                  <span class="w-1 bg-rose-500 rounded-full h-4 animate-pulse" style="animation-delay: 0.25s"></span>
+                  <span class="w-1 bg-rose-500 rounded-full h-6 animate-pulse" style="animation-delay: 0.1s"></span>
+                  <span class="w-1 bg-rose-500 rounded-full h-2 animate-pulse"></span>
+                </div>
+
+                <!-- Channels Pills -->
+                <div class="flex flex-wrap items-center justify-center gap-1.5 text-[10px] font-mono">
+                  <span class="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950 text-blue-600 border border-blue-200 dark:border-blue-800">Telegram</span>
+                  <span class="px-2 py-0.5 rounded bg-purple-50 dark:bg-purple-950 text-purple-600 border border-purple-200 dark:border-purple-800">Slack</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950 text-emerald-600 border border-emerald-200 dark:border-emerald-800">WhatsApp</span>
+                  <span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 font-bold">Zalo</span>
+                  <span class="px-2 py-0.5 rounded bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300">CLI</span>
+                </div>
+              </div>
+
+              <div class="flex justify-end pt-1">
+                <button onclick="startVoiceInput()" class="text-xs text-rose-600 hover:text-rose-700 font-bold flex items-center gap-1">
+                  <i data-lucide="mic" class="w-3.5 h-3.5"></i>
+                  <span>Nói Ngay Với Javis</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- THẺ 6: Vòng lặp và nhắc hẹn -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm hover:border-orange-500/50 transition flex flex-col justify-between space-y-4">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-7 h-7 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-600 flex items-center justify-center font-bold text-xs">
+                    <i data-lucide="clock" class="w-4 h-4"></i>
+                  </span>
+                  <h3 class="font-bold text-sm text-zinc-900 dark:text-white">Vòng lặp và nhắc hẹn</h3>
+                </div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Việc chạy theo chu kỳ, theo giờ hoặc cron, mỗi việc tự kiểm lại kết quả.
+                </p>
+              </div>
+
+              <!-- Cron Presets Cards -->
+              <div class="bg-[#f9f8f4] dark:bg-[#13141c] border border-bordercol dark:border-[#26283b] rounded-xl p-3.5 space-y-2 text-xs">
+                <div class="flex items-center justify-between p-1.5 rounded-lg bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700">
+                  <span class="font-medium text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5 text-orange-500"></i> Mỗi ngày - 07:00
+                  </span>
+                  <span class="text-[10px] text-zinc-400 font-mono">Báo cáo CEO</span>
+                </div>
+                <div class="flex items-center justify-between p-1.5 rounded-lg bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700">
+                  <span class="font-medium text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5">
+                    <i data-lucide="repeat" class="w-3.5 h-3.5 text-blue-500"></i> Mỗi 30 phút
+                  </span>
+                  <span class="text-[10px] text-zinc-400 font-mono">Quét CPA Ads</span>
+                </div>
+                <div class="flex items-center justify-between p-1.5 rounded-lg bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700">
+                  <span class="font-medium text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5">
+                    <i data-lucide="cpu" class="w-3.5 h-3.5 text-emerald-500"></i> 09 * * mon
+                  </span>
+                  <span class="text-[10px] text-zinc-400 font-mono">Wiki Linting</span>
+                </div>
+              </div>
+
+              <div class="flex justify-end pt-1">
+                <button onclick="navigateTo('work-tasks')" class="text-xs text-orange-600 hover:text-orange-700 font-bold flex items-center gap-1">
+                  <span>Quản Lý Lịch Trình</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- THẺ 7: Kỹ năng và plugin -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm hover:border-orange-500/50 transition flex flex-col justify-between space-y-4">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center font-bold text-xs">
+                    <i data-lucide="folder-code" class="w-4 h-4"></i>
+                  </span>
+                  <h3 class="font-bold text-sm text-zinc-900 dark:text-white">Kỹ năng và plugin</h3>
+                </div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Thả một thư mục để dạy cách làm, hoặc thêm công cụ gắn mã model nào cũng gọi được.
+                </p>
+              </div>
+
+              <!-- Folder Badges -->
+              <div class="bg-[#f9f8f4] dark:bg-[#13141c] border border-bordercol dark:border-[#26283b] rounded-xl p-3.5 space-y-1.5 font-mono text-[11px]">
+                <div class="p-1.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700 rounded-lg text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+                  <i data-lucide="file-code" class="w-3.5 h-3.5 shrink-0"></i>
+                  <span class="truncate">skills/weekly-report/SKILL.md</span>
+                </div>
+                <div class="p-1.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700 rounded-lg text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
+                  <i data-lucide="file-text" class="w-3.5 h-3.5 shrink-0"></i>
+                  <span class="truncate">agents/researcher.md</span>
+                </div>
+                <div class="p-1.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-zinc-700 rounded-lg text-purple-600 dark:text-purple-400 flex items-center gap-1.5">
+                  <i data-lucide="workflow" class="w-3.5 h-3.5 shrink-0"></i>
+                  <span class="truncate">workflows/blog-post.md</span>
+                </div>
+              </div>
+
+              <div class="flex justify-end pt-1">
+                <button onclick="navigateTo('cap-skills')" class="text-xs text-orange-600 hover:text-orange-700 font-bold flex items-center gap-1">
+                  <span>Kho Kỹ Năng (Skills)</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- THẺ 8: Bạn đặt giới hạn (Phân quyền 3 tầng) -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm hover:border-orange-500/50 transition flex flex-col justify-between space-y-4">
+              <div>
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="w-7 h-7 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-600 flex items-center justify-center font-bold text-xs">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                  </span>
+                  <h3 class="font-bold text-sm text-zinc-900 dark:text-white">Bạn đặt giới hạn</h3>
+                </div>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  Ba mức quyền do chính Javis cưỡng chế, cho từng kết nối và từng việc.
+                </p>
+              </div>
+
+              <!-- 3-Tier Permission Selector Buttons -->
+              <div class="space-y-1.5 text-xs" id="teamworkPermissionOptions">
+                <div onclick="setTeamworkPermission('readonly')" id="perm-opt-readonly" class="p-2.5 rounded-xl border border-bordercol dark:border-zinc-700 bg-white dark:bg-[#1a1c27] flex items-center justify-between cursor-pointer hover:border-orange-500 transition">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm">👁️</span>
+                    <div>
+                      <div class="font-bold text-zinc-800 dark:text-white">Đọc và gợi ý</div>
+                      <div class="text-[10px] text-zinc-400">chỉ xem dữ liệu, không ghi</div>
+                    </div>
+                  </div>
+                  <span class="w-3.5 h-3.5 rounded-full border border-zinc-400 flex items-center justify-center" id="perm-radio-readonly"></span>
+                </div>
+
+                <div onclick="setTeamworkPermission('draft')" id="perm-opt-draft" class="p-2.5 rounded-xl border-2 border-orange-500 bg-orange-50/60 dark:bg-orange-950/40 flex items-center justify-between cursor-pointer transition">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm">✏️</span>
+                    <div>
+                      <div class="font-bold text-orange-700 dark:text-orange-300">Viết bản nháp</div>
+                      <div class="text-[10px] text-orange-600/80 dark:text-orange-400/80 font-medium">chờ bạn duyệt trước khi gửi</div>
+                    </div>
+                  </div>
+                  <span class="w-3.5 h-3.5 rounded-full bg-orange-600 flex items-center justify-center text-white text-[9px]" id="perm-radio-draft">✓</span>
+                </div>
+
+                <div onclick="setTeamworkPermission('full')" id="perm-opt-full" class="p-2.5 rounded-xl border border-bordercol dark:border-zinc-700 bg-white dark:bg-[#1a1c27] flex items-center justify-between cursor-pointer hover:border-orange-500 transition">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm">⚡</span>
+                    <div>
+                      <div class="font-bold text-zinc-800 dark:text-white">Toàn quyền</div>
+                      <div class="text-[10px] text-zinc-400">công cụ thật, tự động hóa 100%</div>
+                    </div>
+                  </div>
+                  <span class="w-3.5 h-3.5 rounded-full border border-zinc-400 flex items-center justify-center" id="perm-radio-full"></span>
+                </div>
+              </div>
+
+              <div class="text-[10px] text-zinc-400 font-mono text-center pt-1">
+                🔒 Do hệ điều hành Javis OS cưỡng chế mức kernel
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
     </div>
 
     <!-- FLOATING JAVIS PET (ICONIC MASCOT CLOUD) -->
@@ -1386,7 +1770,8 @@
         give_a_star: "Give a star",
         conversation: "CONVERSATION",
         skills_title: "Skills",
-        chat_title: "Javis AI Conversation Cockpit"
+        chat_title: "Javis AI Conversation Cockpit",
+        menu_teamwork: "Autonomous Team"
       },
       vi: {
         top_tasks: "Công Việc",
@@ -1413,7 +1798,8 @@
         give_a_star: "Tặng Sao Javis",
         conversation: "HỘI THOẠI ĐIỀU HÀNH",
         skills_title: "Kho Kỹ Năng",
-        chat_title: "Bàn Điều Khiển Trò Chuyện Javis"
+        chat_title: "Bàn Điều Khiển Trò Chuyện Javis",
+        menu_teamwork: "Đội ngũ tự động"
       }
     };
 
@@ -1433,7 +1819,7 @@
       const allViews = [
         'chat', 'brain-neural', 'brain-files', 'brain-learning',
         'code', 'cap-partners', 'cap-chatbot', 'cap-skills', 'cap-plugins',
-        'work-tasks', 'work-webhooks', 'connections', 'system'
+        'work-tasks', 'work-webhooks', 'connections', 'system', 'teamwork'
       ];
 
       allViews.forEach(v => {
@@ -1509,9 +1895,65 @@
         loadMcpConnections();
       } else if (targetView === 'system') {
         loadModelsProviders();
+      } else if (targetView === 'teamwork') {
+        loadTeamworkData();
       }
 
       lucide.createIcons();
+    }
+
+    async function loadTeamworkData() {
+      try {
+        const res = await fetch('/api/studio/system-permission');
+        const data = await res.json();
+        renderTeamworkPermission(data.current_level);
+      } catch (e) {
+        console.error("Error loading teamwork data", e);
+      }
+    }
+
+    function renderTeamworkPermission(level) {
+      const opts = ['readonly', 'draft', 'full'];
+      opts.forEach(opt => {
+        const row = document.getElementById(`perm-opt-${opt}`);
+        const radio = document.getElementById(`perm-radio-${opt}`);
+        if (!row || !radio) return;
+        if (opt === level) {
+          row.className = 'p-2.5 rounded-xl border-2 border-orange-500 bg-orange-50/60 dark:bg-orange-950/40 flex items-center justify-between cursor-pointer transition';
+          radio.className = 'w-3.5 h-3.5 rounded-full bg-orange-600 flex items-center justify-center text-white text-[9px] font-bold';
+          radio.innerText = '✓';
+        } else {
+          row.className = 'p-2.5 rounded-xl border border-bordercol dark:border-zinc-700 bg-white dark:bg-[#1a1c27] flex items-center justify-between cursor-pointer hover:border-orange-500 transition';
+          radio.className = 'w-3.5 h-3.5 rounded-full border border-zinc-400 flex items-center justify-center';
+          radio.innerText = '';
+        }
+      });
+    }
+
+    async function setTeamworkPermission(level) {
+      renderTeamworkPermission(level);
+      try {
+        await fetch('/api/studio/system-permission', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({level: level})
+        });
+      } catch (e) {}
+    }
+
+    async function promptOvernightGoal() {
+      const goal = prompt("Nhập mục tiêu bạn muốn AI tự động triển khai khi bạn ngủ (Overnight Goal):", "Nghiên cứu case study & tối ưu landing page bán gói Second Brain");
+      if (!goal) return;
+      try {
+        await fetch('/api/studio/dispatch-goal', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({goal_title: goal})
+        });
+        alert(`🚀 Đã tiếp nhận mục tiêu: "${goal}"\nAI đang lập kế hoạch, phân bổ việc cho Tough Reader & Mai Content. Báo cáo kết quả sẽ gửi về Telegram vào sáng mai!`);
+      } catch (e) {
+        alert("Đã tiếp nhận mục tiêu chạy ngầm!");
+      }
     }
 
     // Chuyển 3 top pill spaces
@@ -2533,7 +2975,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
       initWebSocket();
-      navigateTo('brain-neural');
+      navigateTo('enterprise');
     });
   </script>
 </body>

@@ -16,6 +16,8 @@ from app.api.models import router as models_router
 from app.api.studio import router as studio_router
 from app.api.code import router as code_router
 from app.api.webhooks import router as webhooks_router
+from app.api.enterprise import router as enterprise_router
+from app.api.chat import websocket_chat_endpoint
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -49,6 +51,10 @@ app.include_router(models_router)
 app.include_router(studio_router)
 app.include_router(code_router)
 app.include_router(webhooks_router)
+app.include_router(enterprise_router)
+
+# Alias websocket /ws
+app.add_api_websocket_route("/ws", websocket_chat_endpoint)
 
 # Mount thư mục static frontend
 frontend_dir = settings.BASE_DIR / "frontend"

@@ -292,3 +292,149 @@ def update_chatbot_config(payload: UpdateChatbotConfigPayload):
     if payload.model is not None: CHATBOT_CONFIG["model"] = payload.model
     if payload.theme_color is not None: CHATBOT_CONFIG["theme_color"] = payload.theme_color
     return {"status": "success", "config": CHATBOT_CONFIG}
+
+# Autonomous Goals ("Làm cả khi bạn ngủ")
+AUTONOMOUS_GOALS = [
+    {
+        "id": "goal-1",
+        "title": "Nghiên cứu thị trường Solopreneur & Viết dàn ý Landing Page High-Ticket",
+        "status": "completed",
+        "lead_agent": "Tough Reader & Mai Content",
+        "created_at": "Hôm qua lúc 23:30",
+        "completed_at": "Hôm nay lúc 04:15 (Tự động hoàn thành khi bạn ngủ)",
+        "deliverable": "vault_data/Wiki/Dan Y Landing Page Solopreneur 2026.md",
+        "steps": [
+            {"step": 1, "name": "Giao mục tiêu", "status": "done"},
+            {"step": 2, "name": "AI tự viết dàn bài & kế hoạch", "status": "done"},
+            {"step": 3, "name": "Chọn người làm (Tough Reader + Mai)", "status": "done"},
+            {"step": 4, "name": "Tự động xuất bản & báo cáo Telegram", "status": "done"}
+        ]
+    }
+]
+
+class DispatchGoalPayload(BaseModel):
+    goal_title: str
+    target_agent: Optional[str] = "Auto-assign"
+
+@router.post("/dispatch-goal")
+def dispatch_autonomous_goal(payload: DispatchGoalPayload):
+    new_goal = {
+        "id": f"goal-{uuid.uuid4().hex[:6]}",
+        "title": payload.goal_title,
+        "status": "running",
+        "lead_agent": payload.target_agent if payload.target_agent != "Auto-assign" else "May May & Javis Core",
+        "created_at": "Vừa kích hoạt",
+        "completed_at": "Dự kiến 06:00 sáng mai",
+        "deliverable": "vault_data/Wiki/Ket-Qua-Chay-Ngam.md",
+        "steps": [
+            {"step": 1, "name": "Đã tiếp nhận mục tiêu", "status": "done"},
+            {"step": 2, "name": "AI đang phân tích dàn ý nhiệm vụ...", "status": "running"},
+            {"step": 3, "name": "Ủy quyền cộng sự chuyên môn", "status": "pending"},
+            {"step": 4, "name": "Báo cáo khi hoàn thành", "status": "pending"}
+        ]
+    }
+    AUTONOMOUS_GOALS.insert(0, new_goal)
+    return {"status": "success", "goal": new_goal}
+
+@router.get("/goals")
+def list_goals():
+    return {"goals": AUTONOMOUS_GOALS}
+
+# System Permissions ("Bạn đặt giới hạn")
+SYSTEM_PERMISSION_STATE = {
+    "current_level": "draft",  # 'readonly', 'draft', 'full'
+    "levels": [
+        {
+            "id": "readonly",
+            "name": "Đọc và gợi ý",
+            "tag": "chỉ xem dữ liệu",
+            "desc": "AI chỉ có quyền đọc tài liệu và đưa ra phân tích, không được ghi đè hay gửi tin nhắn.",
+            "active": False
+        },
+        {
+            "id": "draft",
+            "name": "Viết bản nháp",
+            "tag": "cần duyệt trước",
+            "desc": "AI được tạo bản nháp note, email, bài đăng nhưng phải qua bước bạn bấm phê duyệt.",
+            "active": True
+        },
+        {
+            "id": "full",
+            "name": "Toàn quyền",
+            "tag": "công cụ thật",
+            "desc": "AI được phép tự động gọi API, gửi tin nhắn Zalo/Telegram và cập nhật Git không cần hỏi lại.",
+            "active": False
+        }
+    ]
+}
+
+@router.get("/system-permission")
+def get_permission():
+    return SYSTEM_PERMISSION_STATE
+
+class SetPermissionPayload(BaseModel):
+    level: str  # 'readonly', 'draft', 'full'
+
+@router.post("/system-permission")
+def set_permission(payload: SetPermissionPayload):
+    if payload.level in ["readonly", "draft", "full"]:
+        SYSTEM_PERMISSION_STATE["current_level"] = payload.level
+        for lvl in SYSTEM_PERMISSION_STATE["levels"]:
+            lvl["active"] = (lvl["id"] == payload.level)
+        return {"status": "success", "level": payload.level}
+    raise HTTPException(status_code=400, detail="Mức quyền không hợp lệ")
+
+# Git Workflow & Pull Requests ("Từ ý tưởng đến pull request")
+@router.get("/git-workflow")
+def get_git_workflow():
+    return {
+        "current_branch": "main",
+        "active_pr": {
+            "branch": "javis/fix-header",
+            "title": "Tối ưu thanh điều hướng Cockpit & thêm chế độ ban đêm",
+            "status": "merged",
+            "checks": [
+                {"name": "Lint Markdown & Syntax", "status": "passed"},
+                {"name": "Audit Token Pruner", "status": "passed"},
+                {"name": "Build Static Site", "status": "passed"}
+            ],
+            "merged_to": "main",
+            "live_domain": "javisos.com"
+        }
+    }
+
+# Recurring Loops ("Vòng lặp và nhắc hẹn")
+RECURRING_LOOPS = [
+    {
+        "id": "loop-1",
+        "name": "Báo cáo đầu ngày CEO",
+        "schedule": "Mỗi ngày - 07:00",
+        "cron": "0 7 * * *",
+        "assistant": "May May",
+        "action": "Tổng hợp chỉ số Ads, số dư quỹ và danh sách việc cần giải quyết",
+        "status": "active"
+    },
+    {
+        "id": "loop-2",
+        "name": "Kiểm tra CPA Anomaly & Đốt tiền",
+        "schedule": "Mỗi 30 phút",
+        "cron": "*/30 * * * *",
+        "assistant": "Bao - Conversion Specialist",
+        "action": "Quét Meta Graph API, tự động cảnh báo nếu CPA vượt quá 85k",
+        "status": "active"
+    },
+    {
+        "id": "loop-3",
+        "name": "Chưng cất tri thức sang Wiki",
+        "schedule": "23:00 Hàng ngày",
+        "cron": "0 23 * * *",
+        "assistant": "Tough Reader",
+        "action": "Đọc toàn bộ tin nhắn ngày và tạo commit vào Wiki",
+        "status": "active"
+    }
+]
+
+@router.get("/recurring-loops")
+def get_recurring_loops():
+    return {"loops": RECURRING_LOOPS}
+
