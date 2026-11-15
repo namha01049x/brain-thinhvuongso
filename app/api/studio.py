@@ -293,6 +293,169 @@ def update_chatbot_config(payload: UpdateChatbotConfigPayload):
     if payload.theme_color is not None: CHATBOT_CONFIG["theme_color"] = payload.theme_color
     return {"status": "success", "config": CHATBOT_CONFIG}
 
+# CHATBOT OMNICHANNEL & SLEEP-STATS APIS
+OMNICHANNEL_CONVERSATIONS = [
+    {
+        "id": "conv-1",
+        "customer_name": "Trần Hải Đăng",
+        "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop",
+        "channel": "Zalo OA",
+        "channel_icon": "message-circle",
+        "channel_color": "blue",
+        "time": "02:14 sáng (Khi bạn ngủ)",
+        "last_message": "Cho mình hỏi gói Setup Second Brain trọn gói cho doanh nghiệp bao gồm những gì?",
+        "ai_reply": "Dạ em chào anh Đăng! Gói Setup Second Brain trọn gói bên em gồm 7 trụ cột: Vault Obsidian chuẩn PARA, Javis OS Cockpit điều hành, tích hợp Telegram/Zalo bot 24/7 và chuyển giao 1-1 ạ.",
+        "status": "ai_replied",
+        "status_label": "AI đã trả lời chuẩn xác"
+    },
+    {
+        "id": "conv-2",
+        "customer_name": "Mai Phương Linh",
+        "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop",
+        "channel": "Messenger",
+        "channel_icon": "send",
+        "channel_color": "indigo",
+        "time": "04:35 sáng (Khi bạn ngủ)",
+        "last_message": "Mình muốn xin demo giao diện Javis OS và bảng báo giá chi tiết.",
+        "ai_reply": "Dạ chị Linh, em xin gửi chị link video walkthrough 5 phút của Javis OS và bảng đối chiếu ROI. Anh Duy cũng sẽ liên hệ chị lúc 8:30 sáng nay ạ!",
+        "status": "ai_replied",
+        "status_label": "AI đã trả lời chuẩn xác"
+    },
+    {
+        "id": "conv-3",
+        "customer_name": "Lê Văn Tuấn (Giám đốc Công nghệ)",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop",
+        "channel": "Telegram",
+        "channel_icon": "send",
+        "channel_color": "sky",
+        "time": "06:10 sáng",
+        "last_message": "Công ty mình cần tích hợp bảo mật On-Premise và xuất hóa đơn VAT công ty thì chiết khấu thế nào?",
+        "ai_reply": "[Bot chủ động im lặng - Câu hỏi nhạy cảm về đàm phán hợp đồng & chiết khấu riêng]",
+        "status": "silence_hold",
+        "status_label": "Bot giữ im lặng - Đang chờ bạn tiếp quản"
+    },
+    {
+        "id": "conv-4",
+        "customer_name": "Nguyễn Bích Ngọc",
+        "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop",
+        "channel": "WhatsApp",
+        "channel_icon": "phone-call",
+        "channel_color": "emerald",
+        "time": "06:55 sáng",
+        "last_message": "I am interested in integrating our existing Slack workspace with your AI Brain.",
+        "ai_reply": "Hello Ms. Ngoc! Javis OS supports seamless Slack integration via incoming Webhooks and Event Subscriptions. Let me share the quick setup doc.",
+        "status": "ai_replied",
+        "status_label": "AI đã trả lời chuẩn xác"
+    },
+    {
+        "id": "conv-5",
+        "customer_name": "Hoàng Nam",
+        "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop",
+        "channel": "Instagram",
+        "channel_icon": "camera",
+        "channel_color": "pink",
+        "time": "Hôm qua 23:45",
+        "last_message": "Chào bạn, mình thấy video trên Threads rất hay, muốn hỏi học phí kèm 1-1.",
+        "ai_reply": "Cảm ơn bạn Hoàng Nam đã quan tâm! Em xin gửi thông tin chi tiết về chương trình Mentorship 30 ngày nhé ạ.",
+        "status": "ai_replied",
+        "status_label": "AI đã trả lời chuẩn xác"
+    }
+]
+
+OMNICHANNEL_CHANNELS = [
+    {"id": "whatsapp", "name": "WhatsApp", "connected": True, "messages": 184, "bot_active": True, "badge_color": "emerald"},
+    {"id": "messenger", "name": "Messenger", "connected": True, "messages": 892, "bot_active": True, "badge_color": "blue"},
+    {"id": "instagram", "name": "Instagram", "connected": True, "messages": 412, "bot_active": True, "badge_color": "pink"},
+    {"id": "telegram", "name": "Telegram", "connected": True, "messages": 526, "bot_active": True, "badge_color": "sky"},
+    {"id": "slack", "name": "Slack", "connected": True, "messages": 95, "bot_active": True, "badge_color": "purple"},
+    {"id": "lark", "name": "Lark Suite", "connected": True, "messages": 64, "bot_active": True, "badge_color": "cyan"},
+    {"id": "threads", "name": "Threads", "connected": True, "messages": 78, "bot_active": True, "badge_color": "zinc"},
+    {"id": "zalo_personal", "name": "Zalo Cá Nhân", "connected": True, "messages": 1420, "bot_active": True, "badge_color": "blue"},
+    {"id": "zalo_oa", "name": "Zalo OA", "connected": True, "messages": 678, "bot_active": True, "badge_color": "sky"}
+]
+
+@router.get("/chatbot-stats")
+def get_chatbot_stats():
+    return {
+        "status": "success",
+        "hero": {
+            "total_ai_answers": "2.569",
+            "growth_rate": "+42% so với chu kỳ trước",
+            "ai_answered_percentage": 79,
+            "hours_freed": 42.8,
+            "answers_while_slept": 567,
+            "sleep_window": "11:00 PM - 07:00 AM",
+            "customers_served": 343,
+            "customers_new": 20,
+            "speed_ai": "32 s",
+            "speed_hand": "4 m",
+            "hand_replies": 683,
+            "waiting_count": 0
+        },
+        "hourly_distribution": [
+            {"hour": "00:00", "count": 48, "is_night": True},
+            {"hour": "01:00", "count": 35, "is_night": True},
+            {"hour": "02:00", "count": 28, "is_night": True},
+            {"hour": "03:00", "count": 22, "is_night": True},
+            {"hour": "04:00", "count": 34, "is_night": True},
+            {"hour": "05:00", "count": 52, "is_night": True},
+            {"hour": "06:00", "count": 78, "is_night": True},
+            {"hour": "07:00", "count": 115, "is_night": False},
+            {"hour": "08:00", "count": 142, "is_night": False},
+            {"hour": "09:00", "count": 180, "is_night": False},
+            {"hour": "10:00", "count": 195, "is_night": False},
+            {"hour": "11:00", "count": 170, "is_night": False},
+            {"hour": "12:00", "count": 140, "is_night": False},
+            {"hour": "13:00", "count": 165, "is_night": False},
+            {"hour": "14:00", "count": 210, "is_night": False},
+            {"hour": "15:00", "count": 285, "is_night": False, "is_peak": True},
+            {"hour": "16:00", "count": 310, "is_night": False, "is_peak": True},
+            {"hour": "17:00", "count": 290, "is_night": False, "is_peak": True},
+            {"hour": "18:00", "count": 240, "is_night": False, "is_peak": True},
+            {"hour": "19:00", "count": 190, "is_night": False},
+            {"hour": "20:00", "count": 175, "is_night": False},
+            {"hour": "21:00", "count": 160, "is_night": False},
+            {"hour": "22:00", "count": 125, "is_night": False},
+            {"hour": "23:00", "count": 82, "is_night": True}
+        ],
+        "account_comparison": {
+            "account_name": "Javis Vũ",
+            "ai_percent": 79,
+            "hand_percent": 21,
+            "ai_messages": 2569,
+            "hand_messages": 683
+        }
+    }
+
+@router.get("/chatbot-conversations")
+def get_chatbot_conversations():
+    return {"status": "success", "conversations": OMNICHANNEL_CONVERSATIONS}
+
+class TakeoverPayload(BaseModel):
+    conversation_id: str
+    action: str
+
+@router.post("/chatbot-takeover")
+def chatbot_takeover(payload: TakeoverPayload):
+    for c in OMNICHANNEL_CONVERSATIONS:
+        if c["id"] == payload.conversation_id:
+            if payload.action == "takeover":
+                c["status"] = "human_takeover"
+                c["status_label"] = "Bạn đã tiếp quản bằng tay"
+            elif payload.action == "toggle_silence":
+                c["status"] = "silence_hold"
+                c["status_label"] = "Bot giữ im lặng"
+            elif payload.action == "ai_resume":
+                c["status"] = "ai_replied"
+                c["status_label"] = "AI đã tiếp tục trả lời"
+            return {"status": "success", "conversation": c}
+    return {"status": "error", "message": "Conversation not found"}
+
+@router.get("/chatbot-channels")
+def get_chatbot_channels():
+    return {"status": "success", "channels": OMNICHANNEL_CHANNELS}
+
+
 # Autonomous Goals ("Làm cả khi bạn ngủ")
 AUTONOMOUS_GOALS = [
     {
