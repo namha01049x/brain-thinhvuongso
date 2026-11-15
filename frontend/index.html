@@ -746,68 +746,475 @@
         </div>
       </section>
 
+            <!-- ======================================================================= -->
+      <!-- VIEW 7: CAPABILITIES -> CHATBOT (OMNICHANNEL COCKPIT - CHUẨN 100% ẢNH)   -->
       <!-- ======================================================================= -->
-      <!-- VIEW 7: CAPABILITIES -> CHATBOT (BỘ CÀI ĐẶT & EMBED WIDGET CHATBOT)    -->
-      <!-- ======================================================================= -->
-      <section id="view-cap-chatbot" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar hidden">
-        <div class="max-w-5xl w-full mx-auto space-y-6">
-          <div class="border-b border-bordercol dark:border-[#26283b] pb-4">
-            <h2 class="text-lg font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-              <i data-lucide="message-circle" class="w-5 h-5 text-blue-600"></i>
-              Autonomous Chatbot Builder (Trợ Lý Chat Nhúng Web & Fanpage)
-            </h2>
-            <p class="text-xs text-zinc-500 mt-1">Cấu hình nhân vật, câu chào và tạo mã nhúng Widget cho website hoặc landing page Webcake.</p>
+      <section id="view-cap-chatbot" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-4 md:p-8 overflow-y-auto custom-scrollbar hidden">
+        <div class="max-w-6xl w-full mx-auto space-y-8">
+          
+          <!-- ================= HEADER / MARKETING VALUE PITCH (TRỰC QUAN ĐÚNG ẢNH) ================= -->
+          <div class="text-center space-y-3 pt-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/80 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 font-bold text-xs uppercase tracking-widest border border-orange-200 dark:border-orange-900/50">
+              — CHATBOT ĐA KÊNH —
+            </div>
+            
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-zinc-900 dark:text-white tracking-tight leading-tight">
+              Một hộp thư cho mọi kênh.<br/>
+              <span class="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-500 bg-clip-text text-transparent">Trả lời cả khi bạn ngủ.</span>
+            </h1>
+
+            <p class="max-w-3xl mx-auto text-xs md:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+              Biến một công cụ thành chatbot chăm sóc khách trên <strong class="text-zinc-800 dark:text-zinc-200">WhatsApp, Messenger, Instagram, Telegram, Slack, Lark, Threads, Zalo, Zalo OA</strong> và nhiều kênh khác. Mọi cuộc trò chuyện về chung một hộp thư, và bạn tiếp quản bất kỳ cuộc nào chỉ bằng một cú bấm.
+            </p>
+
+            <!-- Channel Badges Row (9 Channels Pill List) -->
+            <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-emerald-500 transition cursor-default">
+                <i data-lucide="phone-call" class="w-3.5 h-3.5 text-emerald-500"></i> WhatsApp
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-blue-500 transition cursor-default">
+                <i data-lucide="message-square" class="w-3.5 h-3.5 text-blue-500"></i> Messenger
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-pink-500 transition cursor-default">
+                <i data-lucide="camera" class="w-3.5 h-3.5 text-pink-500"></i> Instagram
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-sky-500 transition cursor-default">
+                <i data-lucide="send" class="w-3.5 h-3.5 text-sky-500"></i> Telegram
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-purple-500 transition cursor-default">
+                <i data-lucide="hash" class="w-3.5 h-3.5 text-purple-500"></i> Slack
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-cyan-500 transition cursor-default">
+                <i data-lucide="feather" class="w-3.5 h-3.5 text-cyan-500"></i> Lark
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-zinc-500 transition cursor-default">
+                <i data-lucide="at-sign" class="w-3.5 h-3.5 text-zinc-600"></i> Threads
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-blue-600 transition cursor-default">
+                <span class="w-2 h-2 rounded-full bg-blue-600"></span> Zalo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] text-xs font-medium text-zinc-700 dark:text-zinc-300 shadow-sm hover:border-sky-600 transition cursor-default">
+                <span class="w-2 h-2 rounded-full bg-sky-500"></span> Zalo OA
+              </span>
+            </div>
           </div>
 
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- Form Cấu hình -->
-            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 space-y-4 shadow-sm">
-              <h3 class="font-bold text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200">Thông Số Chatbot</h3>
-              
-              <div>
-                <label class="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Tên Trợ Lý</label>
-                <input type="text" id="cbBotName" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-1.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-orange-500">
+          <!-- ================= MACOS APP CONTAINER MOCKUP (CHUẨN ẢNH) ================= -->
+          <div class="bg-white dark:bg-[#161722] border border-bordercol dark:border-[#2a2c3f] rounded-2xl shadow-xl overflow-hidden transition-all duration-200">
+            
+            <!-- Window Topbar with Browser frame & Breadcrumb -->
+            <div class="bg-[#f3f1ea] dark:bg-[#1c1e2b] px-4 py-2.5 border-b border-bordercol dark:border-[#2a2c3f] flex items-center justify-between">
+              <!-- Window Dots -->
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e]/50"></div>
+                <div class="w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123]/50"></div>
+                <div class="w-3 h-3 rounded-full bg-[#27c93f] border border-[#1aab29]/50"></div>
+                <span class="ml-2 text-xs font-bold text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                  Minh Duy's Brain v2.0
+                  <span class="text-[10px] font-normal text-zinc-400 bg-zinc-200/60 dark:bg-zinc-800 px-1.5 py-0.5 rounded">110 notes · 30.4k bks</span>
+                </span>
               </div>
 
-              <div>
-                <label class="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Lời Chào Mở Đầu (Greeting)</label>
-                <textarea id="cbWelcomeMsg" rows="3" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-orange-500"></textarea>
+              <!-- Address bar -->
+              <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-lg bg-white/80 dark:bg-[#12131a]/80 border border-zinc-200 dark:border-zinc-800 text-[11px] text-zinc-500 font-mono">
+                <i data-lucide="lock" class="w-3 h-3 text-emerald-500"></i>
+                <span>localhost:7777 · Chatbot</span>
               </div>
 
-              <div>
-                <label class="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">System Instructions (Nhân Cách AI)</label>
-                <textarea id="cbSystemPrompt" rows="4" class="w-full bg-[#fbfaf8] dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-orange-500"></textarea>
+              <!-- Top Right Notifications -->
+              <div class="flex items-center gap-2">
+                <button class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-orange-100 dark:bg-orange-950/60 text-orange-700 dark:text-orange-400 text-xs font-semibold hover:bg-orange-200 transition">
+                  <i data-lucide="bell" class="w-3.5 h-3.5"></i>
+                  Notifications <span class="w-1.5 h-1.5 rounded-full bg-orange-600"></span>
+                </button>
               </div>
-
-              <button onclick="saveChatbotSettings()" class="w-full py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-bold transition shadow-sm">
-                Lưu Cấu Hình
-              </button>
             </div>
 
-            <!-- Mã Nhúng Script -->
-            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 space-y-4 shadow-sm flex flex-col justify-between">
-              <div class="space-y-3">
-                <h3 class="font-bold text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200">Mã Nhúng Landing Page (HTML Snippet)</h3>
-                <p class="text-xs text-zinc-500">Dán đoạn mã script này trước thẻ đóng <code>&lt;/body&gt;</code> trên Webcake hoặc website của bạn:</p>
-                <div class="relative">
-                  <pre class="bg-zinc-900 text-zinc-200 p-3.5 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed">&lt;!-- Javis OS Chat Widget --&gt;
-&lt;script 
-  src="https://cdn.javis.os/widget.js" 
-  data-bot-id="thinh-vuong-so-3120"
-  data-theme="#ea580c"
-  async&gt;
-&lt;/script&gt;</pre>
-                  <button onclick="copyEmbedCode()" class="absolute top-2.5 right-2.5 px-2.5 py-1 bg-zinc-800 hover:bg-zinc-700 text-white rounded text-[11px] font-semibold">Sao chép</button>
+            <!-- Subnavigation Menu (Chatbot, Conversations, Stats, Channels, JSON, Settings) -->
+            <div class="bg-[#faf8f5] dark:bg-[#181926] px-4 py-2 border-b border-bordercol dark:border-[#2a2c3f] flex items-center justify-between flex-wrap gap-2">
+              <div class="flex items-center gap-1 overflow-x-auto text-xs font-medium">
+                <button onclick="switchChatbotSubTab('stats')" id="cbTabBtn-stats" class="cb-subtab-btn px-3 py-1.5 rounded-lg bg-white dark:bg-[#202232] text-orange-600 dark:text-orange-400 font-bold border border-bordercol dark:border-[#2f3248] shadow-sm flex items-center gap-1.5">
+                  <i data-lucide="bar-chart-2" class="w-3.5 h-3.5 text-orange-500"></i>
+                  <span># Chatbot</span>
+                </button>
+                <button onclick="switchChatbotSubTab('conversations')" id="cbTabBtn-conversations" class="cb-subtab-btn px-3 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white flex items-center gap-1.5 transition">
+                  <i data-lucide="inbox" class="w-3.5 h-3.5"></i>
+                  <span>Conversations</span>
+                  <span class="px-1.5 py-0.2 rounded-full text-[10px] bg-purple-100 dark:bg-purple-950 text-purple-600 font-bold">5</span>
+                </button>
+                <button onclick="switchChatbotSubTab('channels')" id="cbTabBtn-channels" class="cb-subtab-btn px-3 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white flex items-center gap-1.5 transition">
+                  <i data-lucide="network" class="w-3.5 h-3.5"></i>
+                  <span>Channels</span>
+                </button>
+                <button onclick="switchChatbotSubTab('settings')" id="cbTabBtn-settings" class="cb-subtab-btn px-3 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white flex items-center gap-1.5 transition">
+                  <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
+                  <span>Guardrails & Cài Đặt</span>
+                </button>
+                <button onclick="switchChatbotSubTab('json')" id="cbTabBtn-json" class="cb-subtab-btn px-3 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white flex items-center gap-1.5 transition">
+                  <i data-lucide="code" class="w-3.5 h-3.5"></i>
+                  <span>JSON</span>
+                </button>
+              </div>
+
+              <!-- Time filter & Agent dropdown -->
+              <div class="flex items-center gap-2 text-xs">
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white dark:bg-[#202232] border border-bordercol dark:border-[#2f3248] text-zinc-700 dark:text-zinc-300 font-medium">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-zinc-400"></i>
+                  Last 7 days · 20/10/2025 - 27/10/2025
+                </span>
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white dark:bg-[#202232] border border-bordercol dark:border-[#2f3248] text-zinc-700 dark:text-zinc-300 font-medium">
+                  <i data-lucide="bot" class="w-3.5 h-3.5 text-purple-500"></i>
+                  Javis Vũ
+                </span>
+              </div>
+            </div>
+
+            <!-- TAB 1: STATS & SLEEP COCKPIT (CHÍNH XÁC THEO ẢNH CHỤP) -->
+            <div id="cbSubView-stats" class="p-6 space-y-6">
+              
+              <!-- Hero Banner Card (Tím Violet sang trọng đúng hình) -->
+              <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#f5f0ff] via-[#faf5ff] to-[#f3e8ff] dark:from-[#211a36] dark:via-[#1e1830] dark:to-[#171324] border border-purple-200/80 dark:border-purple-800/40 p-6 shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-purple-200/60 dark:border-purple-800/40 pb-5">
+                  <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                      <span class="text-base md:text-lg font-bold text-purple-950 dark:text-purple-100">
+                        # The AI answered 2.569 messages for you
+                      </span>
+                      <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400">
+                        +42% vs the period before
+                      </span>
+                    </div>
+                    <p class="text-xs text-purple-800/70 dark:text-purple-300/70">
+                      Hiệu suất hoạt động tự động của Javis OS trên toàn bộ các kênh kết nối.
+                    </p>
+                  </div>
+                  <button onclick="switchChatbotSubTab('settings')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-purple-900 text-white text-xs font-semibold hover:bg-purple-950 transition shadow-sm w-fit">
+                    <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
+                    + Add AI instructions
+                  </button>
+                </div>
+
+                <!-- 3 Hero Metric Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-5">
+                  <div class="bg-white/80 dark:bg-[#1a162b]/80 backdrop-blur-sm border border-purple-200/60 dark:border-purple-800/40 rounded-xl p-4">
+                    <div class="text-3xl font-extrabold text-purple-950 dark:text-purple-100">79%</div>
+                    <div class="text-xs text-zinc-600 dark:text-purple-200/80 mt-1">of all answers came from the AI</div>
+                    <div class="mt-2 text-[10px] text-purple-600 dark:text-purple-400 font-medium">Tỷ lệ tự động hóa toàn diện</div>
+                  </div>
+
+                  <div class="bg-white/80 dark:bg-[#1a162b]/80 backdrop-blur-sm border border-purple-200/60 dark:border-purple-800/40 rounded-xl p-4">
+                    <div class="text-3xl font-extrabold text-purple-950 dark:text-purple-100">42.8 h</div>
+                    <div class="text-xs text-zinc-600 dark:text-purple-200/80 mt-1">freed up for you, estimated</div>
+                    <div class="mt-2 text-[10px] text-purple-600 dark:text-purple-400 font-medium">Thời gian chủ doanh nghiệp được giải phóng</div>
+                  </div>
+
+                  <div class="bg-white/80 dark:bg-[#1a162b]/80 backdrop-blur-sm border border-purple-200/60 dark:border-purple-800/40 rounded-xl p-4">
+                    <div class="text-3xl font-extrabold text-purple-950 dark:text-purple-100">567</div>
+                    <div class="text-xs text-zinc-600 dark:text-purple-200/80 mt-1">answers while you slept (11 pm to 7 am)</div>
+                    <div class="mt-2 text-[10px] text-amber-600 dark:text-amber-400 font-medium">🌙 Không bỏ lỡ bất kỳ khách hàng đêm nào</div>
+                  </div>
                 </div>
               </div>
 
-              <div class="p-3 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 rounded-lg text-xs text-blue-700 dark:text-blue-300">
-                💡 Chatbot tự động kết nối với toàn bộ dữ liệu <b>07 - Wiki</b> trong Second Brain để trả lời chuẩn xác.
+              <!-- Middle Stats Row: Customers served, Speed Tooltip, Hand replies, Waiting -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Customers served -->
+                <div class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4">
+                  <div class="text-xs text-zinc-500 flex items-center justify-between">
+                    <span>Customers served</span>
+                    <span class="text-[11px] font-semibold text-emerald-600">+20 new</span>
+                  </div>
+                  <div class="text-2xl font-bold text-zinc-900 dark:text-white mt-1">343</div>
+                  <div class="text-[10px] text-zinc-400 mt-1">Đã phục vụ trên mọi kênh</div>
+                </div>
+
+                <!-- First Response Speed with Callout Badge (Đúng ảnh) -->
+                <div class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4 relative">
+                  <div class="text-xs text-zinc-500">Tốc độ phản hồi đầu tiên</div>
+                  <div class="flex items-center gap-2 mt-1">
+                    <span class="text-2xl font-bold text-zinc-900 dark:text-white">32 s</span>
+                    <span class="text-xs text-zinc-400">vs 4 m (thủ công)</span>
+                  </div>
+                  <!-- Tooltip Callout -->
+                  <div class="mt-2 px-2.5 py-1 rounded bg-zinc-900 dark:bg-black text-white text-[10px] font-medium flex items-center justify-between">
+                    <span>Trả lời đầu tiên sau vài giây:</span>
+                    <span class="font-bold text-purple-300">AI: 32s · By hand: 4m</span>
+                  </div>
+                </div>
+
+                <!-- Hand replies -->
+                <div class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4">
+                  <div class="text-xs text-zinc-500 flex items-center justify-between">
+                    <span>Hand replies</span>
+                    <span class="text-[11px] font-semibold text-zinc-400">-12% vs trước</span>
+                  </div>
+                  <div class="text-2xl font-bold text-zinc-900 dark:text-white mt-1">683</div>
+                  <div class="text-[10px] text-zinc-400 mt-1">Tin nhắn người thật can thiệp</div>
+                </div>
+
+                <!-- Waiting for you -->
+                <div class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4">
+                  <div class="text-xs text-zinc-500">Waiting for you</div>
+                  <div class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">0</div>
+                  <div class="text-[10px] text-zinc-400 mt-1">Trạng thái Zero Inbox hoàn hảo</div>
+                </div>
+              </div>
+
+              <!-- When customers write: Hourly Bar Chart with Night Highlight (Đúng ảnh) -->
+              <div class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-5 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <h3 class="font-bold text-sm text-zinc-900 dark:text-white flex items-center gap-2">
+                      When customers write
+                      <span class="text-xs font-normal text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/60 px-2 py-0.5 rounded-full font-semibold">Peaked 15:00 to 18:00</span>
+                    </h3>
+                    <p class="text-xs text-zinc-500 mt-0.5">Phân bổ lượng tin nhắn khách hàng gửi tới theo từng khung giờ trong ngày.</p>
+                  </div>
+
+                  <!-- Night badge callout -->
+                  <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 text-purple-300 text-xs font-semibold shadow">
+                    <i data-lucide="moon" class="w-3.5 h-3.5 text-amber-400"></i>
+                    <span>Trả lời cả ban đêm (Over rest hours, the AI still replied)</span>
+                  </div>
+                </div>
+
+                <!-- Dynamic Bar Chart Container -->
+                <div class="pt-6 pb-2">
+                  <div class="relative h-44 flex items-end gap-1.5 sm:gap-2 px-2 border-b border-bordercol dark:border-[#2a2c3f]" id="cbHourlyBarsContainer">
+                    <!-- Bars rendered by JS -->
+                  </div>
+                  <!-- X-Axis Labels -->
+                  <div class="flex justify-between text-[11px] font-mono text-zinc-400 pt-2 px-2">
+                    <span>0h (Đêm)</span>
+                    <span>6h (Sáng)</span>
+                    <span>12h (Trưa)</span>
+                    <span class="text-purple-600 dark:text-purple-400 font-bold">15h - 18h (Cao điểm)</span>
+                    <span>24h (Khuya)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Workload: AI & Hand replies per account (Đúng ảnh) -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Left: Comparison Bar -->
+                <div class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-5 space-y-3">
+                  <h4 class="font-bold text-xs uppercase tracking-wider text-zinc-700 dark:text-zinc-300">AI and hand replies per account</h4>
+                  
+                  <div class="space-y-2 pt-2">
+                    <div class="flex justify-between text-xs font-semibold">
+                      <span class="flex items-center gap-1.5 text-zinc-900 dark:text-white">
+                        <span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>
+                        Javis Vũ
+                      </span>
+                      <span class="text-purple-600 dark:text-purple-400 font-bold">79% AI · 21% By hand</span>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="w-full h-3 rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden flex">
+                      <div class="h-full bg-purple-600" style="width: 79%;"></div>
+                      <div class="h-full bg-zinc-400 dark:bg-zinc-600" style="width: 21%;"></div>
+                    </div>
+
+                    <div class="flex justify-between text-[11px] text-zinc-500 font-mono pt-1">
+                      <span>AI: 2.569 answered messages</span>
+                      <span>By hand: 683 messages</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right: AI answers by bot -->
+                <div class="bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-5 space-y-3">
+                  <h4 class="font-bold text-xs uppercase tracking-wider text-zinc-700 dark:text-zinc-300">AI answers by bot</h4>
+                  
+                  <div class="space-y-2 pt-2">
+                    <div class="flex justify-between text-xs font-semibold">
+                      <span class="text-zinc-900 dark:text-white">Javis Vũ (Master Bot)</span>
+                      <span class="text-purple-600 font-mono font-bold">2.569</span>
+                    </div>
+                    <div class="w-full h-3 rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden">
+                      <div class="h-full bg-purple-600 rounded-full" style="width: 92%;"></div>
+                    </div>
+                    <p class="text-[11px] text-zinc-400 pt-1">Đảm nhiệm 79% tổng lưu lượng tin nhắn trên 9 nền tảng.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Footer disclaimer note (Đúng ảnh) -->
+              <div class="text-center text-[11px] text-zinc-400 italic pt-2">
+                From the total number of messages, messages replied by hand (mute or phone), filter applied. Total time freed is estimated on 1 minute per AI answer.
               </div>
             </div>
+
+            <!-- TAB 2: CONVERSATIONS (HỘP THƯ HỢP NHẤT ĐA KÊNH & TIẾP QUẢN 1-CLICK) -->
+            <div id="cbSubView-conversations" class="p-6 space-y-4 hidden">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-bordercol dark:border-[#2a2c3f] pb-4">
+                <div>
+                  <h3 class="font-bold text-base text-zinc-900 dark:text-white flex items-center gap-2">
+                    <i data-lucide="inbox" class="w-5 h-5 text-orange-600"></i>
+                    Hộp Thư Hợp Nhất (Omnichannel Unified Inbox)
+                  </h3>
+                  <p class="text-xs text-zinc-500">Mọi cuộc trò chuyện từ Zalo, Messenger, WhatsApp, Telegram... đổ về đây và AI xử lý 24/7.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs text-zinc-500">Lọc theo:</span>
+                  <select id="convChannelFilter" onchange="filterConversationsByChannel(this.value)" class="bg-[#faf8f5] dark:bg-[#202232] border border-bordercol dark:border-[#2f3248] rounded-lg px-2.5 py-1 text-xs text-zinc-800 dark:text-zinc-200 outline-none">
+                    <option value="all">Tất cả kênh (9 kênh)</option>
+                    <option value="Zalo OA">Zalo OA</option>
+                    <option value="Messenger">Messenger</option>
+                    <option value="Telegram">Telegram</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Instagram">Instagram</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="cbConversationsList" class="space-y-3">
+                <!-- Rendered dynamically by JS -->
+              </div>
+            </div>
+
+            <!-- TAB 3: CHANNELS (TRUNG TÂM KẾT NỐI 9 NỀN TẢNG) -->
+            <div id="cbSubView-channels" class="p-6 space-y-6 hidden">
+              <div class="border-b border-bordercol dark:border-[#2a2c3f] pb-4">
+                <h3 class="font-bold text-base text-zinc-900 dark:text-white flex items-center gap-2">
+                  <i data-lucide="network" class="w-5 h-5 text-blue-600"></i>
+                  Cấu Hình Kết Nối Đa Kênh (9 Nền Tảng)
+                </h3>
+                <p class="text-xs text-zinc-500">Bật/tắt tự động phản hồi AI hoặc quét mã QR / cài Webhook cho từng kênh.</p>
+              </div>
+
+              <div id="cbChannelsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Rendered dynamically by JS -->
+              </div>
+            </div>
+
+            <!-- TAB 4: SETTINGS & GUARDRAILS (BẠN VẪN NẮM QUYỀN) -->
+            <div id="cbSubView-settings" class="p-6 space-y-6 hidden">
+              <div class="border-b border-bordercol dark:border-[#2a2c3f] pb-4">
+                <h3 class="font-bold text-base text-zinc-900 dark:text-white flex items-center gap-2">
+                  <i data-lucide="shield-check" class="w-5 h-5 text-emerald-600"></i>
+                  Thông Số Trợ Lý & Quy Tắc Giới Hạn (Guardrails)
+                </h3>
+                <p class="text-xs text-zinc-500">Thiết lập nhân cách AI, quy tắc khi nào bot được nói và khi nào bot phải im lặng.</p>
+              </div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Left: Cấu hình cơ bản -->
+                <div class="bg-[#faf8f5] dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 space-y-4">
+                  <h4 class="font-bold text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200">Thông Số Trợ Lý</h4>
+                  <div>
+                    <label class="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Tên Trợ Lý</label>
+                    <input type="text" id="cbBotName" class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg px-3 py-1.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-orange-500">
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Lời Chào Mở Đầu (Greeting)</label>
+                    <textarea id="cbWelcomeMsg" rows="3" class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-orange-500"></textarea>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">System Instructions (Nhân Cách & Phạm Vi Trả Lời)</label>
+                    <textarea id="cbSystemPrompt" rows="4" class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-lg p-2.5 text-xs text-zinc-800 dark:text-zinc-200 outline-none focus:border-orange-500"></textarea>
+                  </div>
+                  <button onclick="saveChatbotSettings()" class="w-full py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg text-xs font-bold transition shadow-sm">
+                    Lưu Cấu Hình
+                  </button>
+                </div>
+
+                <!-- Right: Guardrails "Bạn vẫn nắm quyền" + Mã nhúng -->
+                <div class="space-y-6">
+                  <!-- Guardrails Box -->
+                  <div class="bg-[#faf8f5] dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 space-y-3">
+                    <h4 class="font-bold text-xs uppercase tracking-wider text-amber-700 dark:text-amber-400 flex items-center gap-1.5">
+                      <i data-lucide="shield-alert" class="w-4 h-4"></i>
+                      Quy Tắc "Bạn Vẫn Nắm Quyền" (Bot Silence Guardrails)
+                    </h4>
+                    <p class="text-xs text-zinc-500">Tự động chuyển cuộc trò chuyện sang chế độ im lặng và báo về điện thoại bạn khi:</p>
+                    
+                    <div class="space-y-2 text-xs text-zinc-700 dark:text-zinc-300">
+                      <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" checked class="accent-orange-600 rounded">
+                        <span>Khách hàng yêu cầu đàm phán hợp đồng hoặc chiết khấu riêng</span>
+                      </label>
+                      <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" checked class="accent-orange-600 rounded">
+                        <span>Khách có dấu hiệu khiếu nại chất lượng hoặc yêu cầu đền bù</span>
+                      </label>
+                      <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" checked class="accent-orange-600 rounded">
+                        <span>Khách nhắn từ khóa nhạy cảm / yêu cầu gặp trực tiếp chủ doanh nghiệp</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Mã nhúng script -->
+                  <div class="bg-[#faf8f5] dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-5 space-y-3">
+                    <h4 class="font-bold text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200">Mã Nhúng Landing Page (HTML Snippet)</h4>
+                    <div class="relative">
+                      <pre class="bg-zinc-900 text-zinc-200 p-3 rounded-xl text-[11px] font-mono overflow-x-auto leading-relaxed">&lt;!-- Javis OS Omnichannel Widget --&gt;
+&lt;script src="https://cdn.javis.os/widget.js" data-bot-id="thinh-vuong-so-3120" data-theme="#ea580c" async&gt;&lt;/script&gt;</pre>
+                      <button onclick="copyEmbedCode()" class="absolute top-2 right-2 px-2.5 py-1 bg-zinc-800 hover:bg-zinc-700 text-white rounded text-[11px] font-semibold">Sao chép</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 5: JSON / API -->
+            <div id="cbSubView-json" class="p-6 space-y-4 hidden">
+              <div class="flex items-center justify-between border-b border-bordercol dark:border-[#2a2c3f] pb-3">
+                <h3 class="font-bold text-xs uppercase tracking-wider text-zinc-700 dark:text-zinc-300 font-mono">GET /api/studio/chatbot-stats (Live Data)</h3>
+                <button onclick="copyChatbotJson()" class="px-2.5 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded text-xs font-semibold">Copy JSON</button>
+              </div>
+              <pre id="cbJsonPreview" class="bg-zinc-900 text-emerald-400 p-4 rounded-xl text-xs font-mono overflow-x-auto max-h-96 leading-relaxed"></pre>
+            </div>
           </div>
+
+          <!-- ================= 3 CỘT GIÁ TRỊ THEN CHỐT Ở DƯỚI (CHUẨN 100% ẢNH 1-2-3) ================= -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+            
+            <!-- Card 1 -->
+            <div class="bg-white dark:bg-[#161722] border border-bordercol dark:border-[#2a2c3f] rounded-2xl p-6 shadow-sm hover:shadow-md transition space-y-3">
+              <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 font-extrabold text-sm flex items-center justify-center border border-orange-200 dark:border-orange-900/50">
+                1
+              </div>
+              <h3 class="text-base font-bold text-zinc-900 dark:text-white">Một hộp thư, mọi kênh</h3>
+              <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                Tin nhắn từ từng tài khoản đã kết nối đổ về một chỗ, kèm câu AI trả lời xong với cái gì.
+              </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white dark:bg-[#161722] border border-bordercol dark:border-[#2a2c3f] rounded-2xl p-6 shadow-sm hover:shadow-md transition space-y-3">
+              <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 font-extrabold text-sm flex items-center justify-center border border-orange-200 dark:border-orange-900/50">
+                2
+              </div>
+              <h3 class="text-base font-bold text-zinc-900 dark:text-white">Bạn vẫn nắm quyền</h3>
+              <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                Đặt giới hạn bot được làm gì, xem những cuộc bot chọn im lặng, và tiếp quản cuộc trò chuyện bất cứ lúc nào.
+              </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white dark:bg-[#161722] border border-bordercol dark:border-[#2a2c3f] rounded-2xl p-6 shadow-sm hover:shadow-md transition space-y-3">
+              <div class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 font-extrabold text-sm flex items-center justify-center border border-orange-200 dark:border-orange-900/50">
+                3
+              </div>
+              <h3 class="text-base font-bold text-zinc-900 dark:text-white">Con số cho thấy giá trị</h3>
+              <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                Xem AI đã trả lời bao nhiêu tin, trả lời nhanh cỡ nào và bao nhiêu tin đến ngoài giờ làm việc.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom disclaimer note -->
+          <div class="text-center text-xs text-zinc-400 pb-6">
+            Ảnh chụp từ tất cả là Javis OS, hiển thị bằng tiếng Việt & tiếng Anh. Tất cả dữ liệu cá nhân đã được bảo mật.
+          </div>
+
         </div>
       </section>
+
 
       <!-- ======================================================================= -->
       <!-- VIEW 8: CAPABILITIES -> SKILLS & JAVIS STORE (CHUẨN 100% ẢNH 1)          -->
@@ -2016,6 +2423,25 @@
 
   <!-- JAVASCRIPT TOÀN BỘ LOGIC HỆ THỐNG JAVIS OS -->
   <script>
+    // NON-BLOCKING TOAST NOTIFICATION (Thay thế hoàn toàn window.alert native gây treo trình duyệt)
+    function showToast(msg) {
+      let toast = document.getElementById('globalToastNotification');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'globalToastNotification';
+        toast.className = 'fixed bottom-8 left-1/2 transform -translate-x-1/2 z-[9999] px-4 py-2.5 rounded-xl bg-zinc-900/95 dark:bg-white/95 text-white dark:text-zinc-900 text-xs shadow-2xl font-semibold border border-zinc-700/80 transition-all duration-300 opacity-0 pointer-events-none flex items-center gap-2';
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = `<span class="text-orange-500">⚡</span><span>${msg}</span>`;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+    window.alert = showToast;
+
     // State quản trị
     let ws = null;
     let currentSessionId = 'session_' + Math.random().toString(36).substring(2, 9);
@@ -2756,17 +3182,217 @@
       sendQuickPrompt(`Xin chào trợ lý ${name}! Bạn có thể giúp tôi giải quyết các công việc đang phụ trách hôm nay không?`);
     }
 
-    // CAPABILITIES: CHATBOT CONFIG
+        // CAPABILITIES: OMNICHANNEL CHATBOT & SLEEP COCKPIT (CHUẨN ẢNH)
+    let currentChatbotStatsData = null;
+    let allOmniConversations = [];
+    let allOmniChannels = [];
+
+    function switchChatbotSubTab(tab) {
+      const tabs = ['stats', 'conversations', 'channels', 'settings', 'json'];
+      tabs.forEach(t => {
+        const viewEl = document.getElementById('cbSubView-' + t);
+        const btnEl = document.getElementById('cbTabBtn-' + t);
+        if (viewEl) {
+          if (t === tab) viewEl.classList.remove('hidden');
+          else viewEl.classList.add('hidden');
+        }
+        if (btnEl) {
+          if (t === tab) {
+            btnEl.className = "cb-subtab-btn px-3 py-1.5 rounded-lg bg-white dark:bg-[#202232] text-orange-600 dark:text-orange-400 font-bold border border-bordercol dark:border-[#2f3248] shadow-sm flex items-center gap-1.5";
+          } else {
+            btnEl.className = "cb-subtab-btn px-3 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white flex items-center gap-1.5 transition";
+          }
+        }
+      });
+      lucide.createIcons();
+    }
+
     async function loadChatbotConfig() {
       try {
         const res = await fetch('/api/studio/chatbot-config');
         const data = await res.json();
         const cfg = data.config;
-        document.getElementById('cbBotName').value = cfg.bot_name;
-        document.getElementById('cbWelcomeMsg').value = cfg.welcome_message;
-        document.getElementById('cbSystemPrompt').value = cfg.system_prompt;
+        if (document.getElementById('cbBotName')) document.getElementById('cbBotName').value = cfg.bot_name;
+        if (document.getElementById('cbWelcomeMsg')) document.getElementById('cbWelcomeMsg').value = cfg.welcome_message;
+        if (document.getElementById('cbSystemPrompt')) document.getElementById('cbSystemPrompt').value = cfg.system_prompt;
+
+        await loadChatbotStats();
+        await loadChatbotConversations();
+        await loadChatbotChannels();
       } catch (e) {
         console.error("Error loading chatbot config", e);
+      }
+    }
+
+    async function loadChatbotStats() {
+      try {
+        const res = await fetch('/api/studio/chatbot-stats');
+        const data = await res.json();
+        currentChatbotStatsData = data;
+        
+        const jsonEl = document.getElementById('cbJsonPreview');
+        if (jsonEl) jsonEl.textContent = JSON.stringify(data, null, 2);
+
+        const barContainer = document.getElementById('cbHourlyBarsContainer');
+        if (barContainer && data.hourly_distribution) {
+          barContainer.innerHTML = '';
+          const maxVal = Math.max(...data.hourly_distribution.map(d => d.count));
+          data.hourly_distribution.forEach(d => {
+            const heightPercent = Math.max(12, Math.round((d.count / maxVal) * 100));
+            const col = document.createElement('div');
+            col.className = 'flex-1 flex flex-col items-center h-full justify-end group relative';
+            
+            let barBg = 'bg-purple-300 dark:bg-purple-900/60 hover:bg-purple-400';
+            if (d.is_peak) barBg = 'bg-purple-700 dark:bg-purple-500 hover:bg-purple-600';
+            else if (d.is_night) barBg = 'bg-purple-500 dark:bg-purple-600 hover:bg-purple-400';
+
+            col.innerHTML = `
+              <div class="w-full ${barBg} rounded-t transition-all duration-300 cursor-pointer" style="height: ${heightPercent}%;"></div>
+              <div class="absolute -top-7 opacity-0 group-hover:opacity-100 transition bg-zinc-900 text-white text-[10px] px-1.5 py-0.5 rounded whitespace-nowrap pointer-events-none z-10 font-mono">
+                ${d.hour}: ${d.count} tin
+              </div>
+            `;
+            barContainer.appendChild(col);
+          });
+        }
+      } catch (e) {
+        console.error("Error loading chatbot stats", e);
+      }
+    }
+
+    async function loadChatbotConversations() {
+      try {
+        const res = await fetch('/api/studio/chatbot-conversations');
+        const data = await res.json();
+        allOmniConversations = data.conversations || [];
+        renderConversations(allOmniConversations);
+      } catch (e) {
+        console.error("Error loading chatbot conversations", e);
+      }
+    }
+
+    function renderConversations(list) {
+      const container = document.getElementById('cbConversationsList');
+      if (!container) return;
+      container.innerHTML = '';
+      
+      list.forEach(c => {
+        const card = document.createElement('div');
+        card.className = "bg-white dark:bg-[#1b1d2a] border border-bordercol dark:border-[#2a2c3f] rounded-xl p-4 space-y-3 hover:border-orange-500/50 transition shadow-sm";
+        
+        let statusBadge = '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300">AI đã trả lời chuẩn xác</span>';
+        if (c.status === 'silence_hold') {
+          statusBadge = '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 animate-pulse">Bot giữ im lặng (Cần duyệt)</span>';
+        } else if (c.status === 'human_takeover') {
+          statusBadge = '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">Bạn đã tiếp quản bằng tay</span>';
+        }
+
+        card.innerHTML = `
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-bordercol/60 dark:border-[#2a2c3f] pb-3">
+            <div class="flex items-center gap-3">
+              <img src="${c.avatar}" class="w-9 h-9 rounded-full object-cover border border-zinc-200 dark:border-zinc-700">
+              <div>
+                <div class="font-bold text-xs text-zinc-900 dark:text-white flex items-center gap-2">
+                  ${c.customer_name}
+                  <span class="px-2 py-0.2 rounded-full text-[10px] font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">${c.channel}</span>
+                </div>
+                <div class="text-[11px] text-zinc-400 mt-0.5 font-mono">${c.time}</div>
+              </div>
+            </div>
+            <div>${statusBadge}</div>
+          </div>
+
+          <div class="space-y-2 text-xs">
+            <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-[#151621] border border-zinc-200/60 dark:border-zinc-800">
+              <span class="font-bold text-zinc-500 text-[10px] uppercase block mb-0.5">Khách hỏi:</span>
+              <p class="text-zinc-800 dark:text-zinc-200 font-medium">"${c.last_message}"</p>
+            </div>
+
+            <div class="p-2.5 rounded-lg ${c.status === 'silence_hold' ? 'bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50' : 'bg-purple-50/70 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-900/50'}">
+              <span class="font-bold ${c.status === 'silence_hold' ? 'text-amber-600' : 'text-purple-600'} text-[10px] uppercase block mb-0.5">Phản hồi của AI:</span>
+              <p class="text-zinc-800 dark:text-zinc-200">${c.ai_reply}</p>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-end gap-2 pt-1">
+            ${c.status !== 'human_takeover' ? `
+              <button onclick="handleTakeover('${c.id}', 'takeover')" class="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition flex items-center gap-1 shadow-sm">
+                <i data-lucide="zap" class="w-3.5 h-3.5"></i> Tiếp quản 1-click
+              </button>
+            ` : `
+              <button onclick="handleTakeover('${c.id}', 'ai_resume')" class="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition flex items-center gap-1">
+                <i data-lucide="bot" class="w-3.5 h-3.5"></i> Trả lại cho AI
+              </button>
+            `}
+            <button onclick="handleTakeover('${c.id}', 'toggle_silence')" class="px-2.5 py-1.5 rounded-lg border border-bordercol dark:border-[#2f3248] text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-medium transition">
+              Bot im lặng
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    function filterConversationsByChannel(ch) {
+      if (ch === 'all') renderConversations(allOmniConversations);
+      else renderConversations(allOmniConversations.filter(c => c.channel === ch));
+    }
+
+    async function handleTakeover(convId, action) {
+      try {
+        const res = await fetch('/api/studio/chatbot-takeover', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({conversation_id: convId, action: action})
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          await loadChatbotConversations();
+        }
+      } catch (e) {
+        console.error("Takeover error", e);
+      }
+    }
+
+    async function loadChatbotChannels() {
+      try {
+        const res = await fetch('/api/studio/chatbot-channels');
+        const data = await res.json();
+        allOmniChannels = data.channels || [];
+        const grid = document.getElementById('cbChannelsGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        allOmniChannels.forEach(ch => {
+          const card = document.createElement('div');
+          card.className = "bg-[#faf8f5] dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl p-4 flex items-center justify-between shadow-sm";
+          card.innerHTML = `
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-white dark:bg-[#222436] border border-bordercol dark:border-[#2f3248] flex items-center justify-center font-bold text-zinc-700 dark:text-zinc-300">
+                <span class="w-2.5 h-2.5 rounded-full bg-${ch.badge_color}-500"></span>
+              </div>
+              <div>
+                <div class="font-bold text-xs text-zinc-900 dark:text-white">${ch.name}</div>
+                <div class="text-[11px] text-zinc-400 font-mono">${ch.messages} tin đã đồng bộ</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400">Đã kết nối</span>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+        lucide.createIcons();
+      } catch (e) {
+        console.error("Error loading channels", e);
+      }
+    }
+
+    function copyChatbotJson() {
+      if (currentChatbotStatsData) {
+        navigator.clipboard.writeText(JSON.stringify(currentChatbotStatsData, null, 2));
+        alert("Đã sao chép Live JSON vào clipboard!");
       }
     }
 
