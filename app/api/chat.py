@@ -24,6 +24,7 @@ def get_messages(session_id: str):
     return {"messages": messages}
 
 @router.websocket("/ws")
+@router.websocket("/api/chat/ws")
 async def websocket_chat_endpoint(websocket: WebSocket):
     await websocket.accept()
     try:
