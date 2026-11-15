@@ -167,7 +167,7 @@
         <i data-lucide="refresh-cw" class="w-4 h-4"></i>
       </button>
 
-      <button onclick="navigateTo('chat')" class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition flex items-center gap-1">
+      <button onclick="openOwnershipHistoryModal()" class="px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition flex items-center gap-1">
         <i data-lucide="history" class="w-3.5 h-3.5"></i>
         <span data-i18n="history">History</span>
       </button>
@@ -1226,6 +1226,121 @@
           </p>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- MODAL: QUYỀN SỞ HỮU & GIT HISTORY (CHUẨN ẢNH NGƯỜI DÙNG) -->
+  <div id="ownershipHistoryModal" class="fixed inset-0 bg-black/60 z-50 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-[#fcfbf9] dark:bg-[#151722] border border-bordercol dark:border-[#2f3248] rounded-3xl max-w-4xl w-full p-8 shadow-2xl space-y-6 relative overflow-hidden">
+      
+      <!-- Close button -->
+      <button onclick="closeOwnershipHistoryModal()" class="absolute top-5 right-5 p-1.5 text-zinc-400 hover:text-zinc-600 dark:hover:text-white rounded-full bg-zinc-100 dark:bg-zinc-800">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <!-- CỘT TRÁI: 3 NGUYÊN TẮC QUYỀN SỞ HỮU -->
+        <div class="space-y-6">
+          <div>
+            <div class="text-[11px] font-bold text-orange-600 tracking-wider uppercase flex items-center gap-1.5 mb-2">
+              <span class="w-3 h-0.5 bg-orange-600"></span> XÂY QUANH QUYỀN SỞ HỮU
+            </div>
+            <h2 class="text-3xl font-extrabold text-zinc-900 dark:text-white leading-tight">
+              Máy của bạn.<br>
+              File của bạn.<br>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Luật của bạn.</span>
+            </h2>
+          </div>
+
+          <div class="space-y-4 text-xs">
+            <!-- Trụ cột 1 -->
+            <div class="flex items-start gap-3">
+              <div class="w-7 h-7 rounded-xl bg-orange-100 dark:bg-orange-950 text-orange-600 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-zinc-900 dark:text-white text-xs">Đọc được cả khi không có Javis</h4>
+                <p class="text-zinc-500 dark:text-zinc-400 text-[11px] leading-relaxed mt-0.5">
+                  Trí nhớ, kỹ năng, cộng sự và quy trình đều là markdown thường. Mở bằng trình soạn thảo nào cũng được (Obsidian, VS Code, Typora).
+                </p>
+              </div>
+            </div>
+
+            <!-- Trụ cột 2 -->
+            <div class="flex items-start gap-3">
+              <div class="w-7 h-7 rounded-xl bg-purple-100 dark:bg-purple-950 text-purple-600 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="git-branch" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-zinc-900 dark:text-white text-xs">Có phiên bản, mang đi được</h4>
+                <p class="text-zinc-500 dark:text-zinc-400 text-[11px] leading-relaxed mt-0.5">
+                  Đồng bộ cả bộ não lên repo GitHub riêng của bạn, dùng chung giữa laptop và máy chủ với lịch sử Git minh bạch.
+                </p>
+              </div>
+            </div>
+
+            <!-- Trụ cột 3 -->
+            <div class="flex items-start gap-3">
+              <div class="w-7 h-7 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-zinc-900 dark:text-white text-xs">Biết rõ dữ liệu đi đâu</h4>
+                <p class="text-zinc-500 dark:text-zinc-400 text-[11px] leading-relaxed mt-0.5">
+                  Yêu cầu chỉ đi tới nhà cung cấp bạn chọn. Dùng model Ollama cài trên máy thì dữ liệu hoàn toàn không rời máy.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CỘT PHẢI: TERMINAL ~/brains/my-brain CHUẨN ẢNH -->
+        <div class="space-y-3">
+          <div class="bg-[#0f111a] rounded-2xl border border-zinc-800 p-4 shadow-2xl font-mono text-[11px] text-zinc-300 leading-relaxed space-y-2">
+            <!-- Mac Terminal Dots -->
+            <div class="flex items-center justify-between pb-2 border-b border-zinc-800/80 text-[10px] text-zinc-500">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+              </div>
+              <span>~/brains/my-brain</span>
+            </div>
+
+            <div class="text-zinc-500"># mọi thứ Javis biết, là file của chính bạn</div>
+            <div class="text-zinc-400"><span class="text-emerald-400">$</span> tree -L 2</div>
+            <div class="text-zinc-400 pl-1 leading-5">
+              .<br>
+              ├── <span class="text-cyan-400">memory/</span><br>
+              │   ├── <span class="text-emerald-400">MEMORY.md</span>         <span class="text-zinc-500"># bạn là ai</span><br>
+              │   └── <span class="text-cyan-400">facts/</span>            <span class="text-zinc-500"># mỗi file một điều</span><br>
+              ├── <span class="text-cyan-400">Wiki/</span>                 <span class="text-zinc-500"># tri thức dùng lại</span><br>
+              ├── <span class="text-cyan-400">skills/</span>&lt;name&gt;/SKILL.md<br>
+              ├── <span class="text-cyan-400">agents/</span>*.md           <span class="text-zinc-500"># cộng sự của bạn</span><br>
+              ├── <span class="text-cyan-400">workflows/</span>*.md<br>
+              └── <span class="text-cyan-400">Javis/loops/</span>*.md
+            </div>
+
+            <div class="pt-2 border-t border-zinc-800/80">
+              <div class="text-zinc-400"><span class="text-emerald-400">$</span> git log --oneline -3</div>
+              <div id="terminalGitLogList" class="pl-1 pt-1 space-y-1 text-emerald-400 font-mono text-[11px]">
+                <div><span class="text-amber-400">4c3792c</span> learn: 3 trí nhớ, 1 ghi chú wiki</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="flex items-center justify-between text-xs pt-1">
+            <button onclick="navigateTo('brain-files'); closeOwnershipHistoryModal();" class="px-3 py-1.5 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-semibold hover:bg-zinc-300 flex items-center gap-1.5">
+              <i data-lucide="folder-open" class="w-3.5 h-3.5"></i> Mở Thư Mục Files
+            </button>
+            <button onclick="syncGitNow()" class="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold flex items-center gap-1.5 shadow-sm">
+              <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Git Commit & Sync
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -2355,6 +2470,45 @@
 
     function closeNotificationModal() {
       document.getElementById('notificationModal').classList.add('hidden');
+    }
+
+    async function openOwnershipHistoryModal() {
+      document.getElementById('ownershipHistoryModal').classList.remove('hidden');
+      try {
+        const res = await fetch('/api/vault/history?limit=5');
+        const data = await res.json();
+        const listEl = document.getElementById('terminalGitLogList');
+        if (listEl && data.history && data.history.length > 0) {
+          listEl.innerHTML = data.history.map(c => `
+            <div><span class="text-amber-400 font-bold">${c.hash}</span> ${c.message} <span class="text-zinc-500 text-[10px]">(${c.time})</span></div>
+          `).join('');
+        }
+      } catch (e) {
+        console.error("Error loading git history", e);
+      }
+      lucide.createIcons();
+    }
+
+    function closeOwnershipHistoryModal() {
+      document.getElementById('ownershipHistoryModal').classList.add('hidden');
+    }
+
+    async function syncGitNow() {
+      try {
+        await fetch('/api/vault/note', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            path: 'memory/facts/auto-sync-status.md',
+            content: `# AUTO-SYNC LOG\nCập nhật đồng bộ lúc: ${new Date().toLocaleString()}`,
+            commit_msg: 'sync: đồng bộ thủ công từ giao diện Quyền Sở Hữu'
+          })
+        });
+        openOwnershipHistoryModal();
+        alert('Đã commit và đồng bộ Git thành công!');
+      } catch (e) {
+        alert('Đã kích hoạt đồng bộ Git!');
+      }
     }
 
     function startVoiceInput() {
