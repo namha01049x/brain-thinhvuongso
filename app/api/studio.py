@@ -87,62 +87,219 @@ PARTNERS_LIST = [
     {
         "id": "may-may",
         "name": "May May",
+        "category": "system",
         "title": "Executive Operations & Workflow Lead",
+        "role": "Điều phối toàn bộ luồng tự động & standup hàng ngày",
         "avatar": "👩‍💼",
-        "status": "online",
+        "avatar_color": "#ea580c",
+        "icon_symbol": "⬢",
+        "status": "system",
+        "auto_mode": False,
+        "model": "Claude 3.5 Sonnet",
         "tasks_count": 10,
+        "budget": "Không giới hạn",
         "bio": "Quản lý luồng công việc tự động, theo dõi timeline điều hành và phân luồng task tới từng trợ lý chuyên môn.",
-        "capabilities": ["Workflow Orchestration", "Daily Standup", "Status Tracking"]
+        "assistant_documents": ["00 - System/Rules.md", "01 - Projects/Operations.md"],
+        "system_prompt": "You lead executive operations and orchestrate multi-agent workflows. Ensure strict timeline adherence and escalate blockers to the CEO.",
+        "skills": ["Workflow Orchestration", "Daily Standup", "Status Tracking"],
+        "sample_chat": [
+            {"role": "user", "text": "Báo cáo tiến độ vận hành sáng nay thế nào?"},
+            {"role": "agent", "text": "Chào Sếp! Toàn bộ 9 cộng sự đang trực chiến. Đã có 3 task hoàn thành tự động từ Javis Vu (CSKH) và 1 bản tin thị trường từ Duy (Market Research). Không có điểm nghẽn nào."}
+        ]
     },
     {
         "id": "javis-vu",
-        "name": "Javis Vu",
+        "name": "Javis Vu | Customer Care",
+        "category": "auto",
         "title": "Customer Care & Support Agent",
+        "role": "Chăm sóc khách hàng tự động 24/7 qua Zalo & Fanpage",
         "avatar": "👨‍💼",
-        "status": "online",
+        "avatar_color": "#f97316",
+        "icon_symbol": "●",
+        "status": "auto",
+        "auto_mode": True,
+        "model": "GPT-4o mini",
         "tasks_count": 9,
+        "budget": "$0.40 / ngày (~35k tokens)",
         "bio": "Chuyên xử lý chăm sóc khách hàng tự động qua Zalo và Fanpage, trả lời tin nhắn và tóm tắt biên bản đào tạo.",
-        "capabilities": ["Zalo Auto-reply", "Meeting Notes to Wiki", "Ticket Routing"]
+        "assistant_documents": ["07 - Wiki/Chính sách CSKH.md", "07 - Wiki/Kịch bản phản hồi.md"],
+        "system_prompt": "Bạn là Javis Vu, chuyên viên chăm sóc khách hàng 24/7. Bạn trả lời thân thiện, lịch sự, đúng chính sách và chuyển tiếp các ca khó cho nhân sự người thật.",
+        "skills": ["Zalo Auto-reply", "Meeting Notes to Wiki", "Ticket Routing"],
+        "sample_chat": [
+            {"role": "user", "text": "Hôm nay có bao nhiêu khách cần hỗ trợ kỹ thuật?"},
+            {"role": "agent", "text": "Dạ thưa Sếp, từ 00:00 đến nay có 18 lượt chat qua Zalo. Em đã tự động giải đáp 16 trường hợp theo Wiki CSKH, còn 2 ca hỏi về hợp đồng tùy biến em đã gắn tag [Cần Sếp Duyệt]."}
+        ]
+    },
+    {
+        "id": "ha-lam",
+        "name": "Ha Lam | Assistant",
+        "category": "auto",
+        "title": "Executive AI Assistant",
+        "role": "Trợ lý lịch trình, phân loại email và nhắc việc điều hành",
+        "avatar": "👩‍💻",
+        "avatar_color": "#10b981",
+        "icon_symbol": "●",
+        "status": "auto",
+        "auto_mode": True,
+        "model": "Gemini 1.5 Flash",
+        "tasks_count": 6,
+        "budget": "$0.30 / ngày (~30k tokens)",
+        "bio": "Giám sát lịch trình, tóm tắt các cuộc họp quan trọng, nhắc việc điều hành và lọc email ưu tiên.",
+        "assistant_documents": ["02 - Areas/Schedule.md", "00 - System/Briefs.md"],
+        "system_prompt": "Bạn là Hà Lam, trợ lý điều hành. Bạn quản lý thời gian, lọc thư rác, tóm tắt nội dung họp và nhắc việc quan trọng.",
+        "skills": ["Calendar Sync", "Email Summarizer", "Task Dispatcher"],
+        "sample_chat": [
+            {"role": "user", "text": "Lịch làm việc buổi chiều nay có gì đột xuất không?"},
+            {"role": "agent", "text": "Dạ thưa Sếp, chiều nay 14:30 có lịch review phễu với Khang và Bao. Em đã chuẩn bị sẵn tài liệu phễu Webcake tại thư mục 01 - Projects để Sếp tiện mở."}
+        ]
+    },
+    {
+        "id": "an-marketing",
+        "name": "An - Marketing Lead",
+        "category": "others",
+        "title": "Chief Marketing Strategist",
+        "role": "Owns the marketing strategy, leads the 5 AI teammates",
+        "avatar": "▲",
+        "avatar_color": "#8b5cf6",
+        "icon_symbol": "▲",
+        "status": "online",
+        "auto_mode": False,
+        "model": "GPT-4o mini",
+        "tasks_count": 8,
+        "budget": "$0.80 / ngày (~60k tokens)",
+        "bio": "Chỉ huy chiến lược Marketing tổng thể, điều phối 5 chuyên viên AI chuyên môn, kiểm soát toàn bộ kế hoạch từ phác thảo đến bàn giao.",
+        "assistant_documents": ["01 - Projects/Marketing Strategy 2026.md", "07 - Wiki/Brand Standards.md"],
+        "system_prompt": "You lead the AI marketing team and report to the owner. You own the plan from strategy to sign-off, pick the right coworker for each step and learn from reviews.",
+        "skills": ["30 kĩ năng xuất sắc", "Campaign Orchestrator", "Content Quality Gate", "Funnel Review"],
+        "sample_chat": [
+            {"role": "user", "text": "30 bước review chiến dịch marketing Q4"},
+            {"role": "agent", "text": "Đã nhận lệnh từ Sếp. Tôi đang kích hoạt quy trình **30 bước review chiến dịch Q4**:
+1. Thu thập dữ liệu ROI/ROAS từ Duy (Market Research) và Bao (Conversion).
+2. Đối chiếu mục tiêu doanh thu và ngân sách ads thực tế.
+3. Rà soát chất lượng nội dung và thông điệp qua Tough Reviser.
+4. Đề xuất 3 đòn bẩy tối ưu hóa chuyển đổi ngay trong tuần này."}
+        ]
     },
     {
         "id": "bao-conversion",
-        "name": "Bao - Conversion Specialist",
-        "title": "Funnel Optimization & Performance Ads",
-        "avatar": "📈",
+        "name": "Bao - Conversion & Analytics",
+        "category": "others",
+        "title": "CRO & Performance Specialist",
+        "role": "Builds landing page funnels, tracks ROAS & CPA anomalies",
+        "avatar": "■",
+        "avatar_color": "#3b82f6",
+        "icon_symbol": "■",
         "status": "online",
+        "auto_mode": False,
+        "model": "Claude 3.5 Sonnet",
         "tasks_count": 5,
-        "bio": "Giám sát hiệu quả chiến dịch Facebook Ads, tính toán CPA theo thời gian thực và đề xuất tối ưu tỷ lệ chuyển đổi.",
-        "capabilities": ["Meta Ads Graph API", "CPA Anomaly Alert", "A/B Test Advisory"]
+        "budget": "$0.60 / ngày (~40k tokens)",
+        "bio": "Giám sát hiệu quả chiến dịch Facebook/Google Ads, phát hiện điểm đốt tiền bất thường và tối ưu tỷ lệ chuyển đổi landing page.",
+        "assistant_documents": ["01 - Projects/Funnel Metrics.md", "07 - Wiki/Landing Page Checklist.md"],
+        "system_prompt": "You build high-converting landing pages, audit sales funnels, and detect CPA anomalies on Meta & Google Ads.",
+        "skills": ["Meta Ads Graph API", "CPA Anomaly Alert", "A/B Testing", "Webcake Exporter"],
+        "sample_chat": [
+            {"role": "user", "text": "Kiểm tra tỷ lệ chuyển đổi của landing page mới"},
+            {"role": "agent", "text": "Tỷ lệ chuyển đổi trang Webcake hiện tại đạt 3.82% (tăng 0.6% so với tuần trước). Điểm nghẽn lớn nhất nằm ở form đăng ký tầng 2 trên mobile, tôi khuyến nghị rút gọn từ 4 trường xuống còn 2 trường (Tên + Số Zalo)."}
+        ]
     },
     {
-        "id": "mai-brand",
-        "name": "Mai - Brand Content Specialist",
-        "title": "Brand Voice & Content Generation",
-        "avatar": "🎨",
-        "status": "idle",
-        "tasks_count": 4,
-        "bio": "Viết bài chuẩn nhận diện thương hiệu Thịnh Vượng Số, kịch bản video ngắn và nội dung truyền thông đa kênh.",
-        "capabilities": ["Brand Compliance", "Social Copywriting", "Script Generation"]
-    },
-    {
-        "id": "tough-reader",
-        "name": "Tough Reader",
-        "title": "Deep Research & Knowledge Ingestion",
-        "avatar": "📚",
+        "id": "duy-market",
+        "name": "Duy - Market Research",
+        "category": "others",
+        "title": "Market & Prospect Intelligence",
+        "role": "Researches prospects, competitors and market sentiment",
+        "avatar": "●",
+        "avatar_color": "#10b981",
+        "icon_symbol": "●",
         "status": "online",
+        "auto_mode": False,
+        "model": "GPT-4o mini",
+        "tasks_count": 4,
+        "budget": "$0.50 / ngày (~40k tokens)",
+        "bio": "Phân tích đối thủ cạnh tranh, đào sâu nỗi đau khách hàng tiềm năng và cập nhật xu hướng thị trường vào Second Brain.",
+        "assistant_documents": ["03 - Resources/Competitor Intelligence.md"],
+        "system_prompt": "You conduct deep market intelligence, track competitor pricing and campaigns, and summarize prospect ICP pains.",
+        "skills": ["Market Mining", "Sentiment Analysis", "Competitor Matrix"],
+        "sample_chat": [
+            {"role": "user", "text": "Đối thủ A vừa ra mắt gói dịch vụ mới, có gì đáng chú ý?"},
+            {"role": "agent", "text": "Tôi đã phân tích gói mới của Đối thủ A: Họ định giá 4.900.000đ nhưng thiếu tính năng tích hợp Second Brain và tự động hóa Zalo. Đây là khoảng trống hoàn hảo để ta đánh bật họ bằng thông điệp [Thuê cộng sự tự hành thay vì chỉ nhận tài liệu]."}
+        ]
+    },
+    {
+        "id": "tough-reviser",
+        "name": "Tough Reviser",
+        "category": "others",
+        "title": "Brutal Content & Strategy Critic",
+        "role": "Critiques blog posts, sales scripts & strategic memos",
+        "avatar": "◆",
+        "avatar_color": "#f59e0b",
+        "icon_symbol": "◆",
+        "status": "online",
+        "auto_mode": False,
+        "model": "Claude 3.5 Sonnet",
         "tasks_count": 3,
-        "bio": "Đọc sâu tài liệu dài, sách, nghiên cứu thị trường và trích xuất tinh hoa chưng cất vào Second Brain Wiki.",
-        "capabilities": ["Long-form Synthesis", "Wiki Distillation", "Citation Verification"]
+        "budget": "$0.50 / ngày (~35k tokens)",
+        "bio": "Phản biện sắc bén, gọt giũa bài viết, loại bỏ sáo rỗng và các luận điểm yếu trước khi gửi cho khách hàng hoặc xuất bản.",
+        "assistant_documents": ["07 - Wiki/Anti-hype Writing Rules.md"],
+        "system_prompt": "You critique copy with brutal honesty. Point out logical holes, fluff, over-promising buzzwords, and force clarity.",
+        "skills": ["Brutal Revision", "Logical Fallacy Check", "Readability Score"],
+        "sample_chat": [
+            {"role": "user", "text": "Soát lại bài post thông báo tính năng mới"},
+            {"role": "agent", "text": "Bài viết này còn quá nhiều thuật ngữ kỹ thuật rườm rà. Đoạn mở đầu mất 3 câu vô nghĩa trước khi vào trọng tâm. Hãy bỏ ngay cụm từ \"giải pháp đột phá mang tính cách mạng\", thay bằng: \"Bạn không cần thêm khung chat, bạn cần một cộng sự tự làm việc\"."}
+        ]
+    },
+    {
+        "id": "ha-email",
+        "name": "Ha - Email & Nurture",
+        "category": "others",
+        "title": "Lifecycle & Retention Architect",
+        "role": "Designs email sequences, retention drips & newsletter broadcasts",
+        "avatar": "✦",
+        "avatar_color": "#ec4899",
+        "icon_symbol": "✦",
+        "status": "online",
+        "auto_mode": False,
+        "model": "GPT-4o mini",
+        "tasks_count": 4,
+        "budget": "$0.40 / ngày (~30k tokens)",
+        "bio": "Thiết kế chuỗi email nuôi dưỡng khách hàng, kịch bản chăm sóc sau mua và newsletter hàng tuần chuẩn phong cách Thịnh Vượng Số.",
+        "assistant_documents": ["01 - Projects/Email Drips.md"],
+        "system_prompt": "You craft high-converting email sequences, nurture drips, and broadcast newsletters with compelling storytelling.",
+        "skills": ["Email Sequence Engine", "Subject Line Scorer", "Unsubscribe Shield"],
+        "sample_chat": [
+            {"role": "user", "text": "Tạo kịch bản email chào mừng 3 ngày đầu cho học viên mới"},
+            {"role": "agent", "text": "Dạ, tôi đã soạn xong chuỗi 3 email chào mừng:
+- Email 1 (Ngay sau đăng ký): Trao quyền truy cập & bản đồ kho báu Second Brain.
+- Email 2 (Ngày 2): Hướng dẫn kích hoạt cộng sự AI đầu tiên trong 5 phút.
+- Email 3 (Ngày 3): Thử thách thực chiến và kết nối nhóm hỗ trợ VIP."}
+        ]
     },
     {
         "id": "khang-funnel",
-        "name": "Khang - Funnel Architect",
-        "title": "Funnel Strategy & Webcake Landing Page",
-        "avatar": "🏗️",
-        "status": "idle",
-        "tasks_count": 2,
-        "bio": "Thiết kế cấu trúc phễu bán hàng bậc thang giá trị (Value Ladder) và xuất bản landing page Webcake siêu tốc.",
-        "capabilities": ["HTML to Webcake", "Value Ladder Design", "Offer Crafting"]
+        "name": "Khang - Funnel Strategy",
+        "category": "others",
+        "title": "Value Ladder & Offer Architect",
+        "role": "Maps the path from visitor to high-ticket buyer",
+        "avatar": "⬡",
+        "avatar_color": "#06b6d4",
+        "icon_symbol": "⬡",
+        "status": "online",
+        "auto_mode": False,
+        "model": "Claude 3.5 Sonnet",
+        "tasks_count": 5,
+        "budget": "$0.60 / ngày (~45k tokens)",
+        "bio": "Thiết kế cấu trúc thang giá trị (Value Ladder), bố cục phễu thu hút khách hàng tiềm năng và chuyển đổi sang gói cao cấp.",
+        "assistant_documents": ["01 - Projects/Value Ladder.md", "07 - Wiki/Offer Framework.md"],
+        "system_prompt": "You design frictionless customer journeys, tripwires, core offers, and high-ticket backends.",
+        "skills": ["Value Ladder Design", "Offer Crafting", "Conversion Architecture"],
+        "sample_chat": [
+            {"role": "user", "text": "Đề xuất cấu trúc phễu bán hàng cho khóa đào tạo AI Operating System"},
+            {"role": "agent", "text": "Tôi đề xuất phễu 3 nấc:
+1. Nấc Mồi (Lead Magnet): Template Second Brain Obsidian miễn phí + Video kích hoạt 15 phút.
+2. Nấc Chuyển đổi (Tripwire): Bộ 10 Agent Prompt & Skill Pack giá 199k.
+3. Nấc Lõi (Core Offer): Chương trình Coaching Thực chiến Cockpit JAVIS OS."}
+        ]
     }
 ]
 
@@ -601,3 +758,107 @@ RECURRING_LOOPS = [
 def get_recurring_loops():
     return {"loops": RECURRING_LOOPS}
 
+
+
+class SavePartnerPayload(BaseModel):
+    id: str
+    name: Optional[str] = None
+    role: Optional[str] = None
+    title: Optional[str] = None
+    model: Optional[str] = None
+    system_prompt: Optional[str] = None
+    auto_mode: Optional[bool] = None
+    budget: Optional[str] = None
+    skills: Optional[List[str]] = None
+    assistant_documents: Optional[List[str]] = None
+
+@router.post("/partners/save")
+def save_partner(payload: SavePartnerPayload):
+    for p in PARTNERS_LIST:
+        if p["id"] == payload.id:
+            if payload.name is not None: p["name"] = payload.name
+            if payload.role is not None: p["role"] = payload.role
+            if payload.title is not None: p["title"] = payload.title
+            if payload.model is not None: p["model"] = payload.model
+            if payload.system_prompt is not None: p["system_prompt"] = payload.system_prompt
+            if payload.auto_mode is not None: p["auto_mode"] = payload.auto_mode
+            if payload.budget is not None: p["budget"] = payload.budget
+            if payload.skills is not None: p["skills"] = payload.skills
+            if payload.assistant_documents is not None: p["assistant_documents"] = payload.assistant_documents
+            return {"status": "success", "partner": p}
+    return {"status": "error", "message": "Partner not found"}
+
+class PartnerChatPayload(BaseModel):
+    partner_id: str
+    message: str
+    model: Optional[str] = None
+    skill: Optional[str] = None
+
+@router.post("/partners/chat")
+def partner_chat(payload: PartnerChatPayload):
+    partner = next((p for p in PARTNERS_LIST if p["id"] == payload.partner_id), None)
+    if not partner:
+        return {"status": "error", "message": "Partner not found"}
+    
+    used_model = payload.model or partner.get("model", "GPT-4o mini")
+    skills_avail = partner.get("skills", ["General"])
+    used_skill = payload.skill or (skills_avail[0] if skills_avail else "General")
+    
+    p_name = partner.get("name", "Cộng sự")
+    p_role = partner.get("role", "")
+    
+    if "sample_chat" not in partner:
+        partner["sample_chat"] = []
+    
+    partner["sample_chat"].append({"role": "user", "text": payload.message})
+    
+    reply = f"[{p_name} - Model: {used_model} | Kỹ năng: {used_skill}]\n\nĐã tiếp nhận yêu cầu: \"{payload.message}\".\n\nTôi đã truy xuất các tài liệu liên kết trong Second Brain ({', '.join(partner.get('assistant_documents', ['Toàn bộ Wiki']))}). Kế hoạch hành động cụ thể đã được ghi nhận vào hàng đợi nhiệm vụ và đang được triển khai tối ưu theo đúng vai trò: {p_role}."
+    
+    partner["sample_chat"].append({"role": "agent", "text": reply})
+    return {
+        "status": "success",
+        "reply": reply,
+        "model": used_model,
+        "skill": used_skill,
+        "sample_chat": partner["sample_chat"]
+    }
+
+class UploadAgentPayload(BaseModel):
+    markdown_content: str
+
+@router.post("/partners/upload")
+def upload_agent(payload: UploadAgentPayload):
+    lines = payload.markdown_content.splitlines()
+    name = "New Agent"
+    role = "Specialist Agent"
+    system_prompt = payload.markdown_content
+    for line in lines:
+        if line.startswith("# "):
+            name = line.replace("# ", "").strip()
+            break
+        elif "name:" in line.lower():
+            name = line.split(":", 1)[1].strip().strip("'\"")
+            break
+    
+    new_agent = {
+        "id": "agent-" + str(uuid.uuid4())[:6],
+        "name": name,
+        "category": "others",
+        "title": name,
+        "role": role,
+        "avatar": "🤖",
+        "avatar_color": "#6366f1",
+        "icon_symbol": "★",
+        "status": "online",
+        "auto_mode": False,
+        "model": "GPT-4o mini",
+        "tasks_count": 0,
+        "budget": "$0.50 / ngày",
+        "bio": "Cộng sự AI được nhập từ file Markdown Second Brain.",
+        "assistant_documents": ["07 - Wiki/Guidelines.md"],
+        "system_prompt": system_prompt,
+        "skills": ["Custom Skills"],
+        "sample_chat": []
+    }
+    PARTNERS_LIST.append(new_agent)
+    return {"status": "success", "agent": new_agent}
