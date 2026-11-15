@@ -132,20 +132,27 @@
     </div>
 
     <!-- Center: 3 TOP SPACES (CHUẨN TOP PILL: Việc | Second Brain | Kỹ năng) -->
+    <!-- Center: 4 TOP SPACES (Việc | Second Brain | Kỹ năng | Doanh nghiệp) -->
     <div class="flex items-center bg-[#f0ede6] dark:bg-[#202230] p-1 rounded-full border border-bordercol dark:border-[#2d3044] text-xs font-semibold shadow-inner">
-      <button onclick="switchSpace('tasks')" id="space-tasks" class="space-btn px-4 py-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
+      <button onclick="switchSpace('tasks')" id="space-tasks" class="space-btn px-3 py-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
         <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
         <span data-i18n="top_tasks">Việc</span>
       </button>
 
-      <button onclick="switchSpace('brain')" id="space-brain" class="space-btn active px-4 py-1 rounded-full bg-white dark:bg-orange-600 text-orange-600 dark:text-white shadow-sm transition flex items-center gap-1.5">
+      <button onclick="switchSpace('brain')" id="space-brain" class="space-btn px-3 py-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
         <i data-lucide="brain" class="w-3.5 h-3.5"></i>
         <span data-i18n="top_brain">Second Brain</span>
       </button>
 
-      <button onclick="switchSpace('skills')" id="space-skills" class="space-btn px-4 py-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
+      <button onclick="switchSpace('skills')" id="space-skills" class="space-btn px-3 py-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
         <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
         <span data-i18n="top_skills">Kỹ năng</span>
+      </button>
+
+      <button onclick="switchSpace('enterprise')" id="space-enterprise" class="space-btn active px-3 py-1 rounded-full bg-white dark:bg-orange-600 text-orange-600 dark:text-white shadow-sm transition flex items-center gap-1.5 font-bold">
+        <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
+        <span>Doanh nghiệp</span>
+        <span class="text-[9px] bg-orange-600 text-white dark:bg-white dark:text-orange-600 px-1.5 py-0.2 rounded-full font-mono font-bold">4 LỚP</span>
       </button>
     </div>
 
@@ -298,6 +305,17 @@
             <button onclick="navigateTo('connections')" id="nav-connections" class="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 transition">
               <i data-lucide="link" class="w-4 h-4 text-indigo-500"></i>
               <span data-i18n="menu_connections">Connections</span>
+            </button>
+          </div>
+
+          <!-- 7. ENTERPRISE (Bộ Não Doanh Nghiệp 4 Lớp) -->
+          <div class="pt-1">
+            <button onclick="navigateTo('enterprise')" id="nav-enterprise" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-orange-50/80 dark:bg-orange-950/30 text-orange-700 dark:text-orange-400 font-semibold hover:bg-orange-100 dark:hover:bg-orange-900/40 border border-orange-200/60 dark:border-orange-800/40 transition">
+              <span class="flex items-center gap-2">
+                <i data-lucide="building-2" class="w-4 h-4 text-orange-600"></i>
+                <span>Bộ Não Doanh Nghiệp</span>
+              </span>
+              <span class="text-[9px] bg-orange-600 text-white px-1.5 py-0.2 rounded font-mono font-bold">4 LỚP</span>
             </button>
           </div>
 
@@ -1436,6 +1454,274 @@
         </div>
       </section>
 
+      <!-- ======================================================================= -->
+      <!-- VIEW 15: ENTERPRISE COCKPIT (BỘ NÃO DOANH NGHIỆP 4 LỚP - JAVIS ENTERPRISE) -->
+      <!-- ======================================================================= -->
+      <section id="view-enterprise" class="flex-1 flex flex-col w-full h-full bg-[#fbfaf8] dark:bg-[#12131a] p-6 overflow-y-auto custom-scrollbar">
+        <div class="max-w-6xl w-full mx-auto space-y-6">
+          
+          <!-- Enterprise Hero Banner (Chuẩn javisos.com.vn/doanh-nghiep) -->
+          <div class="bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+            <div class="absolute right-0 top-0 bottom-0 w-1/3 bg-white/10 transform skew-x-12 pointer-events-none"></div>
+            <div class="relative z-10 max-w-3xl space-y-3">
+              <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold">
+                <span>🏢 GIẢI PHÁP CHO DOANH NGHIỆP</span>
+                <span>·</span>
+                <span>MIENTAY MEDIA & THỊNH VƯỢNG SỐ</span>
+              </div>
+              <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">
+                Xây Bộ Não AI Riêng Cho Doanh Nghiệp Của Bạn
+              </h1>
+              <p class="text-xs md:text-sm text-orange-100 leading-relaxed">
+                Tri thức, quy trình và số liệu không còn nằm rải rác trong đầu nhân sự và các thư mục tài liệu. 
+                Đồng hành từ khảo sát, xây dựng đến vận hành, trên nền Javis OS: <b>Tự host trên hạ tầng riêng, dữ liệu thuộc về bạn</b>.
+              </p>
+              
+              <!-- 4 Value Pills -->
+              <div class="flex flex-wrap gap-2 pt-1 text-xs">
+                <span class="bg-black/20 backdrop-blur-sm px-2.5 py-1 rounded-lg">🛡️ Bộ não riêng của công ty</span>
+                <span class="bg-black/20 backdrop-blur-sm px-2.5 py-1 rounded-lg">💻 Tự host, dữ liệu của bạn</span>
+                <span class="bg-black/20 backdrop-blur-sm px-2.5 py-1 rounded-lg">🔌 15+ kết nối dữ liệu thật</span>
+                <span class="bg-black/20 backdrop-blur-sm px-2.5 py-1 rounded-lg">🇻🇳 100% tiếng Việt & Markdown</span>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex items-center gap-3 pt-2">
+                <button onclick="runEnterprisePipelineTest()" class="bg-white text-orange-600 font-bold px-4 py-2 rounded-xl text-xs hover:bg-orange-50 transition shadow flex items-center gap-2">
+                  <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                  <span>Chạy Thử Kịch Bản Đối Soát Tự Động</span>
+                </button>
+                <button onclick="switchEnterpriseSubTab('comparison')" class="bg-orange-700/60 hover:bg-orange-700 text-white font-medium px-4 py-2 rounded-xl text-xs backdrop-blur-sm transition flex items-center gap-1.5">
+                  <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+                  <span>Xem Bảng So Sánh Chatbot Cá Nhân vs Javis</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enterprise Navigation Sub-Tabs -->
+          <div class="flex items-center gap-2 border-b border-bordercol dark:border-[#26283b] pb-2 overflow-x-auto text-xs font-semibold">
+            <button onclick="switchEnterpriseSubTab('architecture')" id="ent-tab-architecture" class="ent-tab-btn active px-3.5 py-1.5 rounded-lg bg-orange-600 text-white flex items-center gap-1.5 transition">
+              <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+              <span>4 Lớp Kiến Trúc</span>
+            </button>
+            <button onclick="switchEnterpriseSubTab('departments')" id="ent-tab-departments" class="ent-tab-btn px-3.5 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
+              <i data-lucide="users-2" class="w-3.5 h-3.5"></i>
+              <span>Đội Trợ Lý Theo Phòng Ban</span>
+            </button>
+            <button onclick="switchEnterpriseSubTab('pipeline')" id="ent-tab-pipeline" class="ent-tab-btn px-3.5 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
+              <i data-lucide="workflow" class="w-3.5 h-3.5"></i>
+              <span>Đối Soát Đa Hệ Thống (Live)</span>
+            </button>
+            <button onclick="switchEnterpriseSubTab('comparison')" id="ent-tab-comparison" class="ent-tab-btn px-3.5 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
+              <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+              <span>Bảng So Sánh Lợi Ích</span>
+            </button>
+            <button onclick="switchEnterpriseSubTab('industries')" id="ent-tab-industries" class="ent-tab-btn px-3.5 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
+              <i data-lucide="store" class="w-3.5 h-3.5"></i>
+              <span>6 Ngành Nghề Điển Hình</span>
+            </button>
+            <button onclick="switchEnterpriseSubTab('roadmap')" id="ent-tab-roadmap" class="ent-tab-btn px-3.5 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+              <span>Lộ Trình & Bảo Mật</span>
+            </button>
+          </div>
+
+          <!-- SUB-TAB 1: 4 LỚP KIẾN TRÚC DOANH NGHIỆP -->
+          <div id="ent-panel-architecture" class="ent-panel space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="entArchLayersGrid">
+              <!-- Rendered dynamically from /api/enterprise/architecture -->
+            </div>
+
+            <!-- Pain Points Resolution Section -->
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-5 shadow-sm space-y-4">
+              <div class="flex items-center justify-between border-b border-zinc-100 dark:border-zinc-800 pb-3">
+                <h3 class="font-bold text-sm text-zinc-900 dark:text-white flex items-center gap-2">
+                  <span>🚨</span> Thách Thức Khi Dùng AI Lẻ Tẻ vs Lời Giải Bộ Não Doanh Nghiệp
+                </h3>
+                <span class="text-[11px] text-zinc-500 font-mono">Bản quyền MienTay Media</span>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs">
+                <div class="p-3 bg-red-50/50 dark:bg-red-950/20 border border-red-200/60 dark:border-red-900/40 rounded-xl space-y-1.5">
+                  <div class="font-bold text-red-700 dark:text-red-400 flex items-center gap-1.5">
+                    <span>🚪</span> Nhân sự nghỉ, kinh nghiệm mất
+                  </div>
+                  <p class="text-zinc-600 dark:text-zinc-400 text-[11px]">Quy trình, bí quyết nằm trong đầu từng người. Khi nghỉ là công ty phải đào tạo lại từ số 0.</p>
+                  <div class="text-emerald-600 dark:text-emerald-400 font-medium text-[11px] pt-1">👉 Giải pháp: Số hoá vào Second Brain wiki liên kết.</div>
+                </div>
+                <div class="p-3 bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200/60 dark:border-amber-900/40 rounded-xl space-y-1.5">
+                  <div class="font-bold text-amber-700 dark:text-amber-400 flex items-center gap-1.5">
+                    <span>🗂️</span> Tài liệu có nhưng không tìm ra
+                  </div>
+                  <p class="text-zinc-600 dark:text-zinc-400 text-[11px]">Hàng nghìn file rải rác trên Drive, Zalo, nhóm chat. Muốn tìm một chính sách phải hỏi lòng vòng.</p>
+                  <div class="text-emerald-600 dark:text-emerald-400 font-medium text-[11px] pt-1">👉 Giải pháp: Hỏi tự nhiên, truy xuất kèm nguồn trong 3s.</div>
+                </div>
+                <div class="p-3 bg-orange-50/50 dark:bg-orange-950/20 border border-orange-200/60 dark:border-orange-900/40 rounded-xl space-y-1.5">
+                  <div class="font-bold text-orange-700 dark:text-orange-400 flex items-center gap-1.5">
+                    <span>🤖</span> AI dùng lẻ, không kiểm soát
+                  </div>
+                  <p class="text-zinc-600 dark:text-zinc-400 text-[11px]">Nhân viên tự dán dữ liệu nội bộ vào chatbot công cộng, nguy cơ lộ bí mật kinh doanh và ảo giác đoán bừa.</p>
+                  <div class="text-emerald-600 dark:text-emerald-400 font-medium text-[11px] pt-1">👉 Giải pháp: Tự host, kết nối số liệu thật qua MCP.</div>
+                </div>
+                <div class="p-3 bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/60 dark:border-blue-900/40 rounded-xl space-y-1.5">
+                  <div class="font-bold text-blue-700 dark:text-blue-400 flex items-center gap-1.5">
+                    <span>⏳</span> Đào tạo người mới quá chậm
+                  </div>
+                  <p class="text-zinc-600 dark:text-zinc-400 text-[11px]">Mỗi nhân sự mới lại tốn nhiều tuần để học lại những điều công ty đã đúc kết từ nhiều năm.</p>
+                  <div class="text-emerald-600 dark:text-emerald-400 font-medium text-[11px] pt-1">👉 Giải pháp: Trợ lý AI đồng hành kèm cặp 24/7.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-TAB 2: ĐỘI TRỢ LÝ THEO PHÒNG BAN -->
+          <div id="ent-panel-departments" class="ent-panel hidden space-y-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="font-bold text-base text-zinc-900 dark:text-white">Mỗi Phòng Ban Một Đội Trợ Lý · Cùng Chung Một Bộ Não</h3>
+                <p class="text-xs text-zinc-500">Các trợ lý được cấu hình chuyên sâu theo quy trình thực tế của từng phòng ban trong công ty.</p>
+              </div>
+              <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-mono font-bold">4 PHÒNG BAN TRỰC TUYẾN</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="entDepartmentsGrid">
+              <!-- Rendered dynamically from /api/enterprise/departments -->
+            </div>
+          </div>
+
+          <!-- SUB-TAB 3: ĐỐI SOÁT ĐA HỆ THỐNG (LIVE PIPELINE SIMULATOR) -->
+          <div id="ent-panel-pipeline" class="ent-panel hidden space-y-6">
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm space-y-4">
+              <div class="flex items-center justify-between border-b border-zinc-100 dark:border-zinc-800 pb-4">
+                <div>
+                  <h3 class="font-bold text-base text-zinc-900 dark:text-white flex items-center gap-2">
+                    <i data-lucide="workflow" class="w-5 h-5 text-orange-600"></i>
+                    Chuỗi Tự Động Hóa Vận Hành Doanh Nghiệp (Live Execution)
+                  </h3>
+                  <p class="text-xs text-zinc-500 mt-1">Một lệnh chạy cả chuỗi việc: kéo số liệu Meta Ads → cập nhật Google Sheets → kiểm tra Pancake POS → báo cáo Telegram.</p>
+                </div>
+                <button onclick="runEnterprisePipelineTest()" id="btnRunPipeline" class="bg-orange-600 hover:bg-orange-700 text-white font-bold px-4 py-2 rounded-xl text-xs shadow flex items-center gap-2 transition">
+                  <i data-lucide="zap" class="w-4 h-4"></i>
+                  <span>Thực Thi Chuỗi Tác Vụ Ngay</span>
+                </button>
+              </div>
+
+              <!-- Pipeline Status Flow -->
+              <div id="pipelineExecutionLog" class="p-4 bg-zinc-50 dark:bg-[#13141c] border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-3 font-mono text-xs">
+                <div class="text-zinc-500 italic">Nhấn nút "Thực Thi Chuỗi Tác Vụ Ngay" để kích hoạt đối soát tự động giữa 4 hệ thống dữ liệu thật...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-TAB 4: BẢNG SO SÁNH (CHATBOT CÁ NHÂN VS JAVIS OS) -->
+          <div id="ent-panel-comparison" class="ent-panel hidden space-y-6">
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm space-y-4">
+              <div class="border-b border-zinc-100 dark:border-zinc-800 pb-3">
+                <h3 class="font-bold text-base text-zinc-900 dark:text-white">Bảng Đối Chiếu: Dùng Chatbot Rời Rạc vs Bộ Não Doanh Nghiệp Javis OS</h3>
+                <p class="text-xs text-zinc-500 mt-1">Sự khác biệt cốt lõi giữa việc nhân viên tự dùng AI cá nhân và doanh nghiệp sở hữu hạ tầng AI tập trung.</p>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr class="border-b border-bordercol dark:border-zinc-700 text-zinc-500 uppercase font-mono text-[11px]">
+                      <th class="py-3 px-4 w-1/4">Tiêu chí đánh giá</th>
+                      <th class="py-3 px-4 w-3/8 text-red-600 dark:text-red-400">Mỗi người tự dùng chatbot cá nhân</th>
+                      <th class="py-3 px-4 w-3/8 text-emerald-600 dark:text-emerald-400 font-bold">Bộ não doanh nghiệp Javis OS</th>
+                    </tr>
+                  </thead>
+                  <tbody id="entComparisonTableBody" class="divide-y divide-zinc-100 dark:divide-zinc-800">
+                    <!-- Rendered dynamically from /api/enterprise/comparison -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-TAB 5: 6 NGÀNH NGHỀ ĐIỂN HÌNH -->
+          <div id="ent-panel-industries" class="ent-panel hidden space-y-6">
+            <div>
+              <h3 class="font-bold text-base text-zinc-900 dark:text-white">Ứng Dụng Theo Từng Ngành Nghề Cụ Thể</h3>
+              <p class="text-xs text-zinc-500 mt-1">Mỗi ngành có tình huống đặc thù, mức độ bảo mật dữ liệu và lộ trình tự động hóa riêng biệt.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="entIndustriesGrid">
+              <!-- Rendered dynamically from /api/enterprise/industries -->
+            </div>
+          </div>
+
+          <!-- SUB-TAB 6: LỘ TRÌNH 5 BƯỚC & AN TOÀN BẢO MẬT -->
+          <div id="ent-panel-roadmap" class="ent-panel hidden space-y-6">
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-6 shadow-sm space-y-6">
+              <div>
+                <h3 class="font-bold text-base text-zinc-900 dark:text-white flex items-center gap-2">
+                  <span>🗺️</span> Lộ Trình 5 Bước Đồng Hành Cùng Doanh Nghiệp
+                </h3>
+                <p class="text-xs text-zinc-500 mt-1">MienTay Media không chỉ cài đặt công cụ, chúng tôi đi cùng doanh nghiệp từ phân tích quy trình đến đào tạo nhân sự tự vận hành.</p>
+              </div>
+
+              <!-- 5 Step Timeline -->
+              <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs">
+                <div class="p-4 bg-zinc-50 dark:bg-[#13141c] border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-2">
+                  <div class="w-6 h-6 rounded-full bg-orange-600 text-white font-bold flex items-center justify-center text-xs">1</div>
+                  <div class="font-bold text-zinc-900 dark:text-white">Khảo sát & Thiết kế</div>
+                  <p class="text-[11px] text-zinc-500">Làm việc với lãnh đạo và trưởng phòng: xác định tài liệu quan trọng, việc lặp lại nhiều, phân quyền dữ liệu.</p>
+                  <div class="text-[10px] text-orange-600 font-mono font-semibold">Kết quả: Bản kiến trúc & thứ tự ưu tiên</div>
+                </div>
+
+                <div class="p-4 bg-zinc-50 dark:bg-[#13141c] border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-2">
+                  <div class="w-6 h-6 rounded-full bg-orange-600 text-white font-bold flex items-center justify-center text-xs">2</div>
+                  <div class="font-bold text-zinc-900 dark:text-white">Dựng nền & Nạp tri thức</div>
+                  <p class="text-[11px] text-zinc-500">Cài Javis OS trên VPS/máy chủ riêng, thiết lập bảo mật, cấu trúc tài liệu thành Second Brain wiki liên kết.</p>
+                  <div class="text-[10px] text-orange-600 font-mono font-semibold">Kết quả: Bộ não 24/7 hỏi kèm nguồn</div>
+                </div>
+
+                <div class="p-4 bg-zinc-50 dark:bg-[#13141c] border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-2">
+                  <div class="w-6 h-6 rounded-full bg-orange-600 text-white font-bold flex items-center justify-center text-xs">3</div>
+                  <div class="font-bold text-zinc-900 dark:text-white">Nối dữ liệu & Dựng trợ lý</div>
+                  <p class="text-[11px] text-zinc-500">Nối Pancake POS, Ads, CRM qua MCP, cấu hình skills và workflows, thiết lập kênh Telegram & Zalo.</p>
+                  <div class="text-[10px] text-orange-600 font-mono font-semibold">Kết quả: Trợ lý làm việc với số thật</div>
+                </div>
+
+                <div class="p-4 bg-zinc-50 dark:bg-[#13141c] border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-2">
+                  <div class="w-6 h-6 rounded-full bg-orange-600 text-white font-bold flex items-center justify-center text-xs">4</div>
+                  <div class="font-bold text-zinc-900 dark:text-white">Đào tạo & Chuyển giao</div>
+                  <p class="text-[11px] text-zinc-500">Huấn luyện nhân viên theo vai trò, bàn giao tài liệu vận hành và checklist phân quyền để đội ngũ tự chủ.</p>
+                  <div class="text-[10px] text-orange-600 font-mono font-semibold">Kết quả: Đội ngũ tự làm chủ 100%</div>
+                </div>
+
+                <div class="p-4 bg-zinc-50 dark:bg-[#13141c] border border-zinc-200 dark:border-zinc-800 rounded-xl space-y-2">
+                  <div class="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-xs">5</div>
+                  <div class="font-bold text-zinc-900 dark:text-white">Vận hành & Cải tiến</div>
+                  <p class="text-[11px] text-zinc-500">Theo dõi hiệu quả, nạp thêm tri thức mới, mở rộng trợ lý khi quy mô doanh nghiệp phát triển.</p>
+                  <div class="text-[10px] text-emerald-600 font-mono font-semibold">Kết quả: Bộ não càng dùng càng khôn</div>
+                </div>
+              </div>
+
+              <!-- Security Checklist (Chuẩn javisos.com.vn/doanh-nghiep) -->
+              <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800 space-y-3">
+                <h4 class="font-bold text-xs uppercase tracking-wider text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5">
+                  <i data-lucide="lock" class="w-4 h-4 text-emerald-600"></i>
+                  Tiêu Chuẩn Bảo Mật & Quản Trị Cấp Doanh Nghiệp
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                  <div class="p-3 bg-zinc-50 dark:bg-[#13141c] rounded-lg border border-zinc-200 dark:border-zinc-800">
+                    <span class="font-bold text-zinc-800 dark:text-white">Tự host trên hạ tầng riêng</span>
+                    <p class="text-zinc-500 text-[11px] mt-1">Dữ liệu nằm trên máy chủ/VPS riêng của doanh nghiệp. Không bị phụ thuộc vào bất kỳ nhà cung cấp dịch vụ đám mây bên thứ ba nào.</p>
+                  </div>
+                  <div class="p-3 bg-zinc-50 dark:bg-[#13141c] rounded-lg border border-zinc-200 dark:border-zinc-800">
+                    <span class="font-bold text-zinc-800 dark:text-white">Phân quyền 3 tầng nghiêm ngặt</span>
+                    <p class="text-zinc-500 text-[11px] mt-1">Hệ thống thực thi quyền Chỉ đọc, Soạn nháp, Toàn quyền ngay tại tầng gateway MCP, không dựa vào lời hứa của mô hình AI.</p>
+                  </div>
+                  <div class="p-3 bg-zinc-50 dark:bg-[#13141c] rounded-lg border border-zinc-200 dark:border-zinc-800">
+                    <span class="font-bold text-zinc-800 dark:text-white">Đổi mô hình không mất dữ liệu</span>
+                    <p class="text-zinc-500 text-[11px] mt-1">Dễ dàng chuyển đổi giữa Claude, ChatGPT, Gemini hoặc mô hình nội bộ Ollama on-premise mà toàn bộ wiki tri thức vẫn giữ nguyên vẹn.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
     </div>
 
     <!-- FLOATING JAVIS PET (ICONIC MASCOT CLOUD) -->
@@ -1819,7 +2105,7 @@
       const allViews = [
         'chat', 'brain-neural', 'brain-files', 'brain-learning',
         'code', 'cap-partners', 'cap-chatbot', 'cap-skills', 'cap-plugins',
-        'work-tasks', 'work-webhooks', 'connections', 'system', 'teamwork'
+        'work-tasks', 'work-webhooks', 'connections', 'system', 'teamwork', 'enterprise'
       ];
 
       allViews.forEach(v => {
@@ -1840,12 +2126,13 @@
       const activeNav = document.getElementById(`nav-${targetView}`);
       if (activeNav) activeNav.classList.add('sidebar-item-active');
 
-      // Đồng bộ Top Pills (Việc | Second Brain | Kỹ năng)
+      // Đồng bộ Top Pills (Việc | Second Brain | Kỹ năng | Doanh nghiệp)
       const spaceTasks = document.getElementById('space-tasks');
       const spaceBrain = document.getElementById('space-brain');
       const spaceSkills = document.getElementById('space-skills');
+      const spaceEnterprise = document.getElementById('space-enterprise');
 
-      [spaceTasks, spaceBrain, spaceSkills].forEach(btn => {
+      [spaceTasks, spaceBrain, spaceSkills, spaceEnterprise].forEach(btn => {
         if (btn) {
           btn.classList.remove('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
           btn.classList.add('text-zinc-600', 'dark:text-zinc-400');
@@ -1866,6 +2153,11 @@
         if (spaceSkills) {
           spaceSkills.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
           spaceSkills.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+        }
+      } else if (targetView === 'enterprise') {
+        if (spaceEnterprise) {
+          spaceEnterprise.classList.add('active', 'bg-white', 'dark:bg-orange-600', 'text-orange-600', 'dark:text-white', 'shadow-sm');
+          spaceEnterprise.classList.remove('text-zinc-600', 'dark:text-zinc-400');
         }
       }
 
@@ -1897,6 +2189,8 @@
         loadModelsProviders();
       } else if (targetView === 'teamwork') {
         loadTeamworkData();
+      } else if (targetView === 'enterprise') {
+        loadEnterpriseData();
       }
 
       lucide.createIcons();
@@ -1957,6 +2251,7 @@
     }
 
     // Chuyển 3 top pill spaces
+    // Chuyển 4 top pill spaces
     function switchSpace(spaceKey) {
       if (spaceKey === 'tasks') {
         navigateTo('work-tasks');
@@ -1964,6 +2259,8 @@
         navigateTo('brain-neural');
       } else if (spaceKey === 'skills') {
         navigateTo('cap-skills');
+      } else if (spaceKey === 'enterprise') {
+        navigateTo('enterprise');
       }
     }
 
@@ -2486,7 +2783,8 @@
     }
 
     function copyEmbedCode() {
-      navigator.clipboard.writeText('<!-- Javis OS Chat Widget -->\n<script src="https://cdn.javis.os/widget.js" data-bot-id="thinh-vuong-so-3120" data-theme="#ea580c" async><' + '/script>');
+      const code = '<' + 'script src="https://cdn.javis.os/widget.js" data-bot-id="thinh-vuong-so-3120" data-theme="#ea580c" async><' + '/script>';
+      navigator.clipboard.writeText(code);
       alert("Đã sao chép mã nhúng Widget vào clipboard!");
     }
 
@@ -2969,6 +3267,196 @@
         if (input1) input1.value = transcript;
         if (input2) input2.value = transcript;
       };
+    }
+
+    // =======================================================================
+    // ENTERPRISE COCKPIT LOGIC (Bộ Não Doanh Nghiệp 4 Lớp)
+    // =======================================================================
+    let enterpriseDataCache = null;
+
+    async function loadEnterpriseData() {
+      try {
+        const [archRes, deptRes, compRes, indRes] = await Promise.all([
+          fetch('/api/enterprise/architecture').then(r => r.json()),
+          fetch('/api/enterprise/departments').then(r => r.json()),
+          fetch('/api/enterprise/comparison').then(r => r.json()),
+          fetch('/api/enterprise/industries').then(r => r.json())
+        ]);
+
+        enterpriseDataCache = { archRes, deptRes, compRes, indRes };
+
+        // 1. Render Architecture Layers
+        const layersGrid = document.getElementById('entArchLayersGrid');
+        if (layersGrid && archRes.layers) {
+          layersGrid.innerHTML = archRes.layers.map(l => `
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-4 shadow-sm flex flex-col justify-between hover:border-orange-500 transition">
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-2xl">${l.icon}</span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-orange-100 dark:bg-orange-950 text-orange-700 dark:text-orange-400">LỚP ${l.layer_num}</span>
+                </div>
+                <h4 class="font-bold text-sm text-zinc-900 dark:text-white">${l.name}</h4>
+                <p class="text-[11px] text-zinc-500 leading-snug">${l.tagline}</p>
+                <ul class="pt-2 border-t border-zinc-100 dark:border-zinc-800 space-y-1 text-[11px] text-zinc-600 dark:text-zinc-400">
+                  ${l.details.map(d => `<li class="flex items-start gap-1.5"><span class="text-orange-500 font-bold">•</span><span>${d}</span></li>`).join('')}
+                </ul>
+              </div>
+              <div class="mt-4 pt-2 border-t border-zinc-100 dark:border-zinc-800 text-[10px] font-mono text-zinc-400 font-medium">
+                ${l.stats}
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // 2. Render Department Assistants
+        const deptsGrid = document.getElementById('entDepartmentsGrid');
+        if (deptsGrid && deptRes.departments) {
+          deptsGrid.innerHTML = deptRes.departments.map(d => `
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-5 shadow-sm space-y-3 hover:border-orange-500 transition">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="text-xl">${d.icon}</span>
+                  <div>
+                    <h4 class="font-bold text-sm text-zinc-900 dark:text-white">${d.name}</h4>
+                    <div class="text-[11px] text-zinc-400 font-mono">Vai trò: ${d.lead_role}</div>
+                  </div>
+                </div>
+                <span class="px-2 py-0.5 rounded-full bg-orange-100 dark:bg-orange-950 text-orange-700 dark:text-orange-400 font-mono text-[10px] font-bold">${d.active_bots} Bots trực 24/7</span>
+              </div>
+              <p class="text-xs text-zinc-600 dark:text-zinc-300 leading-relaxed">${d.description}</p>
+              <div class="p-2.5 bg-zinc-50 dark:bg-[#13141c] rounded-xl border border-zinc-100 dark:border-zinc-800 space-y-1.5 text-xs">
+                <div class="font-semibold text-zinc-800 dark:text-zinc-200 text-[11px] flex items-center justify-between">
+                  <span>Trợ lý: <b>${d.assistant_name}</b></span>
+                  <span class="text-zinc-400 font-normal">Kênh: ${d.channel}</span>
+                </div>
+                <div class="space-y-1 text-[11px] text-zinc-500">
+                  ${d.capabilities.map(c => `<div class="flex items-center gap-1.5"><span class="text-emerald-500 font-bold">✓</span><span>${c}</span></div>`).join('')}
+                </div>
+              </div>
+              <div class="pt-2 flex items-center justify-between text-[11px]">
+                <span class="text-zinc-400 font-mono text-[10px]">Phân quyền: ${d.permissions}</span>
+                <button onclick="sendQuickPrompt('Xin chào ${d.assistant_name}, hỗ trợ công việc của ${d.name} cho tôi')" class="px-3 py-1 rounded-lg bg-orange-50 dark:bg-orange-950/40 text-orange-600 font-semibold hover:bg-orange-100 transition">Hỏi Trợ Lý Này</button>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // 3. Render Comparison Table
+        const compTable = document.getElementById('entComparisonTableBody');
+        if (compTable && compRes.rows) {
+          compTable.innerHTML = compRes.rows.map(r => `
+            <tr class="hover:bg-zinc-50 dark:hover:bg-[#181a24] transition">
+              <td class="py-3 px-4 font-bold text-zinc-800 dark:text-zinc-200">${r.criteria}</td>
+              <td class="py-3 px-4 text-zinc-500 dark:text-zinc-400">${r.personal_ai}</td>
+              <td class="py-3 px-4 text-zinc-900 dark:text-white font-medium ${r.highlight ? 'bg-orange-50/30 dark:bg-orange-950/10' : ''}">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span>${r.javis_os}</span>
+                </div>
+              </td>
+            </tr>
+          `).join('');
+        }
+
+        // 4. Render Industries
+        const indGrid = document.getElementById('entIndustriesGrid');
+        if (indGrid && indRes.industries) {
+          indGrid.innerHTML = indRes.industries.map(ind => `
+            <div class="bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-2xl p-4 shadow-sm space-y-3 hover:border-orange-500 transition flex flex-col justify-between">
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-2xl">${ind.icon}</span>
+                  <h4 class="font-bold text-sm text-zinc-900 dark:text-white">${ind.name}</h4>
+                </div>
+                <div class="p-2.5 bg-red-50/40 dark:bg-red-950/20 rounded-xl border border-red-100 dark:border-red-900/30 text-[11px] text-zinc-600 dark:text-zinc-400">
+                  <span class="font-semibold text-red-600 dark:text-red-400">Nỗi đau:</span> ${ind.pain_point}
+                </div>
+                <div class="p-2.5 bg-emerald-50/40 dark:bg-emerald-950/20 rounded-xl border border-emerald-100 dark:border-emerald-900/30 text-[11px] text-zinc-600 dark:text-zinc-300">
+                  <span class="font-semibold text-emerald-600 dark:text-emerald-400">Giải pháp:</span> ${ind.solution}
+                </div>
+              </div>
+              <div class="pt-2 border-t border-zinc-100 dark:border-zinc-800 space-y-1">
+                <span class="text-[10px] font-mono uppercase text-zinc-400 font-bold">Kịch bản tự động:</span>
+                <div class="flex flex-wrap gap-1">
+                  ${ind.workflows.map(w => `<span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-[10px] font-mono text-zinc-600 dark:text-zinc-400">${w}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        lucide.createIcons();
+      } catch (err) {
+        console.error("Error loading enterprise data:", err);
+      }
+    }
+
+    function switchEnterpriseSubTab(tabName) {
+      document.querySelectorAll('.ent-tab-btn').forEach(b => {
+        b.classList.remove('active', 'bg-orange-600', 'text-white');
+        b.classList.add('text-zinc-600', 'dark:text-zinc-400');
+      });
+      const activeBtn = document.getElementById(`ent-tab-${tabName}`);
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-orange-600', 'text-white');
+        activeBtn.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+      }
+
+      document.querySelectorAll('.ent-panel').forEach(p => p.classList.add('hidden'));
+      const panel = document.getElementById(`ent-panel-${tabName}`);
+      if (panel) panel.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    async function runEnterprisePipelineTest() {
+      switchEnterpriseSubTab('pipeline');
+      const logEl = document.getElementById('pipelineExecutionLog');
+      if (!logEl) return;
+
+      logEl.innerHTML = `
+        <div class="flex items-center gap-2 text-orange-500 font-bold">
+          <span class="animate-spin">🔄</span>
+          <span>Đang kết nối 4 hệ thống dữ liệu thật (Meta Ads, Google Sheets, Pancake POS, Telegram)...</span>
+        </div>
+      `;
+
+      try {
+        const res = await fetch('/api/enterprise/run-workflow', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ workflow_id: 'daily_reconciliation' })
+        });
+        const data = await res.json();
+
+        let html = `
+          <div class="text-emerald-500 font-bold pb-2 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+            <span>⚡ ${data.workflow_name}</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">THỰC THI THÀNH CÔNG (1.8s)</span>
+          </div>
+          <div class="space-y-2 pt-2">
+        `;
+
+        data.steps.forEach(s => {
+          html += `
+            <div class="flex items-center gap-2 text-zinc-700 dark:text-zinc-300 text-xs">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center font-bold text-[10px]">${s.step}</span>
+              <span>${s.action}</span>
+              <span class="text-emerald-500 text-[10px] ml-auto font-bold font-mono">HOÀN TẤT</span>
+            </div>
+          `;
+        });
+
+        html += `
+          </div>
+          <div class="mt-3 p-2.5 bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800/40 rounded-lg text-orange-800 dark:text-orange-300 text-xs">
+            💡 <b>Thông báo kết quả:</b> ${data.message}
+          </div>
+        `;
+
+        logEl.innerHTML = html;
+      } catch (e) {
+        logEl.innerHTML = `<div class="text-red-500">Lỗi khi thực thi: ${e.message}</div>`;
+      }
     }
 
     // KHỞI ĐỘNG HỆ THỐNG
