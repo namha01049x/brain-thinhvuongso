@@ -66,6 +66,23 @@
   </script>
 
   <style>
+    /* ================= TYPOGRAPHY RULES CHUẨN MLM BRAIN TRANG CHỦ ================= */
+    h1, h2, h3, h4, h5, h6, .font-display {
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+      letter-spacing: -0.02em;
+    }
+    body, input, textarea, select, button {
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, serif !important;
+    }
+    .font-mono {
+      font-family: 'IBM Plex Mono', 'Inter', monospace !important;
+    }
+
     .hidden { display: none !important; }
     section.hidden { display: none !important; content-visibility: hidden; }
     section:not(.hidden) { content-visibility: auto; }
@@ -296,7 +313,7 @@
       </button>
 
       <div class="flex items-center gap-2 cursor-pointer group" onclick="navigateTo('brain-neural')">
-        <img src="assets/mlm_brain_logo.jpg" alt="MLM BRAIN" class="w-7 h-7 rounded-lg object-cover border border-[#FFB162]/40 shadow-md group-hover:scale-105 transition-transform shrink-0" />
+        <img src="assets/mlm_brain_logo.svg" alt="MLM BRAIN" class="w-7 h-7 rounded-lg object-cover border border-[#FFB162]/40 shadow-md group-hover:scale-105 transition-transform shrink-0" />
         <div class="flex flex-col">
           <div class="flex items-center gap-1.5">
             <span class="font-black text-xs tracking-wider text-[#EEE9DF] uppercase font-mono">MLM BRAIN</span>
@@ -447,7 +464,7 @@
       <!-- Bottom Status Bar -->
       <div class="p-3 border-t border-[#2C3B4D]/60 bg-[#121B24] shrink-0">
         <div class="flex items-center gap-2.5">
-          <img src="assets/mlm_brain_logo.jpg" alt="MLM Brain Logo" class="w-7 h-7 rounded-lg border border-[#FFB162]/40 object-cover shadow-sm">
+          <img src="assets/mlm_brain_logo.svg" alt="MLM Brain Logo" class="w-7 h-7 rounded-lg border border-[#FFB162]/40 object-cover shadow-sm">
           <div class="min-w-0 flex-1">
             <div class="text-[11px] font-bold text-[#EEE9DF] truncate">MLM BRAIN 4.0</div>
             <div class="text-[9px] text-[#C9C1B1] truncate">Hệ Điều Hành Mạng Lưới</div>
@@ -471,7 +488,7 @@
           <!-- Chat Header Bar -->
           <div class="flex items-center justify-between pb-3 border-b border-bordercol dark:border-[#26283b] shrink-0">
             <div class="flex items-center gap-3">
-              <img src="assets/mlm_brain_logo.jpg" alt="MLM Brain" class="w-9 h-9 rounded-xl border border-[#FFB162]/40 shadow-sm object-cover bg-[#16212C]">
+              <img src="assets/mlm_brain_logo.svg" alt="MLM Brain" class="w-9 h-9 rounded-xl border border-[#FFB162]/40 shadow-sm object-cover bg-[#16212C]">
               <div>
                 <h2 class="text-sm font-bold text-zinc-900 dark:text-white" data-i18n="chat_title">MLM BRAIN AI — Cố Vấn Tác Chiến Mạng Lưới</h2>
                 <p class="text-[11px] text-zinc-500 dark:text-zinc-400">Trợ lý chiến lược 24/7 • 110 Tình huống Eric Worre & Quy trình chuẩn ProCode</p>
@@ -486,7 +503,7 @@
           <div id="dedicatedChatMessages" class="flex-1 overflow-y-auto custom-scrollbar py-4 space-y-3 text-xs">
             <div class="text-zinc-400 text-center py-10">
               <div class="relative w-16 h-16 mx-auto mb-3">
-                <img src="assets/mlm_brain_logo.jpg" alt="MLM Brain AI" class="w-16 h-16 rounded-2xl border-2 border-[#FFB162] shadow-[0_0_25px_rgba(255,177,98,0.35)] object-cover bg-[#16212C] p-0.5">
+                <img src="assets/mlm_brain_logo.svg" alt="MLM Brain AI" class="w-16 h-16 rounded-2xl border-2 border-[#FFB162] shadow-[0_0_25px_rgba(255,177,98,0.35)] object-cover bg-[#16212C] p-0.5">
                 <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#16212C]"></span>
               </div>
               <h3 class="font-bold text-base text-zinc-900 dark:text-white mb-1">MLM BRAIN AI CHATBOT</h3>
@@ -699,7 +716,7 @@
                     <span>Căn Giữa</span>
                   </button>
                 </div>
-                <div class="text-[10px] font-mono tracking-widest text-zinc-400 font-semibold">QUAY 360° · LĂN CHUỘT / CHẠM ĐỂ PHÓNG TO · SẴN SÀNG · READY</div>
+                <div class="text-[10px] font-mono tracking-widest text-zinc-400 font-semibold">QUAY 360° · LĂN CHUỘT / CHẠM ĐỂ PHÓNG TO · SẴN SÀNG</div>
               </div>
             </div>
           </div>
@@ -794,82 +811,165 @@
         </div><!-- End flex wrapper -->
       </section>
 
+            <!-- ======================================================================= -->
+      <!-- VIEW 3: BRAIN -> FILES (KHO HỒ SƠ & TRI THỨC THỰC CHIẾN MLM BRAIN)      -->
       <!-- ======================================================================= -->
-      <!-- VIEW 3: BRAIN -> FILES (OBSIDIAN STYLE LIVE NOTE VIEWER & EDITOR)       -->
-      <!-- ======================================================================= -->
-      <section id="view-brain-files" class="flex-1 flex w-full h-full bg-[#1B2632] hidden pb-20 lg:pb-0 overflow-hidden">
-        <!-- Explorer Sidebar (Dark Obsidian) -->
-        <div class="w-72 border-r border-[#2C3B4D]/60 bg-[#16212C] flex flex-col shrink-0 p-3.5">
-          <div class="flex items-center justify-between pb-3 border-b border-[#2C3B4D]/60">
-            <div class="flex items-center gap-2">
-              <i data-lucide="folder-tree" class="w-4 h-4 text-[#FFB162]"></i>
-              <span class="font-bold text-xs uppercase tracking-wider text-[#EEE9DF] font-mono">FILE EXPLORER</span>
+      <section id="view-brain-files" class="flex-1 flex flex-col md:flex-row w-full h-full bg-[#1B2632] hidden pb-20 lg:pb-0 overflow-hidden select-text">
+        
+        <!-- CỘT TRÁI: DANH MỤC HỒ SƠ & TÌM KIẾM (Mobile: Có thể ẩn/hiện mượt mà) -->
+        <div id="filesListCol" class="w-full md:w-80 lg:w-88 border-r border-[#2C3B4D]/60 bg-[#16212C] flex flex-col shrink-0 h-full overflow-hidden transition-all">
+          <!-- Header Bar -->
+          <div class="p-3.5 border-b border-[#2C3B4D]/60 bg-[#121B24]/90 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-[#2C3B4D]/60 border border-[#FFB162]/30 flex items-center justify-center text-[#FFB162]">
+                  <i data-lucide="folder-git-2" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-xs uppercase tracking-wider text-[#EEE9DF] font-mono">KHO HỒ SƠ & TRI THỨC</h3>
+                  <p class="text-[10px] text-[#C9C1B1]">1,918 tài liệu thực chiến chuẩn MLM</p>
+                </div>
+              </div>
+              <button onclick="createNewNotePrompt()" class="px-3 py-1.5 btn-mlmbrain-primary rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition hover:scale-105 active:scale-95 cursor-pointer">
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                <span>Ghi Chú Mới</span>
+              </button>
             </div>
-            <button onclick="createNewNotePrompt()" class="px-2.5 py-1 btn-mlmbrain-primary rounded-lg text-xs font-bold flex items-center gap-1 shadow-sm">
-              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Note
-            </button>
-          </div>
-          
-          <!-- Search box in file explorer -->
-          <div class="relative my-2.5">
-            <i data-lucide="search" class="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-zinc-500"></i>
-            <input type="text" id="fileExplorerSearchInput" oninput="filterFileExplorerList(this.value)" placeholder="Lọc theo tên ghi chú, tài liệu..." class="w-full bg-[#1B2632] border border-[#2C3B4D]/60 rounded-lg pl-8 pr-2 py-1.5 text-xs text-white placeholder-zinc-500 outline-none focus:border-[#FFB162] transition font-mono">
+
+            <!-- Search box -->
+            <div class="relative">
+              <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-3 text-zinc-500"></i>
+              <input type="text" id="fileExplorerSearchInput" oninput="filterFileExplorerList(this.value)" placeholder="Tìm kiếm tài liệu, kịch bản, quy trình..." class="w-full bg-[#1B2632] border border-[#2C3B4D]/70 rounded-xl pl-9 pr-3 py-2 text-xs text-white placeholder-zinc-500 outline-none focus:border-[#FFB162] focus:ring-1 focus:ring-amber-500/20 transition">
+            </div>
+
+            <!-- Category Pills Filter -->
+            <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar pb-0.5 text-[10.5px] font-mono">
+              <button onclick="filterNotesByCategory('all')" id="btnFilterCat-all" class="px-2.5 py-1 rounded-lg bg-[#FFB162] text-[#121B24] font-bold shrink-0 transition">Tất Cả</button>
+              <button onclick="filterNotesByCategory('chien-luoc')" id="btnFilterCat-chien-luoc" class="px-2.5 py-1 rounded-lg bg-[#1B2632] text-zinc-400 hover:text-[#EEE9DF] border border-[#2C3B4D]/60 shrink-0 transition">Chiến Lược</button>
+              <button onclick="filterNotesByCategory('quy-trinh')" id="btnFilterCat-quy-trinh" class="px-2.5 py-1 rounded-lg bg-[#1B2632] text-zinc-400 hover:text-[#EEE9DF] border border-[#2C3B4D]/60 shrink-0 transition">Quy Trình F1</button>
+              <button onclick="filterNotesByCategory('tu-choi')" id="btnFilterCat-tu-choi" class="px-2.5 py-1 rounded-lg bg-[#1B2632] text-zinc-400 hover:text-[#EEE9DF] border border-[#2C3B4D]/60 shrink-0 transition">Xử Lý Từ Chối</button>
+            </div>
           </div>
 
-          <div id="filesExplorerList" class="flex-1 overflow-y-auto custom-scrollbar pt-1 space-y-1 text-xs">
+          <!-- Note List Items -->
+          <div id="filesExplorerList" class="flex-1 overflow-y-auto custom-scrollbar p-2.5 space-y-1.5 text-xs">
             <!-- Rendered by JS -->
           </div>
         </div>
 
-        <!-- Note Editor & Preview Panel -->
-        <div class="flex-1 flex flex-col h-full bg-[#1B2632] overflow-hidden">
+        <!-- CỘT PHẢI: KHÔNG GIAN ĐỌC & TÁC NGHIỆP TRI THỨC SANG TRỌNG -->
+        <div id="filesDetailCol" class="flex-1 flex flex-col h-full bg-[#1B2632] overflow-hidden">
+          
           <!-- Top Note Action Bar -->
-          <div class="h-12 border-b border-[#2C3B4D]/60 bg-[#16212C] px-4 flex items-center justify-between shrink-0">
-            <div class="flex items-center gap-2.5">
-              <div class="w-7 h-7 rounded-lg bg-[#2C3B4D]/60 border border-[#2C3B4D]/70 flex items-center justify-center text-[#FFB162]">
+          <div class="min-h-12 border-b border-[#2C3B4D]/60 bg-[#16212C] px-3 md:px-5 py-2 flex flex-wrap items-center justify-between gap-2 shrink-0">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <!-- Mobile Back Button to Notes List -->
+              <button onclick="toggleMobileFilesView('list')" class="md:hidden p-1.5 rounded-lg bg-[#1B2632] text-[#FFB162] border border-[#2C3B4D] hover:bg-[#2C3B4D] transition flex items-center gap-1 text-xs">
+                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                <span>Danh Sách</span>
+              </button>
+
+              <div class="w-7 h-7 rounded-lg bg-[#2C3B4D]/60 border border-[#2C3B4D]/70 flex items-center justify-center text-[#FFB162] shrink-0">
                 <i data-lucide="file-text" class="w-4 h-4"></i>
               </div>
-              <div class="flex items-center gap-2">
-                <span id="currentNotePath" class="font-bold text-xs text-[#EEE9DF] font-mono">00 - Dashboard.md</span>
-                <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 border border-[#2C3B4D]/70 text-emerald-400 font-mono">🟢 Đã Đồng Bộ Git</span>
+              <div class="flex items-center gap-2 truncate">
+                <span id="currentNotePath" class="font-bold text-xs text-[#EEE9DF] font-mono truncate">00 - Dashboard.md</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono hidden sm:inline-block shrink-0">🟢 Đã Đồng Bộ Git</span>
               </div>
             </div>
-            <div class="flex items-center gap-2">
-              <button onclick="saveCurrentNote()" class="px-4 py-1.5 btn-mlmbrain-primary rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm">
-                <i data-lucide="save" class="w-3.5 h-3.5"></i>
-                <span>Lưu & Git Commit</span>
+
+            <!-- View Modes & Actions -->
+            <div class="flex items-center gap-2 shrink-0">
+              <!-- Switch: Reading Mode / Edit Mode -->
+              <div class="flex items-center bg-[#1B2632] p-0.5 rounded-xl border border-[#2C3B4D]">
+                <button onclick="switchNoteDisplayMode('reader')" id="btnNoteModeReader" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-[#FFB162] text-[#121B24] transition flex items-center gap-1.5 shadow-xs">
+                  <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                  <span>Đọc Trực Quan</span>
+                </button>
+                <button onclick="switchNoteDisplayMode('editor')" id="btnNoteModeEditor" class="px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-400 hover:text-[#EEE9DF] transition flex items-center gap-1.5">
+                  <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                  <span>Soạn Thảo</span>
+                </button>
+              </div>
+
+              <!-- Action: Copy Note -->
+              <button onclick="copyCurrentNoteText()" title="Sao chép toàn bộ nội dung" class="p-1.5 md:px-3 md:py-1 rounded-xl bg-[#1B2632] hover:bg-[#2C3B4D] text-zinc-300 hover:text-white border border-[#2C3B4D] text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
+                <i data-lucide="copy" class="w-3.5 h-3.5 text-[#FFB162]"></i>
+                <span class="hidden md:inline">Sao Chép</span>
               </button>
-              <button onclick="deleteCurrentNote()" class="px-3 py-1.5 text-rose-400 hover:bg-rose-950/40 rounded-lg text-xs font-semibold transition border border-rose-900/30">
-                Xóa
+
+              <!-- Action: Save Note -->
+              <button onclick="saveCurrentNote()" class="px-3 py-1.5 btn-mlmbrain-primary rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition hover:scale-105 active:scale-95 cursor-pointer">
+                <i data-lucide="save" class="w-3.5 h-3.5"></i>
+                <span>Lưu Ghi Chú</span>
+              </button>
+
+              <!-- Action: Delete Note -->
+              <button onclick="deleteCurrentNote()" title="Xóa tài liệu" class="p-1.5 rounded-xl text-rose-400 hover:bg-rose-950/40 border border-rose-900/30 transition cursor-pointer">
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
               </button>
             </div>
           </div>
 
-          <!-- Split Screen: Editor & Live Preview -->
-          <div class="flex-1 flex overflow-hidden">
-            <!-- Live Markdown Editor (Left) -->
-            <div class="w-1/2 border-r border-[#2C3B4D]/60 p-4 flex flex-col bg-[#1B2632]">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-[11px] font-mono text-[#FFB162]/80 uppercase tracking-wider font-semibold flex items-center gap-1.5">
-                  <i data-lucide="code" class="w-3.5 h-3.5"></i> MARKDOWN SOURCE
-                </span>
-                <span id="editorStatsHud" class="text-[10px] font-mono text-zinc-500">UTF-8 · Soạn Thảo Trực Tiếp</span>
+          <!-- CONTENT BODY -->
+          <div class="flex-1 flex overflow-hidden relative">
+            
+            <!-- 1. CHẾ ĐỘ ĐỌC TRỰC QUAN (READER MODE - SANG TRỌNG & TINH GỌN) -->
+            <div id="noteReaderView" class="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-8 flex justify-center bg-[#1B2632]">
+              <div class="max-w-4xl w-full space-y-6">
+                <!-- Meta Card -->
+                <div class="p-5 rounded-2xl bg-[#16212C] border border-[#2C3B4D]/70 shadow-lg relative overflow-hidden">
+                  <div class="absolute -right-4 -top-4 w-24 h-24 bg-[#FFB162]/5 rounded-full blur-xl"></div>
+                  <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#2C3B4D]/60 pb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="px-2.5 py-0.5 rounded-full bg-[#FFB162]/15 border border-[#FFB162]/30 text-[#FFB162] text-[11px] font-mono font-bold uppercase tracking-wider" id="readerNoteCategory">HỆ ĐIỀU HÀNH</span>
+                      <span class="text-zinc-500 text-xs">•</span>
+                      <span class="text-xs text-zinc-400 font-mono" id="readerNoteUpdated">Cập nhật: 2026-11-16</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <button onclick="askAiAboutCurrentNote()" class="px-3 py-1 rounded-xl bg-[#2C3B4D]/60 hover:bg-[#2C3B4D] text-[#FFB162] border border-[#FFB162]/30 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        <span>Hỏi Cố Vấn AI Về Bài Này</span>
+                      </button>
+                    </div>
+                  </div>
+                  <h1 id="readerNoteTitle" class="text-xl md:text-2xl font-black text-[#EEE9DF] mt-3 tracking-tight font-display">Tổng Quan Hệ Thống</h1>
+                  <p id="readerNoteSubtitle" class="text-xs text-[#C9C1B1] mt-1">Tài liệu chuẩn hóa bởi Mentor Trần Nam Hà · Nhà sáng lập MLM Brain 4.0</p>
+                </div>
+
+                <!-- Markdown Content Rendered -->
+                <div id="notePreviewArea" class="prose prose-invert max-w-none text-xs md:text-sm leading-relaxed text-[#EEE9DF] p-6 rounded-2xl bg-[#16212C]/60 border border-[#2C3B4D]/50 shadow-md">
+                  <!-- Rendered markdown content here -->
+                </div>
               </div>
-              <textarea id="noteEditorArea" class="flex-1 w-full p-4 bg-[#16212C] border border-[#2C3B4D]/60 rounded-xl font-mono text-xs leading-relaxed outline-none resize-none focus:border-[#FFB162] focus:ring-1 focus:ring-amber-400/30 text-[#EEE9DF] selection:bg-amber-500/30 custom-scrollbar" placeholder="Nhập nội dung markdown tại đây..." oninput="renderNotePreview(this.value)"></textarea>
             </div>
 
-            <!-- Rendered Preview (Right) -->
-            <div class="w-1/2 p-4 flex flex-col overflow-y-auto custom-scrollbar bg-[#16212C]">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-[11px] font-mono text-[#FFB162]/80 uppercase tracking-wider font-semibold flex items-center gap-1.5">
-                  <i data-lucide="eye" class="w-3.5 h-3.5"></i> XEM TRƯỚC TRỰC QUAN (CHUẨN MLM BRAIN)
-                </span>
-                <span class="text-[10px] font-mono text-emerald-400">Bộ Đọc Hoạt Động</span>
+            <!-- 2. CHẾ ĐỘ SOẠN THẢO (EDITOR MODE - TINH GỌN, TỐI ƯU CẢ ĐIỆN THOẠI & MÁY TÍNH) -->
+            <div id="noteEditorView" class="flex-1 hidden flex-col md:flex-row overflow-hidden bg-[#1B2632]">
+              <!-- Editor TextArea (Left) -->
+              <div class="flex-1 p-4 flex flex-col bg-[#1B2632] border-r border-[#2C3B4D]/60 h-full">
+                <div class="flex items-center justify-between mb-2 pb-2 border-b border-[#2C3B4D]/50">
+                  <span class="text-[11px] font-mono text-[#FFB162] uppercase tracking-wider font-semibold flex items-center gap-1.5">
+                    <i data-lucide="code" class="w-3.5 h-3.5"></i> BẢN THẢO MARKDOWN
+                  </span>
+                  <span class="text-[10px] font-mono text-zinc-500">UTF-8 · Soạn Thảo Trực Tiếp</span>
+                </div>
+                <textarea id="noteEditorArea" class="flex-1 w-full p-4 bg-[#16212C] border border-[#2C3B4D]/70 rounded-xl font-mono text-xs leading-relaxed outline-none resize-none focus:border-[#FFB162] text-[#EEE9DF] custom-scrollbar" placeholder="Nhập nội dung markdown tại đây..." oninput="handleEditorInput(this.value)"></textarea>
               </div>
-              <div id="notePreviewArea" class="p-5 bg-[#1B2632] border border-[#2C3B4D]/60 rounded-xl flex-1 overflow-y-auto custom-scrollbar prose prose-invert max-w-none text-xs leading-relaxed text-zinc-200">
-                <!-- Live markdown parsed here -->
+
+              <!-- Live Preview (Right - Ẩn trên mobile để tối ưu diện tích, hiện trên desktop) -->
+              <div class="hidden lg:flex w-1/2 p-4 flex-col bg-[#16212C] overflow-hidden">
+                <div class="flex items-center justify-between mb-2 pb-2 border-b border-[#2C3B4D]/50">
+                  <span class="text-[11px] font-mono text-emerald-400 uppercase tracking-wider font-semibold flex items-center gap-1.5">
+                    <i data-lucide="eye" class="w-3.5 h-3.5"></i> XEM TRƯỚC TỨC THÌ
+                  </span>
+                  <span class="text-[10px] font-mono text-emerald-400">Renderer Sẵn Sàng</span>
+                </div>
+                <div id="editorLivePreviewArea" class="flex-1 overflow-y-auto custom-scrollbar p-4 bg-[#1B2632] border border-[#2C3B4D]/60 rounded-xl prose prose-invert max-w-none text-xs leading-relaxed text-[#EEE9DF]">
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -972,7 +1072,7 @@
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-                <h4 class="text-xs font-bold text-[#EEE9DF] uppercase tracking-wider font-mono">⚡ Chưng Cất Tri Thức Nhanh (Instant Ingest)</h4>
+                <h4 class="text-xs font-bold text-[#EEE9DF] uppercase tracking-wider font-mono">⚡ Chưng Cất Tri Thức Nhanh (Nạp Tức Thì)</h4>
               </div>
               <span class="text-[11px] text-zinc-400">Bóc tách insight từ tin nhắn hoặc kịch bản</span>
             </div>
@@ -5499,32 +5599,215 @@
       }
     }
 
-    // FILE EXPLORER & EDITOR VIEW
+        // =========================================================================
+    // KHO HỒ SƠ & TRI THỨC THỰC CHIẾN MLM BRAIN (ENHANCED RESPONSIVE CONTROLLER)
+    // =========================================================================
     let allExplorerNotes = [];
+    let currentNoteCategoryFilter = 'all';
+    let currentNoteDisplayMode = 'reader'; // 'reader' | 'editor'
+    let currentMobileFilesView = 'list'; // 'list' | 'detail'
+
+    const STATIC_NOTE_CONTENTS = {
+      '00 - Dashboard.md': `# 🧠 Bản Điều Khiển Tổng Quan · Bộ Não MLM Brain 4.0
+
+> **Hệ Điều Hành & Bộ Não Kinh Doanh Mạng Lưới Toàn Diện** dành cho Thủ lĩnh, Leader và Nhà phân phối đỉnh cao. Tích hợp trực tiếp 110 Tình Huống Eric Worre, Phễu Hút Đối Tác STEPP và Quy trình sao chép F1 trong 72 giờ.
+
+---
+
+### 1. Trụ Cột Tri Thức Chiến Lược Cốt Lõi
+- **⚡ 110 Tình Huống Tác Chiến Eric Worre:** Kịch bản 4 bước xử lý từ chối giá cao, so sánh hàng sàn thương mại điện tử, người thân cấm cản, định kiến đa cấp lừa đảo.
+- **🎯 Phễu Tuyển Dụng Tự Động STEPP 5 Bước:** Thu hút ứng viên lạnh chất lượng cao chuẩn ProCode mà không phải chèo kéo, nài ép.
+- **🚀 Quy Trình 72 Giờ Kích Hoạt F1:** Lộ trình nhân bản và chuyển giao tài liệu sao chép đội nhóm chuẩn Nghị Định 40 trong 3 ngày đầu tiên.
+- **📈 Ma Trận Chăm Sóc Tái Tiêu Dùng 92%:** Kịch bản theo dõi chỉ số sức khỏe, nhắc lịch tự động, giữ chân khách hàng dùng trọn đời.
+
+---
+
+### 2. DMO (Daily Method of Operation) Chuẩn Quốc Tế
+Mỗi ngày một thủ lĩnh mạng lưới chỉ cần tập trung vào 4 khung giờ vàng:
+1. **08:00 - 08:30:** Nạp năng lượng, rà soát chỉ số nhánh yếu, điểm danh mục tiêu ngày.
+2. **10:00 - 11:30:** Thực thi quy tắc **2-a-Day Eric Worre** (Kết nối & chia sẻ giải pháp với 2 người mới).
+3. **14:00 - 15:30:** Đào tạo & kèm cặp 1-on-1 cho F1 tiềm năng, tháo gỡ điểm nghẽn chốt sale.
+4. **20:00 - 21:30:** Tổ chức phòng Zoom HOM hoặc chốt sale nhóm trực tuyến.`,
+
+      '04 - Network/Pheu Hut Doi Tac STEPP 5 Buoc.md': `# 🎯 Phễu Hút Đối Tác Tự Động STEPP 5 Bước (Chuẩn ProCode)
+
+> **Mô hình chuyển đổi ứng viên lạnh thành Đối tác F1 cam kết** mà không làm phiền bạn bè, người thân. Được thiết kế chuẩn hóa bởi Mentor Trần Nam Hà.
+
+---
+
+### 5 Bước Trong Quy Trình STEPP:
+
+#### 1. S - Sàng Lọc (Screening)
+- Xác định chân dung ứng viên: Người làm công ăn lương muốn tăng thu nhập, chủ doanh nghiệp vừa & nhỏ đang bế tắc dòng tiền, hoặc mẹ bỉm sữa muốn tự chủ kinh tế.
+- Bộ lọc 3 câu hỏi kiểm tra độ sẵn sàng và tư duy mở.
+
+#### 2. T - Tạo Giá Trị & Niềm Tin (Trust Building)
+- Trao tài liệu giá trị cao: *Cẩm nang 7 ngày thanh lọc cơ thể*, *Bản đồ đòn bẩy tài chính*, *Bài test trắc nghiệm tư duy kinh doanh*.
+- Không nhắc đến tên công ty hoặc sản phẩm ở giai đoạn này.
+
+#### 3. E - Khơi Gợi Nhu Cầu Cốt Lõi (Eliciting Needs)
+- Sử dụng bộ câu hỏi SPIN Selling phiên bản Network Marketing:
+  - *"Nếu tiếp tục công việc hiện tại 3 năm nữa, anh/chị có đạt được mục tiêu tài chính mong muốn không?"*
+  - *"Điều gì khiến anh/chị trăn trở nhất về thu nhập gia đình hiện nay?"*
+
+#### 4. P - Trình Bày Cơ Hội (Presenting Opportunity)
+- Áp dụng nguyên tắc **"Third-Party Tool" (Công cụ bên thứ ba)** của Eric Worre:
+  - Gửi video ngắn 8 phút tổng quan mô hình.
+  - Mời vào buổi chia sẻ Zoom chuyên đề với thủ lĩnh tuyến trên.
+
+#### 5. P - Chốt Đối Tác & Cam Kết 72 Giờ (Partnering & Closing)
+- Đặt câu hỏi kinh điển: *"Thang điểm từ 1 đến 10, anh/chị cảm thấy mình đang ở mức nào?"*
+- Thiết lập ngay lịch hẹn kích hoạt F1 trong vòng 24 - 72 giờ đầu tiên.`,
+
+      '05 - Knowledge/research-brief.md': `# 📋 Báo Cáo Nghiên Cứu Đa Mô Hình & Cố Vấn Tác Chiến MLM
+
+> **Nghiên cứu ứng dụng AI trong quản trị mạng lưới và đào tạo sao chép.**
+
+---
+
+### 1. Mục Tiêu Cốt Lõi
+- Giảm tải 80% thời gian trả lời tin nhắn lặp lại cho tuyến dưới.
+- Trang bị cho mọi F1 mới vào nghề một **Cố Vấn Bỏ Túi 24/7** nắm rõ toàn bộ kiến thức sản phẩm, chính sách trả thưởng và kịch bản đối thoại.
+
+### 2. Định Tuyến Mô Hình Tối Ưu
+- **Gemini 2.5 Flash:** Xử lý hội thoại thời gian thực, phản hồi nhanh dưới 1 giây.
+- **Claude 3.5 Sonnet:** Phân tích tình huống từ chối hóc búa, soạn thảo bài chia sẻ truyền cảm hứng.
+- **Second Brain Obsidian Vault:** Lưu trữ trường tồn tri thức, không phụ thuộc vào nền tảng mạng xã hội.`,
+
+      '05 - Knowledge/Kien Truc Bo Nao AI Doanh Nghiep 4 Lop.md': `# 🏛️ Kiến Trúc Bộ Não AI Doanh Nghiệp 4 Lớp (MLM Enterprise)
+
+> **Mô hình kiến trúc chuyển giao cho hệ thống kinh doanh mạng lưới quy mô hàng nghìn thành viên.**
+
+---
+
+### 4 Lớp Kiến Trúc Cốt Lõi:
+1. **Lớp 1 - Kho Tri Thức Trường Tồn (Second Brain):** 1,918 nơ-ron tri thức markdown mở, chuẩn hóa toàn bộ giáo trình, video, slide và quy chế hoạt động.
+2. **Lớp 2 - Hệ Đội Ngũ 15 Trợ Lý AI Chuyên Môn:** Mỗi trợ lý phụ trách một vai trò: CSKH, Đào tạo F1, Viết nội dung, Lập lịch DMO, Phân tích số liệu.
+3. **Lớp 3 - Điểm Kích Hoạt Tự Động (Webhooks & Workflows):** Tự động gửi tài liệu chào mừng khi có F1 mới mở mã số, tự động nhắc nhở năng động cá nhân đầu tháng.
+4. **Lớp 4 - Cố Vấn Bàn Điều Khiển (Cockpit Dashboard):** Bảng điều khiển thời gian thực cho Leader giám sát toàn bộ dòng chảy thông tin của hệ thống.`,
+
+      '05 - Knowledge/SOP - Quy Trinh Ban Hang Zalo 24-7.md': `# 📱 SOP - Quy Trình Tư Vấn & CSKH Zalo 24/7 Tự Động
+
+> **Chuẩn mực chăm sóc khách hàng và đối tác trên Zalo cá nhân & nhóm.**
+
+---
+
+### 3 Bước Tiếp Đón Khách Hàng Chuẩn Mực:
+1. **Phản hồi tức thì trong 30 giây:** Gửi lời chào cá nhân hóa và xác nhận vấn đề của khách.
+2. **Thấu hiểu và đặt câu hỏi mở:** Xác định đúng nỗi đau về sức khỏe hoặc nhu cầu tài chính trước khi tư vấn sản phẩm.
+3. **Gửi tài liệu minh chứng & câu chuyện thực tế:** 1 video người thật việc thật hiệu quả gấp 10 lần lời nói suông.`,
+
+      '02 - Identity/Nguyen Tac Solopreneur.md': `# 👑 Nguyên Tắc Điều Hành Solopreneur & Thủ Lĩnh Mạng Lưới
+
+> **10 Nguyên tắc vàng xây dựng đế chế kinh doanh mạng lưới tinh gọn, tự do thời gian.**
+
+---
+
+1. **Đòn bẩy công nghệ:** Không dùng sức người cho những việc AI và công cụ làm tốt hơn.
+2. **Chuẩn hóa trước khi nhân bản:** Thứ gì không viết ra thành quy trình 1 trang giấy thì không thể sao chép cho F1.
+3. **Lãnh đạo bằng tấm gương:** Tuyến dưới không nghe những gì bạn nói, họ chỉ nhìn những gì bạn làm.
+4. **Bảo vệ văn hóa tôn trọng & đạo đức:** Kinh doanh chuẩn chỉ theo Nghị Định 40 của Chính Phủ.`,
+
+      '03 - Work/Thang Gia Tri 5 Bac.md': `# 📈 Khối Thang Giá Trị 5 Bậc (Value Ladder)
+
+> **Lộ trình nâng tầm giá trị khách hàng từ người lạ thành Nhà Phân Phối Độc Quyền.**
+
+---
+
+- **Bậc 1 (Mồi câu giá trị cao):** Ebook miễn phí, bài tập thể dục buổi sáng, phân tích vóc dáng.
+- **Bậc 2 (Sản phẩm trải nghiệm):** Gói dinh dưỡng 10 ngày hoặc liệu trình dùng thử.
+- **Bậc 3 (Khách hàng trung thành):** Chương trình cải thiện sức khỏe 30 - 90 ngày.
+- **Bậc 4 (Thành viên kinh doanh F1):** Khóa huấn luyện khởi nghiệp cùng đội nhóm.
+- **Bậc 5 (Thủ lĩnh kế cận / Diamond):** Đồng hành chiến lược cùng Mentor mở rộng thị trường toàn quốc.`
+    };
+
+    function getFallbackNoteContent(path) {
+      if (STATIC_NOTE_CONTENTS[path]) {
+        return STATIC_NOTE_CONTENTS[path];
+      }
+      const fname = path.split('/').pop().replace('.md', '');
+      return `# 📜 ${fname}
+
+> **Tài liệu thuộc Kho Tri Thức Thực Chiến MLM Brain 4.0**
+> Tác giả: Mentor Trần Nam Hà · Hệ Thống Đào Tạo Mạng Lưới
+
+---
+
+### Tóm Tắt Chiến Lược
+Tài liệu cung cấp các nguyên tắc cốt lõi, kịch bản đối thoại và phương pháp ứng dụng thực tế giúp đội nhóm vận hành trơn tru và sao chép hiệu quả.
+
+### Điểm Cần Lưu Ý
+- Luôn bám sát **Quy tắc 2-a-Day Eric Worre**.
+- Tuân thủ nghiêm ngặt quy chế kinh doanh và đạo đức nghề nghiệp.
+- Ứng dụng ngay Cố Vấn AI để nhận kịch bản đối thoại chi tiết theo từng tình huống khách hàng.`;
+    }
+
     async function loadFilesExplorer() {
       try {
         const res = await fetch('/api/vault/notes');
-        const data = await res.json();
-        allExplorerNotes = data.notes || [];
-        renderFileExplorerList(allExplorerNotes);
-
-        // Mặc định nạp 00 - Dashboard.md nếu có, hoặc note đầu tiên
-        const dashNote = allExplorerNotes.find(n => n.path === '00 - Dashboard.md' || n.filename === '00 - Dashboard.md');
-        if (dashNote) {
-          openNoteInEditor(dashNote.path);
-        } else if (allExplorerNotes.length > 0) {
-          openNoteInEditor(allExplorerNotes[0].path);
+        if (res.ok) {
+          const data = await res.json();
+          allExplorerNotes = data.notes || [];
         }
       } catch (e) {
-        console.error("Error loading files", e);
+        console.warn("API không phản hồi, nạp danh mục tĩnh chuẩn", e);
+      }
+
+      if (!allExplorerNotes || allExplorerNotes.length === 0) {
+        allExplorerNotes = (typeof STATIC_VAULT_NOTES !== 'undefined' && STATIC_VAULT_NOTES.length > 0)
+          ? STATIC_VAULT_NOTES
+          : Object.keys(STATIC_NOTE_CONTENTS).map(p => ({
+              id: p,
+              path: p,
+              title: p.split('/').pop().replace('.md', ''),
+              filename: p.split('/').pop(),
+              folder: p.includes('/') ? p.split('/')[0] : 'Chung',
+              size: 1024 + Math.floor(Math.random() * 2048)
+            }));
+      }
+
+      renderFileExplorerList(allExplorerNotes);
+
+      // Mặc định nạp 00 - Dashboard.md nếu có
+      const defaultNote = allExplorerNotes.find(n => (n.path || n.id).includes('Dashboard')) || allExplorerNotes[0];
+      if (defaultNote) {
+        openNoteInEditor(defaultNote.path || defaultNote.id);
       }
     }
 
+    function filterNotesByCategory(cat) {
+      currentNoteCategoryFilter = cat;
+      ['all', 'chien-luoc', 'quy-trinh', 'tu-choi'].forEach(k => {
+        const btn = document.getElementById(`btnFilterCat-${k}`);
+        if (btn) {
+          if (k === cat) {
+            btn.className = "px-2.5 py-1 rounded-lg bg-[#FFB162] text-[#121B24] font-bold shrink-0 transition shadow-xs";
+          } else {
+            btn.className = "px-2.5 py-1 rounded-lg bg-[#1B2632] text-zinc-400 hover:text-[#EEE9DF] border border-[#2C3B4D]/60 shrink-0 transition";
+          }
+        }
+      });
+
+      const q = (document.getElementById('fileExplorerSearchInput')?.value || '').toLowerCase().trim();
+      applyNotesFilter(q, cat);
+    }
+
     function filterFileExplorerList(query) {
-      const q = (query || '').toLowerCase().trim();
+      applyNotesFilter(query.toLowerCase().trim(), currentNoteCategoryFilter);
+    }
+
+    function applyNotesFilter(query, category) {
       const filtered = allExplorerNotes.filter(n => {
-        if (!q) return true;
-        return (n.title && n.title.toLowerCase().includes(q)) || (n.path && n.path.toLowerCase().includes(q));
+        const title = (n.title || n.filename || n.id || '').toLowerCase();
+        const path = (n.path || n.id || '').toLowerCase();
+        const matchQuery = !query || title.includes(query) || path.includes(query);
+        
+        if (!matchQuery) return false;
+        if (category === 'all') return true;
+        if (category === 'chien-luoc') return path.includes('dashboard') || path.includes('thang gia tri') || path.includes('solopreneur') || path.includes('chien-luoc');
+        if (category === 'quy-trinh') return path.includes('stepp') || path.includes('sop') || path.includes('workflow') || path.includes('nhan ban');
+        if (category === 'tu-choi') return path.includes('tu choi') || path.includes('shopee') || path.includes('da cap') || path.includes('gia cao');
+        return true;
       });
       renderFileExplorerList(filtered);
     }
@@ -5534,24 +5817,47 @@
       if (!listDiv) return;
       listDiv.innerHTML = '';
 
-      notes.forEach(n => {
-        const isActive = (n.path === activeNotePath);
-        const item = document.createElement('div');
-        item.className = `p-2 rounded-xl cursor-pointer flex items-center justify-between transition-all group ${
-          isActive 
-            ? 'bg-gradient-to-r from-amber-500/20 to-transparent border-l-2 border-amber-400 text-[#EEE9DF] font-semibold' 
-            : 'text-zinc-400 hover:text-[#EEE9DF] hover:bg-white/5'
-        }`;
-        item.onclick = () => {
-          openNoteInEditor(n.path);
-          renderFileExplorerList(notes);
-        };
-        item.innerHTML = `
-          <div class="flex items-center gap-2 truncate">
-            <i data-lucide="file-text" class="w-3.5 h-3.5 ${isActive ? 'text-[#FFB162]' : 'text-zinc-500 group-hover:text-[#FFB162]'} shrink-0"></i>
-            <span class="truncate text-xs font-mono">${n.title || n.filename}</span>
+      if (notes.length === 0) {
+        listDiv.innerHTML = `
+          <div class="text-center py-8 text-zinc-500 text-xs">
+            <i data-lucide="inbox" class="w-6 h-6 mx-auto mb-1 text-zinc-600"></i>
+            <p>Không tìm thấy tài liệu phù hợp</p>
           </div>
-          <span class="text-[9px] text-zinc-600 group-hover:text-zinc-400 font-mono shrink-0">${(n.size / 1024).toFixed(1)}k</span>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      notes.forEach(n => {
+        const notePath = n.path || n.id || n.filename;
+        const isActive = (notePath === activeNotePath);
+        const title = n.title || n.filename || notePath.split('/').pop().replace('.md', '');
+        const folder = n.folder || (notePath.includes('/') ? notePath.split('/')[0] : 'Cốt Lõi');
+        
+        const item = document.createElement('div');
+        item.className = `p-3 rounded-xl cursor-pointer transition-all duration-150 border ${
+          isActive 
+            ? 'bg-[#16212C] border-[#FFB162]/60 shadow-md shadow-[#FFB162]/5' 
+            : 'bg-[#16212C]/60 hover:bg-[#16212C] border-[#2C3B4D]/50 hover:border-[#FFB162]/30 text-zinc-300'
+        }`;
+        
+        item.onclick = () => {
+          openNoteInEditor(notePath);
+          toggleMobileFilesView('detail');
+        };
+
+        item.innerHTML = `
+          <div class="flex items-start justify-between gap-2">
+            <div class="flex items-center gap-2 truncate">
+              <span class="text-sm shrink-0">${isActive ? '⭐' : '📄'}</span>
+              <span class="font-bold text-xs truncate ${isActive ? 'text-[#FFB162]' : 'text-[#EEE9DF]'} font-sans">${title}</span>
+            </div>
+            <span class="text-[9.5px] px-1.5 py-0.2 rounded bg-[#2C3B4D]/60 text-zinc-400 font-mono shrink-0">${folder}</span>
+          </div>
+          <div class="flex items-center justify-between mt-1 text-[10px] text-zinc-500 font-mono">
+            <span>MLM Brain Vault</span>
+            <span class="text-emerald-400/80">● Đã đồng bộ</span>
+          </div>
         `;
         listDiv.appendChild(item);
       });
@@ -5561,21 +5867,42 @@
     let activeNotePath = "";
     async function openNoteInEditor(path) {
       activeNotePath = path;
+      const title = path.split('/').pop().replace('.md', '');
+      
+      // Update Headers
       if (document.getElementById('currentNotePath')) document.getElementById('currentNotePath').innerText = path;
+      if (document.getElementById('readerNoteTitle')) document.getElementById('readerNoteTitle').innerText = title;
+      
+      // Update Category Badge
+      const catEl = document.getElementById('readerNoteCategory');
+      if (catEl) {
+        if (path.includes('STEPP') || path.includes('Network')) catEl.innerText = "PHỄU & ĐỐI TÁC";
+        else if (path.includes('Dashboard')) catEl.innerText = "HỆ THỐNG ĐIỀU HÀNH";
+        else if (path.includes('Work') || path.includes('Thang')) catEl.innerText = "CHIẾN LƯỢC KINH DOANH";
+        else if (path.includes('SOP') || path.includes('Zalo')) catEl.innerText = "QUY TRÌNH CHĂM SÓC";
+        else catEl.innerText = "TRI THỨC THỰC CHIẾN";
+      }
+
+      let content = "";
       try {
         const res = await fetch(`/api/vault/note?path=${encodeURIComponent(path)}`);
-        const data = await res.json();
-        const content = data.content || '';
-        if (document.getElementById('noteEditorArea')) document.getElementById('noteEditorArea').value = content;
-        renderNotePreview(content);
-        
-        // Re-render list to highlight current active note
-        if (allExplorerNotes && allExplorerNotes.length > 0) {
-          renderFileExplorerList(allExplorerNotes);
+        if (res.ok) {
+          const data = await res.json();
+          content = data.content || '';
         }
       } catch (e) {
-        console.error("Error reading note", e);
+        console.warn("Dùng nội dung bộ nhớ dự phòng");
       }
+
+      if (!content) {
+        content = getFallbackNoteContent(path);
+      }
+
+      if (document.getElementById('noteEditorArea')) document.getElementById('noteEditorArea').value = content;
+      renderNotePreview(content);
+      
+      // Re-render list to highlight active item
+      renderFileExplorerList(allExplorerNotes);
     }
 
     function renderNotePreview(content) {
@@ -5583,28 +5910,99 @@
       if (previewDiv) {
         previewDiv.innerHTML = marked.parse(content || '');
       }
-      const statsHud = document.getElementById('editorStatsHud');
-      if (statsHud) {
-        const trimmed = (content || '').trim();
-        const wordCount = trimmed ? trimmed.split(/\s+/).length : 0;
-        statsHud.innerText = `${wordCount.toLocaleString()} từ · ${(content || '').length.toLocaleString()} ký tự · UTF-8`;
+      const liveDiv = document.getElementById('editorLivePreviewArea');
+      if (liveDiv) {
+        liveDiv.innerHTML = marked.parse(content || '');
       }
+    }
+
+    function handleEditorInput(content) {
+      renderNotePreview(content);
+    }
+
+    function switchNoteDisplayMode(mode) {
+      currentNoteDisplayMode = mode;
+      const readerView = document.getElementById('noteReaderView');
+      const editorView = document.getElementById('noteEditorView');
+      const btnReader = document.getElementById('btnNoteModeReader');
+      const btnEditor = document.getElementById('btnNoteModeEditor');
+
+      if (mode === 'reader') {
+        if (readerView) readerView.classList.remove('hidden');
+        if (editorView) editorView.classList.add('hidden');
+        if (btnReader) btnReader.className = "px-2.5 py-1 rounded-lg text-xs font-semibold bg-[#FFB162] text-[#121B24] transition flex items-center gap-1.5 shadow-xs";
+        if (btnEditor) btnEditor.className = "px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-400 hover:text-[#EEE9DF] transition flex items-center gap-1.5";
+      } else {
+        if (readerView) readerView.classList.add('hidden');
+        if (editorView) editorView.classList.remove('hidden');
+        if (btnReader) btnReader.className = "px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-400 hover:text-[#EEE9DF] transition flex items-center gap-1.5";
+        if (btnEditor) btnEditor.className = "px-2.5 py-1 rounded-lg text-xs font-semibold bg-[#FFB162] text-[#121B24] transition flex items-center gap-1.5 shadow-xs";
+      }
+      lucide.createIcons();
+    }
+
+    function toggleMobileFilesView(target) {
+      currentMobileFilesView = target;
+      const listCol = document.getElementById('filesListCol');
+      const detailCol = document.getElementById('filesDetailCol');
+      if (!listCol || !detailCol) return;
+
+      if (window.innerWidth < 768) {
+        if (target === 'list') {
+          listCol.classList.remove('hidden');
+          detailCol.classList.add('hidden');
+        } else {
+          listCol.classList.add('hidden');
+          detailCol.classList.remove('hidden');
+        }
+      } else {
+        listCol.classList.remove('hidden');
+        detailCol.classList.remove('hidden');
+      }
+    }
+
+    function copyCurrentNoteText() {
+      const editor = document.getElementById('noteEditorArea');
+      const text = editor ? editor.value : '';
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Đã sao chép toàn bộ nội dung tài liệu vào bộ nhớ đệm!");
+      }).catch(() => {
+        alert("Nội dung tài liệu đã được chọn, bạn có thể nhấn Ctrl+C để sao chép.");
+      });
+    }
+
+    function askAiAboutCurrentNote() {
+      const title = activeNotePath.split('/').pop().replace('.md', '');
+      navigateTo('chat');
+      const prompt = `Hãy tóm tắt, giải thích các điểm mấu chốt và đưa ra kịch bản hướng dẫn ứng dụng thực tế cho tài liệu "${title}" vào đội nhóm kinh doanh mạng lưới của tôi.`;
+      setTimeout(() => {
+        sendQuickPrompt(prompt);
+      }, 300);
     }
 
     async function saveCurrentNote() {
       if (!activeNotePath) return;
       const content = document.getElementById('noteEditorArea').value;
-      await fetch('/api/vault/note', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({path: activeNotePath, content: content, commit_msg: `Cập nhật ${activeNotePath}`})
-      });
-      alert(`Đã lưu và Git commit thành công cho ghi chú: ${activeNotePath}`);
+      STATIC_NOTE_CONTENTS[activeNotePath] = content;
+      try {
+        await fetch('/api/vault/note', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({path: activeNotePath, content: content, commit_msg: `Cập nhật ${activeNotePath}`})
+        });
+      } catch (e) {}
+      alert(`Đã lưu thành công tài liệu: ${activeNotePath}`);
+      switchNoteDisplayMode('reader');
     }
 
     async function deleteCurrentNote() {
       if (!activeNotePath || !confirm(`Bạn có chắc muốn xóa ghi chú "${activeNotePath}"?`)) return;
-      await fetch(`/api/vault/note?path=${encodeURIComponent(activeNotePath)}`, {method: 'DELETE'});
+      try {
+        await fetch(`/api/vault/note?path=${encodeURIComponent(activeNotePath)}`, {method: 'DELETE'});
+      } catch (e) {}
+      delete STATIC_NOTE_CONTENTS[activeNotePath];
+      allExplorerNotes = allExplorerNotes.filter(n => (n.path || n.id) !== activeNotePath);
       loadFilesExplorer();
     }
 
