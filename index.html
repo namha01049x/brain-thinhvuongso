@@ -311,10 +311,10 @@
       <!-- Vault Selector Dropdown (Responsive) -->
       <div onclick="navigateTo('brain-files')" class="flex items-center gap-1.5 px-2 py-0.5 bg-zinc-100 dark:bg-[#202230] hover:bg-zinc-200/80 rounded cursor-pointer transition text-xs font-medium text-zinc-700 dark:text-zinc-200 max-w-[150px] sm:max-w-none truncate">
         <i data-lucide="book-open" class="w-3.5 h-3.5 text-zinc-500 shrink-0"></i>
-        <span id="headerVaultName" class="truncate font-semibold text-[#EEE9DF]">MLM Second Brain Vault</span>
+        <span id="headerVaultName" class="truncate font-semibold text-[#EEE9DF]">Kho Tri Thức MLM Brain</span>
         <i data-lucide="chevron-down" class="w-3 h-3 text-zinc-400 shrink-0"></i>
         <span class="text-zinc-400 hidden sm:inline">·</span>
-        <span id="headerStats" class="text-[#C9C1B1] text-[11px] hidden sm:inline font-mono">1,918 nodes · 2,548 links · 98% Wiki Health</span>
+        <span id="headerStats" class="text-[#C9C1B1] text-[11px] hidden sm:inline font-mono">1,918 nơ-ron · 2,548 liên kết · 98% Tin cậy</span>
       </div>
     </div>
 
@@ -327,7 +327,7 @@
 
       <button onclick="switchSpace('brain')" id="space-brain" class="space-btn px-3 py-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
         <i data-lucide="brain" class="w-3.5 h-3.5"></i>
-        <span data-i18n="top_brain">Second Brain</span>
+        <span data-i18n="top_brain">Bộ Não Tri Thức</span>
       </button>
 
       <button onclick="switchSpace('skills')" id="space-skills" class="space-btn px-3 py-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5">
@@ -338,7 +338,7 @@
       <button onclick="switchSpace('partners')" id="space-partners" class="space-btn px-3 py-1 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1.5 font-bold">
         <i data-lucide="users" class="w-3.5 h-3.5 text-orange-500"></i>
         <span>Cộng sự</span>
-        <span class="text-[9px] bg-orange-100 text-orange-600 dark:bg-orange-950 dark:text-orange-400 px-1.5 py-0.2 rounded-full font-mono font-bold">ROSTERS</span>
+        <span class="text-[9px] bg-orange-100 text-orange-600 dark:bg-orange-950 dark:text-orange-400 px-1.5 py-0.2 rounded-full font-mono font-bold">15 TRỢ LÝ</span>
       </button>
 
       <button onclick="switchSpace('enterprise')" id="space-enterprise" class="space-btn active px-3 py-1 rounded-full bg-white bg-[#FFB162] text-[#121B24] shadow-sm transition flex items-center gap-1.5 font-bold">
@@ -402,7 +402,7 @@
           <!-- 1. CHAT (Ảnh 2, 3) -->
           <button onclick="navigateTo('chat')" id="nav-chat" class="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 transition">
             <i data-lucide="message-square" class="w-4 h-4 text-zinc-500"></i>
-            <span data-i18n="menu_chat">Chat</span>
+            <span data-i18n="menu_chat">Trò Chuyện AI</span>
           </button>
 
           <!-- 2. BRAIN (v Brain: Neuralnetwork, Files, Self-learning) -->
@@ -410,7 +410,7 @@
             <div onclick="toggleMenuSection('brain')" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 cursor-pointer">
               <span class="flex items-center gap-2.5">
                 <i data-lucide="brain" class="w-4 h-4 text-orange-600"></i>
-                <span data-i18n="menu_brain">Brain</span>
+                <span data-i18n="menu_brain">Bộ Não Tri Thức</span>
               </span>
               <i data-lucide="chevron-down" id="arrow-brain" class="w-3.5 h-3.5 text-zinc-400 transition-transform"></i>
             </div>
@@ -418,15 +418,15 @@
             <div id="sub-brain" class="pl-6 pr-1 py-0.5 space-y-0.5">
               <button onclick="navigateTo('brain-neural')" id="nav-brain-neural" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition sidebar-item-active">
                 <i data-lucide="network" class="w-3.5 h-3.5"></i>
-                <span data-i18n="menu_neural">Neuralnetwork</span>
+                <span data-i18n="menu_neural">Mạng Nơ-ron 3D</span>
               </button>
               <button onclick="navigateTo('brain-files')" id="nav-brain-files" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
                 <i data-lucide="files" class="w-3.5 h-3.5"></i>
-                <span data-i18n="menu_files">Files</span>
+                <span data-i18n="menu_files">Kho Hồ Sơ & File</span>
               </button>
               <button onclick="navigateTo('brain-learning')" id="nav-brain-learning" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
                 <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-                <span data-i18n="menu_learning">Self-learning</span>
+                <span data-i18n="menu_learning">Tự Động Học Hỏi</span>
               </button>
             </div>
           </div>
@@ -553,7 +553,7 @@
             </button>
             <button onclick="switchNeuralMobileTab('vault')" id="neuralTab-vault" class="px-3 py-1.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 transition flex items-center gap-1">
               <i data-lucide="folder" class="w-3.5 h-3.5"></i>
-              <span>Vault Notes</span>
+              <span>Kho Ghi Chú</span>
             </button>
           </div>
         </div>
@@ -563,7 +563,7 @@
         <div id="neuralColVault" class="hidden lg:flex w-full lg:w-64 border-r border-[#2C3B4D]/60 bg-[#16212C] flex-col shrink-0">
           <div class="p-3 border-b border-bordercol dark:border-[#26283b] space-y-2">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">VAULT</span>
+              <span class="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">KHO TRI THỨC</span>
               <div class="flex items-center gap-1 text-zinc-500">
                 <button onclick="createNewNotePrompt()" class="p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded" title="Note mới"><i data-lucide="plus" class="w-3.5 h-3.5"></i></button>
                 <button onclick="navigateTo('brain-files')" class="p-1 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded" title="Mở File Manager"><i data-lucide="folder" class="w-3.5 h-3.5"></i></button>
@@ -573,12 +573,12 @@
             <!-- Search note -->
             <div class="relative">
               <i data-lucide="search" class="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-zinc-400"></i>
-              <input type="text" id="brainVaultSearch" oninput="filterVaultNotes(this.value)" placeholder="Find a note..." class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-md pl-8 pr-2 py-1 text-xs outline-none focus:border-[#FFB162] text-zinc-800 dark:text-zinc-200">
+              <input type="text" id="brainVaultSearch" oninput="filterVaultNotes(this.value)" placeholder="Tìm ghi chú, tài liệu..." class="w-full bg-white dark:bg-[#202230] border border-bordercol dark:border-[#2f3248] rounded-md pl-8 pr-2 py-1 text-xs outline-none focus:border-[#FFB162] text-zinc-800 dark:text-zinc-200">
             </div>
             <!-- Filter Name / Content (TƯƠNG TÁC LỌC DANH SÁCH) -->
             <div class="flex items-center gap-2 text-[11px] font-medium text-zinc-500">
-              <span id="filterTabName" onclick="setSearchFilterMode('name')" class="px-2.5 py-0.5 rounded-md bg-orange-100 text-orange-700 dark:bg-orange-950 dark:text-orange-300 cursor-pointer font-bold shadow-2xs">Name</span>
-              <span id="filterTabContent" onclick="setSearchFilterMode('content')" class="px-2.5 py-0.5 rounded-md hover:text-zinc-900 dark:hover:text-white cursor-pointer transition">Content</span>
+              <span id="filterTabName" onclick="setSearchFilterMode('name')" class="px-2.5 py-0.5 rounded-md bg-orange-100 text-orange-700 dark:bg-orange-950 dark:text-orange-300 cursor-pointer font-bold shadow-2xs">Tên</span>
+              <span id="filterTabContent" onclick="setSearchFilterMode('content')" class="px-2.5 py-0.5 rounded-md hover:text-zinc-900 dark:hover:text-white cursor-pointer transition">Nội dung</span>
             </div>
           </div>
 
@@ -596,21 +596,21 @@
             <!-- Top Clusters -->
             <div class="flex justify-around text-center">
               <!-- Cluster: SOURCES -->
-              <div onclick="openClusterExplorer('SOURCES')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-zinc-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm SOURCES">
+              <div onclick="openClusterExplorer('SOURCES')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-zinc-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm NGUỒN DỮ LIỆU">
                 <div class="text-[11px] font-bold text-zinc-800 dark:text-zinc-200 tracking-wider flex items-center justify-center gap-1.5 font-mono">
-                  <span>SOURCES</span>
+                  <span>NGUỒN DỮ LIỆU</span>
                   <i data-lucide="external-link" class="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-white transition-colors"></i>
                 </div>
-                <div class="text-[10px] text-zinc-500 font-mono mt-0.5">56 note · 3% Vault</div>
+                <div class="text-[10px] text-zinc-500 font-mono mt-0.5">56 tài liệu · 3% Kho</div>
               </div>
 
               <!-- Cluster: MARKETING -->
-              <div onclick="openClusterExplorer('MARKETING')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-red-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm MARKETING">
+              <div onclick="openClusterExplorer('MARKETING')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-red-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm TIẾP THỊ & HÚT ĐỐI TÁC">
                 <div class="text-[11px] font-bold text-red-500 tracking-wider flex items-center justify-center gap-1.5 font-mono">
-                  <span>MARKETING</span>
+                  <span>TIẾP THỊ & HÚT ĐỐI TÁC</span>
                   <i data-lucide="external-link" class="w-3.5 h-3.5 text-red-400 group-hover:text-red-600 transition-colors"></i>
                 </div>
-                <div class="text-[10px] text-zinc-500 font-mono mt-0.5">52 note · 3% Vault</div>
+                <div class="text-[10px] text-zinc-500 font-mono mt-0.5">52 kịch bản · 3% Kho</div>
               </div>
             </div>
 
@@ -618,41 +618,41 @@
             <div class="flex justify-between items-center px-2 md:px-4">
               <div class="space-y-4 text-left">
                 <!-- Cluster: BUSINESS -->
-                <div onclick="openClusterExplorer('BUSINESS')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-blue-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm BUSINESS">
+                <div onclick="openClusterExplorer('BUSINESS')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-blue-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm KINH DOANH MẠNG LƯỚI">
                   <div class="text-[11px] font-bold text-blue-500 tracking-wider flex items-center gap-1.5 font-mono">
-                    <span>BUSINESS</span>
+                    <span>KINH DOANH MẠNG LƯỚI</span>
                     <i data-lucide="external-link" class="w-3.5 h-3.5 text-blue-400 group-hover:text-blue-600 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">74 note · 4% Vault</div>
+                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">74 chiến lược · 4% Kho</div>
                 </div>
 
                 <!-- Cluster: WIKI -->
-                <div onclick="openClusterExplorer('WIKI')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-indigo-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm WIKI">
+                <div onclick="openClusterExplorer('WIKI')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-indigo-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm BÁCH KHOA THỰC CHIẾN">
                   <div class="text-[11px] font-bold text-indigo-500 tracking-wider flex items-center gap-1.5 font-mono">
-                    <span>WIKI</span>
+                    <span>BÁCH KHOA THỰC CHIẾN</span>
                     <i data-lucide="external-link" class="w-3.5 h-3.5 text-indigo-400 group-hover:text-indigo-600 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">176 note · 9% Vault</div>
+                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">176 cẩm nang · 9% Kho</div>
                 </div>
               </div>
 
               <div class="space-y-4 text-right">
                 <!-- Cluster: PERSONAL -->
-                <div onclick="openClusterExplorer('PERSONAL')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-purple-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm PERSONAL">
+                <div onclick="openClusterExplorer('PERSONAL')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-purple-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm PHÁT TRIỂN THỦ LĨNH">
                   <div class="text-[11px] font-bold text-purple-500 tracking-wider flex items-center justify-end gap-1.5 font-mono">
-                    <span>PERSONAL</span>
+                    <span>PHÁT TRIỂN THỦ LĨNH</span>
                     <i data-lucide="external-link" class="w-3.5 h-3.5 text-purple-400 group-hover:text-purple-600 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">36 note · 2% Vault</div>
+                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">36 bài học · 2% Kho</div>
                 </div>
 
                 <!-- Cluster: PRODUCTIVITY -->
-                <div onclick="openClusterExplorer('PRODUCTIVITY')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-emerald-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm PRODUCTIVITY">
+                <div onclick="openClusterExplorer('PRODUCTIVITY')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-emerald-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm HIỆU SUẤT & DMO">
                   <div class="text-[11px] font-bold text-emerald-500 tracking-wider flex items-center justify-end gap-1.5 font-mono">
-                    <span>PRODUCTIVITY</span>
+                    <span>HIỆU SUẤT & DMO</span>
                     <i data-lucide="external-link" class="w-3.5 h-3.5 text-emerald-400 group-hover:text-emerald-600 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">33 note · 2% Vault</div>
+                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">33 quy trình · 2% Kho</div>
                 </div>
               </div>
             </div>
@@ -661,21 +661,21 @@
             <div class="flex flex-col items-center gap-2">
               <div class="flex justify-around w-full text-center">
                 <!-- Cluster: FACTS -->
-                <div onclick="openClusterExplorer('FACTS')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-amber-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm FACTS">
+                <div onclick="openClusterExplorer('FACTS')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-amber-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm TRI THỨC CỐT LÕI">
                   <div class="text-[11px] font-bold text-amber-500 tracking-wider flex items-center justify-center gap-1.5 font-mono">
-                    <span>FACTS</span>
+                    <span>TRI THỨC CỐT LÕI</span>
                     <i data-lucide="external-link" class="w-3.5 h-3.5 text-amber-400 group-hover:text-amber-600 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">1138 note · 59% Vault</div>
+                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">1,138 nơ-ron · 59% Kho</div>
                 </div>
 
                 <!-- Cluster: SALES -->
-                <div onclick="openClusterExplorer('SALES')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-rose-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm SALES">
+                <div onclick="openClusterExplorer('SALES')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-rose-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm BÁN HÀNG & CHỐT SALE">
                   <div class="text-[11px] font-bold text-rose-500 tracking-wider flex items-center justify-center gap-1.5 font-mono">
-                    <span>SALES</span>
+                    <span>BÁN HÀNG & CHỐT SALE</span>
                     <i data-lucide="external-link" class="w-3.5 h-3.5 text-rose-400 group-hover:text-rose-600 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">30 note · 2% Vault</div>
+                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">30 kịch bản · 2% Kho</div>
                 </div>
               </div>
 
@@ -694,12 +694,12 @@
                     <i data-lucide="zoom-out" class="w-4 h-4"></i>
                   </button>
                   <div class="w-px h-4 bg-zinc-200 dark:bg-zinc-700"></div>
-                  <button onclick="resetBrainGraphView()" title="Đặt lại góc nhìn 360° (Reset View)" class="px-2 py-1.5 rounded-xl text-xs font-mono text-zinc-600 dark:text-zinc-300 hover:text-orange-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center gap-1 transition cursor-pointer">
+                  <button onclick="resetBrainGraphView()" title="Căn giữa góc nhìn 360°" class="px-2 py-1.5 rounded-xl text-xs font-mono text-zinc-600 dark:text-zinc-300 hover:text-orange-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center gap-1 transition cursor-pointer">
                     <i data-lucide="compass" class="w-3.5 h-3.5"></i>
-                    <span>Reset</span>
+                    <span>Căn Giữa</span>
                   </button>
                 </div>
-                <div class="text-[10px] font-mono tracking-widest text-zinc-400 font-semibold">QUAY 360° · LĂN CHUỘT / CHẠM ĐỂ ZOOM · READY</div>
+                <div class="text-[10px] font-mono tracking-widest text-zinc-400 font-semibold">QUAY 360° · LĂN CHUỘT / CHẠM ĐỂ PHÓNG TO · SẴN SÀNG · READY</div>
               </div>
             </div>
           </div>
@@ -718,7 +718,7 @@
               <span class="font-bold text-[#EEE9DF] uppercase tracking-wider font-mono">HỎI ĐÁP BỘ NÃO AI</span>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-[10px] text-[#C9C1B1] font-mono">1,918 notes</span>
+              <span class="text-[10px] text-[#C9C1B1] font-mono">1,918 ghi chú</span>
               <button onclick="navigateTo('chat')" title="Mở chat toàn màn hình" class="text-zinc-400 hover:text-[#FFB162] p-1 transition"><i data-lucide="maximize-2" class="w-3.5 h-3.5"></i></button>
             </div>
           </div>
@@ -776,7 +776,7 @@
                   <span class="px-2 py-0.5 rounded-md bg-[#2C3B4D]/60 text-[#FFB162] font-mono text-[10px] border border-[#2C3B4D]">
                     Gemini 2.5 Flash
                   </span>
-                  <span class="text-[10px] text-zinc-400">· Trực tiếp từ Vault</span>
+                  <span class="text-[10px] text-zinc-400">· Trực tiếp từ Kho Tri Thức</span>
                 </div>
 
                 <div class="flex items-center gap-1">
@@ -813,7 +813,7 @@
           <!-- Search box in file explorer -->
           <div class="relative my-2.5">
             <i data-lucide="search" class="w-3.5 h-3.5 absolute left-2.5 top-2.5 text-zinc-500"></i>
-            <input type="text" id="fileExplorerSearchInput" oninput="filterFileExplorerList(this.value)" placeholder="Lọc theo tên note..." class="w-full bg-[#1B2632] border border-[#2C3B4D]/60 rounded-lg pl-8 pr-2 py-1.5 text-xs text-white placeholder-zinc-500 outline-none focus:border-[#FFB162] transition font-mono">
+            <input type="text" id="fileExplorerSearchInput" oninput="filterFileExplorerList(this.value)" placeholder="Lọc theo tên ghi chú, tài liệu..." class="w-full bg-[#1B2632] border border-[#2C3B4D]/60 rounded-lg pl-8 pr-2 py-1.5 text-xs text-white placeholder-zinc-500 outline-none focus:border-[#FFB162] transition font-mono">
           </div>
 
           <div id="filesExplorerList" class="flex-1 overflow-y-auto custom-scrollbar pt-1 space-y-1 text-xs">
@@ -831,7 +831,7 @@
               </div>
               <div class="flex items-center gap-2">
                 <span id="currentNotePath" class="font-bold text-xs text-[#EEE9DF] font-mono">00 - Dashboard.md</span>
-                <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 border border-[#2C3B4D]/70 text-emerald-400 font-mono">🟢 Synced Git</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 border border-[#2C3B4D]/70 text-emerald-400 font-mono">🟢 Đã Đồng Bộ Git</span>
               </div>
             </div>
             <div class="flex items-center gap-2">
@@ -853,7 +853,7 @@
                 <span class="text-[11px] font-mono text-[#FFB162]/80 uppercase tracking-wider font-semibold flex items-center gap-1.5">
                   <i data-lucide="code" class="w-3.5 h-3.5"></i> MARKDOWN SOURCE
                 </span>
-                <span id="editorStatsHud" class="text-[10px] font-mono text-zinc-500">UTF-8 · Live Edit</span>
+                <span id="editorStatsHud" class="text-[10px] font-mono text-zinc-500">UTF-8 · Soạn Thảo Trực Tiếp</span>
               </div>
               <textarea id="noteEditorArea" class="flex-1 w-full p-4 bg-[#16212C] border border-[#2C3B4D]/60 rounded-xl font-mono text-xs leading-relaxed outline-none resize-none focus:border-[#FFB162] focus:ring-1 focus:ring-amber-400/30 text-[#EEE9DF] selection:bg-amber-500/30 custom-scrollbar" placeholder="Nhập nội dung markdown tại đây..." oninput="renderNotePreview(this.value)"></textarea>
             </div>
@@ -862,9 +862,9 @@
             <div class="w-1/2 p-4 flex flex-col overflow-y-auto custom-scrollbar bg-[#16212C]">
               <div class="flex items-center justify-between mb-2">
                 <span class="text-[11px] font-mono text-[#FFB162]/80 uppercase tracking-wider font-semibold flex items-center gap-1.5">
-                  <i data-lucide="eye" class="w-3.5 h-3.5"></i> LIVE PREVIEW (CHUẨN MLM BRAIN)
+                  <i data-lucide="eye" class="w-3.5 h-3.5"></i> XEM TRƯỚC TRỰC QUAN (CHUẨN MLM BRAIN)
                 </span>
-                <span class="text-[10px] font-mono text-emerald-400">Renderer Active</span>
+                <span class="text-[10px] font-mono text-emerald-400">Bộ Đọc Hoạt Động</span>
               </div>
               <div id="notePreviewArea" class="p-5 bg-[#1B2632] border border-[#2C3B4D]/60 rounded-xl flex-1 overflow-y-auto custom-scrollbar prose prose-invert max-w-none text-xs leading-relaxed text-zinc-200">
                 <!-- Live markdown parsed here -->
@@ -885,11 +885,11 @@
             <div>
               <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#2C3B4D]/60 border border-[#2C3B4D]/70 text-[#FFB162] text-[10px] font-mono font-semibold uppercase mb-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Autonomous Knowledge Distillation Engine</span>
+                <span>Cơ Chế Đúc Kết Tri Thức Mạng Lưới Tự Động</span>
               </div>
               <h2 class="text-xl md:text-2xl font-black text-white flex items-center gap-2.5">
                 <i data-lucide="sparkles" class="w-6 h-6 text-[#FFB162]"></i>
-                <span class="text-[#EEE9DF]">Self-learning & Knowledge Distillation (Tự Động Học)</span>
+                <span class="text-[#EEE9DF]">Tự Động Học Hỏi & Đúc Kết Tri Thức Thực Chiến</span>
               </h2>
               <p class="text-xs text-zinc-400 mt-1.5 max-w-2xl leading-relaxed">
                 Cơ chế tự động hóa tri thức MLM: Quét tin nhắn, voice call & tình huống xử lý từ chối thực tế → Trích xuất mẫu số thành công (Sources) → Bồi đắp vào Wiki trường tồn.
@@ -897,7 +897,7 @@
             </div>
             <button onclick="openIngestModal()" class="px-5 py-2.5 rounded-xl btn-mlmbrain-primary flex items-center gap-2 text-xs font-bold shrink-0">
               <i data-lucide="plus-circle" class="w-4 h-4"></i>
-              <span>+ Ingest Source</span>
+              <span>+ Thêm Dữ Liệu Nguồn</span>
             </button>
           </div>
 
@@ -907,7 +907,7 @@
             <div class="p-5 rounded-2xl mlm-card rounded-2xl relative overflow-hidden group">
               <div class="absolute -right-3 -top-3 w-16 h-16 bg-[#FFB162]/5 rounded-full blur-xl group-hover:bg-[#2C3B4D]/80 transition-all"></div>
               <div class="flex items-center justify-between">
-                <span class="text-[11px] text-zinc-400 uppercase font-mono tracking-wider font-semibold">Distilled Rules</span>
+                <span class="text-[11px] text-zinc-400 uppercase font-mono tracking-wider font-semibold">Quy Tắc Đúc Kết</span>
                 <span class="p-1 rounded-md bg-[#2C3B4D]/60 text-[#FFB162] text-xs">📜</span>
               </div>
               <div class="flex items-baseline gap-2 mt-2">
@@ -923,7 +923,7 @@
             <div class="p-5 rounded-2xl mlm-card rounded-2xl relative overflow-hidden group">
               <div class="absolute -right-3 -top-3 w-16 h-16 bg-[#FFB162]/5 rounded-full blur-xl group-hover:bg-[#2C3B4D]/80 transition-all"></div>
               <div class="flex items-center justify-between">
-                <span class="text-[11px] text-zinc-400 uppercase font-mono tracking-wider font-semibold">Active Facts</span>
+                <span class="text-[11px] text-zinc-400 uppercase font-mono tracking-wider font-semibold">Dữ Liệu Kích Hoạt</span>
                 <span class="p-1 rounded-md bg-[#2C3B4D]/60 text-[#FFB162] text-xs">⚡</span>
               </div>
               <div class="flex items-baseline gap-2 mt-2">
@@ -939,7 +939,7 @@
             <div class="p-5 rounded-2xl mlm-card rounded-2xl relative overflow-hidden group">
               <div class="absolute -right-3 -top-3 w-16 h-16 bg-emerald-500/5 rounded-full blur-xl group-hover:bg-emerald-500/15 transition-all"></div>
               <div class="flex items-center justify-between">
-                <span class="text-[11px] text-zinc-400 uppercase font-mono tracking-wider font-semibold">Compounding Rate</span>
+                <span class="text-[11px] text-zinc-400 uppercase font-mono tracking-wider font-semibold">Tốc Độ Tăng Trưởng Tri Thức</span>
                 <span class="p-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs">📈</span>
               </div>
               <div class="flex items-baseline gap-2 mt-2">
@@ -955,7 +955,7 @@
             <div class="p-5 rounded-2xl mlm-card rounded-2xl relative overflow-hidden group">
               <div class="absolute -right-3 -top-3 w-16 h-16 bg-blue-500/5 rounded-full blur-xl group-hover:bg-blue-500/15 transition-all"></div>
               <div class="flex items-center justify-between">
-                <span class="text-[11px] text-zinc-400 uppercase font-mono tracking-wider font-semibold">Wiki Health</span>
+                <span class="text-[11px] text-zinc-400 uppercase font-mono tracking-wider font-semibold">Độ Tin Cậy Cẩm Nang</span>
                 <span class="p-1 rounded-md bg-blue-500/10 text-blue-400 text-xs">🛡️</span>
               </div>
               <div class="flex items-baseline gap-2 mt-2">
@@ -4493,7 +4493,7 @@
     let currentOwnerFilter = 'javis';
     let currentStatusFilter = 'upcoming';
     let isDarkMode = false;
-    let currentLang = 'en';
+    let currentLang = 'vi';
     let currentActiveView = 'brain-neural';
     let allSkills = [];
 
@@ -4830,7 +4830,8 @@
       if (spaceKey === 'tasks') {
         navigateTo('work-tasks');
       } else if (spaceKey === 'brain') {
-        navigateTo('brain-neural');
+        changeLanguage('vi');
+      navigateTo('brain-neural');
       } else if (spaceKey === 'skills') {
         navigateTo('cap-skills');
       } else if (spaceKey === 'partners' || spaceKey === 'rosters') {
@@ -5020,7 +5021,8 @@
 
     function sendQuickPrompt(promptText) {
       if (currentActiveView !== 'brain-neural' && currentActiveView !== 'chat') {
-        navigateTo('brain-neural');
+        changeLanguage('vi');
+      navigateTo('brain-neural');
       }
       const input = document.getElementById('cockpitChatInput');
       if (input) {
@@ -7094,6 +7096,7 @@
     }
 
     function triggerTaskNow(title) {
+      changeLanguage('vi');
       navigateTo('brain-neural');
       sendQuickPrompt(`Thực thi tác vụ ngay: "${title}"`);
     }
@@ -7857,6 +7860,7 @@ Trưởng nhóm đã sẵn sàng nhận lệnh.`);
       initWebSocket();
       loadSelfLearning();
       loadFilesExplorer();
+      changeLanguage('vi');
       navigateTo('brain-neural');
     });
   </script>
@@ -7866,12 +7870,12 @@ Trưởng nhóm đã sẵn sàng nhận lệnh.`);
   <nav id="mobileBottomNav" class="fixed bottom-0 inset-x-0 z-30 lg:hidden bg-white/95 dark:bg-[#161722]/95 backdrop-blur-md border-t border-bordercol dark:border-[#26283b] flex items-center justify-around px-2 py-1 shadow-lg select-none pb-safe">
     <button onclick="navigateTo('chat')" id="mob-nav-chat" class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-zinc-500 dark:text-zinc-400 hover:text-orange-600 transition group min-w-[52px]">
       <i data-lucide="message-square" class="w-4 h-4 mb-0.5 group-hover:scale-110 transition-transform"></i>
-      <span class="text-[10px] font-medium">Chat</span>
+      <span class="text-[10px] font-medium">Trò Chuyện</span>
     </button>
 
     <button onclick="navigateTo('brain-neural')" id="mob-nav-brain" class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-zinc-500 dark:text-zinc-400 hover:text-orange-600 transition group min-w-[52px]">
       <i data-lucide="brain" class="w-4 h-4 mb-0.5 group-hover:scale-110 transition-transform"></i>
-      <span class="text-[10px] font-medium">Brain</span>
+      <span class="text-[10px] font-medium">Bộ Não</span>
     </button>
 
     <button onclick="navigateTo('work-tasks')" id="mob-nav-tasks" class="flex flex-col items-center justify-center py-1 px-2 rounded-xl text-zinc-500 dark:text-zinc-400 hover:text-orange-600 transition group min-w-[52px]">
