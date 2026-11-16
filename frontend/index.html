@@ -511,11 +511,11 @@
         <div class="max-w-4xl w-full mx-auto flex flex-col h-full p-4">
           <!-- Chat Header Bar -->
           <div class="flex items-center justify-between pb-3 border-b border-bordercol dark:border-[#26283b] shrink-0">
-            <div class="flex items-center gap-2">
-              <span class="p-2 rounded-lg bg-orange-100 dark:bg-orange-950 text-orange-600"><i data-lucide="message-square" class="w-4 h-4"></i></span>
+            <div class="flex items-center gap-3">
+              <img src="assets/mlm_brain_logo.jpg" alt="MLM Brain" class="w-9 h-9 rounded-xl border border-[#FFB162]/40 shadow-sm object-cover bg-[#16212C]">
               <div>
-                <h2 class="text-sm font-bold text-zinc-900 dark:text-white" data-i18n="chat_title">MLM BRAIN 4.0 · Trợ Lý Bộ Não Kinh Doanh Mạng Lưới</h2>
-                <p class="text-[11px] text-zinc-500 dark:text-zinc-400">Stream phản hồi thời gian thực qua AI Engine & Kho 1,918 Tri Thức Thực Chiến</p>
+                <h2 class="text-sm font-bold text-zinc-900 dark:text-white" data-i18n="chat_title">MLM BRAIN AI — Cố Vấn Tác Chiến Mạng Lưới</h2>
+                <p class="text-[11px] text-zinc-500 dark:text-zinc-400">Trợ lý chiến lược 24/7 • 110 Tình huống Eric Worre & Quy trình chuẩn ProCode</p>
               </div>
             </div>
             <div class="flex items-center gap-2">
@@ -525,23 +525,25 @@
 
           <!-- Chat Stream Messages -->
           <div id="dedicatedChatMessages" class="flex-1 overflow-y-auto custom-scrollbar py-4 space-y-3 text-xs">
-            <div class="text-zinc-400 text-center py-12">
-              <div class="w-12 h-12 mx-auto rounded-full bg-orange-50 dark:bg-[#2C3B4D]/60 border border-orange-200 dark:border-amber-500/30 flex items-center justify-center text-orange-600 dark:text-[#FFB162] mb-3 shadow-sm">
-                <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+            <div class="text-zinc-400 text-center py-10">
+              <div class="relative w-16 h-16 mx-auto mb-3">
+                <img src="assets/mlm_brain_logo.jpg" alt="MLM Brain AI" class="w-16 h-16 rounded-2xl border-2 border-[#FFB162] shadow-[0_0_25px_rgba(255,177,98,0.35)] object-cover bg-[#16212C] p-0.5">
+                <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#16212C]"></span>
               </div>
-              <p class="font-bold text-sm text-zinc-800 dark:text-zinc-200">Sẵn sàng phục vụ bạn. Hãy chọn câu hỏi nhanh hoặc nhập yêu cầu:</p>
-              <div class="mt-4 flex flex-wrap justify-center gap-2 max-w-lg mx-auto">
-                <button onclick="sendQuickPrompt('Khách hàng chê sản phẩm đắt hơn thị trường, tôi nên xử lý thế nào để giữ chân và chuyển hóa?')" class="p-2.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm text-zinc-700 dark:text-zinc-300 cursor-pointer">
-                  💬 Khách chê sản phẩm giá cao
+              <h3 class="font-bold text-base text-zinc-900 dark:text-white mb-1">MLM BRAIN AI CHATBOT</h3>
+              <p class="font-medium text-xs text-zinc-600 dark:text-zinc-300">Cố vấn chiến lược 24/7 • Chọn kịch bản tác chiến mạng lưới nhanh bên dưới:</p>
+              <div class="mt-4 flex flex-wrap justify-center gap-2.5 max-w-xl mx-auto">
+                <button onclick="sendQuickPrompt('Hướng dẫn tôi kịch bản 4 bước xử lý từ chối khi khách hàng nói không có tiền hoặc chê giá cao theo giáo trình Eric Worre')" class="p-2.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-[#FFB162] text-left transition shadow-sm text-xs text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white cursor-pointer flex items-center gap-2">
+                  <span class="text-base">⚡</span> <span><strong>Khách chê giá cao / không tiền:</strong> Kịch bản 4 bước Eric Worre</span>
                 </button>
-                <button onclick="sendQuickPrompt('Kịch bản 3 câu mở lời phá băng tự nhiên cho người mới F1 đi chia sẻ')" class="p-2.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm text-zinc-700 dark:text-zinc-300 cursor-pointer">
-                  🚀 3 câu mở lời phá băng F1
+                <button onclick="sendQuickPrompt('Chiến lược thiết lập phễu tuyển dụng tự động STEPP 5 bước để hút ứng viên chất lượng cao chuẩn ProCode')" class="p-2.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-[#FFB162] text-left transition shadow-sm text-xs text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white cursor-pointer flex items-center gap-2">
+                  <span class="text-base">🎯</span> <span><strong>Phễu tự động STEPP:</strong> Hút đối tác chuẩn ProCode</span>
                 </button>
-                <button onclick="sendQuickPrompt('Tóm tắt 5 bước phễu STEPP hút đối tác tự nhiên không chèo kéo')" class="p-2.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm text-zinc-700 dark:text-zinc-300 cursor-pointer">
-                  🎯 5 bước phễu STEPP hút đối tác
+                <button onclick="sendQuickPrompt('Quy trình nhân bản và sao chép thủ lĩnh F1, F2 trong 24 giờ đầu tiên tuân thủ Nghị Định 40')" class="p-2.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-[#FFB162] text-left transition shadow-sm text-xs text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white cursor-pointer flex items-center gap-2">
+                  <span class="text-base">🚀</span> <span><strong>Nhân bản F1 & F2:</strong> Sao chép đội nhóm chuẩn NĐ 40</span>
                 </button>
-                <button onclick="sendQuickPrompt('Tóm tắt tổng quan cấu trúc Second Brain và các cụm dữ liệu tri thức MLM')" class="p-2.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm text-zinc-700 dark:text-zinc-300 cursor-pointer">
-                  🧠 Tổng quan mạng nơ-ron Second Brain
+                <button onclick="sendQuickPrompt('Lập kịch bản tự động chăm sóc và nhắc lịch tái tiêu dùng đạt tỷ lệ duy trì 92%')" class="p-2.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-[#FFB162] text-left transition shadow-sm text-xs text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white cursor-pointer flex items-center gap-2">
+                  <span class="text-base">📈</span> <span><strong>Auto chăm sóc khách hàng:</strong> Tái tiêu dùng đạt 92%</span>
                 </button>
               </div>
             </div>
@@ -550,21 +552,21 @@
           <!-- Bottom Prompt Box -->
           <div class="pt-3 border-t border-bordercol dark:border-[#26283b] shrink-0">
             <form onsubmit="handleDedicatedChatSubmit(event)" class="flex flex-col gap-2">
-              <input type="text" id="dedicatedChatInput" placeholder="Nhập câu hỏi hoặc yêu cầu cho Javis OS..." class="w-full bg-white dark:bg-[#1e202e] border border-bordercol dark:border-[#2f3248] rounded-xl px-4 py-2.5 text-xs outline-none focus:border-[#FFB162] text-zinc-800 dark:text-zinc-200 shadow-sm">
+              <input type="text" id="dedicatedChatInput" placeholder="Nhập câu hỏi hoặc yêu cầu cho MLM Brain AI (VD: kịch bản xử lý từ chối, kế hoạch 30 ngày cho F1)..." class="w-full bg-white dark:bg-[#1e202e] border border-bordercol dark:border-[#2f3248] rounded-xl px-4 py-2.5 text-xs outline-none focus:border-[#FFB162] text-zinc-800 dark:text-zinc-200 shadow-sm">
               <div class="flex items-center justify-between text-[11px]">
                 <div class="flex items-center gap-2">
                   <span class="px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 font-medium border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Claude 3.5 Sonnet (CLI OAuth 0đ)
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> MLM Brain Copilot Engine
                   </span>
                   <span class="px-2 py-0.5 rounded-full bg-orange-50 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300 font-medium border border-orange-200 dark:border-orange-800">
-                    High Reasoning
+                    110 Tình Huống Tác Chiến
                   </span>
                 </div>
                 <div class="flex items-center gap-1.5">
-                  <button type="button" onclick="startVoiceInput()" class="p-1.5 text-zinc-400 hover:text-orange-600 rounded">
+                  <button type="button" onclick="startVoiceInput()" class="p-1.5 text-zinc-400 hover:text-[#FFB162] rounded" title="Nhập bằng giọng nói">
                     <i data-lucide="mic" class="w-4 h-4"></i>
                   </button>
-                  <button type="submit" class="px-3 py-1.5 btn-mlmbrain-primary hover:bg-orange-700 text-white rounded-lg shadow-sm font-semibold flex items-center gap-1">
+                  <button type="submit" class="px-3.5 py-1.5 btn-mlmbrain-primary text-white rounded-lg shadow-sm font-semibold flex items-center gap-1 cursor-pointer">
                     <span>Gửi</span>
                     <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
                   </button>
@@ -4545,7 +4547,7 @@
         give_a_star: "Give a star",
         conversation: "CONVERSATION",
         skills_title: "Skills",
-        chat_title: "Javis AI Conversation Cockpit",
+        chat_title: "MLM BRAIN AI — Network Marketing Strategy Copilot",
         menu_teamwork: "Autonomous Team"
       },
       vi: {
@@ -4559,7 +4561,7 @@
         menu_neural: "Mạng Nơ-ron (3D Graph)",
         menu_files: "Tệp Ghi Chú (Files)",
         menu_learning: "Tự Động Học",
-        menu_code: "Studio Lập Trình",
+        menu_code: "Chiến Lược Mạng Lưới",
         menu_capabilities: "Năng Lực AI",
         menu_partners: "Đội Ngũ Trợ Lý",
         menu_chatbot: "Trợ Lý Chatbot",
@@ -4570,10 +4572,10 @@
         menu_webhooks: "Điểm Kích Hoạt",
         menu_connections: "Cổng Kết Nối",
         menu_system: "Cài Đặt Hệ Thống",
-        give_a_star: "Tặng Sao Javis",
+        give_a_star: "Đánh Giá MLM Brain",
         conversation: "HỘI THOẠI ĐIỀU HÀNH",
         skills_title: "Kho Kỹ Năng",
-        chat_title: "Bàn Điều Khiển Trò Chuyện Javis",
+        chat_title: "MLM BRAIN AI — Cố Vấn Tác Chiến Mạng Lưới",
         menu_teamwork: "Đội ngũ tự động"
       }
     };
@@ -7171,9 +7173,11 @@
       const icon = document.getElementById('themeIcon');
       if (isDarkMode) {
         html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
         if (icon) icon.setAttribute('data-lucide', 'moon');
       } else {
         html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
         if (icon) icon.setAttribute('data-lucide', 'sun');
       }
       lucide.createIcons();
@@ -7754,14 +7758,22 @@ Trưởng nhóm đã sẵn sàng nhận lệnh.`);
 
     // KHỞI ĐỘNG HỆ THỐNG
     window.addEventListener('DOMContentLoaded', () => {
-      // Tôn trọng chế độ hiển thị sáng (chuẩn ảnh gốc) hoặc chế độ người dùng đã chọn
+      // Tự động khôi phục giao diện SÁNG tinh khôi chuẩn như lúc trước
+      if (localStorage.getItem('brain_theme_v3') !== 'active') {
+        localStorage.setItem('theme', 'light');
+        localStorage.setItem('brain_theme_v3', 'active');
+      }
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark') {
         document.documentElement.classList.add('dark');
         isDarkMode = true;
+        const icon = document.getElementById('themeIcon');
+        if (icon) icon.setAttribute('data-lucide', 'moon');
       } else {
         document.documentElement.classList.remove('dark');
         isDarkMode = false;
+        const icon = document.getElementById('themeIcon');
+        if (icon) icon.setAttribute('data-lucide', 'sun');
       }
       lucide.createIcons();
       initWebSocket();
