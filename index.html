@@ -296,9 +296,7 @@
       </button>
 
       <div class="flex items-center gap-2 cursor-pointer group" onclick="navigateTo('brain-neural')">
-        <div class="w-7 h-7 rounded-lg bg-[#FFB162] text-[#121B24] flex items-center justify-center font-black text-xs shadow-md group-hover:scale-105 transition-transform">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        </div>
+        <img src="assets/mlm_brain_logo.jpg" alt="MLM BRAIN" class="w-7 h-7 rounded-lg object-cover border border-[#FFB162]/40 shadow-md group-hover:scale-105 transition-transform shrink-0" />
         <div class="flex flex-col">
           <div class="flex items-center gap-1.5">
             <span class="font-black text-xs tracking-wider text-[#EEE9DF] uppercase font-mono">MLM BRAIN</span>
@@ -443,45 +441,6 @@
               <span class="text-[9px] btn-mlmbrain-primary text-white px-1.5 py-0.2 rounded font-mono font-bold">PRO</span>
             </button>
           </div>
-
-          <!-- 4. CHIẾN LƯỢC MẠNG LƯỚI PROCODE -->
-          <div class="pt-2 mt-2 border-t border-[#2C3B4D]/60 space-y-1">
-            <div class="px-2.5 py-1 text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider">Chiến Lược Mạng Lưới</div>
-
-            <!-- Phễu STEPP -->
-            <a href="index.html#stepp-pipeline" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 transition">
-              <span class="flex items-center gap-2.5">
-                <i data-lucide="layers" class="w-4 h-4 text-emerald-500"></i>
-                <span>Phễu Tự Động STEPP</span>
-              </span>
-              <span class="text-[9px] text-emerald-400 font-mono font-bold">5 BƯỚC</span>
-            </a>
-
-            <!-- Võ Đài Luyện Khẩu Khí -->
-            <a href="index.html#voice-arena" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 transition">
-              <span class="flex items-center gap-2.5">
-                <i data-lucide="mic-2" class="w-4 h-4 text-amber-500"></i>
-                <span>Võ Đài Khẩu Khí</span>
-              </span>
-              <span class="text-[9px] text-amber-400 font-mono font-bold">VOICE AI</span>
-            </a>
-
-            <!-- Bản Đồ Nơ-ron 3D Toàn Cảnh -->
-            <a href="ban-do-tri-thuc.html" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 transition">
-              <span class="flex items-center gap-2.5">
-                <i data-lucide="compass" class="w-4 h-4 text-cyan-400"></i>
-                <span>Bản Đồ 110 Nơ-ron 3D</span>
-              </span>
-              <span class="text-[9px] text-cyan-400 font-mono font-bold">360°</span>
-            </a>
-
-            <!-- Về Trang Chủ MLM Brain -->
-            <a href="index.html" class="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 transition">
-              <i data-lucide="arrow-left" class="w-4 h-4 text-zinc-400"></i>
-              <span>Về Trang Chủ MLM Brain</span>
-            </a>
-          </div>
-
         </nav>
       </div>
 
@@ -5094,7 +5053,6 @@
     let canvasAnimationId = null;
     let brainAutoRotateActive = true;
     let canvasZoomLevel = 1.0;
-    let graphInstance = null;
 
     function toggleBrainAutoRotate() {
       brainAutoRotateActive = !brainAutoRotateActive;
