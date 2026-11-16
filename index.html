@@ -121,18 +121,7 @@
     .dark .custom-scrollbar::-webkit-scrollbar-thumb {
       background: #2e3144;
     }
-    /* Mascot Float Animation */
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-6px) rotate(1.5deg); }
-    }
-    .pet-floating {
-      animation: floaty 4s ease-in-out infinite;
-    }
-    .pet-blink {
-      transform-origin: center;
-      animation: blink 4.5s infinite;
-    }
+
     @keyframes blink {
       0%, 96%, 100% { transform: scaleY(1); }
       98% { transform: scaleY(0.1); }
@@ -444,140 +433,68 @@
             </div>
           </div>
 
-          <!-- 3. CODE (Ảnh 1, 4) -->
-          <div>
-            <button onclick="navigateTo('code')" id="nav-code" class="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 transition">
-              <i data-lucide="file-code" class="w-4 h-4 text-emerald-600"></i>
-              <span data-i18n="menu_code">Code</span>
-            </button>
-          </div>
-
-          <!-- 4. CAPABILITIES (v Capabilities: Partners, Chatbot, Skills, Plugins) (Ảnh 1, 4) -->
-          <div>
-            <div onclick="toggleMenuSection('capabilities')" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 cursor-pointer">
-              <span class="flex items-center gap-2.5">
-                <i data-lucide="lightbulb" class="w-4 h-4 text-[#EEE9DF]0"></i>
-                <span data-i18n="menu_capabilities">Capabilities</span>
-              </span>
-              <i data-lucide="chevron-down" id="arrow-capabilities" class="w-3.5 h-3.5 text-zinc-400 transition-transform"></i>
-            </div>
-            
-            <div id="sub-capabilities" class="pl-6 pr-1 py-0.5 space-y-0.5">
-              <button onclick="navigateTo('cap-partners')" id="nav-cap-partners" class="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
-                <span class="flex items-center gap-2">
-                  <i data-lucide="users-round" class="w-3.5 h-3.5 text-orange-600"></i>
-                  <span class="font-bold text-zinc-900 dark:text-zinc-100">Rosters (Cộng sự)</span>
-                </span>
-                <span class="px-1.5 py-0.2 rounded-full bg-orange-100 dark:bg-orange-950 text-orange-600 dark:text-orange-400 text-[9px] font-mono font-bold">9</span>
-              </button>
-              <button onclick="navigateTo('teamwork')" id="nav-teamwork" class="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
-                <span class="flex items-center gap-2">
-                  <i data-lucide="zap" class="w-3.5 h-3.5 text-[#EEE9DF]0"></i>
-                  <span data-i18n="menu_teamwork">Đội ngũ tự động</span>
-                </span>
-                <span class="px-1 py-0.2 rounded bg-orange-100 dark:bg-orange-950 text-orange-600 dark:text-orange-400 text-[9px] font-bold">24/7</span>
-              </button>
-              <button onclick="navigateTo('cap-chatbot')" id="nav-cap-chatbot" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
-                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
-                <span data-i18n="menu_chatbot">Chatbot</span>
-              </button>
-              <button onclick="navigateTo('cap-skills')" id="nav-cap-skills" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
-                <i data-lucide="puzzle" class="w-3.5 h-3.5"></i>
-                <span data-i18n="menu_skills">Skills</span>
-              </button>
-              <button onclick="navigateTo('cap-plugins')" id="nav-cap-plugins" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
-                <i data-lucide="package" class="w-3.5 h-3.5"></i>
-                <span data-i18n="menu_plugins">Plugins</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- TEAMS (Phòng Tác Chiến - Trưởng Nhóm Điều Phối - Chuẩn 100% Ảnh) -->
-          <div>
-            <button onclick="navigateTo('teamwork')" id="nav-teamwork-direct" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 transition group">
-              <span class="flex items-center gap-2.5">
-                <i data-lucide="users-2" class="w-4 h-4 text-orange-600 group-hover:scale-110 transition-transform"></i>
-                <span class="font-bold text-zinc-800 dark:text-white">Teams</span>
-              </span>
-              <span class="px-1.5 py-0.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white text-[9px] font-bold shadow-xs">Trưởng nhóm</span>
-            </button>
-          </div>
-
-          <!-- 5. WORK (v Work: Tasks, Webhooks) (Ảnh 3, 4) -->
-          <div>
-            <div onclick="toggleMenuSection('work')" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 cursor-pointer">
-              <span class="flex items-center gap-2.5">
-                <i data-lucide="briefcase" class="w-4 h-4 text-blue-500"></i>
-                <span data-i18n="menu_work">Work</span>
-              </span>
-              <i data-lucide="chevron-down" id="arrow-work" class="w-3.5 h-3.5 text-zinc-400 transition-transform"></i>
-            </div>
-            
-            <div id="sub-work" class="pl-6 pr-1 py-0.5 space-y-0.5">
-              <button onclick="navigateTo('work-tasks')" id="nav-work-tasks" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
-                <i data-lucide="check-square" class="w-3.5 h-3.5"></i>
-                <span data-i18n="menu_tasks">Tasks</span>
-              </button>
-              <button onclick="navigateTo('work-webhooks')" id="nav-work-webhooks" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-[11px] transition">
-                <i data-lucide="webhook" class="w-3.5 h-3.5"></i>
-                <span data-i18n="menu_webhooks">Webhooks</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- 6. CONNECTIONS (Ảnh 1, 2, 3, 4) -->
-          <div>
-            <button onclick="navigateTo('connections')" id="nav-connections" class="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 transition">
-              <i data-lucide="link" class="w-4 h-4 text-indigo-500"></i>
-              <span data-i18n="menu_connections">Connections</span>
-            </button>
-          </div>
-
-          <!-- 7. ENTERPRISE (Bộ Não Doanh Nghiệp 4 Lớp) -->
-          <div class="pt-1">
+          <!-- 3. ENTERPRISE (Bộ Não Doanh Nghiệp 4 Lớp) -->
+          <div class="pt-0.5">
             <button onclick="navigateTo('enterprise')" id="nav-enterprise" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-orange-50/80 dark:bg-orange-950/30 text-orange-700 dark:text-orange-400 font-semibold hover:bg-orange-100 dark:hover:bg-orange-900/40 border border-orange-200/60 dark:border-orange-800/40 transition">
               <span class="flex items-center gap-2">
-                <i data-lucide="building-2" class="w-4 h-4 text-orange-600"></i>
-                <span>Bộ Não Doanh Nghiệp</span>
+                <i data-lucide="building-2" class="w-4 h-4 text-[#FFB162]"></i>
+                <span class="font-bold">Doanh Nghiệp 4 Lớp</span>
               </span>
-              <span class="text-[9px] btn-mlmbrain-primary text-white px-1.5 py-0.2 rounded font-mono font-bold">4 LỚP</span>
+              <span class="text-[9px] btn-mlmbrain-primary text-white px-1.5 py-0.2 rounded font-mono font-bold">PRO</span>
             </button>
+          </div>
+
+          <!-- 4. CHIẾN LƯỢC MẠNG LƯỚI PROCODE -->
+          <div class="pt-2 mt-2 border-t border-[#2C3B4D]/60 space-y-1">
+            <div class="px-2.5 py-1 text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider">Chiến Lược Mạng Lưới</div>
+
+            <!-- Phễu STEPP -->
+            <a href="index.html#stepp-pipeline" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 transition">
+              <span class="flex items-center gap-2.5">
+                <i data-lucide="layers" class="w-4 h-4 text-emerald-500"></i>
+                <span>Phễu Tự Động STEPP</span>
+              </span>
+              <span class="text-[9px] text-emerald-400 font-mono font-bold">5 BƯỚC</span>
+            </a>
+
+            <!-- Võ Đài Luyện Khẩu Khí -->
+            <a href="index.html#voice-arena" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 transition">
+              <span class="flex items-center gap-2.5">
+                <i data-lucide="mic-2" class="w-4 h-4 text-amber-500"></i>
+                <span>Võ Đài Khẩu Khí</span>
+              </span>
+              <span class="text-[9px] text-amber-400 font-mono font-bold">VOICE AI</span>
+            </a>
+
+            <!-- Bản Đồ Nơ-ron 3D Toàn Cảnh -->
+            <a href="ban-do-tri-thuc.html" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 transition">
+              <span class="flex items-center gap-2.5">
+                <i data-lucide="compass" class="w-4 h-4 text-cyan-400"></i>
+                <span>Bản Đồ 110 Nơ-ron 3D</span>
+              </span>
+              <span class="text-[9px] text-cyan-400 font-mono font-bold">360°</span>
+            </a>
+
+            <!-- Về Trang Chủ MLM Brain -->
+            <a href="index.html" class="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 transition">
+              <i data-lucide="arrow-left" class="w-4 h-4 text-zinc-400"></i>
+              <span>Về Trang Chủ MLM Brain</span>
+            </a>
           </div>
 
         </nav>
       </div>
 
-      <!-- Bottom Section: System, English, Version, Give a star (Ảnh 1, 2, 3, 4) -->
-      <div class="p-3 border-t border-bordercol dark:border-[#26283b] space-y-2 bg-[#f4f2ea]/70 dark:bg-[#13141c] shrink-0">
-        <!-- System Button -->
-        <button onclick="navigateTo('system')" id="nav-system" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 font-medium transition">
-          <i data-lucide="sliders" class="w-3.5 h-3.5 text-zinc-400"></i>
-          <span data-i18n="menu_system">System</span>
-        </button>
-
-        <!-- Language Dropdown -->
-        <div class="relative">
-          <select id="langSelect" onchange="changeLanguage(this.value)" class="w-full bg-white dark:bg-[#1f2130] border border-bordercol dark:border-[#2d3044] rounded-lg px-2.5 py-1 text-xs text-zinc-700 dark:text-zinc-300 outline-none cursor-pointer">
-            <option value="en">🌐 English</option>
-            <option value="vi">🇻🇳 Tiếng Việt</option>
-          </select>
-        </div>
-
-        <!-- Version & Collapse Toggle (Ảnh 4) -->
-        <div class="flex items-center justify-between text-[10px] text-zinc-400 font-mono pt-1">
-          <div>
-            <span class="font-bold">v0.66.0</span>
-            <div class="text-[9px] text-zinc-500">by Javis Foundation</div>
+      <!-- Bottom Status Bar -->
+      <div class="p-3 border-t border-[#2C3B4D]/60 bg-[#121B24] shrink-0">
+        <div class="flex items-center gap-2.5">
+          <img src="assets/mlm_brain_logo.jpg" alt="MLM Brain Logo" class="w-7 h-7 rounded-lg border border-[#FFB162]/40 object-cover shadow-sm">
+          <div class="min-w-0 flex-1">
+            <div class="text-[11px] font-bold text-[#EEE9DF] truncate">MLM BRAIN 4.0</div>
+            <div class="text-[9px] text-[#C9C1B1] truncate">Hệ Điều Hành Mạng Lưới</div>
           </div>
-          <button onclick="toggleSidebarCollapse()" class="p-1 hover:text-zinc-700 dark:hover:text-zinc-200 rounded" title="Thu gọn / Mở rộng Sidebar">
-            <i data-lucide="sidebar" class="w-3.5 h-3.5"></i>
-          </button>
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" title="Hệ thống hoạt động"></span>
         </div>
-
-        <!-- Give a Star Button (Ảnh 2, 3) -->
-        <button onclick="openStarModal()" class="w-full flex items-center justify-center gap-1.5 py-1 px-2 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-[#FFB162] border border-amber-200 dark:border-amber-800/60 text-[11px] font-semibold hover:bg-amber-100 transition shadow-sm">
-          <span>⭐</span> <span data-i18n="give_a_star">Give a star</span>
-        </button>
       </div>
 
     </aside>
@@ -597,31 +514,34 @@
             <div class="flex items-center gap-2">
               <span class="p-2 rounded-lg bg-orange-100 dark:bg-orange-950 text-orange-600"><i data-lucide="message-square" class="w-4 h-4"></i></span>
               <div>
-                <h2 class="text-sm font-bold text-zinc-900 dark:text-white" data-i18n="chat_title">Javis AI Conversation Cockpit</h2>
-                <p class="text-[11px] text-zinc-400">Stream phản hồi thời gian thực qua WebSockets & Token Pruner</p>
+                <h2 class="text-sm font-bold text-zinc-900 dark:text-white" data-i18n="chat_title">MLM BRAIN 4.0 · Trợ Lý Bộ Não Kinh Doanh Mạng Lưới</h2>
+                <p class="text-[11px] text-zinc-500 dark:text-zinc-400">Stream phản hồi thời gian thực qua AI Engine & Kho 1,918 Tri Thức Thực Chiến</p>
               </div>
             </div>
             <div class="flex items-center gap-2">
-              <button onclick="clearChatHistory()" class="px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 text-xs hover:bg-zinc-200">Xóa cuộc hội thoại</button>
+              <button onclick="clearChatHistory()" class="px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 text-xs hover:bg-zinc-200 cursor-pointer transition">Xóa cuộc hội thoại</button>
             </div>
           </div>
 
           <!-- Chat Stream Messages -->
           <div id="dedicatedChatMessages" class="flex-1 overflow-y-auto custom-scrollbar py-4 space-y-3 text-xs">
             <div class="text-zinc-400 text-center py-12">
-              <div class="w-12 h-12 mx-auto rounded-full bg-orange-50 dark:bg-orange-950/40 border border-orange-200 dark:border-orange-800 flex items-center justify-center text-orange-600 mb-3">
-                <i data-lucide="bot" class="w-6 h-6"></i>
+              <div class="w-12 h-12 mx-auto rounded-full bg-orange-50 dark:bg-[#2C3B4D]/60 border border-orange-200 dark:border-amber-500/30 flex items-center justify-center text-orange-600 dark:text-[#FFB162] mb-3 shadow-sm">
+                <i data-lucide="brain-circuit" class="w-6 h-6"></i>
               </div>
-              <p class="font-medium text-sm text-zinc-700 dark:text-zinc-300">Sẵn sàng phục vụ bạn. Hãy chọn câu hỏi nhanh hoặc nhập yêu cầu:</p>
+              <p class="font-bold text-sm text-zinc-800 dark:text-zinc-200">Sẵn sàng phục vụ bạn. Hãy chọn câu hỏi nhanh hoặc nhập yêu cầu:</p>
               <div class="mt-4 flex flex-wrap justify-center gap-2 max-w-lg mx-auto">
-                <button onclick="sendQuickPrompt('Báo cáo ngắn gọn chỉ số ads tháng 8 ở tài khoản quảng cáo phamquangdai qua mcp cho tôi')" class="p-2 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm">
-                  📊 Kiểm tra Facebook Ads tháng 8
+                <button onclick="sendQuickPrompt('Khách hàng chê sản phẩm đắt hơn thị trường, tôi nên xử lý thế nào để giữ chân và chuyển hóa?')" class="p-2.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm text-zinc-700 dark:text-zinc-300 cursor-pointer">
+                  💬 Khách chê sản phẩm giá cao
                 </button>
-                <button onclick="sendQuickPrompt('Đọc các tin nhắn Zalo gần đây nhất cho tôi')" class="p-2 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm">
-                  💬 Đọc tin nhắn Zalo gần nhất
+                <button onclick="sendQuickPrompt('Kịch bản 3 câu mở lời phá băng tự nhiên cho người mới F1 đi chia sẻ')" class="p-2.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm text-zinc-700 dark:text-zinc-300 cursor-pointer">
+                  🚀 3 câu mở lời phá băng F1
                 </button>
-                <button onclick="sendQuickPrompt('Tóm tắt tổng quan cấu trúc Second Brain và các cụm dữ liệu')" class="p-2 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm">
-                  🧠 Tổng quan Second Brain
+                <button onclick="sendQuickPrompt('Tóm tắt 5 bước phễu STEPP hút đối tác tự nhiên không chèo kéo')" class="p-2.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm text-zinc-700 dark:text-zinc-300 cursor-pointer">
+                  🎯 5 bước phễu STEPP hút đối tác
+                </button>
+                <button onclick="sendQuickPrompt('Tóm tắt tổng quan cấu trúc Second Brain và các cụm dữ liệu tri thức MLM')" class="p-2.5 bg-white dark:bg-[#1a1c27] border border-bordercol dark:border-[#2f3248] rounded-xl hover:border-orange-500 text-left transition shadow-sm text-zinc-700 dark:text-zinc-300 cursor-pointer">
+                  🧠 Tổng quan mạng nơ-ron Second Brain
                 </button>
               </div>
             </div>
@@ -801,21 +721,6 @@
               <!-- Perspective Grid & READY label (Chuẩn Ảnh 4) -->
               <div class="text-center mt-2 flex flex-col items-center">
                 <div class="text-[11px] font-mono tracking-widest text-zinc-400 font-semibold mb-2">READY</div>
-                <!-- Pill Thống kê: 15 AGENTS · 118 SKILLS · 4 WORKFLOWS -->
-                <div class="pointer-events-auto inline-flex items-center divide-x divide-zinc-200 dark:divide-zinc-700 bg-white/90 dark:bg-[#1d1f2b]/90 backdrop-blur border border-zinc-200/80 dark:border-zinc-700 rounded-xl px-5 py-2 shadow-sm text-xs font-mono">
-                  <div class="px-3 text-center cursor-pointer hover:text-orange-500 transition" onclick="navigateTo('cap-partners')">
-                    <span class="font-bold text-zinc-800 dark:text-white text-sm">15</span>
-                    <span class="text-[10px] text-zinc-400 block uppercase font-medium">AGENTS</span>
-                  </div>
-                  <div class="px-3 text-center cursor-pointer hover:text-orange-500 transition" onclick="navigateTo('cap-skills')">
-                    <span class="font-bold text-zinc-800 dark:text-white text-sm">118</span>
-                    <span class="text-[10px] text-zinc-400 block uppercase font-medium">SKILLS</span>
-                  </div>
-                  <div class="px-3 text-center cursor-pointer hover:text-orange-500 transition" onclick="navigateTo('work-tasks')">
-                    <span class="font-bold text-zinc-800 dark:text-white text-sm">4</span>
-                    <span class="text-[10px] text-zinc-400 block uppercase font-medium">WORKFLOWS</span>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -3553,47 +3458,6 @@
         </div>
       </section>
 
-    </div>
-
-    <!-- FLOATING JAVIS PET (ICONIC MASCOT CLOUD) -->
-    <div id="javisPetContainer" class="fixed bottom-6 right-6 z-50 flex items-end flex-col">
-      <div id="petMenu" class="hidden mb-3 bg-white/95 dark:bg-[#1c1e2b]/95 backdrop-blur-md border border-bordercol dark:border-zinc-700 rounded-2xl p-3 shadow-2xl w-64 text-xs space-y-2 text-zinc-800 dark:text-zinc-200 transition-all">
-        <div class="flex items-center justify-between pb-2 border-b border-zinc-100 dark:border-zinc-800">
-          <span class="font-bold text-orange-600 flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-orange-500 animate-ping"></span> Javis Mascot
-          </span>
-          <span class="text-[10px] bg-orange-50 dark:bg-orange-950 text-orange-700 dark:text-orange-300 px-1.5 py-0.5 rounded font-medium">Sẵn sàng</span>
-        </div>
-        <div class="space-y-1">
-          <button onclick="sendQuickPrompt('Báo cáo ngắn gọn chỉ số ads tháng 8 ở tài khoản quảng cáo phamquangdai qua mcp cho tôi'); togglePetMenu();" class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-orange-50 dark:hover:bg-zinc-800 flex items-center gap-2 transition">
-            <span>📊</span> <span>Kiểm tra Facebook Ads</span>
-          </button>
-          <button onclick="sendQuickPrompt('Đọc các tin nhắn Zalo gần đây nhất cho tôi'); togglePetMenu();" class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-orange-50 dark:hover:bg-zinc-800 flex items-center gap-2 transition">
-            <span>💬</span> <span>Đọc tin nhắn Zalo</span>
-          </button>
-          <button onclick="navigateTo('work-tasks'); togglePetMenu();" class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-emerald-50 dark:hover:bg-zinc-800 flex items-center gap-2 transition">
-            <span>📋</span> <span>Mở Không Gian Việc (Tasks)</span>
-          </button>
-          <button onclick="navigateTo('cap-skills'); togglePetMenu();" class="w-full text-left px-2 py-1.5 rounded-lg hover:bg-amber-50 dark:hover:bg-zinc-800 flex items-center gap-2 transition">
-            <span>✨</span> <span>Mở Kho Kỹ Năng (Skills)</span>
-          </button>
-        </div>
-      </div>
-
-      <div onclick="togglePetMenu()" class="pet-floating cursor-pointer group relative p-1 drop-shadow-md hover:scale-105 transition" title="Javis Pet Assistant">
-        <svg class="w-12 h-10" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M25 65C15 65 8 57 8 47C8 38 15 31 24 30C26 18 36 10 49 10C61 10 71 18 74 29C82 30 89 37 89 46C89 56 81 65 71 65H25Z" fill="#F97316"/>
-          <circle cx="28" cy="46" r="3.5" fill="#FB923C" opacity="0.8"/>
-          <circle cx="68" cy="46" r="3.5" fill="#FB923C" opacity="0.8"/>
-          <g class="pet-blink">
-            <ellipse cx="38" cy="40" rx="3" ry="4.5" fill="#18181B"/>
-            <ellipse cx="58" cy="40" rx="3" ry="4.5" fill="#18181B"/>
-            <circle cx="39" cy="38" r="1.2" fill="white"/>
-            <circle cx="59" cy="38" r="1.2" fill="white"/>
-          </g>
-          <path d="M44 47C46 50 50 50 52 47" stroke="#18181B" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </div>
     </div>
 
   </div>
@@ -7299,11 +7163,7 @@
       }
     }
 
-    // Tiện ích UI & Pet
-    function togglePetMenu() {
-      const el = document.getElementById('petMenu');
-      if (el) el.classList.toggle('hidden');
-    }
+    // Tiện ích UI
 
     function toggleDarkMode() {
       isDarkMode = !isDarkMode;
@@ -7894,8 +7754,15 @@ Trưởng nhóm đã sẵn sàng nhận lệnh.`);
 
     // KHỞI ĐỘNG HỆ THỐNG
     window.addEventListener('DOMContentLoaded', () => {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
+      // Tôn trọng chế độ hiển thị sáng (chuẩn ảnh gốc) hoặc chế độ người dùng đã chọn
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        isDarkMode = true;
+      } else {
+        document.documentElement.classList.remove('dark');
+        isDarkMode = false;
+      }
       lucide.createIcons();
       initWebSocket();
       loadSelfLearning();
