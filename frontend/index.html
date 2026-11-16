@@ -234,22 +234,25 @@
       font-weight: 600 !important;
     }
 
-    /* Perspective Grid Floor dịu nhẹ */
+    /* Perspective Grid Floor tinh tế chuẩn như lúc trước */
     .graph-perspective-grid {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 200px;
+      height: 180px;
+      background-image: 
+        linear-gradient(to top, rgba(148, 163, 184, 0.14) 1px, transparent 1px),
+        linear-gradient(to right, rgba(148, 163, 184, 0.14) 1px, transparent 1px);
+      background-size: 36px 36px;
+      transform: perspective(300px) rotateX(65deg);
+      transform-origin: bottom center;
+      pointer-events: none;
+    }
+    .dark .graph-perspective-grid {
       background-image: 
         linear-gradient(to top, rgba(255, 177, 98, 0.08) 1px, transparent 1px),
         linear-gradient(to right, rgba(44, 59, 77, 0.3) 1px, transparent 1px);
-      background-size: 38px 38px;
-      transform: perspective(350px) rotateX(65deg);
-      transform-origin: bottom center;
-      mask-image: radial-gradient(ellipse at 50% 100%, black 20%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 100%, black 20%, transparent 80%);
-      pointer-events: none;
     }
 
     /* Custom scrollbar */
@@ -704,31 +707,29 @@
           </div>
         </div>
 
-        <!-- CỘT 2 (CENTER): 3D NEURAL NETWORK GRAPH CANVAS (CÓ STATS & PHỐI CẢNH LƯỚI READY - ẢNH 2) -->
-        <div id="neuralColGraph" class="flex-1 flex flex-col relative bg-[#1B2632] overflow-hidden min-h-[300px]">
+        <!-- CỘT 2 (CENTER): 3D NEURAL NETWORK GRAPH CANVAS (CHUẨN NHƯ LÚC TRƯỚC) -->
+        <div id="neuralColGraph" class="flex-1 flex flex-col relative bg-[#fcfbf9] dark:bg-[#111218] overflow-hidden min-h-[300px]">
           
-          <!-- Cluster Badges Overlay around graph (MLM BRAIN LUXURY DESIGN) -->
+          <!-- Cluster Badges Overlay around graph (Chuẩn như lúc trước) -->
           <div class="absolute inset-0 pointer-events-none p-4 md:p-6 flex flex-col justify-between z-10">
             <!-- Top Clusters -->
             <div class="flex justify-around text-center">
               <!-- Cluster: SOURCES -->
-              <div onclick="openClusterExplorer('SOURCES')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-amber-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm SOURCES">
-                <div class="text-[11px] font-bold text-[#FFB162] tracking-wider flex items-center justify-center gap-1.5 font-mono">
-                  <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+              <div onclick="openClusterExplorer('SOURCES')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-zinc-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm SOURCES">
+                <div class="text-[11px] font-bold text-zinc-800 dark:text-zinc-200 tracking-wider flex items-center justify-center gap-1.5 font-mono">
                   <span>SOURCES</span>
-                  <i data-lucide="external-link" class="w-3 h-3 text-[#FFB162]/70 group-hover:text-[#EEE9DF] transition-colors"></i>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-white transition-colors"></i>
                 </div>
-                <div class="text-[10px] text-zinc-400 font-mono mt-0.5">56 note · 3% Vault</div>
+                <div class="text-[10px] text-zinc-500 font-mono mt-0.5">56 note · 3% Vault</div>
               </div>
 
               <!-- Cluster: MARKETING -->
-              <div onclick="openClusterExplorer('MARKETING')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-rose-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm MARKETING">
-                <div class="text-[11px] font-bold text-rose-400 tracking-wider flex items-center justify-center gap-1.5 font-mono">
-                  <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+              <div onclick="openClusterExplorer('MARKETING')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-red-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm MARKETING">
+                <div class="text-[11px] font-bold text-red-500 tracking-wider flex items-center justify-center gap-1.5 font-mono">
                   <span>MARKETING</span>
-                  <i data-lucide="external-link" class="w-3 h-3 text-rose-400/70 group-hover:text-rose-200 transition-colors"></i>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-red-400 group-hover:text-red-600 transition-colors"></i>
                 </div>
-                <div class="text-[10px] text-zinc-400 font-mono mt-0.5">52 note · 3% Vault</div>
+                <div class="text-[10px] text-zinc-500 font-mono mt-0.5">52 note · 3% Vault</div>
               </div>
             </div>
 
@@ -736,45 +737,41 @@
             <div class="flex justify-between items-center px-2 md:px-4">
               <div class="space-y-4 text-left">
                 <!-- Cluster: BUSINESS -->
-                <div onclick="openClusterExplorer('BUSINESS')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-sky-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm BUSINESS">
-                  <div class="text-[11px] font-bold text-sky-400 tracking-wider flex items-center gap-1.5 font-mono">
-                    <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+                <div onclick="openClusterExplorer('BUSINESS')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-blue-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm BUSINESS">
+                  <div class="text-[11px] font-bold text-blue-500 tracking-wider flex items-center gap-1.5 font-mono">
                     <span>BUSINESS</span>
-                    <i data-lucide="external-link" class="w-3 h-3 text-sky-400/70 group-hover:text-sky-200 transition-colors"></i>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-blue-400 group-hover:text-blue-600 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-400 font-mono mt-0.5">74 note · 4% Vault</div>
+                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">74 note · 4% Vault</div>
                 </div>
 
                 <!-- Cluster: WIKI -->
-                <div onclick="openClusterExplorer('WIKI')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-indigo-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm WIKI">
-                  <div class="text-[11px] font-bold text-indigo-400 tracking-wider flex items-center gap-1.5 font-mono">
-                    <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                <div onclick="openClusterExplorer('WIKI')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-indigo-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm WIKI">
+                  <div class="text-[11px] font-bold text-indigo-500 tracking-wider flex items-center gap-1.5 font-mono">
                     <span>WIKI</span>
-                    <i data-lucide="external-link" class="w-3 h-3 text-indigo-400/70 group-hover:text-indigo-200 transition-colors"></i>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-indigo-400 group-hover:text-indigo-600 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-400 font-mono mt-0.5">176 note · 9% Vault</div>
+                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">176 note · 9% Vault</div>
                 </div>
               </div>
 
               <div class="space-y-4 text-right">
                 <!-- Cluster: PERSONAL -->
-                <div onclick="openClusterExplorer('PERSONAL')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-purple-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm PERSONAL">
-                  <div class="text-[11px] font-bold text-purple-400 tracking-wider flex items-center justify-end gap-1.5 font-mono">
-                    <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                <div onclick="openClusterExplorer('PERSONAL')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-purple-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm PERSONAL">
+                  <div class="text-[11px] font-bold text-purple-500 tracking-wider flex items-center justify-end gap-1.5 font-mono">
                     <span>PERSONAL</span>
-                    <i data-lucide="external-link" class="w-3 h-3 text-purple-400/70 group-hover:text-purple-200 transition-colors"></i>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-purple-400 group-hover:text-purple-600 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-400 font-mono mt-0.5">36 note · 2% Vault</div>
+                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">36 note · 2% Vault</div>
                 </div>
 
                 <!-- Cluster: PRODUCTIVITY -->
-                <div onclick="openClusterExplorer('PRODUCTIVITY')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-emerald-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm PRODUCTIVITY">
-                  <div class="text-[11px] font-bold text-emerald-400 tracking-wider flex items-center justify-end gap-1.5 font-mono">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <div onclick="openClusterExplorer('PRODUCTIVITY')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-emerald-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm PRODUCTIVITY">
+                  <div class="text-[11px] font-bold text-emerald-500 tracking-wider flex items-center justify-end gap-1.5 font-mono">
                     <span>PRODUCTIVITY</span>
-                    <i data-lucide="external-link" class="w-3 h-3 text-emerald-400/70 group-hover:text-emerald-200 transition-colors"></i>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-emerald-400 group-hover:text-emerald-600 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-400 font-mono mt-0.5">33 note · 2% Vault</div>
+                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">33 note · 2% Vault</div>
                 </div>
               </div>
             </div>
@@ -783,44 +780,39 @@
             <div class="flex flex-col items-center gap-2">
               <div class="flex justify-around w-full text-center">
                 <!-- Cluster: FACTS -->
-                <div onclick="openClusterExplorer('FACTS')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#FFB162]/40 hover:border-amber-300 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm FACTS">
-                  <div class="text-[11px] font-bold text-[#FFB162] tracking-wider flex items-center justify-center gap-1.5 font-mono">
-                    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                <div onclick="openClusterExplorer('FACTS')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-amber-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm FACTS">
+                  <div class="text-[11px] font-bold text-amber-500 tracking-wider flex items-center justify-center gap-1.5 font-mono">
                     <span>FACTS</span>
-                    <i data-lucide="external-link" class="w-3 h-3 text-[#FFB162]/70 group-hover:text-[#EEE9DF] transition-colors"></i>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-amber-400 group-hover:text-amber-600 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-400 font-mono mt-0.5">1138 note · 59% Vault</div>
+                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">1138 note · 59% Vault</div>
                 </div>
 
                 <!-- Cluster: SALES -->
-                <div onclick="openClusterExplorer('SALES')" class="pointer-events-auto cursor-pointer p-3 rounded-2xl mlm-card rounded-2xl border-[#2C3B4D]/70 hover:border-orange-400 shadow-xl hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm SALES">
-                  <div class="text-[11px] font-bold text-orange-400 tracking-wider flex items-center justify-center gap-1.5 font-mono">
-                    <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+                <div onclick="openClusterExplorer('SALES')" class="pointer-events-auto cursor-pointer p-2.5 md:p-3 rounded-2xl bg-white/95 dark:bg-[#1a1c27]/95 backdrop-blur border border-zinc-200/90 dark:border-zinc-800 shadow-sm hover:border-rose-400 hover:scale-105 active:scale-95 transition-all group" title="Bấm để xem tất cả ghi chú trong cụm SALES">
+                  <div class="text-[11px] font-bold text-rose-500 tracking-wider flex items-center justify-center gap-1.5 font-mono">
                     <span>SALES</span>
-                    <i data-lucide="external-link" class="w-3 h-3 text-orange-400/70 group-hover:text-orange-200 transition-colors"></i>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-rose-400 group-hover:text-rose-600 transition-colors"></i>
                   </div>
-                  <div class="text-[10px] text-zinc-400 font-mono mt-0.5">30 note · 2% Vault</div>
+                  <div class="text-[10px] text-zinc-500 font-mono mt-0.5">30 note · 2% Vault</div>
                 </div>
               </div>
 
-              <!-- Perspective Grid & READY label (Ảnh 4) -->
+              <!-- Perspective Grid & READY label (Chuẩn Ảnh 4) -->
               <div class="text-center mt-2 flex flex-col items-center">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2C3B4D]/60 border border-[#2C3B4D]/70 text-[#FFB162] text-[10px] font-mono tracking-widest font-bold mb-2 shadow-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                  <span>NEURAL NETWORK LIVE · 1,918 NODES · READY</span>
-                </div>
+                <div class="text-[11px] font-mono tracking-widest text-zinc-400 font-semibold mb-2">READY</div>
                 <!-- Pill Thống kê: 15 AGENTS · 118 SKILLS · 4 WORKFLOWS -->
-                <div class="pointer-events-auto inline-flex items-center divide-x divide-amber-500/20 mlm-card rounded-2xl border border-[#2C3B4D]/70 rounded-2xl px-6 py-2.5 shadow-2xl text-xs font-mono">
-                  <div class="px-4 text-center cursor-pointer hover:text-[#FFB162] transition" onclick="navigateTo('cap-partners')">
-                    <span class="font-black text-[#FFB162] text-sm">15</span>
+                <div class="pointer-events-auto inline-flex items-center divide-x divide-zinc-200 dark:divide-zinc-700 bg-white/90 dark:bg-[#1d1f2b]/90 backdrop-blur border border-zinc-200/80 dark:border-zinc-700 rounded-xl px-5 py-2 shadow-sm text-xs font-mono">
+                  <div class="px-3 text-center cursor-pointer hover:text-orange-500 transition" onclick="navigateTo('cap-partners')">
+                    <span class="font-bold text-zinc-800 dark:text-white text-sm">15</span>
                     <span class="text-[10px] text-zinc-400 block uppercase font-medium">AGENTS</span>
                   </div>
-                  <div class="px-4 text-center cursor-pointer hover:text-[#FFB162] transition" onclick="navigateTo('cap-skills')">
-                    <span class="font-black text-[#FFB162] text-sm">118</span>
+                  <div class="px-3 text-center cursor-pointer hover:text-orange-500 transition" onclick="navigateTo('cap-skills')">
+                    <span class="font-bold text-zinc-800 dark:text-white text-sm">118</span>
                     <span class="text-[10px] text-zinc-400 block uppercase font-medium">SKILLS</span>
                   </div>
-                  <div class="px-4 text-center cursor-pointer hover:text-[#FFB162] transition" onclick="navigateTo('work-tasks')">
-                    <span class="font-black text-[#FFB162] text-sm">4</span>
+                  <div class="px-3 text-center cursor-pointer hover:text-orange-500 transition" onclick="navigateTo('work-tasks')">
+                    <span class="font-bold text-zinc-800 dark:text-white text-sm">4</span>
                     <span class="text-[10px] text-zinc-400 block uppercase font-medium">WORKFLOWS</span>
                   </div>
                 </div>
@@ -4657,7 +4649,7 @@
     let allTimelineTasks = [];
     let currentOwnerFilter = 'javis';
     let currentStatusFilter = 'upcoming';
-    let isDarkMode = true;
+    let isDarkMode = false;
     let currentLang = 'en';
     let currentActiveView = 'brain-neural';
     let allSkills = [];
@@ -5442,17 +5434,17 @@
           ctx.beginPath();
           ctx.moveTo(sx, sy);
           ctx.lineTo(tx, ty);
-          ctx.strokeStyle = `rgba(245, 158, 11, ${0.25 * avgScale})`;
+          ctx.strokeStyle = isDarkMode ? `rgba(148, 163, 184, ${0.18 * avgScale})` : `rgba(100, 116, 139, ${0.25 * avgScale})`;
           ctx.lineWidth = Math.max(0.6, 1.2 * avgScale);
           ctx.stroke();
 
-          // Hạt năng lượng truyền tin dọc đường liên kết
+          // Hạt năng lượng truyền tin dọc đường liên kết (Màu hạt theo nơ-ron nguồn)
           l.particlePos = (l.particlePos + 0.008) % 1;
           const px = sx + (tx - sx) * l.particlePos;
           const py = sy + (ty - sy) * l.particlePos;
           ctx.beginPath();
           ctx.arc(px, py, 1.6 * avgScale, 0, Math.PI * 2);
-          ctx.fillStyle = '#F59E0B';
+          ctx.fillStyle = l.source.color || (isDarkMode ? '#FFB162' : '#ea580c');
           ctx.fill();
         });
 
